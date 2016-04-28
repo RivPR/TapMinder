@@ -1,10 +1,13 @@
 package entities;
 
+import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -36,8 +39,11 @@ public class Brewery {
 	private String breweryLink;
 	
 	@ManyToOne()
-	@JoinColumn(name = "id")
-	private int neighborhood_id;
+	@JoinColumn(name = "neighborhood_id")
+	private Neighborhood neighborhood;
+
+	@OneToMany(mappedBy="brewery")
+	List<Beer> beerList;
 
 	public int getId() {
 		return id;
@@ -95,13 +101,31 @@ public class Brewery {
 		this.imageLink = imageLink;
 	}
 
-	public int getNeighborhood() {
-		return neighborhood_id;
+	public String getBreweryLink() {
+		return breweryLink;
 	}
 
-	public void setNeighborhood(int neighborhood) {
-		this.neighborhood_id = neighborhood;
+	public void setBreweryLink(String breweryLink) {
+		this.breweryLink = breweryLink;
 	}
+
+	public Neighborhood getNeighborhood() {
+		return neighborhood;
+	}
+
+	public void setNeighborhood(Neighborhood neighborhood) {
+		this.neighborhood = neighborhood;
+	}
+
+	public List<Beer> getBeerList() {
+		return beerList;
+	}
+
+	public void setBeerList(List<Beer> beerList) {
+		this.beerList = beerList;
+	}
+	
+	
 	
 	
 	

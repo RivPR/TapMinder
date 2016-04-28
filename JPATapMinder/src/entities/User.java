@@ -1,10 +1,13 @@
 package entities;
 
+import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -13,6 +16,7 @@ public class User {
 
 	@Id
 	private int id;
+	
 	@Column(name="firstname")
 	private String firstname;
 	@Column(name="lastname")
@@ -23,8 +27,11 @@ public class User {
 	private String password;
 	
 	@ManyToOne()
-	@JoinColumn(name="usertype")
-	private int usertype;
+	@JoinColumn(name="usertype_id")
+	private UserType usertype;
+	
+	@OneToMany(mappedBy="user")
+	List<BeerRating> ratings;
 	
 	public User(){
 		
@@ -70,13 +77,22 @@ public class User {
 		this.password = password;
 	}
 
-	public int getUsertype() {
+	public UserType getUsertype() {
 		return usertype;
 	}
 
-	public void setUsertype(int usertype) {
+	public void setUsertype(UserType usertype) {
 		this.usertype = usertype;
 	}
+
+	public List<BeerRating> getRatings() {
+		return ratings;
+	}
+
+	public void setRatings(List<BeerRating> ratings) {
+		this.ratings = ratings;
+	}
+
 
 	
 	

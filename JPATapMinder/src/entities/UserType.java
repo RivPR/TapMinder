@@ -25,6 +25,32 @@ public class UserType {
 
 	@OneToMany(mappedBy="usertype")
 	private List<User> users;
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
+	public UserTypeName getTypeName() {
+		return typeName;
+	}
+
+	public void setTypeName(UserTypeName typeName) {
+		this.typeName = typeName;
+	}
+
+	public List<User> getUsers() {
+		return users;
+	}
+
+	public void setUsers(List<User> users) {
+		this.users = users;
+	}
+	
+	
 	
 	
 }

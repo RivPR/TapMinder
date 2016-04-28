@@ -9,7 +9,7 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="neighborhood")
+@Table(name="neighborhoods")
 public class Neighborhood {
 
 	@Id
@@ -18,9 +18,9 @@ public class Neighborhood {
 	@Column(name="name")
 	private String neighborhood;
 
-	@OneToMany(mappedBy="neighborhood_id")
+	@OneToMany(mappedBy="neighborhood")
 	private List<Brewery> breweries;
-	
+
 	public int getId() {
 		return id;
 	}
@@ -37,6 +37,18 @@ public class Neighborhood {
 		this.neighborhood = neighborhood;
 	}
 
+	public List<Brewery> getBreweries() {
+		return breweries;
+	}
+
+	public void setBreweries(List<Brewery> breweries) {
+		this.breweries = breweries;
+	}
+	
+	
+	
+
+	
 	
 	
 	
