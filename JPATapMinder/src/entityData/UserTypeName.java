@@ -1,4 +1,4 @@
-package entities;
+package entityData;
 
 public enum UserTypeName {
 	

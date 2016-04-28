@@ -3,6 +3,8 @@ package entities;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -20,8 +22,9 @@ public class User {
 	@Column(name="password")
 	private String password;
 	
-
-	private UserType usertype;
+	@ManyToOne()
+	@JoinColumn(name="usertype")
+	private int usertype;
 	
 	public User(){
 		
@@ -67,11 +70,11 @@ public class User {
 		this.password = password;
 	}
 
-	public UserType getUsertype() {
+	public int getUsertype() {
 		return usertype;
 	}
 
-	public void setUsertype(UserType usertype) {
+	public void setUsertype(int usertype) {
 		this.usertype = usertype;
 	}
 
