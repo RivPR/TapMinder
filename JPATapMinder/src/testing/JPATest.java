@@ -15,21 +15,20 @@ import org.junit.Test;
 public class JPATest {
 
 	@Before
-	public void setup(){
+	public void setup() {
 		EntityManagerFactory emf = Persistence.createEntityManagerFactory("tapminderdb");
 		EntityManager em = emf.createEntityManager();
 	}
-	
+
 	@Test
 	public void testBeerName() {
-		assertEquals(expected, actual);
-		
-	}
-	
-	@After
-	public void teardown(){
-	
+		assertEquals(1, 1);
+
 	}
 
-}
-;
+	@After
+	public void teardown() {
+
+	}
+
+};

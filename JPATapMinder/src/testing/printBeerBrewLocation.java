@@ -17,6 +17,7 @@ public class printBeerBrewLocation {
 		Beer b = em.find(Beer.class, 1);
 		
 		System.out.println(b.getName());
+		System.out.println(b.getBrewery().getStreet_address());
 		
 		em.close();
 		
