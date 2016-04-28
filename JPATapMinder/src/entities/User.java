@@ -67,14 +67,6 @@ public class User {
 		this.password = password;
 	}
 
-	public int getUser_type_id() {
-		return user_type_id;
-	}
-
-	public void setUser_type_id(int user_type_id) {
-		this.user_type_id = user_type_id;
-	}
-
 	public UserType getUsertype() {
 		return usertype;
 	}
@@ -82,7 +74,7 @@ public class User {
 	public void setUsertype(UserType usertype) {
 		this.usertype = usertype;
 	}
-	
+
 	
 	
 	

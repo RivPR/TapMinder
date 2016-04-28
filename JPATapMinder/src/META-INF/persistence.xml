@@ -7,8 +7,8 @@
 
 	<provider>org.hibernate.ejb.HibernatePersistence</provider>
 	<!-- <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider> -->
-	<class>entites.User</class>
-	<class>entites.UserType</class>
+	<class>entities.User</class>
+	<class>entities.UserType</class>
 
 	<properties>
 		<property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/companydb" />
