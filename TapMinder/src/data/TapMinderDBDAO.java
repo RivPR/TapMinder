@@ -100,9 +100,15 @@ public class TapMinderDBDAO implements TapMinderDAO{
 		
 		return beerList;
 	}
-//	private List<Beer> getBeerListByRatingRange(BeerParameters beerParameters){
-//		
-//	}
+	private List<Beer> getBeerListByRatingRange(BeerParameters beerParameters){
+		int ratingLow = beerParameters.getRatingLow();
+		int ratingHigh = beerParameters.getRatingHigh();
+		
+		List<Beer> beerList = em.createQuery("SELECT b FROM Beer b WHERE (b.rating =< :high ) AND ( b.rating >= :low)",Beer.class).setParameter("high", ratingHigh).setParameter("low", ratingLow).getResultList();
+		
+		return beerList;
+		
+	}
 //	private List<Beer> getBeerListByRatingAbove(BeerParameters beerParameters){
 //		
 //	}
