@@ -17,11 +17,11 @@ public class TapMinderDBDAO implements TapMinderDAO{
 	
 	
 	public List<Beer> getBeers(BeerParameters beerParameters){
-		String param= beerParameters.
-		List<Beer> beer = em.createQuery("SELECT bp FROM ");
-	
-		
+		int param= beerParameters.getId();			
+		List<Beer> beer ;
+		beer= em.createQuery("SELECT bp FROM ");
 		return beer;
+		
 	}
 	
 	
