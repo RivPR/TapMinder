@@ -75,39 +75,36 @@ public class TapMinderDBDAO implements TapMinderDAO{
 		System.out.println(query);
 //		List<Beer> beerList = em.createQuery(query,Beer.class).getResultList();
 		Beer beer = em.find(Beer.class, 1);
+		System.out.println(beer);
 		System.out.println(beer.getName());
-		//TODO DELETE THIS
-//		for (Beer beer : beerList) {
-//			System.out.println(beer.getName());
-//		}
-//		return beerList;
+
 		em.detach(beer);
 		return null;
 	}
-	private List<Beer> getBeerListByABVRange(BeerParameters beerParameters){
-		
-	}
-	private List<Beer> getBeerListByABVAbove(BeerParameters beerParameters){
-		
-	}
-	private List<Beer> getBeerListByABVBelow(BeerParameters beerParameters){
-		
-	}
-	private List<Beer> getBeerListByStyle(BeerParameters beerParameters){
-		
-	}
-	private List<Beer> getBeerListByRatingRange(BeerParameters beerParameters){
-		
-	}
-	private List<Beer> getBeerListByRatingAbove(BeerParameters beerParameters){
-		
-	}
-	private List<Beer> getBeerListByRatingBelow(BeerParameters beerParameters){
-		
-	}
-	private List<Beer> getBeerListByHopCountRange(BeerParameters beerParameters){
-		
-	}
+//	private List<Beer> getBeerListByABVRange(BeerParameters beerParameters){
+//		
+//	}
+//	private List<Beer> getBeerListByABVAbove(BeerParameters beerParameters){
+//		
+//	}
+//	private List<Beer> getBeerListByABVBelow(BeerParameters beerParameters){
+//		
+//	}
+//	private List<Beer> getBeerListByStyle(BeerParameters beerParameters){
+//		
+//	}
+//	private List<Beer> getBeerListByRatingRange(BeerParameters beerParameters){
+//		
+//	}
+//	private List<Beer> getBeerListByRatingAbove(BeerParameters beerParameters){
+//		
+//	}
+//	private List<Beer> getBeerListByRatingBelow(BeerParameters beerParameters){
+//		
+//	}
+//	private List<Beer> getBeerListByHopCountRange(BeerParameters beerParameters){
+//		
+//	}
 
 
 

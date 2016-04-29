@@ -13,7 +13,7 @@
 
 	<!-- Declare DAO bean so it can use Spring annotations and be injected in 
 		our controller -->
-	<bean id="dao" class="dao.TapMinderDBDAO" />
+	<bean id="dao" class="data.TapMinderDBDAO" />
 
 	<!-- Declare EntityManagerFactory so we can inject an Entity Manager into 
 		our DAO -->
@@ -27,8 +27,8 @@
 	<bean id="myTransactionManager" class="org.springframework.orm.jpa.JpaTransactionManager">
 		<property name="entityManagerFactory" ref="myEntityManagerFactory" />
 	</bean>
-	
+
 	<!-- Enable the @Transactional annotation -->
 	<tx:annotation-driven transaction-manager="myTransactionManager" />
-	 <!-- <mvc:annotation-driven/>  -->
+	<!-- <mvc:annotation-driven/> -->
 </beans>
