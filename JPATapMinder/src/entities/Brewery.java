@@ -4,11 +4,15 @@ import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+
+import entityData.State;
 
 @Entity
 @Table(name="breweries")
@@ -26,8 +30,10 @@ public class Brewery {
 	@Column(name="city")
 	private String city;
 	
+	
 	@Column(name="state")
-	private String state;
+	@Enumerated(EnumType.STRING)
+	private State state;
 	
 	@Column(name="zip")
 	private int zip;
