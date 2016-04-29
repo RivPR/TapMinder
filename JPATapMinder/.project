@@ -3,6 +3,7 @@
 	<name>JPATapMinder</name>
 	<comment></comment>
 	<projects>
+		<project>TapMinder</project>
 	</projects>
 	<buildSpec>
 		<buildCommand>

@@ -70,6 +70,7 @@ public class TapMinderDBDAO implements TapMinderDAO{
 	}
 	
 	private List<Beer> getBeerListByName(BeerParameters beerParameters){
+		
 		String name = beerParameters.getName().toLowerCase();
 		System.out.println(name);
 		String query = "SELECT b FROM Beer b";
@@ -242,7 +243,7 @@ public class TapMinderDBDAO implements TapMinderDAO{
 	public List<Neighborhood> getNeighborhoods() {
 		// TODO Auto-generated method stub
 		return null;
->>>>>>> dd48a872d2343947566cbd6ad6f565f74ce0bff3
+
 	}
 	
 	
