@@ -26,6 +26,18 @@ public class UserType {
 	@OneToMany(mappedBy="usertype")
 	private List<User> users;
 
+	@Column(name="access_level")
+	private int accessLevel;
+	
+	
+	public int getAccessLevel() {
+		return accessLevel;
+	}
+
+	public void setAccessLevel(int accessLevel) {
+		this.accessLevel = accessLevel;
+	}
+
 	public int getId() {
 		return id;
 	}
