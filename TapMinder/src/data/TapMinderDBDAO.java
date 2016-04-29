@@ -1,6 +1,9 @@
 package data;
 
+import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -101,11 +104,21 @@ public class TapMinderDBDAO implements TapMinderDAO{
 		return beerList;
 	}
 	private List<Beer> getBeerListByRatingRange(BeerParameters beerParameters){
-		int ratingLow = beerParameters.getRatingLow();
+		
 		int ratingHigh = beerParameters.getRatingHigh();
+		int ratingLow = beerParameters.getRatingLow();
+		List<BeerRating> ratings = em.createQuery("SELECT r FROM BeerRating r WHERE r.rating <= :high AND r.rating >= :low",BeerRating.class).setParameter("high", ratingHigh).setParameter("low",ratingLow).getResultList();
+		Set<Beer> beerSet = new HashSet<>();
+
+		for (BeerRating r : ratings) {
+			beerSet.add(r.getBeer());
+		}
+		List<Beer> beerList = new ArrayList<>();
+		beerList.addAll(beerSet);
 		
-		List<Beer> beerList = em.createQuery("SELECT b FROM Beer b WHERE (b.rating =< :high ) AND ( b.rating >= :low)",Beer.class).setParameter("high", ratingHigh).setParameter("low", ratingLow).getResultList();
-		
+		for (Beer beer : beerList) {
+			System.out.println(beer.getName());
+		}
 		return beerList;
 		
 	}

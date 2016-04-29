@@ -46,22 +46,7 @@ public class Beer {
 	@JoinColumn(name="breweries_id")
 	private Brewery brewery;
 
-	public double getAverageRating(){
-		int count = 0;
-		double rating = 0;
-		
-		for (BeerRating beerRating : ratings) {
-			rating += beerRating.getRating();
-			count++;
-		}
-		
-		if(count != 0){
-			return (rating/count);
-		}
-		
-		return 0;
-	}
-	
+
 	
 	public int getId() {
 		return id;

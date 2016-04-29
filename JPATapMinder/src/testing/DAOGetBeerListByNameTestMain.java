@@ -1,12 +1,16 @@
 package testing;
 
+import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 
 import entities.Beer;
+import entities.BeerRating;
 
 public class DAOGetBeerListByNameTestMain {
 public static void main(String[] args) {
@@ -21,17 +25,25 @@ public static void main(String[] args) {
 	
 	
 	
-	int ratingLow = 1;
-	int ratingHigh = 5;
+	int ratingLow = 3;
+	int ratingHigh = 4;
 	
-//	List<Beer> beerList = em.createQuery("SELECT b FROM Beer b WHERE (b.rating < :high ) AND ( b.rating > :low)",Beer.class).setParameter("high", ratingHigh).setParameter("low", ratingLow).getResultList();
-	List<Beer> beerList = em.createQuery("SELECT b.id, r.rating"
-			+ " FROM Beer b"
-			+ "JOIN b.rating r WHERE r.rating < :high AND r.rating > :low").setParameter("high", ratingHigh).setParameter("low", ratingLow).getResultList();
+	//TODO Fix
+	
+	
+	List<BeerRating> ratings = em.createQuery("SELECT r FROM BeerRating r WHERE r.rating >= :low",BeerRating.class).setParameter("low",ratingLow).getResultList();
+	Set<Beer> beerSet = new HashSet<>();
+
+	for (BeerRating r : ratings) {
+		beerSet.add(r.getBeer());
+	}
+	List<Beer> beerList = new ArrayList<>();
+	beerList.addAll(beerSet);
 	
 	for (Beer beer : beerList) {
 		System.out.println(beer.getName());
 	}
+//	return beerList;
 	
 
 	em.close();
