@@ -30,10 +30,11 @@ public class TapMinderDBDAO implements TapMinderDAO{
 			beerList = getBeerListByName(beerParameters);
 		}
 		else if(beerParameters.getAbvHigh() != null && beerParameters.getAbvLow() != null){
-						//search for range
+			beerList= getBeerListByABVRange(beerParameters);
 		}
 		else if(beerParameters.getAbvLow() != null && beerParameters.getAbvHigh() == null){
-			//search for higher abvsjdflksdaj than ^
+			//search for higher abv than ^
+			beerList = getBeerListByABVAbove(beerParameters);
 		}
 		else if(beerParameters.getAbvHigh() != null && beerParameters.getAbvLow() == null){
 			//search for lower abv than ^
@@ -81,13 +82,25 @@ public class TapMinderDBDAO implements TapMinderDAO{
 	private List<Beer> getBeerListByABVRange(BeerParameters beerParameters){
 		double low = beerParameters.getAbvLow();
 		double high = beerParameters.getAbvHigh();
-		String query = 
+		
+		String query = ("SELECT b FROM Beer b WHERE (b.abv >= :low) AND (b.abv <= :high) ORDER BY abv DESC");
+		List<Beer> beerList = em.createQuery(query, Beer.class).setParameter("low", low).setParameter("high", high)
+				.getResultList();
+
+		for (Beer beer : beerList) {
+			System.out.println(beer.getName() +" Style:"+ beer.getBeerStyle()+ " " +beer.getAbv());
+		}
+		return beerList;
 		
 	}
 	
-//	private List<Beer> getBeerListByABVAbove(BeerParameters beerParameters){
-//		
-//	}
+	private List<Beer> getBeerListByABVAbove(BeerParameters beerParameters){
+		double higher= beerParameters.getAbvLow();
+		String query = ("SELECT b FROM Beer b WHERE (b.abv >= :low) ORDER BY abv ASC");
+		List<Beer> beerList = em.createQuery(query, Beer.class).setParameter("low", higher).getResultList();
+		return beerList;
+		
+	}
 //	private List<Beer> getBeerListByABVBelow(BeerParameters beerParameters){
 //		
 //	}
