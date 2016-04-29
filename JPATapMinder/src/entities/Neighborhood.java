@@ -16,7 +16,7 @@ public class Neighborhood {
 	private int id;
 
 	@Column(name="name")
-	private String neighborhood;
+	private String name;
 
 	@OneToMany(mappedBy="neighborhood")
 	private List<Brewery> breweries;
@@ -29,12 +29,12 @@ public class Neighborhood {
 		this.id = id;
 	}
 
-	public String getNeighborhood() {
-		return neighborhood;
+	public String getName() {
+		return name;
 	}
 
-	public void setNeighborhood(String neighborhood) {
-		this.neighborhood = neighborhood;
+	public void setName(String neighborhood) {
+		this.name = neighborhood;
 	}
 
 	public List<Brewery> getBreweries() {

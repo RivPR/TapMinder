@@ -21,6 +21,9 @@ public class Beer {
 	private String name;
 	
 	@Column(name="abv")
+	private Double abv;
+	
+	@Column(name="hopCount")
 	private Double hop_count;
 	
 	@Column(name="style")
@@ -42,6 +45,14 @@ public class Beer {
 
 	public int getId() {
 		return id;
+	}
+
+	public Double getAbv() {
+		return abv;
+	}
+
+	public void setAbv(Double abv) {
+		this.abv = abv;
 	}
 
 	public void setId(int id) {

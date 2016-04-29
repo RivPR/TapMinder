@@ -25,7 +25,7 @@ public class Brewery {
 	private String name;
 	
 	@Column(name="street_address")
-	private String street_address;
+	private String streetAddress;
 	
 	@Column(name="city")
 	private String city;
@@ -67,12 +67,12 @@ public class Brewery {
 		this.name = name;
 	}
 
-	public String getStreet_address() {
-		return street_address;
+	public String getStreetAddress() {
+		return streetAddress;
 	}
 
-	public void setStreet_address(String street_address) {
-		this.street_address = street_address;
+	public void setStreetAddress(String street_address) {
+		this.streetAddress = street_address;
 	}
 
 	public String getCity() {
