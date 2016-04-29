@@ -50,6 +50,23 @@ public class TestAngel {
 			System.out.println(beer.getName() +" Style:"+ beer.getBeerStyle()+ " " +beer.getHopCount());
 		}
 		
+		System.out.println("###########################\n This is hop count lower than:");
+		
+		lower = 30;
+		query = ("SELECT b FROM Beer b WHERE (b.hopCount <= :high) ORDER BY hopCount DESC");
+		beerList = em.createQuery(query, Beer.class).setParameter("high", lower).getResultList();
+		for (Beer beer : beerList) {
+			System.out.println(beer.getName() +" Style:"+ beer.getBeerStyle()+ " " +beer.getHopCount());
+		}
+		System.out.println("###########################\n This is hop count higher than:");
+		
+		higher = 51;
+		query = ("SELECT b FROM Beer b WHERE (b.hopCount >= :low) ORDER BY hopCount DESC");
+		beerList = em.createQuery(query, Beer.class).setParameter("low", higher).getResultList();
+		for (Beer beer : beerList) {
+			System.out.println(beer.getName() +" Style:"+ beer.getBeerStyle()+ " " +beer.getHopCount());
+		}
+		
 		
 		em.close();
 		emf.close();

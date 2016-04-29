@@ -61,9 +61,11 @@ public class TapMinderDBDAO implements TapMinderDAO{
 		}
 		else if(beerParameters.getHopCountLow() == null && beerParameters.getHopCountHigh() != null){
 			//above ^
+			beerList = getBeerlistByHopCountLow(beerParameters);
 		}
 		else if(beerParameters.getHopCountLow() != null && beerParameters.getHopCountHigh() == null){
-			//bewlow ^
+			//below ^
+			beerList = getBeerlistByHopCountHigh(beerParameters);			
 		}
 
 			
@@ -91,9 +93,6 @@ public class TapMinderDBDAO implements TapMinderDAO{
 		List<Beer> beerList = em.createQuery(query, Beer.class).setParameter("low", low).setParameter("high", high)
 				.getResultList();
 
-		for (Beer beer : beerList) {
-			System.out.println(beer.getName() +" Style:"+ beer.getBeerStyle()+ " " +beer.getAbv());
-		}
 		return beerList;
 	}
 	
@@ -141,12 +140,23 @@ public class TapMinderDBDAO implements TapMinderDAO{
 		String query = ("SELECT b FROM Beer b WHERE (b.hopCount >= :low) AND (b.hopCount <= :high) ORDER BY hopCount DESC");
 		List<Beer> beerList = em.createQuery(query, Beer.class).setParameter("low", low).setParameter("high", high).getResultList();
 
-		for (Beer beer : beerList) {
-			System.out.println(beer.getName() +" Style:"+ beer.getBeerStyle()+ " " +beer.getAbv());
-		}
 		return beerList;
 	}
-
+	private List<Beer> getBeerlistByHopCountLow(BeerParameters beerParameters){
+		double lower = beerParameters.getHopCountHigh();
+		String query = ("SELECT b FROM Beer b WHERE (b.hopCount <= :high) ORDER BY hopCount DESC");
+		List<Beer> beerList = em.createQuery(query, Beer.class).setParameter("high", lower).getResultList();
+		
+		return beerList;
+	}
+	private List<Beer> getBeerlistByHopCountHigh(BeerParameters beerParameters){
+		double higher = beerParameters.getHopCountLow();
+		String query = ("SELECT b FROM Beer b WHERE (b.hopCount >= :low) ORDER BY hopCount DESC");
+		List<Beer> beerList = em.createQuery(query, Beer.class).setParameter("low", higher).getResultList();
+		
+		return beerList;
+	}
+	
 
 
 	@Override
