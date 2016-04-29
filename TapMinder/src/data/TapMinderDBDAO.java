@@ -1,38 +1,36 @@
 package data;
 
-public class TapMinderDBDAO implements TapMinderDAO{
+import java.util.List;
 
-	public testmethodAngel(){
-		//This is my message
-		//blah
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
+
+import org.springframework.transaction.annotation.Transactional;
+
+import entities.Beer;
+
+
+@Transactional
+public class TapMinderDBDAO implements TapMinderDAO{
+	@PersistenceContext
+	private EntityManager em;
+	
+	
+	public List<Beer> getBeers(BeerParameters beerParameters){
+		String param= beerParameters.
+		List<Beer> beer = em.createQuery("SELECT bp FROM ");
+	
 		
-		
-		
-		
-		
-		
-		
-		
-		
-		gkjsfkjsfkjsfjf
+		return beer;
 	}
 	
-	public testmethodAlex(){
-		sdfljljfl;j 
-		flasjfl;sakda
-		dfas
-		fsa
-		gfdah
-		gfhd
-		hgfds
-		hfgds
-		hfgds
-		hfsd
-		hsfgd
-		gfdsh
-		gsfdh
-		ghsfd
-		
+	
+	
+	
+	
+	
+	
+
 	}
 	
 }
