@@ -38,6 +38,7 @@ public class TapMinderDBDAO implements TapMinderDAO{
 		}
 		else if(beerParameters.getAbvHigh() != null && beerParameters.getAbvLow() == null){
 			//search for lower abv than ^
+			beerList = getBeerListByABVBelow(beerParameters);	
 		}
 		else if(beerParameters.getStyle() != null){
 			beerList = getBeerListByStyle(beerParameters);
@@ -56,6 +57,7 @@ public class TapMinderDBDAO implements TapMinderDAO{
 		}
 		else if(beerParameters.getHopCountLow() != null && beerParameters.getHopCountHigh() != null){
 			//range
+			beerList= getBeerListByHopCountRange(beerParameters);
 		}
 		else if(beerParameters.getHopCountLow() == null && beerParameters.getHopCountHigh() != null){
 			//above ^
@@ -79,8 +81,8 @@ public class TapMinderDBDAO implements TapMinderDAO{
 		List<Beer> beerList = em.createQuery("SELECT b FROM Beer b WHERE b.name LIKE LOWER(:name) ",Beer.class).setParameter("name",name.toLowerCase()).getResultList();
 		
 		return beerList;
-
 	}
+	
 	private List<Beer> getBeerListByABVRange(BeerParameters beerParameters){
 		double low = beerParameters.getAbvLow();
 		double high = beerParameters.getAbvHigh();
@@ -93,7 +95,6 @@ public class TapMinderDBDAO implements TapMinderDAO{
 			System.out.println(beer.getName() +" Style:"+ beer.getBeerStyle()+ " " +beer.getAbv());
 		}
 		return beerList;
-		
 	}
 	
 	private List<Beer> getBeerListByABVAbove(BeerParameters beerParameters){
@@ -103,9 +104,14 @@ public class TapMinderDBDAO implements TapMinderDAO{
 		return beerList;
 		
 	}
-//	private List<Beer> getBeerListByABVBelow(BeerParameters beerParameters){
-//		
-//	}
+	
+	private List<Beer> getBeerListByABVBelow(BeerParameters beerParameters){
+		double lower = beerParameters.getAbvHigh();
+		String query = ("SELECT b FROM Beer b WHERE (b.abv <= :high) ORDER BY abv DESC");
+		List<Beer> beerList = em.createQuery(query, Beer.class).setParameter("high", lower).getResultList();
+		return beerList;
+	}
+	
 	private List<Beer> getBeerListByStyle(BeerParameters beerParameters){
 		String style = beerParameters.getStyle().trim();
 		style = "%" + style + "%";
@@ -128,9 +134,18 @@ public class TapMinderDBDAO implements TapMinderDAO{
 //	private List<Beer> getBeerListByRatingBelow(BeerParameters beerParameters){
 //		
 //	}
-//	private List<Beer> getBeerListByHopCountRange(BeerParameters beerParameters){
-//		
-//	}
+	private List<Beer> getBeerListByHopCountRange(BeerParameters beerParameters){
+		double low = beerParameters.getHopCountLow();
+		double high = beerParameters.getHopCountHigh();
+		
+		String query = ("SELECT b FROM Beer b WHERE (b.hopCount >= :low) AND (b.hopCount <= :high) ORDER BY hopCount DESC");
+		List<Beer> beerList = em.createQuery(query, Beer.class).setParameter("low", low).setParameter("high", high).getResultList();
+
+		for (Beer beer : beerList) {
+			System.out.println(beer.getName() +" Style:"+ beer.getBeerStyle()+ " " +beer.getAbv());
+		}
+		return beerList;
+	}
 
 
 
