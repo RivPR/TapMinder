@@ -23,6 +23,7 @@ public class TapMinderDBDAO implements TapMinderDAO{
 	
 	
 	public List<Beer> getBeers(BeerParameters beerParameters){
+
 		List<Beer> beerList = null;
 		
 		if(beerParameters.getName() != null){
@@ -38,7 +39,7 @@ public class TapMinderDBDAO implements TapMinderDAO{
 			//search for lower abv than ^
 		}
 		else if(beerParameters.getStyle() != null){
-			//seach by style
+			beerList = getBeerListByStyle(beerParameters);
 		}
 		else if(beerParameters.getRatingLow() != null && beerParameters.getRatingHigh() != null){
 			//search rating range
@@ -69,25 +70,36 @@ public class TapMinderDBDAO implements TapMinderDAO{
 	}
 	
 	private List<Beer> getBeerListByName(BeerParameters beerParameters){
+
 		String name = beerParameters.getName().trim();
-		String query = "%" + name + "%";
-		
+
+		name = "%" + name + "%";
+
 		List<Beer> beerList = em.createQuery("SELECT b FROM Beer b WHERE b.name LIKE LOWER(:name) ",Beer.class).setParameter("name",name.toLowerCase()).getResultList();
 		
 		return beerList;
+
 	}
-//	private List<Beer> getBeerListByABVRange(BeerParameters beerParameters){
-//		
-//	}
+	private List<Beer> getBeerListByABVRange(BeerParameters beerParameters){
+		double low = beerParameters.getAbvLow();
+		double high = beerParameters.getAbvHigh();
+		String query = 
+		
+	}
+	
 //	private List<Beer> getBeerListByABVAbove(BeerParameters beerParameters){
 //		
 //	}
 //	private List<Beer> getBeerListByABVBelow(BeerParameters beerParameters){
 //		
 //	}
-//	private List<Beer> getBeerListByStyle(BeerParameters beerParameters){
-//		
-//	}
+	private List<Beer> getBeerListByStyle(BeerParameters beerParameters){
+		String style = beerParameters.getStyle().trim();
+		style = "%" + style + "%";
+		List<Beer> beerList = em.createQuery("SELECT b FROM Beer b WHERE b.style LIKE LOWER(:style) ",Beer.class).setParameter("style",style.toLowerCase()).getResultList();
+		
+		return beerList;
+	}
 //	private List<Beer> getBeerListByRatingRange(BeerParameters beerParameters){
 //		
 //	}
@@ -233,6 +245,7 @@ public class TapMinderDBDAO implements TapMinderDAO{
 	public List<Neighborhood> getNeighborhoods() {
 		// TODO Auto-generated method stub
 		return null;
+
 	}
 	
 	
