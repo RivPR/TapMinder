@@ -20,6 +20,9 @@
 	<bean id="myEntityManagerFactory"
 		class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
 		<property name="persistenceUnitName" value="tapminderdb" />
+
+		
+
 	</bean>
 
 	<!-- Declare a TransactionManager so we can have Spring automate transactions 
