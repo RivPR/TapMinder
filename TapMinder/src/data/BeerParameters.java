@@ -6,7 +6,9 @@ public class BeerParameters {
 	private String name;
 	private Double abvLow;
 	private Double abvHigh;
-	private Double hopCount;
+	//TODO FIX
+	private Double hopCountLow;
+	private Double hopCountHigh;
 	private String style;
 	private Integer ratingLow;
 	private Integer ratingHigh;
@@ -41,12 +43,7 @@ public class BeerParameters {
 	public void setAbvHigh(Double abvHigh) {
 		this.abvHigh = abvHigh;
 	}
-	public Double getHopCount() {
-		return hopCount;
-	}
-	public void setHopCount(Double hopCount) {
-		this.hopCount = hopCount;
-	}
+
 	public String getStyle() {
 		return style;
 	}
@@ -64,6 +61,18 @@ public class BeerParameters {
 	}
 	public void setRatingHigh(Integer ratingHigh) {
 		this.ratingHigh = ratingHigh;
+	}
+	public Double getHopCountLow() {
+		return hopCountLow;
+	}
+	public void setHopCountLow(Double hopCountLow) {
+		this.hopCountLow = hopCountLow;
+	}
+	public Double getHopCountHigh() {
+		return hopCountHigh;
+	}
+	public void setHopCountHigh(Double hopCountHigh) {
+		this.hopCountHigh = hopCountHigh;
 	}
 	
 	
