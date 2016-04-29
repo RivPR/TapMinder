@@ -7,7 +7,21 @@ public class TapMinderDBDAO implements TapMinderDAO{
 	}
 	
 	public testmethodAlex(){
-		//writedifferent stuflksjdflsdkjf;lsadj;alsdkf;lsdaj
+		sdfljljfl;j 
+		flasjfl;sakda
+		dfas
+		fsa
+		gfdah
+		gfhd
+		hgfds
+		hfgds
+		hfgds
+		hfsd
+		hsfgd
+		gfdsh
+		gsfdh
+		ghsfd
+		
 	}
 	
 }
