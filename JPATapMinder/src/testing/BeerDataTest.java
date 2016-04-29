@@ -30,7 +30,8 @@ public class BeerDataTest {
 
 	@Test
 	public void beerName() {
-		assertEquals(beer.getName(),"Avalanche Ale");
+		String name = beer.getName();
+		assertEquals("Avalanche Ale",name);
 	}
 
 	@Test
@@ -43,7 +44,7 @@ public class BeerDataTest {
 	@Test
 	public void beerHopCount() {
 		Double hops = 2.5;
-		assertEquals(hops,beer.getHop_count());
+		assertEquals(hops,beer.getHopCount());
 	}
 	
 	@Test
@@ -58,7 +59,7 @@ public class BeerDataTest {
 	
 	@Test
 	public void beerImageLink() {
-		assertEquals(null,beer.getImageLink());
+		assertEquals("",beer.getImageLink()); //NO IMAGE LINK FOR BEER # 1
 	}
 	
 	@Test
@@ -73,7 +74,7 @@ public class BeerDataTest {
 	
 	@Test
 	public void beerCity() {
-		assertEquals("Denver",beer.getBrewery().getStreetAddress());
+		assertEquals("Denver",beer.getBrewery().getCity());
 	}
 	
 	@Test
@@ -86,11 +87,11 @@ public class BeerDataTest {
 		assertEquals(80204,beer.getBrewery().getZip());
 	}
 
-	//TODO: failed
-//	@Test
-//	public void beerBreweryImageLink() {
-//		assertEquals("http://www.breckbrew.com/_stay_out/images/logo.png",beer.getBrewery().getImageLink());
-//		}
+
+	@Test
+	public void beerBreweryImageLink() {
+		assertEquals("http://www.breckbrew.com/_stay_out/images/logo.png",beer.getBrewery().getImageLink());
+		}
 	
 	@Test
 	public void beerBreweryLink() {

@@ -4,6 +4,8 @@ import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
@@ -15,6 +17,7 @@ import javax.persistence.Table;
 public class Beer {
 
 	@Id
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int id;
 	
 	@Column(name="name")
@@ -23,8 +26,8 @@ public class Beer {
 	@Column(name="abv")
 	private Double abv;
 	
-	@Column(name="hopCount")
-	private Double hop_count;
+	@Column(name="hop_count")
+	private Double hopCount;
 	
 	@Column(name="style")
 	private String beerStyle;
@@ -67,12 +70,12 @@ public class Beer {
 		this.name = name;
 	}
 
-	public Double getHop_count() {
-		return hop_count;
+	public Double getHopCount() {
+		return hopCount;
 	}
 
-	public void setHop_count(Double hop_count) {
-		this.hop_count = hop_count;
+	public void setHopCount(Double hopCount) {
+		this.hopCount = hopCount;
 	}
 
 	public String getBeerStyle() {
