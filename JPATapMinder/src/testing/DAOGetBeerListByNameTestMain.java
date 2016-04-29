@@ -13,9 +13,9 @@ public static void main(String[] args) {
 	EntityManagerFactory emf = Persistence.createEntityManagerFactory("tapminderdb");
 	EntityManager em = emf.createEntityManager();
 	
-	String name = "%" + "ch" + "%";
-	
-	List<Beer> beerList = em.createQuery("SELECT b FROM Beer b WHERE b.name LIKE LOWER(:name) ",Beer.class).setParameter("name",name.toLowerCase()).getResultList();
+	String input = "ch";
+	String query = "%" + input + "%";
+	List<Beer> beerList = em.createQuery("SELECT b FROM Beer b WHERE b.name LIKE LOWER(:params) ",Beer.class).setParameter("param",query.toLowerCase()).getResultList();
 	
 	for (Beer beer : beerList) {
 		System.out.println(beer.getName());
