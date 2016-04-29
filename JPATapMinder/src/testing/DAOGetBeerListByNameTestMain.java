@@ -31,7 +31,7 @@ public static void main(String[] args) {
 	//TODO Fix
 	
 	
-	List<BeerRating> ratings = em.createQuery("SELECT r FROM BeerRating r WHERE r.rating >= :low",BeerRating.class).setParameter("low",ratingLow).getResultList();
+	List<BeerRating> ratings = em.createQuery("SELECT r FROM BeerRating r WHERE r.rating <= :high",BeerRating.class).setParameter("high",ratingHigh).getResultList();
 	Set<Beer> beerSet = new HashSet<>();
 
 	for (BeerRating r : ratings) {
