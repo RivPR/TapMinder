@@ -69,17 +69,11 @@ public class TapMinderDBDAO implements TapMinderDAO{
 	}
 	
 	private List<Beer> getBeerListByName(BeerParameters beerParameters){
-		String name = beerParameters.getName().toLowerCase();
-		System.out.println(name);
-		String query = "SELECT b FROM Beer b";
-		System.out.println(query);
-//		List<Beer> beerList = em.createQuery(query,Beer.class).getResultList();
-		Beer beer = em.find(Beer.class, 1);
-		System.out.println(beer);
-		System.out.println(beer.getName());
-
-		em.detach(beer);
-		return null;
+		String name = beerParameters.getName().trim();
+		String query = "%" + name + "%";
+		List<Beer> beerList = em.createQuery("SELECT b FROM Beer b WHERE b.name LIKE LOWER(:name) ",Beer.class).setParameter("name",name.toLowerCase()).getResultList();
+		
+		return beerList;
 	}
 //	private List<Beer> getBeerListByABVRange(BeerParameters beerParameters){
 //		
