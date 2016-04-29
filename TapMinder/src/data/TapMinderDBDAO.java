@@ -39,7 +39,7 @@ public class TapMinderDBDAO implements TapMinderDAO{
 			//search for lower abv than ^
 		}
 		else if(beerParameters.getStyle() != null){
-			//seach by style
+			beerList = getBeerListByStyle(beerParameters);
 		}
 		else if(beerParameters.getRatingLow() != null && beerParameters.getRatingHigh() != null){
 			//search rating range
@@ -70,31 +70,34 @@ public class TapMinderDBDAO implements TapMinderDAO{
 	}
 	
 	private List<Beer> getBeerListByName(BeerParameters beerParameters){
-		
-		String name = beerParameters.getName().toLowerCase();
-		System.out.println(name);
-		String query = "SELECT b FROM Beer b";
-		System.out.println(query);
-//		List<Beer> beerList = em.createQuery(query,Beer.class).getResultList();
-		Beer beer = em.find(Beer.class, 1);
-		System.out.println(beer);
-		System.out.println(beer.getName());
 
-		em.detach(beer);
-		return null;
+		String name = beerParameters.getName().trim();
+		name = "%" + name + "%";
+		List<Beer> beerList = em.createQuery("SELECT b FROM Beer b WHERE b.name LIKE LOWER(:name) ",Beer.class).setParameter("name",name.toLowerCase()).getResultList();
+		
+		return beerList;
+
 	}
-//	private List<Beer> getBeerListByABVRange(BeerParameters beerParameters){
-//		
-//	}
+	private List<Beer> getBeerListByABVRange(BeerParameters beerParameters){
+		double low = beerParameters.getAbvLow();
+		double high = beerParameters.getAbvHigh();
+		String query = 
+		
+	}
+	
 //	private List<Beer> getBeerListByABVAbove(BeerParameters beerParameters){
 //		
 //	}
 //	private List<Beer> getBeerListByABVBelow(BeerParameters beerParameters){
 //		
 //	}
-//	private List<Beer> getBeerListByStyle(BeerParameters beerParameters){
-//		
-//	}
+	private List<Beer> getBeerListByStyle(BeerParameters beerParameters){
+		String style = beerParameters.getStyle().trim();
+		style = "%" + style + "%";
+		List<Beer> beerList = em.createQuery("SELECT b FROM Beer b WHERE b.style LIKE LOWER(:style) ",Beer.class).setParameter("style",style.toLowerCase()).getResultList();
+		
+		return beerList;
+	}
 //	private List<Beer> getBeerListByRatingRange(BeerParameters beerParameters){
 //		
 //	}
