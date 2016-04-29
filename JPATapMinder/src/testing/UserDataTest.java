@@ -1,6 +1,6 @@
 package testing;
 
-import static org.junit.Assert.fail;
+import static org.junit.Assert.assertEquals;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
@@ -12,8 +12,6 @@ import org.junit.Test;
 
 import entities.User;
 import entityData.UserTypeName;
-
-import static org.junit.Assert.*;
 
 public class UserDataTest {
 

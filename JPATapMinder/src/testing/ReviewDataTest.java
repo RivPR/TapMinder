@@ -11,7 +11,6 @@ import org.junit.Before;
 import org.junit.Test;
 
 import entities.BeerRating;
-import entityData.UserTypeName;
 
 
 

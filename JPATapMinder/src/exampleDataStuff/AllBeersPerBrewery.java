@@ -7,7 +7,6 @@ import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 
 import entities.Beer;
-import entities.Brewery;
 
 /*
  * GET ALL BEERS, DISPLAY THE BEER NAME,
