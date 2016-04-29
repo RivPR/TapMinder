@@ -56,5 +56,13 @@
 			<artifactId>hibernate-validator</artifactId>
 			<version>5.2.2.Final</version>
 		</dependency>
+		<!-- delete this -->
+				<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-webmvc</artifactId>
+			<version>4.2.4.RELEASE</version>
+		</dependency>
+		<!-- delete this -->
+		
 	</dependencies>
 </project>
