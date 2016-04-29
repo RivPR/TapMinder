@@ -2,8 +2,6 @@ package data;
 
 import java.util.List;
 
-import javax.xml.transform.Result;
-
 import entities.Beer;
 import entities.BeerRating;
 import entities.Brewery;
@@ -19,32 +17,32 @@ public interface TapMinderDAO {
 	
 	public List<Beer> getBeers(BeerParameters beerParameters);
 	
-	public Result addBeer(Beer beer);
+	public ModifyResults addBeer(Beer beer);
 	
-	public Result modifyBeer(Beer beer);
+	public ModifyResults modifyBeer(Beer beer);
 	
-	public Result deleteBeer(Beer beer);
+	public ModifyResults deleteBeer(Beer beer);
 
 	//breweries
 	
 	public List<Brewery> getBreweries(BreweryParameters breweryParameters);
 	
-	public Result addBrewery(Brewery brewery);
+	public ModifyResults addBrewery(Brewery brewery);
 	
-	public Result modifyBrewery(Brewery brewery);
+	public ModifyResults modifyBrewery(Brewery brewery);
 	
-	public Result deleteBrewery(Brewery brewery);
+	public ModifyResults deleteBrewery(Brewery brewery);
 	
 	//user
 	public List<User> getUserList();
 
 	public User getUser(int userId);
 	
-	public Results addUser(User user);
+	public ModifyResults addUser(User user);
 
-	public Results modifyUser(User user);
+	public ModifyResults modifyUser(User user);
 	
-	public Results deleteUser(User user);
+	public ModifyResults deleteUser(User user);
 	
 	//ratings
 	
@@ -54,11 +52,11 @@ public interface TapMinderDAO {
 	
 	public List<BeerRating> getRatingsByBrewery(Brewery brewery);
 	
-	public Results addRating(BeerRating beerRating);
+	public ModifyResults addRating(BeerRating beerRating);
 	
-	public Results modifyRating(BeerRating beerRating);
+	public ModifyResults modifyRating(BeerRating beerRating);
 	
-	public Results deleteRating(BeerRating beerRating);
+	public ModifyResults deleteRating(BeerRating beerRating);
 	
 	//neighborhoods
 	

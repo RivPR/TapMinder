@@ -5,9 +5,9 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
+
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
-import javax.xml.transform.Result;
 
 import org.springframework.transaction.annotation.Transactional;
 
@@ -192,79 +192,90 @@ public class TapMinderDBDAO implements TapMinderDAO {
 		double higher = beerParameters.getHopCountLow();
 		String query = ("SELECT b FROM Beer b WHERE (b.hopCount >= :low) ORDER BY hopCount DESC");
 		List<Beer> beerList = em.createQuery(query, Beer.class).setParameter("low", higher).getResultList();
-
 		return beerList;
 	}
 
 	@Override
-	public Result addBeer(Beer beer) {
+	public ModifyResults addBeer(Beer beer) {
 		// TODO Auto-generated method stub
+		//ANGEL
 		return null;
 	}
 
 	@Override
-	public Result modifyBeer(Beer beer) {
+	public ModifyResults modifyBeer(Beer beer) {
 		// TODO Auto-generated method stub
+		//ANGEL
 		return null;
 	}
 
 	@Override
-	public Result deleteBeer(Beer beer) {
+	public ModifyResults deleteBeer(Beer beer) {
 		// TODO Auto-generated method stub
+		//ANGEL
 		return null;
 	}
 
 	@Override
 	public List<Brewery> getBreweries(BreweryParameters breweryParameters) {
 		// TODO Auto-generated method stub
+		//ALEX
 		return null;
 	}
 
 	@Override
-	public Result addBrewery(Brewery brewery) {
+	public ModifyResults addBrewery(Brewery brewery) {
 		// TODO Auto-generated method stub
+		//ALEX
 		return null;
 	}
 
 	@Override
-	public Result modifyBrewery(Brewery brewery) {
+	public ModifyResults modifyBrewery(Brewery brewery) {
 		// TODO Auto-generated method stub
+		//ALEX
 		return null;
 	}
 
 	@Override
-	public Result deleteBrewery(Brewery brewery) {
+	public ModifyResults deleteBrewery(Brewery brewery) {
 		// TODO Auto-generated method stub
+		//ALEX
 		return null;
 	}
 
 	@Override
 	public List<User> getUserList() {
 		// TODO Auto-generated method stub
+		//ANGEL
 		return null;
 	}
 
 	@Override
 	public User getUser(int userId) {
 		// TODO Auto-generated method stub
+		//ANGEL
 		return null;
 	}
 
 	@Override
-	public Results addUser(User user) {
+	public ModifyResults addUser(User user) {
 		// TODO Auto-generated method stub
+		//ANGEL
 		return null;
 	}
 
 	@Override
-	public Results modifyUser(User user) {
+	public ModifyResults modifyUser(User user) {
 		// TODO Auto-generated method stub
+		//ANGEL
 		return null;
 	}
 
 	@Override
-	public Results deleteUser(User user) {
+	public ModifyResults deleteUser(User user) {
 		// TODO Auto-generated method stub
+		//ANGEL
 		return null;
 	}
 
@@ -287,26 +298,30 @@ public class TapMinderDBDAO implements TapMinderDAO {
 	}
 
 	@Override
-	public Results addRating(BeerRating beerRating) {
+	public ModifyResults addRating(BeerRating beerRating) {
 		// TODO Auto-generated method stub
+		//ANGEL
 		return null;
 	}
 
 	@Override
-	public Results modifyRating(BeerRating beerRating) {
+	public ModifyResults modifyRating(BeerRating beerRating) {
 		// TODO Auto-generated method stub
+		//ANGEL
 		return null;
 	}
 
 	@Override
-	public Results deleteRating(BeerRating beerRating) {
+	public ModifyResults deleteRating(BeerRating beerRating) {
 		// TODO Auto-generated method stub
+		//ANGEL
 		return null;
 	}
 
 	@Override
 	public List<Neighborhood> getNeighborhoods() {
 		// TODO Auto-generated method stub
+		//ALEX
 		return null;
 
 	}
