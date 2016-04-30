@@ -218,10 +218,47 @@ public class TapMinderDBDAO implements TapMinderDAO {
 
 	@Override
 	public List<Brewery> getBreweries(BreweryParameters breweryParameters) {
-		// TODO Auto-generated method stub
-		//ALEX
-		return null;
+		List<Brewery> breweryList = null;
+		if(breweryParameters.getName() != null){
+			
+		}
+		else if(breweryParameters.getStreetAddress() != null){
+			
+		}
+		else if(breweryParameters.getCity() != null){
+			
+		}
+		else if(breweryParameters.getState() != null){
+			
+		}
+		else if(breweryParameters.getZipcode() != null){
+			
+		}
+		else if(breweryParameters.getNeighborhood() != null){
+			
+		}
+		return breweryList;
 	}
+	
+	private List<Brewery> getBreweryListByName(BreweryParameters breweryParameters){
+		String name = "%" + breweryParameters.getName() + "%";
+		String query = "SELECT b FROM Brewery b WHERE LOWER(b.name) LIKE :name";
+		
+		List<Brewery> breweryList = em.createQuery(query,Brewery.class).setParameter("name", name.toLowerCase()).getResultList();
+		return breweryList;
+		
+	}
+	private List<Brewery> getBreweryListByStreetAddress(BreweryParameters breweryParameters){
+		String streetAddress = "%kala%";
+		String query = "SELECT b FROM Brewery b WHERE LOWER(b.streetAddress) LIKE :name";
+		
+		List<Brewery> breweryList = em.createQuery(query,Brewery.class).setParameter("name", streetAddress.toLowerCase()).getResultList();
+		return breweryList;
+	}
+	private List<Brewery> getBreweryListByCity(BreweryParameters breweryParameters){}
+	private List<Brewery> getBreweryListByState(BreweryParameters breweryParameters){}
+	private List<Brewery> getBreweryListByZipcode(BreweryParameters breweryParameters){}
+	private List<Brewery> getBreweryListByNeighborhood(BreweryParameters breweryParameters){}
 
 	@Override
 	public ModifyResults addBrewery(Brewery brewery) {
