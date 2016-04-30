@@ -304,10 +304,12 @@ public class TapMinderDBDAO implements TapMinderDAO {
 
 	@Override
 	public ModifyResults modifyBrewery(Brewery brewery) {
-		Brewery breweryToModify = em.find(Brewery.class, brewery.getId());
-
-		
-		
+		//the brewery passed in will be an already populated brewery
+		//given to the jsp modify page, and then once modified,
+		//it will be passed to the controller
+		//that will call this method, and then it will
+		//persist to the dateabase
+		em.persist(brewery);
 		
 		return null;
 	}
