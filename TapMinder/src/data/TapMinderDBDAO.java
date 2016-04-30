@@ -16,6 +16,7 @@ import entities.BeerRating;
 import entities.Brewery;
 import entities.Neighborhood;
 import entities.User;
+import entityData.State;
 
 @Transactional
 public class TapMinderDBDAO implements TapMinderDAO {
@@ -220,22 +221,22 @@ public class TapMinderDBDAO implements TapMinderDAO {
 	public List<Brewery> getBreweries(BreweryParameters breweryParameters) {
 		List<Brewery> breweryList = null;
 		if(breweryParameters.getName() != null){
-			
+			breweryList = getBreweryListByName(breweryParameters);
 		}
 		else if(breweryParameters.getStreetAddress() != null){
-			
+			breweryList = getBreweryListByStreetAddress(breweryParameters);
 		}
 		else if(breweryParameters.getCity() != null){
-			
+			breweryList = getBreweryListByCity(breweryParameters);
 		}
 		else if(breweryParameters.getState() != null){
-			
+			breweryList = getBreweryListByState(breweryParameters);
 		}
 		else if(breweryParameters.getZipcode() != null){
-			
+			breweryList = getBreweryListByZipcode(breweryParameters);
 		}
 		else if(breweryParameters.getNeighborhood() != null){
-			
+		breweryList = getBreweryListByNeighborhood(breweryParameters);	
 		}
 		return breweryList;
 	}
@@ -249,16 +250,43 @@ public class TapMinderDBDAO implements TapMinderDAO {
 		
 	}
 	private List<Brewery> getBreweryListByStreetAddress(BreweryParameters breweryParameters){
-		String streetAddress = "%kala%";
-		String query = "SELECT b FROM Brewery b WHERE LOWER(b.streetAddress) LIKE :name";
+		String streetAddress = "%" + breweryParameters.getStreetAddress() + "%";
+		String query = "SELECT b FROM Brewery b WHERE LOWER(b.streetAddress) LIKE :streetAddress";
 		
-		List<Brewery> breweryList = em.createQuery(query,Brewery.class).setParameter("name", streetAddress.toLowerCase()).getResultList();
+		List<Brewery> breweryList = em.createQuery(query,Brewery.class).setParameter("streetAddress", streetAddress.toLowerCase()).getResultList();
 		return breweryList;
 	}
-	private List<Brewery> getBreweryListByCity(BreweryParameters breweryParameters){}
-	private List<Brewery> getBreweryListByState(BreweryParameters breweryParameters){}
-	private List<Brewery> getBreweryListByZipcode(BreweryParameters breweryParameters){}
-	private List<Brewery> getBreweryListByNeighborhood(BreweryParameters breweryParameters){}
+	private List<Brewery> getBreweryListByCity(BreweryParameters breweryParameters){
+		String city = "%" + breweryParameters.getCity() + "%";
+		String query = "SELECT b FROM Brewery b WHERE LOWER(b.city) LIKE :city";
+		
+		List<Brewery> breweryList = em.createQuery(query,Brewery.class).setParameter("city", city.toLowerCase()).getResultList();
+		return breweryList;
+	}
+	private List<Brewery> getBreweryListByState(BreweryParameters breweryParameters){
+		State state = breweryParameters.getState();
+		String query = "SELECT b FROM Brewery b WHERE b.state =  :state";
+		
+		List<Brewery> breweryList = em.createQuery(query,Brewery.class).setParameter("state", state).getResultList();
+		return breweryList;
+	}
+	private List<Brewery> getBreweryListByZipcode(BreweryParameters breweryParameters){
+		Integer zip = 80226;
+		String query = "SELECT b FROM Brewery b WHERE b.zip = :zip";
+		
+		List<Brewery> breweryList = em.createQuery(query,Brewery.class).setParameter("zip", zip).getResultList();
+		return breweryList;
+		
+		
+	}
+	private List<Brewery> getBreweryListByNeighborhood(BreweryParameters breweryParameters){
+		int neighborhoodId = breweryParameters.getNeighborhood().getId();
+		String query = "SELECT b FROM Brewery b WHERE b.neighborhood.id = :neighborhoodId";
+		
+		List<Brewery> breweryList = em.createQuery(query,Brewery.class).setParameter("neighborhoodId", neighborhoodId).getResultList();
+		
+		return breweryList;
+	}
 
 	@Override
 	public ModifyResults addBrewery(Brewery brewery) {

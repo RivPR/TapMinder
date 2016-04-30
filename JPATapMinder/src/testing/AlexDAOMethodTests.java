@@ -7,6 +7,8 @@ import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 
 import entities.Brewery;
+import entities.Neighborhood;
+import entityData.State;
 
 public class AlexDAOMethodTests {
 	
@@ -14,10 +16,10 @@ public class AlexDAOMethodTests {
 		EntityManagerFactory emf = Persistence.createEntityManagerFactory("tapminderdb");
 		EntityManager em = emf.createEntityManager();
 		
-		String streetAddress = "%kala%";
-		String query = "SELECT b FROM Brewery b WHERE LOWER(b.streetAddress) LIKE :name";
+		int neighborhoodId = em.find(Neighborhood.class, 2).getId();
+		String query = "SELECT b FROM Brewery b WHERE b.neighborhood.id = :neighborhoodId";
 		
-		List<Brewery> breweryList = em.createQuery(query,Brewery.class).setParameter("name", streetAddress.toLowerCase()).getResultList();
+		List<Brewery> breweryList = em.createQuery(query,Brewery.class).setParameter("neighborhoodId", neighborhoodId).getResultList();
 		System.out.println(breweryList.size());
 		for (Brewery brewery : breweryList) {
 			System.out.println(brewery.getName() + " " + brewery.getStreetAddress());
