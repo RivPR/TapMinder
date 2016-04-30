@@ -60,6 +60,10 @@ public class TapMinderDBDAO implements TapMinderDAO {
 			beerList = getBeerlistByHopCountHigh(beerParameters);
 		}
 
+		for (Beer beer : beerList) {
+			em.detach(beer);
+		}
+		
 		return beerList;
 
 	}
