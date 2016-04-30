@@ -392,8 +392,13 @@ public class TapMinderDBDAO implements TapMinderDAO {
 
 	@Override
 	public List<Neighborhood> getNeighborhoods() {
-		// TODO Auto-generated method stub
-		//ALEX
+		
+		List<Neighborhood> neighborhoods = em.createQuery("Select n from Neighborhood n",Neighborhood.class).getResultList();
+		
+		for (Neighborhood neighborhood : neighborhoods) {
+			em.detach(neighborhood);
+		}
+		
 		return null;
 
 	}
