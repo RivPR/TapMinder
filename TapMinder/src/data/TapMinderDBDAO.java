@@ -238,6 +238,10 @@ public class TapMinderDBDAO implements TapMinderDAO {
 		else if(breweryParameters.getNeighborhood() != null){
 		breweryList = getBreweryListByNeighborhood(breweryParameters);	
 		}
+		//TODO: put this in the other things
+		for (Brewery brewery : breweryList) {
+			em.detach(brewery);
+		}
 		return breweryList;
 	}
 	
@@ -275,6 +279,7 @@ public class TapMinderDBDAO implements TapMinderDAO {
 		String query = "SELECT b FROM Brewery b WHERE b.zip = :zip";
 		
 		List<Brewery> breweryList = em.createQuery(query,Brewery.class).setParameter("zip", zip).getResultList();
+		
 		return breweryList;
 		
 		
@@ -290,15 +295,20 @@ public class TapMinderDBDAO implements TapMinderDAO {
 
 	@Override
 	public ModifyResults addBrewery(Brewery brewery) {
-		// TODO Auto-generated method stub
-		//ALEX
-		return null;
+		ModifyResults mr = new ModifyResults();
+		em.persist(brewery);
+		//TODO works in test, i think @Transactional
+		//takes care of the committing
+		return mr;
 	}
 
 	@Override
 	public ModifyResults modifyBrewery(Brewery brewery) {
-		// TODO Auto-generated method stub
-		//ALEX
+		Brewery breweryToModify = em.find(Brewery.class, brewery.getId());
+
+		
+		
+		
 		return null;
 	}
 

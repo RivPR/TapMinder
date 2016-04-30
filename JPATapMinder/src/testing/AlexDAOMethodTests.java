@@ -21,7 +21,9 @@ public class AlexDAOMethodTests {
 		
 		List<Brewery> breweryList = em.createQuery(query,Brewery.class).setParameter("neighborhoodId", neighborhoodId).getResultList();
 		System.out.println(breweryList.size());
+//		em.detach(breweryList);
 		for (Brewery brewery : breweryList) {
+			em.detach(brewery);
 			System.out.println(brewery.getName() + " " + brewery.getStreetAddress());
 		}
 		
