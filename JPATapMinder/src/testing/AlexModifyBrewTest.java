@@ -15,15 +15,10 @@ public class AlexModifyBrewTest {
 		EntityManager em = emf.createEntityManager();
 		
 		Brewery b = em.find(Brewery.class, 13);
-		b.setName("BREWPLACE modded");
-		b.setStreetAddress("123 fake modded");
-		b.setCity("Denver");
-		b.setNeighborhood(em.find(Neighborhood.class,3));
-		b.setState(State.CO);
-		b.setZip(12345);
+		
 		
 		em.getTransaction().begin();
-		em.persist(b);
+		em.remove(b);
 		em.getTransaction().commit();
 		
 		em.close();
