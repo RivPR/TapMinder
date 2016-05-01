@@ -5,7 +5,6 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
@@ -334,7 +333,10 @@ public class TapMinderDBDAO implements TapMinderDAO {
 	}
 
 	@Override
-	public User getUserByEmail(User user){
+	public User getUserByEmail(User userToLogin){
+		
+		String query = "SELECT u FROM User u WHERE u.email = :email";
+		User user = em.createQuery(query,User.class).setParameter("email",userToLogin.getEmail()).getSingleResult();
 		
 		return null;
 	}

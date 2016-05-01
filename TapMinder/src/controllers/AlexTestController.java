@@ -77,10 +77,11 @@ public class AlexTestController {
 	}//menu.do
 	
 	@RequestMapping("login.do")
-	private ModelAndView login(User user){
+	private ModelAndView login(User user, @ModelAttribute("currentUser") User currentUser){
 		ModelAndView mv = new ModelAndView();
 		System.out.println(user.getEmail());
 		System.out.println(user.getPassword());
+		currentUser = dao.getUserByEmail(user);
 		
 		mv.setViewName("index.jsp");
 		return mv;

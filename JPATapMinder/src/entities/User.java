@@ -93,6 +93,12 @@ public class User {
 		this.ratings = ratings;
 	}
 
+	@Override
+	public String toString() {
+		return "User [id=" + id + ", firstname=" + firstname + ", lastname=" + lastname + ", email=" + email
+				+ ", password=" + password + ", usertype=" + usertype + "]";
+	}
+
 
 	
 	
