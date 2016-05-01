@@ -7,6 +7,8 @@ import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 
 import entities.Beer;
+import entities.BeerRating;
+import entities.User;
 
 public class TestAngel {
 	public static void main(String[] args) {
@@ -66,8 +68,28 @@ public class TestAngel {
 		for (Beer beer : beerList) {
 			System.out.println(beer.getName() +" Style:"+ beer.getBeerStyle()+ " " +beer.getHopCount());
 		}
+		System.out.println("###########################\n This is userlist:");
+		List<User> userList=em.createQuery("SELECT u FROM User u", User.class).getResultList();
+		for (User user : userList) {
+			System.out.println(user.getId() + " " + user.getFirstname() + " " + user.getUsertype() );
+		}
 		
+		System.out.println("###########################\n This is single user:");
+		int userId= 2;
+		query = "SELECT u FROM User u WHERE u.id = :userId" ;
+		User singleUser =em.createQuery(query, User.class).setParameter("userId", userId).getSingleResult();
+		System.out.println(singleUser.getFirstname() + " " + singleUser.getId() + " "+singleUser.getEmail());
 		
+		System.out.println("###########################\n This is ratings userid:");
+		
+		 query = "SELECT u.ratings FROM User u  WHERE u.id = 3" ;
+		
+		 List<BeerRating> ratingList =em.createQuery(query, BeerRating.class).setParameter("userId", userId).getResultList();
+		 for (BeerRating beerRating : ratingList) {
+			System.out.println(beerRating.getComments() + beerRating.getUser() + beerRating.toString());
+		}
+		 
+		 
 		em.close();
 		emf.close();
 	}

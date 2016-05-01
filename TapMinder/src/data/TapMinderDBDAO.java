@@ -202,22 +202,19 @@ public class TapMinderDBDAO implements TapMinderDAO {
 
 	@Override
 	public ModifyResults addBeer(Beer beer) {
-		// TODO Auto-generated method stub
-		//ANGEL
+		em.persist(beer);
 		return null;
 	}
 
 	@Override
 	public ModifyResults modifyBeer(Beer beer) {
-		// TODO Auto-generated method stub
-		//ANGEL
+		em.persist(beer);
 		return null;
 	}
 
 	@Override
 	public ModifyResults deleteBeer(Beer beer) {
-		// TODO Auto-generated method stub
-		//ANGEL
+		em.remove(beer);
 		return null;
 	}
 
@@ -308,9 +305,7 @@ public class TapMinderDBDAO implements TapMinderDAO {
 
 	@Override
 	public ModifyResults modifyBrewery(Brewery brewery) {
-
 		em.persist(brewery);
-		
 		return null;
 	}
 
@@ -322,42 +317,43 @@ public class TapMinderDBDAO implements TapMinderDAO {
 
 	@Override
 	public List<User> getUserList() {
-		// TODO Auto-generated method stub
-		//ANGEL
-		return null;
+		List<User> userList=em.createQuery("SELECT u FROM User u", User.class).getResultList();
+		return userList;
 	}
 
 	@Override
 	public User getUser(int userId) {
-		// TODO Auto-generated method stub
-		//ANGEL
-		return null;
+		
+		String query = "SELECT u FROM User u WHERE u.id = :userId" ;
+		User userList =em.createQuery(query, User.class).setParameter("userId", userId).getSingleResult();
+		return userList;
 	}
 
 	@Override
 	public ModifyResults addUser(User user) {
-		// TODO Auto-generated method stub
-		//ANGEL
+		em.persist(user);
 		return null;
 	}
 
 	@Override
 	public ModifyResults modifyUser(User user) {
-		// TODO Auto-generated method stub
-		//ANGEL
+		em.persist(user);
 		return null;
 	}
 
 	@Override
 	public ModifyResults deleteUser(User user) {
-		// TODO Auto-generated method stub
-		//ANGEL
+		em.remove(user);
 		return null;
 	}
 
 	@Override
 	public List<BeerRating> getRatingsByUser(User user) {
-		// TODO Auto-generated method stub
+		//doesnt seem to work
+//		String query = "SELECT u.ratings FROM User u WHERE u.id = :userId" ;
+//		int userId = user.getId();
+//		List<BeerRating> userList =em.createQuery(query, BeerRating.class).setParameter("userId", userId).getResultList();
+//		return userList;
 		return null;
 	}
 
@@ -375,22 +371,19 @@ public class TapMinderDBDAO implements TapMinderDAO {
 
 	@Override
 	public ModifyResults addRating(BeerRating beerRating) {
-		// TODO Auto-generated method stub
-		//ANGEL
+		em.persist(beerRating);
 		return null;
 	}
 
 	@Override
 	public ModifyResults modifyRating(BeerRating beerRating) {
-		// TODO Auto-generated method stub
-		//ANGEL
+		em.persist(beerRating);
 		return null;
 	}
 
 	@Override
 	public ModifyResults deleteRating(BeerRating beerRating) {
-		// TODO Auto-generated method stub
-		//ANGEL
+		em.remove(beerRating);
 		return null;
 	}
 

@@ -24,7 +24,7 @@ public class GETBEERBYNAMETEST {
 		int ratingLow = 2;
 		int ratingHigh = 3;
 		
-		List<Beer> beerList = em.createQuery("SELECT b FROM Beer b WHERE (b.rating =< :high ) AND ( b.rating >= :low)",Beer.class).setParameter("high", ratingHigh).setParameter("low", ratingLow).getResultList();
+		//List<Beer> beerList = em.createQuery("SELECT b FROM Beer b WHERE (b.rating =< :high ) AND ( b.rating >= :low)",Beer.class).setParameter("high", ratingHigh).setParameter("low", ratingLow).getResultList();
 		
 		
 		
