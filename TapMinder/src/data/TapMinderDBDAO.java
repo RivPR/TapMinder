@@ -202,12 +202,14 @@ public class TapMinderDBDAO implements TapMinderDAO {
 
 	@Override
 	public ModifyResults addBeer(Beer beer) {
+		//TODO maybe merge?
 		em.persist(beer);
 		return null;
 	}
 
 	@Override
 	public ModifyResults modifyBeer(Beer beer) {
+		//TODO maybe merge?
 		em.persist(beer);
 		return null;
 	}
@@ -298,6 +300,7 @@ public class TapMinderDBDAO implements TapMinderDAO {
 	public ModifyResults addBrewery(Brewery brewery) {
 		ModifyResults mr = new ModifyResults();
 		em.persist(brewery);
+		//TODO maybe merge?
 		//TODO works in test, i think @Transactional
 		//takes care of the committing
 		return mr;
@@ -305,6 +308,7 @@ public class TapMinderDBDAO implements TapMinderDAO {
 
 	@Override
 	public ModifyResults modifyBrewery(Brewery brewery) {
+		//TODO maybe merge?
 		em.persist(brewery);
 		return null;
 	}
@@ -331,12 +335,14 @@ public class TapMinderDBDAO implements TapMinderDAO {
 
 	@Override
 	public ModifyResults addUser(User user) {
+		//TODO maybe merge?
 		em.persist(user);
 		return null;
 	}
 
 	@Override
 	public ModifyResults modifyUser(User user) {
+		//TODO maybe merge?
 		em.persist(user);
 		return null;
 	}
@@ -371,12 +377,14 @@ public class TapMinderDBDAO implements TapMinderDAO {
 
 	@Override
 	public ModifyResults addRating(BeerRating beerRating) {
+		//TODO maybe merge?
 		em.persist(beerRating);
 		return null;
 	}
 
 	@Override
 	public ModifyResults modifyRating(BeerRating beerRating) {
+		//TODO maybe merge?
 		em.persist(beerRating);
 		return null;
 	}
