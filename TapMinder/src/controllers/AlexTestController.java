@@ -2,8 +2,10 @@ package controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.servlet.ModelAndView;
 
 import data.TapMinderDAO;
@@ -13,9 +15,15 @@ import entities.User;
  * I just made this to test out the stuff we learned in class
  */
 @Controller
+@SessionAttributes({"currentUser"})
 public class AlexTestController {
 
-	//TODO: autowired is not working
+	@ModelAttribute("currentUser")
+	private User setBlankCurrentUser(){
+		User user = new User();
+		return user;
+	}
+	
 	@Autowired
 	private TapMinderDAO dao;
 
@@ -64,8 +72,6 @@ public class AlexTestController {
 
 		}
 
-		
-		
 		return mv;
 
 	}//menu.do

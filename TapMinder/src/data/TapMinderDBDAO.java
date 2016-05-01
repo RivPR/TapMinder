@@ -334,6 +334,12 @@ public class TapMinderDBDAO implements TapMinderDAO {
 	}
 
 	@Override
+	public User getUserByEmail(User user){
+		
+		return null;
+	}
+	
+	@Override
 	public ModifyResults addUser(User user) {
 		//TODO maybe merge?
 		em.persist(user);
