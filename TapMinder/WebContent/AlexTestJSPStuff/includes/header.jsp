@@ -9,8 +9,3 @@
 <title>TapMinder Test</title>
 </head>
 <body>
-	<f
-
-
-</body>
-</html>
