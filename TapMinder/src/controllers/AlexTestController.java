@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
-import data.TapMinderDBDAO;
+import data.TapMinderDAO;
 
 /*
  * I just made this to test out the stuff we learned in class
@@ -15,8 +15,8 @@ import data.TapMinderDBDAO;
 public class AlexTestController {
 
 	//TODO: autowired is not working
-//	@Autowired
-//	private TapMinderDBDAO dao;
+	@Autowired
+	private TapMinderDAO dao;
 
 	@RequestMapping("menu.do")
 	private ModelAndView menu(@RequestParam("menuChoice") String menuChoice) {
