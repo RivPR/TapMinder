@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import data.TapMinderDAO;
+import entities.User;
 
 /*
  * I just made this to test out the stuff we learned in class
@@ -25,6 +26,7 @@ public class AlexTestController {
 		// menu actions mapped below
 		switch (menuChoice) {
 		case "login":
+			mv.addObject("user",new User());
 			mv.setViewName("AlexTestJSPStuff/login.jsp");
 			break;
 			
@@ -62,8 +64,21 @@ public class AlexTestController {
 
 		}
 
+		
+		
 		return mv;
 
+	}//menu.do
+	
+	@RequestMapping("login.do")
+	private ModelAndView login(User user){
+		ModelAndView mv = new ModelAndView();
+		System.out.println(user.getEmail());
+		System.out.println(user.getPassword());
+		
+		mv.setViewName("index.jsp");
+		return mv;
+		
 	}
 
 }
