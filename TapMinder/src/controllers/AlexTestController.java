@@ -1,9 +1,12 @@
 package controllers;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
+
+import data.TapMinderDBDAO;
 
 /*
  * I just made this to test out the stuff we learned in class
@@ -11,6 +14,7 @@ import org.springframework.web.servlet.ModelAndView;
 @Controller
 public class AlexTestController {
 
+	//TODO: autowired is not working
 //	@Autowired
 //	private TapMinderDBDAO dao;
 
@@ -21,7 +25,7 @@ public class AlexTestController {
 		// menu actions mapped below
 		switch (menuChoice) {
 		case "login":
-			mv.setViewName("login.jsp");;
+			mv.setViewName("AlexTestJSPStuff/login.jsp");
 			break;
 			
 		case "findBeers":
