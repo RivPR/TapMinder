@@ -17,6 +17,7 @@
 	HopCount: ${beer.hopCount} <br>
 	Style: ${beer.beerStyle} <br>
 	Brewery: ${beer.brewery.name} <br>
+	Rating: ${beer.averageRating}<br/>
 	<img src="${beer.imageLink}" />
 	<br>
 </c:forEach>
