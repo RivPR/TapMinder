@@ -131,10 +131,11 @@ public class TapMinderController {
 
 	
 	@RequestMapping("modifyBrewery.do")
-	private ModelAndView modifyBrewery(Brewery brewery){
+	private ModelAndView modifyBrewery(@RequestParam("breweryId") Integer breweryId){
 		ModelAndView mv = new ModelAndView();
 		
-		System.out.println(brewery.getName());
+		Brewery brewery = dao.getBrewery(breweryId);
+		
 		mv.addObject("Brewery", brewery);
 		mv.setViewName("modifyBrewery.jsp");
 		

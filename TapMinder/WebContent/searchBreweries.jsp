@@ -65,6 +65,7 @@ neigborhood <form:input type="text" path="neighborhood" placeholder="Number 1-5"
 
 	<c:if test="${!empty(breweryList)}">
 	<c:forEach var="b" items="${breweryList}">
+	
 	Name: ${b.name} <br>
 	Addr: ${b.streetAddress} <br>
 	${b.city} <br>
@@ -72,10 +73,12 @@ neigborhood <form:input type="text" path="neighborhood" placeholder="Number 1-5"
 	${b.zip} <br>
 	${b.neighborhood.name}"
 	<br>
-	<form:form action ="modifyBrewery.do">
 		
+	<form action ="modifyBrewery.do">
+	<input type="hidden" name="breweryId" value="${b.id}" />
+
 		<button type="submit">Modify</button>
-	</form:form>
+	</form>
 	<br>
 	
 	<br>

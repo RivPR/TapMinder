@@ -23,6 +23,8 @@ public interface TapMinderDAO {
 
 	//breweries
 	
+	public Brewery getBrewery(int breweryId);
+	
 	public List<Brewery> getBreweries(BreweryParameters breweryParameters);
 	
 	public void modifyBrewery(Brewery brewery);
