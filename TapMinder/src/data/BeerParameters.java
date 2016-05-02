@@ -16,6 +16,8 @@ public class BeerParameters {
 	
 	
 	
+	
+	
 	public BeerParameters() {
 		super();
 	}
@@ -74,7 +76,6 @@ public class BeerParameters {
 	public void setHopCountHigh(Double hopCountHigh) {
 		this.hopCountHigh = hopCountHigh;
 	}
-	
 	
 	
 	

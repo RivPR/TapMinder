@@ -60,8 +60,11 @@ public class TapMinderDBDAO implements TapMinderDAO {
 			beerList = getBeerlistByHopCountHigh(beerParameters);
 		}
 
-		for (Beer beer : beerList) {
-			em.detach(beer);
+		if(beerList != null && beerList.size() > 0){
+			for (Beer beer : beerList) {
+				em.detach(beer);
+			}
+			
 		}
 		
 		return beerList;
@@ -119,10 +122,9 @@ public class TapMinderDBDAO implements TapMinderDAO {
 
 		int ratingHigh = beerParameters.getRatingHigh();
 		int ratingLow = beerParameters.getRatingLow();
-		List<BeerRating> ratings = em
-				.createQuery("SELECT r FROM BeerRating r WHERE r.rating <= :high AND r.rating >= :low",
-						BeerRating.class)
-				.setParameter("high", ratingHigh).setParameter("low", ratingLow).getResultList();
+		List<BeerRating> ratings = em.createQuery("SELECT r FROM BeerRating r WHERE r.rating <= :high AND r.rating >= :low",BeerRating.class).setParameter("high", ratingHigh).setParameter("low", ratingLow).getResultList();
+//		List<BeerRating> ratings = em.createQuery("SELECT r FROM BeerRating r WHERE r.rating = 1",BeerRating.class).getResultList();
+		System.out.println(ratings.size());
 		Set<Beer> beerSet = new HashSet<>();
 
 		for (BeerRating r : ratings) {
@@ -130,7 +132,7 @@ public class TapMinderDBDAO implements TapMinderDAO {
 		}
 		List<Beer> beerList = new ArrayList<>();
 		beerList.addAll(beerSet);
-
+		System.out.println("in getBeerList by rating range , l size " + beerList.size());
 		for (Beer beer : beerList) {
 			System.out.println(beer.getName());
 		}
