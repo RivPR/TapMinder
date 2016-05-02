@@ -49,7 +49,8 @@ public class TapMinderController {
 			mv.setViewName("searchBeer.jsp");
 			break;
 		case "findBreweries":
-			// TODO: add real stuff
+			mv.addObject("searchSetting", "");
+			mv.setViewName("searchBreweries.jsp");
 			mv.setViewName("index.jsp");
 			break;
 		case "viewUserBeers":

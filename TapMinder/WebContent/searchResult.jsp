@@ -19,7 +19,6 @@
 	Brewery: ${beer.brewery.name} <br>
 	<img src="${beer.imageLink}" />
 	<br>
-
 </c:forEach>
 
 
