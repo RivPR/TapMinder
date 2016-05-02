@@ -94,8 +94,10 @@
 					Beers</button>
 				<button style="color:black;" type="submit" name="menuChoice" value="findBreweries">Find
 					Breweries</button>
+
 				<button style="color:black;" type="submit" name="menuChoice" value="viewUserBeers">View
 					User Beers</button>
+					
 				<button style="color:black;" type="submit" name="menuChoice" value="myAccount">View
 					User Account</button>
 				<!-- moderators and up only -->
@@ -104,6 +106,9 @@
 				<!-- admin and up only -->
 				<button style="color:black;" type="submit" name="menuChoice" value="modifyUsers">edit
 					moderators</button>
+					
+			
+					
 			</form>
 
 		</div>

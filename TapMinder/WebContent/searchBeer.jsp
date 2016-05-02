@@ -8,5 +8,20 @@
 </head>
 <body>
 
+<form name="searchBy" action="findBeersPage.do" method="GET">
+	<select name="findBy">
+		<option value="">SELECT ONE</option>
+		<option value="name">Name</option>
+		<option value="abv">ABV</option>
+		<option value="hop">Hop Count</option>
+		<option value="style">Style</option>
+		<option value="rating">Rating</option>
+	</select>
+	
+	<button type="submit">GO SEARCH</button>
+
+</form>
+
+
 </body>
 </html>
