@@ -32,5 +32,14 @@
 
 </form>
 
+<%-- <c:if test="${!empty(currentUser) }"> --%>
+	${currentUser.firstname}
+	${currentUser.email}
+	${currentUser.lastname}
+	${currentUser.password}
+	${currentUser.firstname}
+	${currentUser.firstname}
+<%-- </c:if> --%>
+
 </body>
 </html>

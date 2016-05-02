@@ -337,8 +337,9 @@ public class TapMinderDBDAO implements TapMinderDAO {
 		
 		String query = "SELECT u FROM User u WHERE u.email = :email";
 		User user = em.createQuery(query,User.class).setParameter("email",userToLogin.getEmail()).getSingleResult();
-		
-		return null;
+		//TODO		
+		System.out.println("LOGGED IN USER " + user);
+		return user;
 	}
 	
 	@Override
