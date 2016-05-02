@@ -201,23 +201,13 @@ public class TapMinderDBDAO implements TapMinderDAO {
 	}
 
 	@Override
-	public ModifyResults addBeer(Beer beer) {
-		//TODO maybe merge?
+	public void modifyBeer(Beer beer) {
 		em.persist(beer);
-		return null;
 	}
 
 	@Override
-	public ModifyResults modifyBeer(Beer beer) {
-		//TODO maybe merge?
-		em.persist(beer);
-		return null;
-	}
-
-	@Override
-	public ModifyResults deleteBeer(Beer beer) {
+	public void deleteBeer(Beer beer) {
 		em.remove(beer);
-		return null;
 	}
 
 	@Override
@@ -292,31 +282,19 @@ public class TapMinderDBDAO implements TapMinderDAO {
 		String query = "SELECT b FROM Brewery b WHERE b.neighborhood.id = :neighborhoodId";
 		
 		List<Brewery> breweryList = em.createQuery(query,Brewery.class).setParameter("neighborhoodId", neighborhoodId).getResultList();
-		
 		return breweryList;
 	}
 
+
 	@Override
-	public ModifyResults addBrewery(Brewery brewery) {
-		ModifyResults mr = new ModifyResults();
+	public void modifyBrewery(Brewery brewery) {
 		em.persist(brewery);
-		//TODO maybe merge?
-		//TODO works in test, i think @Transactional
-		//takes care of the committing
-		return mr;
 	}
 
 	@Override
-	public ModifyResults modifyBrewery(Brewery brewery) {
-		//TODO maybe merge?
-		em.persist(brewery);
-		return null;
-	}
-
-	@Override
-	public ModifyResults deleteBrewery(Brewery brewery) {
+	public void deleteBrewery(Brewery brewery) {
 		em.remove(brewery);
-		return null;
+	
 	}
 
 	@Override
@@ -351,23 +329,13 @@ public class TapMinderDBDAO implements TapMinderDAO {
 	}
 	
 	@Override
-	public ModifyResults addUser(User user) {
-		//TODO maybe merge?
+	public void modifyUser(User user) {
 		em.persist(user);
-		return null;
 	}
 
 	@Override
-	public ModifyResults modifyUser(User user) {
-		//TODO maybe merge?
-		em.persist(user);
-		return null;
-	}
-
-	@Override
-	public ModifyResults deleteUser(User user) {
+	public void deleteUser(User user) {
 		em.remove(user);
-		return null;
 	}
 
 	@Override
@@ -401,23 +369,13 @@ public class TapMinderDBDAO implements TapMinderDAO {
 	}
 
 	@Override
-	public ModifyResults addRating(BeerRating beerRating) {
-		//TODO maybe merge?
+	public void modifyRating(BeerRating beerRating) {
 		em.persist(beerRating);
-		return null;
 	}
 
 	@Override
-	public ModifyResults modifyRating(BeerRating beerRating) {
-		//TODO maybe merge?
-		em.persist(beerRating);
-		return null;
-	}
-
-	@Override
-	public ModifyResults deleteRating(BeerRating beerRating) {
+	public void deleteRating(BeerRating beerRating) {
 		em.remove(beerRating);
-		return null;
 	}
 
 	@Override

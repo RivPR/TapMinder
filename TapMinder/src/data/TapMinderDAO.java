@@ -17,32 +17,26 @@ public interface TapMinderDAO {
 	
 	public List<Beer> getBeers(BeerParameters beerParameters);
 	
-	public ModifyResults addBeer(Beer beer);
+	public void modifyBeer(Beer beer);
 	
-	public ModifyResults modifyBeer(Beer beer);
-	
-	public ModifyResults deleteBeer(Beer beer);
+	public void deleteBeer(Beer beer);
 
 	//breweries
 	
 	public List<Brewery> getBreweries(BreweryParameters breweryParameters);
 	
-	public ModifyResults addBrewery(Brewery brewery);
+	public void modifyBrewery(Brewery brewery);
 	
-	public ModifyResults modifyBrewery(Brewery brewery);
-	
-	public ModifyResults deleteBrewery(Brewery brewery);
+	public void deleteBrewery(Brewery brewery);
 	
 	//user
 	public List<User> getUserList();
 
 	public User getUser(int userId);
 	
-	public ModifyResults addUser(User user);
-
-	public ModifyResults modifyUser(User user);
+	public void modifyUser(User user);
 	
-	public ModifyResults deleteUser(User user);
+	public void deleteUser(User user);
 	
 	public LoginResult getUserByLoginCredentials(User user);
 	
@@ -54,11 +48,9 @@ public interface TapMinderDAO {
 	
 	public List<BeerRating> getRatingsByBrewery(Brewery brewery);
 	
-	public ModifyResults addRating(BeerRating beerRating);
+	public void modifyRating(BeerRating beerRating);
 	
-	public ModifyResults modifyRating(BeerRating beerRating);
-	
-	public ModifyResults deleteRating(BeerRating beerRating);
+	public void deleteRating(BeerRating beerRating);
 	
 	//neighborhoods
 	
