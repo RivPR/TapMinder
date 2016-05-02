@@ -109,7 +109,7 @@ public class TapMinderDBDAO implements TapMinderDAO {
 	private List<Beer> getBeerListByStyle(BeerParameters beerParameters) {
 		String style = beerParameters.getStyle().trim();
 		style = "%" + style + "%";
-		List<Beer> beerList = em.createQuery("SELECT b FROM Beer b WHERE b.style LIKE LOWER(:style) ", Beer.class)
+		List<Beer> beerList = em.createQuery("SELECT b FROM Beer b WHERE b.beerStyle LIKE LOWER(:style) ", Beer.class)
 				.setParameter("style", style.toLowerCase()).getResultList();
 
 		return beerList;
