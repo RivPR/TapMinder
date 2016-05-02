@@ -29,6 +29,8 @@
 	<button type="submit" name="menuChoice" value="modifyUsers">edit
 		moderators</button>
 		
+	<button type="submit" name="menuChoice" value="logout">logout</button>
+		
 
 </form>
 

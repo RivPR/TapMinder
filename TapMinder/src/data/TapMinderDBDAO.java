@@ -335,8 +335,8 @@ public class TapMinderDBDAO implements TapMinderDAO {
 	@Override
 	public User getUserByLoginCredentials(User userToLogin){
 		
-		String query = "SELECT u FROM User u WHERE u.email = :email";
-		User user = em.createQuery(query,User.class).setParameter("email",userToLogin.getEmail()).getSingleResult();
+		String query = "SELECT u FROM User u WHERE u.email = :email AND u.password = :password";
+		User user = em.createQuery(query,User.class).setParameter("email",userToLogin.getEmail()).setParameter("password", userToLogin.getPassword()).getSingleResult();
 		//TODO		
 		System.out.println("LOGGED IN USER " + user);
 		return user;

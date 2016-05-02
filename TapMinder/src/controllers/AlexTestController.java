@@ -28,7 +28,7 @@ public class AlexTestController {
 	private TapMinderDAO dao;
 
 	@RequestMapping("menu.do")
-	private ModelAndView menu(@RequestParam("menuChoice") String menuChoice) {
+	private ModelAndView menu(@RequestParam("menuChoice") String menuChoice, @ModelAttribute("currentUser") User currentUser) {
 		ModelAndView mv = new ModelAndView();
 
 		// menu actions mapped below
@@ -40,7 +40,7 @@ public class AlexTestController {
 			
 		case "findBeers":
 			//TODO: add real stuff
-			mv.setViewName("index.jsp");
+			mv.setViewName("AlexTestJSPStuff/testPage.jsp");
 			break;
 		case "findBreweries":
 			//TODO: add real stuff
@@ -66,6 +66,14 @@ public class AlexTestController {
 			//TODO: add real stuff
 			mv.setViewName("index.jsp");
 			break;
+		case "logout":
+			System.out.println("logging out");
+			System.out.println(currentUser);
+			currentUser = new User();
+			System.out.println(currentUser);
+			mv.addObject("currentUser",currentUser);
+			mv.setViewName("indexAlexTest.jsp");
+			break;
 		default:
 			mv.setViewName("index.jsp");
 			break;
@@ -83,6 +91,7 @@ public class AlexTestController {
 		System.out.println(user.getPassword());
 		currentUser = dao.getUserByLoginCredentials(user);
 		System.out.println("new current user: " + currentUser);
+		//TODO: better way to set session attributes?
 		mv.addObject("currentUser",currentUser);
 		mv.setViewName("indexAlexTest.jsp");
 		return mv;
