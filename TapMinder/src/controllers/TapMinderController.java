@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.servlet.ModelAndView;
 
+import data.BeerParameters;
 import data.LoginResult;
 import data.TapMinderDAO;
 import entities.User;
@@ -40,7 +41,6 @@ public class TapMinderController {
 			break;
 			
 		case "findBeers":
-			//TODO: add real stuff
 			mv.setViewName("searchBeer.jsp");
 			break;
 		case "findBreweries":
@@ -84,6 +84,17 @@ public class TapMinderController {
 		return mv;
 
 	}//menu.do
+	
+	@RequestMapping("findBeersPage.do")
+	private ModelAndView findBeers(@RequestParam("findBy") String choice){
+		
+		ModelAndView mv = new ModelAndView();
+		String searchSetting = choice;
+		mv.addObject("searchSetting",choice);
+		mv.setViewName("searchBeer.jsp");
+	
+		return mv;
+	}
 	
 	@RequestMapping("login.do")
 	private ModelAndView login(User user, @ModelAttribute("currentUser") User currentUser){
