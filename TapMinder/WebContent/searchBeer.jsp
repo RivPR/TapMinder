@@ -44,7 +44,7 @@ Hop count from <form:input type="text" path="hopCountLow" /> to <form:input type
 Style <form:input type="text" path="style" placeholder="style"/>
 
 		</c:when>
-		<c:when test="${searchSetting ==  'rating'}">
+		<c:when test="${searchSetting ==  'ratings'}">
 Rating <form:input type="text" path="rating" placeholder="Number 1-5" />
 		</c:when>
 
