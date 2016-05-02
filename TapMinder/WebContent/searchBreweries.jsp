@@ -74,7 +74,7 @@ neigborhood <form:input type="text" path="neighborhood" placeholder="Number 1-5"
 	${b.neighborhood.name}"
 	<br>
 		
-	<form action ="modifyBrewery.do">
+	<form action ="modifyBreweryPage.do">
 	<input type="hidden" name="breweryId" value="${b.id}" />
 
 		<button type="submit">Modify</button>

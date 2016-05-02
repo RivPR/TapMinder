@@ -130,17 +130,27 @@ public class TapMinderController {
 	}// menu.do
 
 	
-	@RequestMapping("modifyBrewery.do")
+	@RequestMapping("modifyBreweryPage.do")
 	private ModelAndView modifyBrewery(@RequestParam("breweryId") Integer breweryId){
 		ModelAndView mv = new ModelAndView();
 		
 		Brewery brewery = dao.getBrewery(breweryId);
-		
 		mv.addObject("Brewery", brewery);
 		mv.setViewName("modifyBrewery.jsp");
-		
 		return mv;
 	}
+	
+	@RequestMapping("modifyBrewery.do")
+	private ModelAndView changeBrewery(Brewery brewery){
+		ModelAndView mv = new ModelAndView();
+		
+		dao.modifyBrewery(brewery);
+		mv.addObject("Brewery",brewery);
+		mv.setViewName("modifyBrewery.jsp");
+		return mv;
+	}
+	
+	
 	
 	@RequestMapping("viewUserAccount.do")
 	private ModelAndView viewUserAccount(@ModelAttribute("currentUser") User currentUser){

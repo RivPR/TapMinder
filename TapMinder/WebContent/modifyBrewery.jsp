@@ -22,7 +22,7 @@
 	<form:input type="text" path="zip" />
 	<form:input type="text" path="imageLink" />
 	<form:input type="text" path="breweryLink" />
-	<form:input type="text" path="neighborhood" />
+	<%-- <form:input type="text" path="neighborhood" /> --%>
 		
 	<button type="submit">Change</button>
 </form:form>
