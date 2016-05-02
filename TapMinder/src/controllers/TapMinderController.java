@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.servlet.ModelAndView;
@@ -36,6 +37,38 @@ public class TapMinderController {
 	@Autowired
 	private TapMinderDAO dao;
 
+	@RequestMapping(path="initPage.do",method=RequestMethod.GET)
+	public ModelAndView initializeLogin(){
+		ModelAndView mv = new ModelAndView();
+		mv.addObject("user", new User());
+		mv.setViewName("index1.jsp");
+		return mv;
+	}
+	
+	
+	
+	@RequestMapping(path="initPage.do",method=RequestMethod.POST)
+	public ModelAndView initializeLoginAndIndex(User user, @ModelAttribute("currentUser") User currentUser){
+		ModelAndView mv = new ModelAndView();
+		System.out.println(user.getEmail());
+		System.out.println(user.getPassword());
+		LoginResult result = dao.getUserByLoginCredentials(user);
+		
+//		mv.setViewName("index1.jsp");
+		if (result.getUser() != null) {
+			System.out.println("new current user: " + currentUser);
+			// TODO: better way to set session attributes?
+			mv.addObject("currentUser", result.getUser());
+			mv.setViewName("index1.jsp");
+		} else {
+			mv.addObject("LoginError", result.getMessage());
+			mv.addObject("user", new User());
+			mv.setViewName("index1.jsp");
+		}
+		return mv;
+	}
+	
+		
 	@RequestMapping("menu.do")
 	private ModelAndView menu(@RequestParam("menuChoice") String menuChoice,
 			@ModelAttribute("currentUser") User currentUser) {
@@ -47,7 +80,7 @@ public class TapMinderController {
 			mv.addObject("user", new User());
 			mv.setViewName("AlexTestJSPStuff/login.jsp");
 			break;
-
+			
 		case "findBeers":
 			mv.addObject("searchSetting", "");
 			mv.setViewName("searchBeer.jsp");
@@ -62,7 +95,7 @@ public class TapMinderController {
 			break;
 		case "myAccount":
 			// TODO: add real stuff
-			mv.setViewName("index.jsp");
+			mv.setViewName("viewUserAccount.do");
 			break;
 		case "modifyBreweries":
 			// TODO: add real stuff
@@ -94,6 +127,17 @@ public class TapMinderController {
 
 	}// menu.do
 
+	
+	@RequestMapping("viewUserAccount.do")
+	private ModelAndView viewUserAccount(@ModelAttribute("currentUser") User currentUser){
+		ModelAndView mv = new ModelAndView();
+		
+		mv.addObject("currentUser",currentUser);
+		mv.setViewName("userAccount.jsp");
+		
+		return mv;
+	}
+	
 	@RequestMapping("findUserBeerList.do")
 	private ModelAndView printUserBeers(@ModelAttribute("currentUser") User currentUser) {
 		ModelAndView mv = new ModelAndView();
@@ -174,4 +218,27 @@ public class TapMinderController {
 
 	}
 
+	@RequestMapping("login1.do")
+	private ModelAndView login1(User user, @ModelAttribute("currentUser") User currentUser) {
+		ModelAndView mv = new ModelAndView();
+		System.out.println(user.getEmail());
+		System.out.println(user.getPassword());
+		LoginResult result = dao.getUserByLoginCredentials(user);
+//		mv.setViewName("index1.jsp");
+		
+		if (result.getUser() != null) {
+			System.out.println("new current user: " + currentUser);
+			// TODO: better way to set session attributes?
+			mv.addObject("currentUser", result.getUser());
+			mv.setViewName("index1.jsp");
+		} else {
+			mv.addObject("LoginError", result.getMessage());
+			mv.addObject("user", new User());
+			mv.setViewName("index1.jsp");
+		}
+		return mv;
+
+	}
+	
+	
 }

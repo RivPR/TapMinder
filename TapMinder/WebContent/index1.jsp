@@ -1,5 +1,9 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
+<%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 
 <html lang="en">
@@ -40,6 +44,30 @@
 
 <body id="page-top">
 
+
+<!-- THIS INIITAL FACEBOOK SCRIPT is the basic version of the SDK where the options are set to their most common defaults.  -->
+	<script>
+			window.fbAsyncInit = function() {
+				FB.init({
+					appId : '1259928390703236',
+					xfbml : true,
+					version : 'v2.6'
+				});
+			};
+
+			(function(d, s, id) {
+				var js, fjs = d.getElementsByTagName(s)[0];
+				if (d.getElementById(id)) {
+					return;
+				}
+				js = d.createElement(s);
+				js.id = id;
+				js.src = "//connect.facebook.net/en_US/sdk.js";
+				fjs.parentNode.insertBefore(js, fjs);
+			}(document, 'script', 'facebook-jssdk'));
+		</script>	
+
+
     <nav id="mainNav" class="navbar navbar-default navbar-fixed-top">
         <div class="container-fluid">
             <!-- Brand and toggle get grouped for better mobile display -->
@@ -78,12 +106,32 @@
     <header>
         <div class="header-content">
             <div class="header-content-inner">
-                <h1>TapMinder2</h1>
+                <h1>TapMinder2</h1> <br>
                 <hr>
                 <p>Finding craft beer in the Denver area has never been easier!</p>
-                <a href="indexAlexTest.jsp" class="btn btn-primary btn-xl page-scroll">Find Out More</a>
+               <!--  <a href="indexAlexTest.jsp" class="btn btn-primary btn-xl page-scroll">Find Out More</a> -->
+            
+            <br><br>
+            <p>Below is the standard login</p>
             </div>
+               
+               
+			
+		
+	 		<form:form action="initPage.do" modelAttribute="user">
+				<form:input type="text" name="email" placeholder="email@example.com" path="email" />
+				<form:input type="password" name="password" path="password" />
+				<button type="submit">Login</button>
+			</form:form>
+			
+			<c:if test="${!empty(LoginError)}">
+				ERROR: ${LoginError}
+			</c:if>
+			
+			
+			<p>Below is the Facebook login</p>	
         </div>
+    
     </header>
 
 <!--     <section class="bg-primary" id="about">
