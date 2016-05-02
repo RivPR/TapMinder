@@ -111,28 +111,26 @@
                 <p>Finding craft beer in the Denver area has never been easier!</p>
                <!--  <a href="indexAlexTest.jsp" class="btn btn-primary btn-xl page-scroll">Find Out More</a> -->
             
-            <br><br>
-            <p>Below is the standard login</p>
             </div>
                
                
 			
 		
 	 		<form:form action="initPage.do" modelAttribute="user">
-				<form:input type="text" name="email" placeholder="email@example.com" path="email" />
-				<form:input type="password" name="password" path="password" />
-				<button type="submit">Login</button>
+				Username: <form:input type="text" name="email" placeholder="email@example.com" path="email" /><br><br>
+				Password: <form:input type="password" name="password" path="password" /><br><br>
+				<button class="btn btn-primary btn-xl page-scroll" type="submit">Login</button>
 			</form:form>
 			
 			<c:if test="${!empty(LoginError)}">
 				ERROR: ${LoginError}
 			</c:if>
 			
+			<br>
 			
-			<p>Below is the Facebook login</p>	
-        </div>
+   
     
-    </header>
+   
 
 <!--     <section class="bg-primary" id="about">
         <div class="container">
@@ -316,20 +314,68 @@
         </div>
     </section> -->
 
-    <!-- jQuery -->
-    <script src="js/jquery.js"></script>
+<script>
 
-    <!-- Bootstrap Core JavaScript -->
-    <script src="js/bootstrap.min.js"></script>
 
-    <!-- Plugin JavaScript -->
-    <script src="js/jquery.easing.min.js"></script>
-    <script src="js/jquery.fittext.js"></script>
-    <script src="js/wow.min.js"></script>
 
-    <!-- Custom Theme JavaScript -->
-    <script src="js/creative.js"></script>
+  // This is called with the results from from FB.getLoginStatus().
+  function statusChangeCallback(response) {
+    console.log('statusChangeCallback');
+    console.log(response);
+    // The response object is returned with a status field that lets the
+    // app know the current login status of the person.
+    // Full docs on the response object can be found in the documentation
+    // for FB.getLoginStatus().
+    if (response.status === 'connected') {
+      // Logged into your app and Facebook.
+      testAPI();
+    } else if (response.status === 'not_authorized') {
+      // The person is logged into Facebook, but not your app.
+      document.getElementById('status').innerHTML = 'Please log ' +
+        'into this app.';
+    } else {
+      // The person is not logged into Facebook, so we're not sure if
+      // they are logged into this app or not.
+      document.getElementById('status').innerHTML = 'Please log ' +
+        'into Facebook.';
+    }
+  }
 
+  // This function is called when someone finishes with the Login
+  // Button.  See the onlogin handler attached to it in the sample
+  // code below.
+  function checkLoginState() {
+    FB.getLoginStatus(function(response) {
+      statusChangeCallback(response);
+    });
+  }
+  
+</script>
+
+<!--
+  Below we include the Login Button social plugin. This button uses
+  the JavaScript SDK to present a graphical Login button that triggers
+  the FB.login() function when clicked.
+-->
+<fb:login-button scope="public_profile,email" onlogin="checkLoginState();">
+</fb:login-button>
+
+<div id="status">
+</div>
+
+
+
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.6&appId=1259928390703236";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+</div>
+
+ </header>
 </body>
 
 </html>
