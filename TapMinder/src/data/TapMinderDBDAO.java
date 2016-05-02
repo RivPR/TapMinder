@@ -396,6 +396,12 @@ public class TapMinderDBDAO implements TapMinderDAO {
 		em.remove(beerRating);
 	}
 
+	
+	@Override
+	public Neighborhood getNeighborhood(int id){
+		return em.find(Neighborhood.class, id);
+	}
+	
 	@Override
 	public List<Neighborhood> getNeighborhoods() {
 

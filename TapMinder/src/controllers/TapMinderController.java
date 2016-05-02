@@ -146,12 +146,12 @@ public class TapMinderController {
 	}
 	
 	@RequestMapping("modifyBrewery.do")
-	private ModelAndView changeBrewery(Brewery brewery, @RequestParam("nId") int neighborHoodId){
+	private ModelAndView changeBrewery(Brewery brewery, @RequestParam("neighboorHoodId") int neighborHoodId){
 		ModelAndView mv = new ModelAndView();
 		
 		dao.modifyBrewery(brewery, neighborHoodId);
 		mv.addObject("Brewery",brewery);
-		mv.setViewName("modifyBrewery.jsp");
+		mv.setViewName("indexAlexTest.jsp");
 		return mv;
 	}
 	
@@ -211,6 +211,8 @@ public class TapMinderController {
 		ModelAndView mv = new ModelAndView();
 		System.out.println(choice);
 		mv.addObject("BreweryParameters", new BreweryParameters());
+		
+		mv.addObject("neighborhoodList", dao.getNeighborhoods());
 		mv.addObject("searchSetting", choice);
 		mv.setViewName("searchBreweries.jsp");
 
@@ -219,8 +221,10 @@ public class TapMinderController {
 	}
 
 	@RequestMapping("searchBreweries.do")
-	private ModelAndView searchBreweries(BreweryParameters breweryParameters) {
+	private ModelAndView searchBreweries(BreweryParameters breweryParameters, int neighboorHoodId) {
 		ModelAndView mv = new ModelAndView();
+		//TODO meh..
+		breweryParameters.setNeighborhood(dao.getNeighborhood(neighboorHoodId));
 		List<Brewery> breweryList = dao.getBreweries(breweryParameters);
 		mv.addObject("breweryList", breweryList);
 		mv.setViewName("searchBreweries.jsp");

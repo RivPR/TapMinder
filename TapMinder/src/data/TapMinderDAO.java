@@ -64,6 +64,8 @@ public interface TapMinderDAO {
 	//neighborhoods
 	
 	public List<Neighborhood> getNeighborhoods();
+	
+	public Neighborhood getNeighborhood(int id);
 
 	
 	
