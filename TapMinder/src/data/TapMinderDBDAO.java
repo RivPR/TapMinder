@@ -310,6 +310,14 @@ public class TapMinderDBDAO implements TapMinderDAO {
 		User userList =em.createQuery(query, User.class).setParameter("userId", userId).getSingleResult();
 		return userList;
 	}
+	@Override
+	public List<User> getUserByFirstName(String nameInput) {
+		String name = nameInput.toLowerCase().trim();
+		name = "%" + name + "%";
+		List<User> userList = em.createQuery("SELECT u FROM User u WHERE u.firstname LIKE LOWER(:name) ", User.class)
+				.setParameter("name", name.toLowerCase()).getResultList();
+		return userList;
+	}
 
 	@Override
 	public LoginResult getUserByLoginCredentials(User userToLogin){

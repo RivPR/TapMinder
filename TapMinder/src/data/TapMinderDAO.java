@@ -40,6 +40,8 @@ public interface TapMinderDAO {
 	
 	public LoginResult getUserByLoginCredentials(User user);
 	
+	public List<User> getUserByFirstName(String nameInput);
+	
 	//ratings
 	
 	public List<BeerRating> getRatingsByUser(User user);
