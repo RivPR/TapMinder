@@ -31,7 +31,8 @@ Settings: ${searchSetting}
 
 			</form>
 		</c:if>
-wtf
+
+
 		<form:form action="searchBreweries.do" modelAttribute="BreweryParameters">
 	<c:choose>
 		
@@ -39,10 +40,10 @@ wtf
 			Brewery name <form:input type="text" path="name" placeholder="Beer name"/>
 		</c:when>
 		<c:when test="${searchSetting == 'street' }">
-sa <form:input type="text" path="streetAddress" /> to <form:input type="text" path="abvHigh" />
+sa <form:input type="text" path="streetAddress" />
 		</c:when>
 		<c:when test="${searchSetting == 'city' }">
-city<form:input type="text" path="city" /> to <form:input type="text" path="hopCountHigh" />
+city<form:input type="text" path="city" />
 		</c:when>
 		<c:when test="${searchSetting == 'state' }">
 state <form:input type="text" path="state" placeholder="style"/>

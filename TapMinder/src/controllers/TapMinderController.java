@@ -117,12 +117,12 @@ public class TapMinderController {
 	@RequestMapping("searchBreweriesPage.do")
 	private ModelAndView searchBreweriesPage(@RequestParam("findBy") String choice){
 		ModelAndView mv = new ModelAndView();
-		mv.addObject("BreweryParameters",new BreweryParameters());
 		System.out.println(choice);
+		mv.addObject("BreweryParameters",new BreweryParameters());
 		mv.addObject("searchSetting", choice);
 		mv.setViewName("searchBreweries.jsp");
 		
-		return null;
+		return mv;
 		
 	}
 	
