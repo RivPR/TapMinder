@@ -59,7 +59,7 @@ public class TapMinderController {
 			System.out.println("new current user: " + currentUser);
 			// TODO: better way to set session attributes?
 			mv.addObject("currentUser", result.getUser());
-			mv.setViewName("index1.jsp");
+			mv.setViewName("indexAlexTest.jsp");
 		} else {
 			mv.addObject("LoginError", result.getMessage());
 			mv.addObject("user", new User());

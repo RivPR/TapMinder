@@ -78,7 +78,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand page-scroll" href="#page-top">Home</a>
+                <a class="navbar-brand page-scroll" href="#initPage.do">Home</a>
             </div>
 
             <!-- Collect the nav links, forms, and other content for toggling -->
@@ -357,8 +357,14 @@
   the JavaScript SDK to present a graphical Login button that triggers
   the FB.login() function when clicked.
 -->
-<fb:login-button scope="public_profile,email" onlogin="checkLoginState();">
-</fb:login-button>
+
+<!-- UNCOMMENT COMMENT IF NOT WORKING -->
+
+<!-- <fb:login-button scope="public_profile,email" onlogin="checkLoginState();">
+</fb:login-button> -->
+<div class="fb-login-button" data-max-rows="1" scope="public_profile,email" data-size="large" data-show-faces="false" data-auto-logout-link="false" onlogin="checkLoginState();"></div>
+
+
 
 <div id="status">
 </div>
