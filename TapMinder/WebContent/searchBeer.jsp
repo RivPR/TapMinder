@@ -50,7 +50,9 @@ Rating <form:input type="text" path="rating" placeholder="Number 1-5" />
 
 
 	</c:choose>
-		
+	<c:if test="${searchSetting != '' }">
+	<button type="submit">search</button>	
+	</c:if>	
 		</form:form>
 		
 </body>

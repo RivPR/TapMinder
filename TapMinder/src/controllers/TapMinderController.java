@@ -1,5 +1,7 @@
 package controllers;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -11,6 +13,7 @@ import org.springframework.web.servlet.ModelAndView;
 import data.BeerParameters;
 import data.LoginResult;
 import data.TapMinderDAO;
+import entities.Beer;
 import entities.User;
 
 /*
@@ -102,9 +105,9 @@ public class TapMinderController {
 	@RequestMapping("searchBeers.do")
 	private ModelAndView searchBeers(BeerParameters beerParameters) {
 		ModelAndView mv = new ModelAndView();
-		System.out.println("lsdkjfa;slkdsa;dlka;sodjfsal;kdfyayayyayayayayayay");
-		
-		mv.setViewName("indexAlexTest.jsp");
+		List<Beer> beerList = dao.getBeers(beerParameters);
+		mv.addObject("beerList",beerList);
+		mv.setViewName("searchResult.jsp");
 		
 		return mv;
 	}
