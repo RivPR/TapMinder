@@ -122,21 +122,15 @@ public class TapMinderDBDAO implements TapMinderDAO {
 		//TODO fix this so that it works with the average range
 		int ratingHigh = beerParameters.getRatingHigh();
 		int ratingLow = beerParameters.getRatingLow();
-		List<BeerRating> ratings = em.createQuery("SELECT r FROM BeerRating r WHERE r.rating <= :high AND r.rating >= :low",BeerRating.class).setParameter("high", ratingHigh).setParameter("low", ratingLow).getResultList();
-//		List<BeerRating> ratings = em.createQuery("SELECT r FROM BeerRating r WHERE r.rating = 1",BeerRating.class).getResultList();
-		System.out.println(ratings.size());
-		Set<Beer> beerSet = new HashSet<>();
 
-		for (BeerRating r : ratings) {
-			beerSet.add(r.getBeer());
+		List<Beer> list1 = new ArrayList<>();
+		List<Beer> listOBeer = em.createQuery("SELECT b FROM Beer b ORDER BY b.name ASC", Beer.class).getResultList();
+		for (Beer beer : listOBeer) {
+			if(beer.getAverageRating() <= ratingHigh && beer.getAverageRating() >= ratingLow ){
+				list1.add(beer);
+			}
 		}
-		List<Beer> beerList = new ArrayList<>();
-		beerList.addAll(beerSet);
-		System.out.println("in getBeerList by rating range , l size " + beerList.size());
-		for (Beer beer : beerList) {
-			System.out.println(beer.getName());
-		}
-		return beerList;
+		return list1;
 
 	}
 

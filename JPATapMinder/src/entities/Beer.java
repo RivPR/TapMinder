@@ -48,8 +48,8 @@ public class Beer {
 	@JoinColumn(name="breweries_id")
 	private Brewery brewery;
 	
-	@Transient
-	private Double averageRating;
+
+	private transient Double averageRating;
 	
 
 	
@@ -62,23 +62,13 @@ public class Beer {
 		
 		int count = 0;
 		double total = 0;
-		System.out.println("before foreach*************************");
-		System.out.println(ratings.size());
+
 		for (BeerRating beerRating : ratings) {
-			System.out.println(beerRating);
+			count++;
+			total += beerRating.getRating();	
+			this.setAverageRating(total/count);
 		}
-		
-		
-		
-//		for (BeerRating beerRating : ratings) {
-//			count++;
-//			System.out.println("**********Beer rat:" + beerRating.getRating());
-//			total += beerRating.getRating();	
-//			
-//			System.out.println("In calc: " + total);
-//			this.setAverageRating(total/count);
-//		}
-		return 4.0;
+		return (total/count);
 	}
 	
 	public void setAverageRating(Double averageRating) {
