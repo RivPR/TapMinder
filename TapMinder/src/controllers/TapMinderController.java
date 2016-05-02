@@ -1,5 +1,6 @@
 package controllers;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,6 +16,7 @@ import data.BreweryParameters;
 import data.LoginResult;
 import data.TapMinderDAO;
 import entities.Beer;
+import entities.BeerRating;
 import entities.Brewery;
 import entities.User;
 
@@ -55,8 +57,8 @@ public class TapMinderController {
 			mv.setViewName("searchBreweries.jsp");
 			break;
 		case "viewUserBeers":
-			// TODO: add real stuff
-			mv.setViewName("index.jsp");
+
+			mv.setViewName("findUserBeerList.do");
 			break;
 		case "myAccount":
 			// TODO: add real stuff
@@ -92,13 +94,30 @@ public class TapMinderController {
 
 	}// menu.do
 
+	@RequestMapping("findUserBeerList.do")
+	private ModelAndView printUserBeers(@ModelAttribute("currentUser") User currentUser) {
+		ModelAndView mv = new ModelAndView();
+		List<BeerRating> userRatings = currentUser.getRatings();
+		List<Beer> beers = new ArrayList();
+		if (userRatings != null && userRatings.size() > 0) {
+			for (BeerRating beerRating : userRatings) {
+				System.out.println(beerRating.getBeer());
+				beers.add(beerRating.getBeer());
+			}
+		}
+		mv.addObject("userBeers", beers);
+		mv.setViewName("myBeers.jsp");
+
+		return mv;
+	}
+
 	@RequestMapping("findBeersPage.do")
 	private ModelAndView findBeers(@RequestParam("findBy") String choice) {
 
 		ModelAndView mv = new ModelAndView();
 		String searchSetting = choice;
 		mv.addObject("searchSetting", choice);
-		mv.addObject("BeerParameters",new BeerParameters());
+		mv.addObject("BeerParameters", new BeerParameters());
 		mv.setViewName("searchBeer.jsp");
 
 		return mv;
@@ -108,29 +127,29 @@ public class TapMinderController {
 	private ModelAndView searchBeers(BeerParameters beerParameters) {
 		ModelAndView mv = new ModelAndView();
 		List<Beer> beerList = dao.getBeers(beerParameters);
-		mv.addObject("beerList",beerList);
+		mv.addObject("beerList", beerList);
 		mv.setViewName("searchResult.jsp");
-		
+
 		return mv;
 	}
-	
+
 	@RequestMapping("searchBreweriesPage.do")
-	private ModelAndView searchBreweriesPage(@RequestParam("findBy") String choice){
+	private ModelAndView searchBreweriesPage(@RequestParam("findBy") String choice) {
 		ModelAndView mv = new ModelAndView();
 		System.out.println(choice);
-		mv.addObject("BreweryParameters",new BreweryParameters());
+		mv.addObject("BreweryParameters", new BreweryParameters());
 		mv.addObject("searchSetting", choice);
 		mv.setViewName("searchBreweries.jsp");
-		
+
 		return mv;
-		
+
 	}
-	
+
 	@RequestMapping("searchBreweries.do")
-	private ModelAndView searchBreweries(BreweryParameters breweryParameters){
+	private ModelAndView searchBreweries(BreweryParameters breweryParameters) {
 		ModelAndView mv = new ModelAndView();
 		List<Brewery> breweryList = dao.getBreweries(breweryParameters);
-		mv.addObject("breweryList",breweryList);
+		mv.addObject("breweryList", breweryList);
 		mv.setViewName("searchBreweries.jsp");
 		return mv;
 	}
