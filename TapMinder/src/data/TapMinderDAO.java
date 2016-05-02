@@ -44,7 +44,7 @@ public interface TapMinderDAO {
 	
 	public ModifyResults deleteUser(User user);
 	
-	public User getUserByEmail(User user);
+	public User getUserByLoginCredentials(User user);
 	
 	//ratings
 	

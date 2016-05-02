@@ -81,7 +81,7 @@ public class AlexTestController {
 		ModelAndView mv = new ModelAndView();
 		System.out.println(user.getEmail());
 		System.out.println(user.getPassword());
-		currentUser = dao.getUserByEmail(user);
+		currentUser = dao.getUserByLoginCredentials(user);
 		System.out.println("new current user: " + currentUser);
 		mv.addObject("currentUser",currentUser);
 		mv.setViewName("indexAlexTest.jsp");
