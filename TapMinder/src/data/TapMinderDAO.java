@@ -15,6 +15,8 @@ public interface TapMinderDAO {
 	
 	//beers
 	
+	public Beer  getBeer(int beerId);
+	
 	public List<Beer> getBeers(BeerParameters beerParameters);
 	
 	public void modifyBeer(Beer beer);
@@ -32,6 +34,9 @@ public interface TapMinderDAO {
 	public void deleteBrewery(Brewery brewery);
 	
 	//user
+	
+	
+	
 	public List<User> getUserList();
 
 	public User getUser(int userId);

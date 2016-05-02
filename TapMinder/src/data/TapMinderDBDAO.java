@@ -24,6 +24,11 @@ public class TapMinderDBDAO implements TapMinderDAO {
 	@PersistenceContext
 	private EntityManager em;
 
+	public Beer getBeer(int beerId){
+		Beer b = em.find(Beer.class, beerId);
+		return b;
+	}
+	
 	public List<Beer> getBeers(BeerParameters beerParameters) {
 
 		List<Beer> beerList = null;
