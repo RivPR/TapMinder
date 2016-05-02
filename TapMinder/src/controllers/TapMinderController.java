@@ -98,7 +98,7 @@ public class TapMinderController {
 	private ModelAndView printUserBeers(@ModelAttribute("currentUser") User currentUser) {
 		ModelAndView mv = new ModelAndView();
 		List<BeerRating> userRatings = currentUser.getRatings();
-		List<Beer> beers = new ArrayList();
+		List<Beer> beers = new ArrayList<>();
 		if (userRatings != null && userRatings.size() > 0) {
 			for (BeerRating beerRating : userRatings) {
 				System.out.println(beerRating.getBeer());

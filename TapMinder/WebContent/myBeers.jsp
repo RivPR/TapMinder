@@ -15,7 +15,7 @@
 BEERS:
 <c:forEach var="beer" items="${userBeers}">
 
-	${beer.name}
+	${beer.name} ${beer.abv} ${beer.hopCount} ${beer.beerStyle} ${beer.description} 
 
 </c:forEach>
 </body>
