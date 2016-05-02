@@ -20,7 +20,7 @@ public class AlexResultTestStuff {
 			EntityManager em = emf.createEntityManager();
 			//get rates by user
 			
-			Brewery b = em.find(Brewery.class, 2);
+			Brewery brewery = em.find(Brewery.class, 2);
 			
 			List<Beer> beerList = brewery.getBeerList();
 			
