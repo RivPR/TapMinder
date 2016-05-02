@@ -22,7 +22,7 @@
 	<form:input type="text" path="zip" />
 	<form:input type="text" path="imageLink" />
 	<form:input type="text" path="breweryLink" />
-	<select name="neighborhood">
+	<select name="nId">
 	
 		<option value="">pick one</option>
 		<c:forEach var="hood" items="${neighborhoodList}">

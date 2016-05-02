@@ -290,20 +290,18 @@ public class TapMinderDBDAO implements TapMinderDAO {
 		int breweryId = brewery.getId();
 		Brewery breweryToChange = em.find(Brewery.class, breweryId);
 		breweryToChange.setStreetAddress(brewery.getStreetAddress());
-		breweryToChange.setStreetAddress(brewery.getStreetAddress());
-		breweryToChange.setStreetAddress(brewery.getStreetAddress());
-		breweryToChange.setStreetAddress(brewery.getStreetAddress());
-		breweryToChange.setStreetAddress(brewery.getStreetAddress());
-		breweryToChange.setStreetAddress(brewery.getStreetAddress());
-		breweryToChange.setStreetAddress(brewery.getStreetAddress());
-		breweryToChange.setStreetAddress(brewery.getStreetAddress());
-		breweryToChange.setStreetAddress(brewery.getStreetAddress());
-		breweryToChange.setStreetAddress(brewery.getStreetAddress());
+		breweryToChange.setCity(brewery.getCity());
+		breweryToChange.setState(brewery.getState());
+		breweryToChange.setZip(brewery.getZip());
+		breweryToChange.setImageLink(brewery.getImageLink());
+		breweryToChange.setBreweryLink(brewery.getBreweryLink());
+		breweryToChange.setNeighborhood(em.find(Neighborhood.class, neighborHoodId));
 		
 	}
 
 	@Override
 	public void deleteBrewery(Brewery brewery) {
+		//TODO make this delete the beers first
 		em.remove(brewery);
 
 	}
