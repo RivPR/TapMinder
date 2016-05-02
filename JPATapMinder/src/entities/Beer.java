@@ -138,9 +138,6 @@ public class Beer {
 		this.brewery = brewery;
 	}
 
-
-
-
 	
 
 	
