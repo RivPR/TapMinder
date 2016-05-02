@@ -72,7 +72,10 @@ neigborhood <form:input type="text" path="neighborhood" placeholder="Number 1-5"
 	${b.zip} <br>
 	${b.neighborhood.name}"
 	<br>
-	
+	<form:form action ="modifyBrewery.do">
+		
+		<button type="submit">Modify</button>
+	</form:form>
 	<br>
 	
 	<br>

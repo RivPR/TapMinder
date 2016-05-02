@@ -9,14 +9,22 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
+<title>Mod Brewery</title>
 </head>
 <body>
 
-<form:form>
-	
-
-
+<form:form action="modifyBrewery.do" modelAttribute="Brewery">
+	<form:input type="hidden" path="id"/>
+	<form:input type="text" path="name" />
+	<form:input type="text" path="streetAddress" />
+	<form:input type="text" path="city" />
+	<form:input type="text" path="state" />
+	<form:input type="text" path="zip" />
+	<form:input type="text" path="imageLink" />
+	<form:input type="text" path="breweryLink" />
+	<form:input type="text" path="neighborhood" />
+		
+	<button type="submit">Change</button>
 </form:form>
 
 </body>
