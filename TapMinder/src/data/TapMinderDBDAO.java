@@ -372,24 +372,32 @@ public class TapMinderDBDAO implements TapMinderDAO {
 
 	@Override
 	public List<BeerRating> getRatingsByUser(User user) {
-		//doesnt seem to work
-//		String query = "SELECT u.ratings FROM User u WHERE u.id = :userId" ;
-//		int userId = user.getId();
-//		List<BeerRating> userList =em.createQuery(query, BeerRating.class).setParameter("userId", userId).getResultList();
-//		return userList;
-		return null;
+
+		List<BeerRating> ratingList = user.getRatings();
+		
+		return ratingList;
 	}
 
 	@Override
 	public List<BeerRating> getRatingsByBeer(Beer beer) {
-		// TODO Auto-generated method stub
-		return null;
+		//TODO untested
+		
+		List<BeerRating> ratingList = beer.getRatings();
+		
+		return ratingList;
 	}
 
 	@Override
 	public List<BeerRating> getRatingsByBrewery(Brewery brewery) {
-		// TODO Auto-generated method stub
-		return null;
+		List<Beer> beerList = brewery.getBeerList();
+		
+		List<BeerRating> ratingList = new ArrayList<>();
+		
+		for (Beer beer : beerList) {
+			ratingList.addAll(beer.getRatings());
+		}
+		
+		return ratingList;
 	}
 
 	@Override
