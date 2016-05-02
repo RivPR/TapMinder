@@ -41,7 +41,7 @@ public class TapMinderController {
 			
 		case "findBeers":
 			//TODO: add real stuff
-			mv.setViewName("AlexTestJSPStuff/testPage.jsp");
+			mv.setViewName("searchBeer.jsp");
 			break;
 		case "findBreweries":
 			//TODO: add real stuff
