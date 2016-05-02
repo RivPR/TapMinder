@@ -62,7 +62,7 @@ public class TapMinderController {
 			break;
 		case "myAccount":
 			// TODO: add real stuff
-			mv.setViewName("index.jsp");
+			mv.setViewName("viewUserAccount.do");
 			break;
 		case "modifyBreweries":
 			// TODO: add real stuff
@@ -94,6 +94,17 @@ public class TapMinderController {
 
 	}// menu.do
 
+	
+	@RequestMapping("viewUserAccount.do")
+	private ModelAndView viewUserAccount(@ModelAttribute("currentUser") User currentUser){
+		ModelAndView mv = new ModelAndView();
+		
+		mv.addObject("currentUser",currentUser);
+		mv.setViewName("userAccount.jsp");
+		
+		return mv;
+	}
+	
 	@RequestMapping("findUserBeerList.do")
 	private ModelAndView printUserBeers(@ModelAttribute("currentUser") User currentUser) {
 		ModelAndView mv = new ModelAndView();
