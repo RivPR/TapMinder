@@ -22,6 +22,20 @@
 	<form:input type="text" path="zip" />
 	<form:input type="text" path="imageLink" />
 	<form:input type="text" path="breweryLink" />
+	<select name="neighborhood">
+	
+		<option value="">pick one</option>
+		<c:forEach var="hood" items="${neighborhoodList}">
+				<option name="nId" value="${hood.id}">${hood.name}</option>
+
+				<%-- 		<c:if test="${Brewery.neighborhood.id == hood.id}">
+		selected
+		</c:if> --%>
+		
+		
+		</c:forEach>
+		
+	</select>
 	<%-- <form:input type="text" path="neighborhood" /> --%>
 		
 	<button type="submit">Change</button>

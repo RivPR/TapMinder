@@ -286,9 +286,18 @@ public class TapMinderDBDAO implements TapMinderDAO {
 	}
 
 	@Override
-	public void modifyBrewery(Brewery brewery) {
+	public void modifyBrewery(Brewery brewery, int neighborHoodId) {
 		int breweryId = brewery.getId();
 		Brewery breweryToChange = em.find(Brewery.class, breweryId);
+		breweryToChange.setStreetAddress(brewery.getStreetAddress());
+		breweryToChange.setStreetAddress(brewery.getStreetAddress());
+		breweryToChange.setStreetAddress(brewery.getStreetAddress());
+		breweryToChange.setStreetAddress(brewery.getStreetAddress());
+		breweryToChange.setStreetAddress(brewery.getStreetAddress());
+		breweryToChange.setStreetAddress(brewery.getStreetAddress());
+		breweryToChange.setStreetAddress(brewery.getStreetAddress());
+		breweryToChange.setStreetAddress(brewery.getStreetAddress());
+		breweryToChange.setStreetAddress(brewery.getStreetAddress());
 		breweryToChange.setStreetAddress(brewery.getStreetAddress());
 		
 	}
@@ -394,12 +403,12 @@ public class TapMinderDBDAO implements TapMinderDAO {
 
 		List<Neighborhood> neighborhoods = em.createQuery("Select n from Neighborhood n", Neighborhood.class)
 				.getResultList();
-
+		System.out.println("THE STUPID NEIGHBORHOOD LIST IS " + neighborhoods.size() +" THINGIES LONG");
 		for (Neighborhood neighborhood : neighborhoods) {
 			em.detach(neighborhood);
 		}
 
-		return null;
+		return neighborhoods;
 
 	}
 

@@ -19,6 +19,7 @@ import data.TapMinderDAO;
 import entities.Beer;
 import entities.BeerRating;
 import entities.Brewery;
+import entities.Neighborhood;
 import entities.User;
 
 /*
@@ -136,15 +137,19 @@ public class TapMinderController {
 		
 		Brewery brewery = dao.getBrewery(breweryId);
 		mv.addObject("Brewery", brewery);
+		mv.addObject("neighborhoodList",dao.getNeighborhoods());
+		for (Neighborhood n : dao.getNeighborhoods()) {
+			System.out.println(n.getName());
+		}
 		mv.setViewName("modifyBrewery.jsp");
 		return mv;
 	}
 	
 	@RequestMapping("modifyBrewery.do")
-	private ModelAndView changeBrewery(Brewery brewery){
+	private ModelAndView changeBrewery(Brewery brewery, @RequestParam("nId") int neighborHoodId){
 		ModelAndView mv = new ModelAndView();
 		
-		dao.modifyBrewery(brewery);
+		dao.modifyBrewery(brewery, neighborHoodId);
 		mv.addObject("Brewery",brewery);
 		mv.setViewName("modifyBrewery.jsp");
 		return mv;
