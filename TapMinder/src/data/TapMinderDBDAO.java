@@ -6,6 +6,7 @@ import java.util.List;
 import java.util.Set;
 
 import javax.persistence.EntityManager;
+import javax.persistence.NoResultException;
 import javax.persistence.PersistenceContext;
 
 import org.springframework.transaction.annotation.Transactional;
@@ -333,13 +334,20 @@ public class TapMinderDBDAO implements TapMinderDAO {
 	}
 
 	@Override
-	public User getUserByLoginCredentials(User userToLogin){
-		
+	public LoginResult getUserByLoginCredentials(User userToLogin){
+		LoginResult lr = null;
+		try{
 		String query = "SELECT u FROM User u WHERE u.email = :email AND u.password = :password";
 		User user = em.createQuery(query,User.class).setParameter("email",userToLogin.getEmail()).setParameter("password", userToLogin.getPassword()).getSingleResult();
 		//TODO		
 		System.out.println("LOGGED IN USER " + user);
-		return user;
+		lr = new LoginResult(user,"");
+		}catch(NoResultException e){
+		lr = new LoginResult(null,"Incorrect Username Or Password");
+		}
+		
+		
+		return lr;
 	}
 	
 	@Override

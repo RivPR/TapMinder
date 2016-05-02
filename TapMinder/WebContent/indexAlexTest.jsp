@@ -34,14 +34,14 @@
 
 </form>
 
-<%-- <c:if test="${!empty(currentUser) }"> --%>
+<c:if test="${currentUser.id > 0}"> 
 	${currentUser.firstname}
 	${currentUser.email}
 	${currentUser.lastname}
 	${currentUser.password}
 	${currentUser.firstname}
 	${currentUser.firstname}
-<%-- </c:if> --%>
+</c:if>
 
 </body>
 </html>

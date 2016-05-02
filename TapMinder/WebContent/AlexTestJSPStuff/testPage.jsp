@@ -9,6 +9,8 @@ ${currentUser.email}
 ${currentUser.password}
 <%-- ${currentUser.usertype.name} --%>
 
+${currentUser.usertype.typeName}
+
 </c:if>
 
 <%@include file="includes/footer.jsp"%>

@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.servlet.ModelAndView;
 
+import data.LoginResult;
 import data.TapMinderDAO;
 import entities.User;
 
@@ -89,11 +90,18 @@ public class AlexTestController {
 		ModelAndView mv = new ModelAndView();
 		System.out.println(user.getEmail());
 		System.out.println(user.getPassword());
-		currentUser = dao.getUserByLoginCredentials(user);
+		LoginResult result = dao.getUserByLoginCredentials(user);
+		if(result.getUser() != null){
 		System.out.println("new current user: " + currentUser);
 		//TODO: better way to set session attributes?
-		mv.addObject("currentUser",currentUser);
+		mv.addObject("currentUser",result.getUser());
 		mv.setViewName("indexAlexTest.jsp");
+		}
+		else{
+			mv.addObject("LoginError",result.getMessage());
+			mv.addObject("user",new User());
+			mv.setViewName("AlexTestJSPStuff/login.jsp");
+		}
 		return mv;
 		
 	}
