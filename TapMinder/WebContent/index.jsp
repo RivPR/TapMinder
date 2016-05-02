@@ -13,7 +13,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Homepage</title>
+    <title>TapMinder</title>
 
     <!-- Bootstrap Core CSS -->
     <link rel="stylesheet" href="css/bootstrap.min.css" type="text/css">
@@ -50,7 +50,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand page-scroll" href="#page-top">Start Bootstrap</a>
+                <a class="navbar-brand page-scroll" href="#page-top">Home</a>
             </div>
 
             <!-- Collect the nav links, forms, and other content for toggling -->
@@ -78,15 +78,15 @@
     <header>
         <div class="header-content">
             <div class="header-content-inner">
-                <h1>Your Favorite Source of Free Bootstrap Themes</h1>
+                <h1>TapMinder</h1>
                 <hr>
-                <p>Start Bootstrap can help you build better websites using the Bootstrap CSS framework! Just download your template and start going, no strings attached!</p>
-                <a href="#about" class="btn btn-primary btn-xl page-scroll">Find Out More</a>
+                <p>Finding craft beer in the Denver area has never been easier!</p>
+                <a href="indexAlexTest.jsp" class="btn btn-primary btn-xl page-scroll">Find Out More</a>
             </div>
         </div>
     </header>
 
-    <section class="bg-primary" id="about">
+<!--     <section class="bg-primary" id="about">
         <div class="container">
             <div class="row">
                 <div class="col-lg-8 col-lg-offset-2 text-center">
@@ -97,9 +97,9 @@
                 </div>
             </div>
         </div>
-    </section>
+    </section> -->
 
-    <section id="services">
+   <!--  <section id="services">
         <div class="container">
             <div class="row">
                 <div class="col-lg-12 text-center">
@@ -266,7 +266,7 @@
                 </div>
             </div>
         </div>
-    </section>
+    </section> -->
 
     <!-- jQuery -->
     <script src="js/jquery.js"></script>
