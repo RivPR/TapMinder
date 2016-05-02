@@ -60,13 +60,13 @@ public class TapMinderDBDAO implements TapMinderDAO {
 			beerList = getBeerlistByHopCountHigh(beerParameters);
 		}
 
-		if(beerList != null && beerList.size() > 0){
+		if (beerList != null && beerList.size() > 0) {
 			for (Beer beer : beerList) {
 				em.detach(beer);
 			}
-			
+
 		}
-		
+
 		return beerList;
 
 	}
@@ -119,14 +119,13 @@ public class TapMinderDBDAO implements TapMinderDAO {
 	}
 
 	private List<Beer> getBeerListByRatingRange(BeerParameters beerParameters) {
-		//TODO fix this so that it works with the average range
 		int ratingHigh = beerParameters.getRatingHigh();
 		int ratingLow = beerParameters.getRatingLow();
 
 		List<Beer> list1 = new ArrayList<>();
 		List<Beer> listOBeer = em.createQuery("SELECT b FROM Beer b ORDER BY b.name ASC", Beer.class).getResultList();
 		for (Beer beer : listOBeer) {
-			if(beer.getAverageRating() <= ratingHigh && beer.getAverageRating() >= ratingLow ){
+			if (beer.getAverageRating() <= ratingHigh && beer.getAverageRating() >= ratingLow) {
 				list1.add(beer);
 			}
 		}
@@ -135,41 +134,31 @@ public class TapMinderDBDAO implements TapMinderDAO {
 	}
 
 	private List<Beer> getBeerListByRatingAbove(BeerParameters beerParameters) {
-		//TODO untested
 		int ratingLow = beerParameters.getRatingLow();
-		
-		List<BeerRating> ratings = em.createQuery("SELECT r FROM BeerRating r WHERE r.rating >= :low", BeerRating.class)
-				.setParameter("low", ratingLow).getResultList();
-		Set<Beer> beerSet = new HashSet<>();
 
-		for (BeerRating r : ratings) {
-			beerSet.add(r.getBeer());
+		List<Beer> list1 = new ArrayList<>();
+		List<Beer> listOBeer = em.createQuery("SELECT b FROM Beer b ORDER BY b.name ASC", Beer.class).getResultList();
+		for (Beer beer : listOBeer) {
+			if (beer.getAverageRating() >= ratingLow) {
+				list1.add(beer);
+			}
 		}
-		List<Beer> beerList = new ArrayList<>();
-		beerList.addAll(beerSet);
-		
-		return beerList;
-
+		return list1;
 	}
 
-	 private List<Beer> getBeerListByRatingBelow(BeerParameters beerParameters){
-	//TODO untested
-	int ratingHigh = beerParameters.getRatingHigh();
-		
-	List<BeerRating> ratings = em.createQuery("SELECT r FROM BeerRating r WHERE r.rating <= :high",BeerRating.class).setParameter("high",ratingHigh).getResultList();
-	Set<Beer> beerSet = new HashSet<>();
+	private List<Beer> getBeerListByRatingBelow(BeerParameters beerParameters) {
+		int ratingHigh = beerParameters.getRatingHigh();
 
-	for (BeerRating r : ratings) {
-		beerSet.add(r.getBeer());
+		List<Beer> list1 = new ArrayList<>();
+		List<Beer> listOBeer = em.createQuery("SELECT b FROM Beer b ORDER BY b.name ASC", Beer.class).getResultList();
+		for (Beer beer : listOBeer) {
+			if (beer.getAverageRating() <= ratingHigh) {
+				list1.add(beer);
+			}
+		}
+		return list1;
 	}
-	List<Beer> beerList = new ArrayList<>();
-	beerList.addAll(beerSet);
-	
-	return beerList;
-	
-	 }
-	 
-	 
+
 	private List<Beer> getBeerListByHopCountRange(BeerParameters beerParameters) {
 		double low = beerParameters.getHopCountLow();
 		double high = beerParameters.getHopCountHigh();
@@ -209,78 +198,80 @@ public class TapMinderDBDAO implements TapMinderDAO {
 	@Override
 	public List<Brewery> getBreweries(BreweryParameters breweryParameters) {
 		List<Brewery> breweryList = null;
-		if(breweryParameters.getName() != null){
+		if (breweryParameters.getName() != null) {
 			breweryList = getBreweryListByName(breweryParameters);
-		}
-		else if(breweryParameters.getStreetAddress() != null){
+		} else if (breweryParameters.getStreetAddress() != null) {
 			breweryList = getBreweryListByStreetAddress(breweryParameters);
-		}
-		else if(breweryParameters.getCity() != null){
+		} else if (breweryParameters.getCity() != null) {
 			breweryList = getBreweryListByCity(breweryParameters);
-		}
-		else if(breweryParameters.getState() != null){
+		} else if (breweryParameters.getState() != null) {
 			breweryList = getBreweryListByState(breweryParameters);
-		}
-		else if(breweryParameters.getZipcode() != null){
+		} else if (breweryParameters.getZipcode() != null) {
 			breweryList = getBreweryListByZipcode(breweryParameters);
+		} else if (breweryParameters.getNeighborhood() != null) {
+			breweryList = getBreweryListByNeighborhood(breweryParameters);
 		}
-		else if(breweryParameters.getNeighborhood() != null){
-		breweryList = getBreweryListByNeighborhood(breweryParameters);	
-		}
-		//TODO: put this in the other things
+		// TODO: put this in the other things
 		for (Brewery brewery : breweryList) {
 			em.detach(brewery);
 		}
 		return breweryList;
 	}
-	
-	private List<Brewery> getBreweryListByName(BreweryParameters breweryParameters){
+
+	private List<Brewery> getBreweryListByName(BreweryParameters breweryParameters) {
 		String name = "%" + breweryParameters.getName() + "%";
 		String query = "SELECT b FROM Brewery b WHERE LOWER(b.name) LIKE :name";
-		
-		List<Brewery> breweryList = em.createQuery(query,Brewery.class).setParameter("name", name.toLowerCase()).getResultList();
+
+		List<Brewery> breweryList = em.createQuery(query, Brewery.class).setParameter("name", name.toLowerCase())
+				.getResultList();
 		return breweryList;
-		
+
 	}
-	private List<Brewery> getBreweryListByStreetAddress(BreweryParameters breweryParameters){
+
+	private List<Brewery> getBreweryListByStreetAddress(BreweryParameters breweryParameters) {
 		String streetAddress = "%" + breweryParameters.getStreetAddress() + "%";
 		String query = "SELECT b FROM Brewery b WHERE LOWER(b.streetAddress) LIKE :streetAddress";
-		
-		List<Brewery> breweryList = em.createQuery(query,Brewery.class).setParameter("streetAddress", streetAddress.toLowerCase()).getResultList();
-		return breweryList;
-	}
-	private List<Brewery> getBreweryListByCity(BreweryParameters breweryParameters){
-		String city = "%" + breweryParameters.getCity() + "%";
-		String query = "SELECT b FROM Brewery b WHERE LOWER(b.city) LIKE :city";
-		
-		List<Brewery> breweryList = em.createQuery(query,Brewery.class).setParameter("city", city.toLowerCase()).getResultList();
-		return breweryList;
-	}
-	private List<Brewery> getBreweryListByState(BreweryParameters breweryParameters){
-		State state = breweryParameters.getState();
-		String query = "SELECT b FROM Brewery b WHERE b.state =  :state";
-		
-		List<Brewery> breweryList = em.createQuery(query,Brewery.class).setParameter("state", state).getResultList();
-		return breweryList;
-	}
-	private List<Brewery> getBreweryListByZipcode(BreweryParameters breweryParameters){
-		Integer zip = 80226;
-		String query = "SELECT b FROM Brewery b WHERE b.zip = :zip";
-		
-		List<Brewery> breweryList = em.createQuery(query,Brewery.class).setParameter("zip", zip).getResultList();
-		
-		return breweryList;
-		
-		
-	}
-	private List<Brewery> getBreweryListByNeighborhood(BreweryParameters breweryParameters){
-		int neighborhoodId = breweryParameters.getNeighborhood().getId();
-		String query = "SELECT b FROM Brewery b WHERE b.neighborhood.id = :neighborhoodId";
-		
-		List<Brewery> breweryList = em.createQuery(query,Brewery.class).setParameter("neighborhoodId", neighborhoodId).getResultList();
+
+		List<Brewery> breweryList = em.createQuery(query, Brewery.class)
+				.setParameter("streetAddress", streetAddress.toLowerCase()).getResultList();
 		return breweryList;
 	}
 
+	private List<Brewery> getBreweryListByCity(BreweryParameters breweryParameters) {
+		String city = "%" + breweryParameters.getCity() + "%";
+		String query = "SELECT b FROM Brewery b WHERE LOWER(b.city) LIKE :city";
+
+		List<Brewery> breweryList = em.createQuery(query, Brewery.class).setParameter("city", city.toLowerCase())
+				.getResultList();
+		return breweryList;
+	}
+
+	private List<Brewery> getBreweryListByState(BreweryParameters breweryParameters) {
+		State state = breweryParameters.getState();
+		String query = "SELECT b FROM Brewery b WHERE b.state =  :state";
+
+		List<Brewery> breweryList = em.createQuery(query, Brewery.class).setParameter("state", state).getResultList();
+		return breweryList;
+	}
+
+	private List<Brewery> getBreweryListByZipcode(BreweryParameters breweryParameters) {
+		Integer zip = 80226;
+		String query = "SELECT b FROM Brewery b WHERE b.zip = :zip";
+
+		List<Brewery> breweryList = em.createQuery(query, Brewery.class).setParameter("zip", zip).getResultList();
+
+		return breweryList;
+
+	}
+
+	private List<Brewery> getBreweryListByNeighborhood(BreweryParameters breweryParameters) {
+		int neighborhoodId = breweryParameters.getNeighborhood().getId();
+		String query = "SELECT b FROM Brewery b WHERE b.neighborhood.id = :neighborhoodId";
+
+		List<Brewery> breweryList = em.createQuery(query, Brewery.class).setParameter("neighborhoodId", neighborhoodId)
+				.getResultList();
+		return breweryList;
+	}
 
 	@Override
 	public void modifyBrewery(Brewery brewery) {
@@ -290,22 +281,23 @@ public class TapMinderDBDAO implements TapMinderDAO {
 	@Override
 	public void deleteBrewery(Brewery brewery) {
 		em.remove(brewery);
-	
+
 	}
 
 	@Override
 	public List<User> getUserList() {
-		List<User> userList=em.createQuery("SELECT u FROM User u", User.class).getResultList();
+		List<User> userList = em.createQuery("SELECT u FROM User u", User.class).getResultList();
 		return userList;
 	}
 
 	@Override
 	public User getUser(int userId) {
-		
-		String query = "SELECT u FROM User u WHERE u.id = :userId" ;
-		User userList =em.createQuery(query, User.class).setParameter("userId", userId).getSingleResult();
+
+		String query = "SELECT u FROM User u WHERE u.id = :userId";
+		User userList = em.createQuery(query, User.class).setParameter("userId", userId).getSingleResult();
 		return userList;
 	}
+
 	@Override
 	public List<User> getUserByFirstName(String nameInput) {
 		String name = nameInput.toLowerCase().trim();
@@ -316,22 +308,22 @@ public class TapMinderDBDAO implements TapMinderDAO {
 	}
 
 	@Override
-	public LoginResult getUserByLoginCredentials(User userToLogin){
+	public LoginResult getUserByLoginCredentials(User userToLogin) {
 		LoginResult lr = null;
-		try{
-		String query = "SELECT u FROM User u WHERE u.email = :email AND u.password = :password";
-		User user = em.createQuery(query,User.class).setParameter("email",userToLogin.getEmail()).setParameter("password", userToLogin.getPassword()).getSingleResult();
-		//TODO		
-		System.out.println("LOGGED IN USER " + user);
-		lr = new LoginResult(user,"");
-		}catch(NoResultException e){
-		lr = new LoginResult(null,"Incorrect Username Or Password");
+		try {
+			String query = "SELECT u FROM User u WHERE u.email = :email AND u.password = :password";
+			User user = em.createQuery(query, User.class).setParameter("email", userToLogin.getEmail())
+					.setParameter("password", userToLogin.getPassword()).getSingleResult();
+			// TODO
+			System.out.println("LOGGED IN USER " + user);
+			lr = new LoginResult(user, "");
+		} catch (NoResultException e) {
+			lr = new LoginResult(null, "Incorrect Username Or Password");
 		}
-		
-		
+
 		return lr;
 	}
-	
+
 	@Override
 	public void modifyUser(User user) {
 		em.persist(user);
@@ -346,29 +338,29 @@ public class TapMinderDBDAO implements TapMinderDAO {
 	public List<BeerRating> getRatingsByUser(User user) {
 
 		List<BeerRating> ratingList = user.getRatings();
-		
+
 		return ratingList;
 	}
 
 	@Override
 	public List<BeerRating> getRatingsByBeer(Beer beer) {
-		//TODO untested
-		
+		// TODO untested
+
 		List<BeerRating> ratingList = beer.getRatings();
-		
+
 		return ratingList;
 	}
 
 	@Override
 	public List<BeerRating> getRatingsByBrewery(Brewery brewery) {
 		List<Beer> beerList = brewery.getBeerList();
-		
+
 		List<BeerRating> ratingList = new ArrayList<>();
-		
+
 		for (Beer beer : beerList) {
 			ratingList.addAll(beer.getRatings());
 		}
-		
+
 		return ratingList;
 	}
 
@@ -384,13 +376,14 @@ public class TapMinderDBDAO implements TapMinderDAO {
 
 	@Override
 	public List<Neighborhood> getNeighborhoods() {
-		
-		List<Neighborhood> neighborhoods = em.createQuery("Select n from Neighborhood n",Neighborhood.class).getResultList();
-		
+
+		List<Neighborhood> neighborhoods = em.createQuery("Select n from Neighborhood n", Neighborhood.class)
+				.getResultList();
+
 		for (Neighborhood neighborhood : neighborhoods) {
 			em.detach(neighborhood);
 		}
-		
+
 		return null;
 
 	}
