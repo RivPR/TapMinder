@@ -17,7 +17,7 @@ import entities.User;
  */
 @Controller
 @SessionAttributes({"currentUser"})
-public class AlexTestController {
+public class TapMinderController {
 
 	@ModelAttribute("currentUser")
 	private User setBlankCurrentUser(){
