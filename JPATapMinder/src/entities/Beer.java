@@ -138,11 +138,6 @@ public class Beer {
 		this.brewery = brewery;
 	}
 
-
-
-	public void setAverageRating(Double averageRating) {
-		this.averageRating = averageRating;
-	}
 	
 
 	
