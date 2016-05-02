@@ -341,7 +341,7 @@ INSERT INTO `users` (`id`, `firstname`, `lastname`, `email`, `password`, `userty
 (1, 'James', 'Jones', 'jjones@fakemail.com', 'password', 1),
 (2, 'Tim', 'Trunk', 'ttrunk@fakemail.com', 'password', 2),
 (3, 'Tri', 'Tran', 'ttran@fakemail.com', 'password', 1),
-(4, 'Angel4', 'Argo', 'aargo@fakemail.com', 'password', 2),
+(4, 'Angel', 'Argo', 'aargo@fakemail.com', 'password', 2),
 (5, 'Alex', 'Arnot', 'aarnot@fakemail.com', 'password', 3),
 (6, 'David', 'Dannies', 'ddannies@fakemail.com', 'password', 3),
 (7, 'Elizabeth', 'Elijah', 'eelijah@fakemail.com', 'password', 1),
