@@ -89,6 +89,15 @@ public class TestAngel {
 			System.out.println(beerRating.getComments() + beerRating.getUser() + beerRating.toString());
 		}
 		 
+		 System.out.println("###########################\n This is user by name:");
+			String nameInput = "Ale";
+		    String name = nameInput.toLowerCase().trim();
+			name = "%" + name + "%";
+			userList = em.createQuery("SELECT u FROM User u WHERE u.firstname LIKE LOWER(:name) ", User.class)
+					.setParameter("name", name.toLowerCase()).getResultList();
+			for (BeerRating beerRating : ratingList) {
+				System.out.println(beerRating);
+			}
 		 
 		em.close();
 		emf.close();
