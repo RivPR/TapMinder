@@ -6,6 +6,7 @@ import java.util.List;
 import java.util.Set;
 
 import javax.persistence.EntityManager;
+import javax.persistence.NoResultException;
 import javax.persistence.PersistenceContext;
 
 import org.springframework.transaction.annotation.Transactional;
@@ -333,12 +334,20 @@ public class TapMinderDBDAO implements TapMinderDAO {
 	}
 
 	@Override
-	public User getUserByEmail(User userToLogin){
+	public LoginResult getUserByLoginCredentials(User userToLogin){
+		LoginResult lr = null;
+		try{
+		String query = "SELECT u FROM User u WHERE u.email = :email AND u.password = :password";
+		User user = em.createQuery(query,User.class).setParameter("email",userToLogin.getEmail()).setParameter("password", userToLogin.getPassword()).getSingleResult();
+		//TODO		
+		System.out.println("LOGGED IN USER " + user);
+		lr = new LoginResult(user,"");
+		}catch(NoResultException e){
+		lr = new LoginResult(null,"Incorrect Username Or Password");
+		}
 		
-		String query = "SELECT u FROM User u WHERE u.email = :email";
-		User user = em.createQuery(query,User.class).setParameter("email",userToLogin.getEmail()).getSingleResult();
 		
-		return null;
+		return lr;
 	}
 	
 	@Override
@@ -363,24 +372,32 @@ public class TapMinderDBDAO implements TapMinderDAO {
 
 	@Override
 	public List<BeerRating> getRatingsByUser(User user) {
-		//doesnt seem to work
-//		String query = "SELECT u.ratings FROM User u WHERE u.id = :userId" ;
-//		int userId = user.getId();
-//		List<BeerRating> userList =em.createQuery(query, BeerRating.class).setParameter("userId", userId).getResultList();
-//		return userList;
-		return null;
+
+		List<BeerRating> ratingList = user.getRatings();
+		
+		return ratingList;
 	}
 
 	@Override
 	public List<BeerRating> getRatingsByBeer(Beer beer) {
-		// TODO Auto-generated method stub
-		return null;
+		//TODO untested
+		
+		List<BeerRating> ratingList = beer.getRatings();
+		
+		return ratingList;
 	}
 
 	@Override
 	public List<BeerRating> getRatingsByBrewery(Brewery brewery) {
-		// TODO Auto-generated method stub
-		return null;
+		List<Beer> beerList = brewery.getBeerList();
+		
+		List<BeerRating> ratingList = new ArrayList<>();
+		
+		for (Beer beer : beerList) {
+			ratingList.addAll(beer.getRatings());
+		}
+		
+		return ratingList;
 	}
 
 	@Override

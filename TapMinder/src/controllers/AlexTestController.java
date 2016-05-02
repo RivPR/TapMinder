@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.servlet.ModelAndView;
 
+import data.LoginResult;
 import data.TapMinderDAO;
 import entities.User;
 
@@ -28,7 +29,7 @@ public class AlexTestController {
 	private TapMinderDAO dao;
 
 	@RequestMapping("menu.do")
-	private ModelAndView menu(@RequestParam("menuChoice") String menuChoice) {
+	private ModelAndView menu(@RequestParam("menuChoice") String menuChoice, @ModelAttribute("currentUser") User currentUser) {
 		ModelAndView mv = new ModelAndView();
 
 		// menu actions mapped below
@@ -40,7 +41,7 @@ public class AlexTestController {
 			
 		case "findBeers":
 			//TODO: add real stuff
-			mv.setViewName("index.jsp");
+			mv.setViewName("AlexTestJSPStuff/testPage.jsp");
 			break;
 		case "findBreweries":
 			//TODO: add real stuff
@@ -66,6 +67,14 @@ public class AlexTestController {
 			//TODO: add real stuff
 			mv.setViewName("index.jsp");
 			break;
+		case "logout":
+			System.out.println("logging out");
+			System.out.println(currentUser);
+			currentUser = new User();
+			System.out.println(currentUser);
+			mv.addObject("currentUser",currentUser);
+			mv.setViewName("indexAlexTest.jsp");
+			break;
 		default:
 			mv.setViewName("index.jsp");
 			break;
@@ -81,9 +90,18 @@ public class AlexTestController {
 		ModelAndView mv = new ModelAndView();
 		System.out.println(user.getEmail());
 		System.out.println(user.getPassword());
-		currentUser = dao.getUserByEmail(user);
-		
-		mv.setViewName("index.jsp");
+		LoginResult result = dao.getUserByLoginCredentials(user);
+		if(result.getUser() != null){
+		System.out.println("new current user: " + currentUser);
+		//TODO: better way to set session attributes?
+		mv.addObject("currentUser",result.getUser());
+		mv.setViewName("indexAlexTest.jsp");
+		}
+		else{
+			mv.addObject("LoginError",result.getMessage());
+			mv.addObject("user",new User());
+			mv.setViewName("AlexTestJSPStuff/login.jsp");
+		}
 		return mv;
 		
 	}

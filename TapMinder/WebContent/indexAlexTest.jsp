@@ -44,6 +44,7 @@
 
 </head>
 
+
 <body id="page-top">
 
     <nav id="mainNav" class="navbar navbar-default navbar-fixed-top">
@@ -109,7 +110,41 @@
 	</div>
 	</header><body>
 
+<body>
 
+<form action="menu.do" method="POST">
+
+	<!-- 		if logged in, show loggout instead (destory session or something) -->
+	<button type="submit" name="menuChoice" value="login">Login</button>
+	<button type="submit" name="menuChoice" value="findBeers">Find
+		Beers</button>
+	<button type="submit" name="menuChoice" value="findBreweries">Find
+		Breweries</button>
+	<button type="submit" name="menuChoice" value="viewUserBeers">View
+		User Beers</button>
+	<button type="submit" name="menuChoice" value="myAccount">View
+		User Account</button>
+	<!-- moderators and up only -->
+	<button type="submit" name="menuChoice" value="modifyBreweries">edit
+		brews</button>
+	<!-- admin and up only -->
+	<button type="submit" name="menuChoice" value="modifyUsers">edit
+		moderators</button>
+		
+	<button type="submit" name="menuChoice" value="logout">logout</button>
+		
+
+</form>
+
+
+<c:if test="${currentUser.id > 0}"> 
+	${currentUser.firstname}
+	${currentUser.email}
+	${currentUser.lastname}
+	${currentUser.password}
+	${currentUser.firstname}
+	${currentUser.firstname}
+</c:if>
 
 </body>
 </html>
