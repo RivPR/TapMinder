@@ -11,9 +11,11 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.servlet.ModelAndView;
 
 import data.BeerParameters;
+import data.BreweryParameters;
 import data.LoginResult;
 import data.TapMinderDAO;
 import entities.Beer;
+import entities.Brewery;
 import entities.User;
 
 /*
@@ -109,6 +111,27 @@ public class TapMinderController {
 		mv.addObject("beerList",beerList);
 		mv.setViewName("searchResult.jsp");
 		
+		return mv;
+	}
+	
+	@RequestMapping("searchBreweriesPage.do")
+	private ModelAndView searchBreweriesPage(@RequestParam("findBy") String choice){
+		ModelAndView mv = new ModelAndView();
+		mv.addObject("BreweryParameters",new BreweryParameters());
+		System.out.println(choice);
+		mv.addObject("searchSetting", choice);
+		mv.setViewName("searchBreweries.jsp");
+		
+		return null;
+		
+	}
+	
+	@RequestMapping("searchBreweries.do")
+	private ModelAndView searchBreweries(BreweryParameters breweryParameters){
+		ModelAndView mv = new ModelAndView();
+		List<Brewery> breweryList = dao.getBreweries(breweryParameters);
+		mv.addObject("breweryList",breweryList);
+		mv.setViewName("searchBreweries.jsp");
 		return mv;
 	}
 
