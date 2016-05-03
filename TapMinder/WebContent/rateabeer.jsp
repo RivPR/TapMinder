@@ -1,4 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
+<%-- <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
@@ -12,7 +12,9 @@
 <title>Rate the beer!</title>
 </head>
 <body>
-<div>
+<div> --%>
+
+ <%@include file="/includes/header.jsp"%>
 
 	Name: ${beer.name} <br>
 	ABV: ${beer.abv} <br>
@@ -49,12 +51,12 @@
 			</form>
 		</div>
 
+<%@include file="/includes/footer.jsp"%>
 
 
 
-
-
+<!-- 
 
 	</div>
 </body>
-</html>
+</html> -->
