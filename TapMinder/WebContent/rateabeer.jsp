@@ -29,7 +29,7 @@
 	<button type="submit" value="3" name="rating" >3</button>
 	<button type="submit" value="4" name="rating" >4</button>
 	<button type="submit" value="5" name="rating" >5</button>
-	<input type="hidden" name="beerId" value="${beer}" />
+	<input type="hidden" name="beerId" value="${beer.id}" />
 	</form>
 	</div>
 

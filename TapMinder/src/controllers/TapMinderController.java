@@ -390,7 +390,8 @@ public class TapMinderController {
 
 	}	
 	@RequestMapping(path="rateABeer.do", params="beerId")
-	private ModelAndView rateAbeer(@ModelAttribute("currentUser") User currentUser, @RequestParam("beerId") Integer beer){
+	private ModelAndView rateAbeer(@ModelAttribute("currentUser") User currentUser, 
+								   @RequestParam("beerId") Integer beer){
 		ModelAndView mv = new ModelAndView();
 		Beer beerResult = dao.getBeer(beer);
 
@@ -399,18 +400,23 @@ public class TapMinderController {
 		mv.setViewName("rateabeer.jsp");
 		return mv;
 	}
-	@RequestMapping(path="saveRateABeer.do", params="rating")
-	private ModelAndView saveRatingOfBeer(@ModelAttribute("currentUser") User currentUser, @RequestParam("rating") int rating, @RequestParam("beerId") Beer beer){
+	@RequestMapping(path="saveRateABeer.do")
+	private ModelAndView saveRatingOfBeer(@ModelAttribute("currentUser") User currentUser, 
+										  @RequestParam("rating") int rating, 
+										  @RequestParam("beerId") int beer){
 		ModelAndView mv = new ModelAndView();
-		Beer beerResult;
 		BeerRating br = new BeerRating();
-
-		br.setBeer(beer);
+		System.out.println("this is the userID!*********************" + dao.getUser(currentUser.getId()));
+		Beer beerToBeRated = dao.getBeer(beer);
+		User userSelected = dao.getUser(currentUser.getId());
+		br.setUser(userSelected);
+		br.setBeer(beerToBeRated);
+		
 		br.setRating(rating);
 		dao.modifyRating(br);
 		mv.addObject("currentUser", currentUser);
 		mv.addObject("br", br);
-		mv.setViewName("index.jsp");
+		mv.setViewName("indexAlexTest.jsp");
 		return mv;
 	}
 

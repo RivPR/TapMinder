@@ -13,6 +13,7 @@ import javax.persistence.Table;
 @Table(name="beer_ratings")
 public class BeerRating {
 
+
 	@Id
 	private int id;
 
@@ -30,6 +31,11 @@ public class BeerRating {
 	@Column(name="comments")
 	private String comments;
 
+	public BeerRating() {
+		super();
+	}
+
+	
 	public int getId() {
 		return id;
 	}
