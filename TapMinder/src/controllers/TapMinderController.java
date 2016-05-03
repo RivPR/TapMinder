@@ -233,7 +233,8 @@ public class TapMinderController {
 	@RequestMapping("findUserBeerList.do")
 	private ModelAndView printUserBeers(@ModelAttribute("currentUser") User currentUser) {
 		ModelAndView mv = new ModelAndView();
-		List<BeerRating> userRatings = currentUser.getRatings();
+		User userLogged = dao.getUser(currentUser.getId());
+		List<BeerRating> userRatings = userLogged.getRatings();
 		List<Beer> beers = new ArrayList<>();
 		if (userRatings != null && userRatings.size() > 0) {
 			for (BeerRating beerRating : userRatings) {
@@ -241,6 +242,8 @@ public class TapMinderController {
 				beers.add(beerRating.getBeer());
 			}
 		}
+		
+		mv.addObject("ratings", userRatings);
 		mv.addObject("userBeers", beers);
 		mv.addObject("currentUser", currentUser);
 		mv.setViewName("myBeers.jsp");
