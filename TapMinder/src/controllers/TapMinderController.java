@@ -214,6 +214,7 @@ public class TapMinderController {
 			}
 		}
 		mv.addObject("userBeers", beers);
+		mv.addObject("currentUser", currentUser);
 		mv.setViewName("myBeers.jsp");
 
 		return mv;
@@ -232,10 +233,11 @@ public class TapMinderController {
 	}
 
 	@RequestMapping("searchBeers.do")
-	private ModelAndView searchBeers(BeerParameters beerParameters) {
+	private ModelAndView searchBeers(@ModelAttribute("currentUser") User currentUser, BeerParameters beerParameters) {
 		ModelAndView mv = new ModelAndView();
 		List<Beer> beerList = dao.getBeers(beerParameters);
 		mv.addObject("beerList", beerList);
+		mv.addObject("currentUser", currentUser);
 		mv.setViewName("searchResult.jsp");
 
 		return mv;
@@ -385,13 +387,23 @@ public class TapMinderController {
 
 	}	
 	@RequestMapping(path="rateABeer.do", params="beerId")
-	private ModelAndView rateAbeer(User user, @ModelAttribute("beerId") Integer beerId){
+	private ModelAndView rateAbeer(@ModelAttribute("currentUser") User currentUser, @RequestParam("beerId") Integer beer){
 		ModelAndView mv = new ModelAndView();
-		Beer result = dao.getBeer(beerId);
-		
-		
+		Beer beerResult = dao.getBeer(beer);
+
+		mv.addObject("currentUser", currentUser);
+		mv.addObject("beer", beerResult);
 		mv.setViewName("rateabeer.jsp");
 		return mv;
 	}
+	@RequestMapping(path="saveRateABeer.do", params="rating")
+	private ModelAndView saveRatingOfBeer(@ModelAttribute("currentUser") User currentUser, @RequestParam("rating") int rating){
+		ModelAndView mv = new ModelAndView();
+		
+		mv.addObject(attributeValue);
+		mv.setViewName("drama.jsp");
+		return mv;
+	}
+
 
 }

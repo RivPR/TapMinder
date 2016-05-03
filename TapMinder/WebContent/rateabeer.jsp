@@ -13,7 +13,7 @@
 </head>
 <body>
 <div>
-<c:forEach var="beer" items="${beerList}">
+
 	Name: ${beer.name} <br>
 	ABV: ${beer.abv} <br>
 	HopCount: ${beer.hopCount} <br>
@@ -22,11 +22,16 @@
 	<img src="${beer.imageLink}" />
 	<br>
 	<input type="hidden" name="beerId" value="${beer.id}" />
-	<form action="rateABeer.do">
-	
+	<div>
+	<form action="saveRateABeer.do">
+	<button type="submit" value="1" name="rating" >1</button>
+	<button type="submit" value="2" name="rating" >2</button>
+	<button type="submit" value="3" name="rating" >3</button>
+	<button type="submit" value="4" name="rating" >4</button>
+	<button type="submit" value="5" name="rating" >5</button>
 	</form>
-	
-</c:forEach>
+	</div>
+
 </div>
 </body>
 </html>
