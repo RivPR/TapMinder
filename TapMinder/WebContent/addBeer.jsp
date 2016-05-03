@@ -15,15 +15,15 @@
 
 
 
-			<form:form action="findBeersPage.do" modelAttribute="Beer">
+			<form:form action="addBeer.do" modelAttribute="Beer">
 			
-					<input type="hidden" value="${Brewery.id}" />
+					<input type="hidden" name="breweryId" value="${Brewery.id}" />
 					Name<form:input type="text" path="name" />
 					ABV<form:input type="text"  path="abv" />
 					Hop Count<form:input type="text"  path="hopCount" />
 					Style<form:input type="text"  path="beerStyle" />
 					desc<form:input type="text"  path="description" />
-					im link<form:input type="text"  path="imageList" />
+					im link<form:input type="text"  path="imageLink" />
 
 				<button type="submit">Add Beer</button>
 

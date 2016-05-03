@@ -152,7 +152,7 @@ public class TapMinderController {
 	}// menu.do
 
 	@RequestMapping("addBeerPage.do")
-	private ModelAndView addBeer(@RequestParam("breweryId") Integer breweryId) {
+	private ModelAndView addBeerPage(@RequestParam("breweryId") Integer breweryId) {
 
 		ModelAndView mv = new ModelAndView();
 
@@ -164,12 +164,15 @@ public class TapMinderController {
 	}
 
 	@RequestMapping("addBeer.do")
-	private ModelAndView addBeer(@RequestParam("beerToAdd") Beer beerToAdd) {
+	private ModelAndView addBeer(Beer beer, @RequestParam("breweryId") Integer breweryId) {
 		ModelAndView mv = new ModelAndView();
 
+		beer.setBrewery(dao.getBrewery(breweryId));
+		
+		dao.addBeer(beer);
+		
 		mv.addObject("Beer", new Beer());
-		mv.addObject("BeerParameters", new BeerParameters());
-		mv.setViewName("searchBeer.jsp");
+		mv.setViewName("indexAlexTest.jsp");
 		return mv;
 	}
 
