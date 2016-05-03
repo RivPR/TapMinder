@@ -22,7 +22,7 @@
 	<img src="${beer.imageLink}" />
 	<br>
 	<input type="hidden" name="beerId" value="${beer.id}" />
-	<div>
+<%-- 	<div>
 	<form action="saveRateABeer.do">
 	<textarea name="comments" placeholder="Comments:"></textarea><br/>
 	<button type="submit" value="1" name="rating" >1</button>
@@ -32,8 +32,29 @@
 	<button type="submit" value="5" name="rating" >5</button>
 	<input type="hidden" name="beerId" value="${beer.id}" />
 	</form>
-	</div>
+	</div> --%>
 
-</div>
+		<div>
+			<form action="saveRateABeer.do">
+			<textarea name="comments" placeholder="Comments:"></textarea><br/>
+				<span class="star-rating"> <input type="radio" name="rating"
+					value="1"><i></i> <input type="radio" name="rating"
+					value="2"><i></i> <input type="radio" name="rating"
+					value="3"><i></i> <input type="radio" name="rating"
+					value="4"><i></i> <input type="radio" name="rating"
+					value="5"><i></i>
+					<input type="hidden" name="beerId" value="${beer.id}" />
+				</span> <strong class="choice">Choose a rating</strong> 
+				<input type="submit" value="Submit">
+			</form>
+		</div>
+
+
+
+
+
+
+
+	</div>
 </body>
 </html>
