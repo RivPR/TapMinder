@@ -31,6 +31,8 @@ public class BeerRating {
 	@Column(name="comments")
 	private String comments;
 
+	
+	
 	public BeerRating() {
 		super();
 	}

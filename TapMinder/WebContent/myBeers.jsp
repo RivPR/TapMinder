@@ -23,7 +23,7 @@ Beer Name: ${ratings.beer.name}<br/>
 Rating: ${ratings.rating}<br/>
 Comments: ${ratings.comments}<br/>
 <form action="changeARating.do">
-		<input type="hidden" name="beerId" value="112" />
+		<input type="hidden" name="ratingID" value="${ratings.id}" />
 		<button type="submit">Edit</button>
 </form>
 </div><br/>

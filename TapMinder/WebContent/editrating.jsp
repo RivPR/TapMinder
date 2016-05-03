@@ -15,14 +15,16 @@
 
 
 <div>
-Beer Name: ${ratings.beer.name}<br/>
-Rating: ${ratings.rating}<br/>
-Comments: ${ratings.comments}<br/>
+Beer Name: <h3>${br.beer.name}</h3><br/>
+Rating: <h3>${br.rating}</h3><br/>
+Comments: <textarea name="comments">${br.comments}</textarea><br/>
+
+
 <form action="changeARating.do">
-		<input type="hidden" name="beerId" value="${br.id}" />
-		<button type="submit">Edit</button>
+		<input type="hidden" name="ratingID" value="${br.id}" />
+		<button type="submit">Save Edit</button>
 </form>
-</div><br/>
+</div><br/><br/>
 
 
 </body>

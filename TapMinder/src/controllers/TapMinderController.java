@@ -469,9 +469,11 @@ public class TapMinderController {
 	}
 	@RequestMapping("changeARating.do")
 	private ModelAndView changeTheRating(@ModelAttribute("currentUser") User currentUser, 
-										 @RequestParam("beerId") int ratingId ){
+										 @RequestParam("ratingID") int ratingId ){
 		ModelAndView mv = new ModelAndView();
-		
+		BeerRating br = dao.getRatingByID(ratingId);
+		mv.addObject("rating", ratingId);
+		mv.addObject("br", br);
 		mv.setViewName("editrating.jsp");
 		return mv;
 	}

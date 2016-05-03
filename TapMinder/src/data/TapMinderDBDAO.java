@@ -545,5 +545,12 @@ public class TapMinderDBDAO implements TapMinderDAO {
 		
 		return userTypeList;
 	}
+	
+	@Override
+	public BeerRating getRatingByID(int id){
+		BeerRating br = new BeerRating();
+		br= em.find(BeerRating.class, id);
+		return br;
+	}
 
 }
