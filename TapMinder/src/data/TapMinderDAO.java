@@ -89,6 +89,8 @@ public interface TapMinderDAO {
 	public List<UserType> getUserTypes();
 
 	BeerRating getRatingByID(int id);
+
+	void addRating(BeerRating beerRating);
 	
 	
 	

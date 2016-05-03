@@ -495,7 +495,7 @@ public class TapMinderDBDAO implements TapMinderDAO {
 	}
 
 	@Override
-	public void modifyRating(BeerRating beerRating) {
+	public void addRating(BeerRating beerRating) {
 		List<BeerRating> BeerRating = em.createQuery("Select br from BeerRating br", BeerRating.class).getResultList();
 		int counter = 0;
 		for (BeerRating br : BeerRating) {
@@ -510,6 +510,14 @@ public class TapMinderDBDAO implements TapMinderDAO {
 		if(counter==0){
 		em.persist(beerRating);
 		}
+	}
+	
+	@Override
+	public void modifyRating(BeerRating br){
+		BeerRating beerR = em.find(BeerRating.class, br.getId());
+		beerR.setRating(br.getRating());
+		beerR.setComments(br.getComments());
+		
 	}
 
 	@Override
@@ -562,5 +570,6 @@ public class TapMinderDBDAO implements TapMinderDAO {
 		br= em.find(BeerRating.class, id);
 		return br;
 	}
+
 
 }
