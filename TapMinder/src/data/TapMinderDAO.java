@@ -83,7 +83,7 @@ public interface TapMinderDAO {
 	
 	public UserType getUserType(int id);
 	
-	
+	public List<UserType> getUserTypes();
 	
 	
 	

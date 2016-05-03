@@ -12,14 +12,17 @@
 <title>USR Account</title>
 </head>
 <body>
-
+USER INFO (WHEN SIGNED IN)
 ${currentUser.firstname}
 ${currentUser.lastname}
 ${currentUser.email}
 ${currentUser.password}
 ${currentUser.usertype.typeName}
 ${currentUser.ratings.size()}
-
+<form action="deleteUser.do">
+	<input type="hidden" name="userId" value="${currentUser.id}">
+	<button type="submit">DELETE</button>
+</form>
 add delete account
 
 

@@ -505,5 +505,18 @@ public class TapMinderDBDAO implements TapMinderDAO {
 		return em.find(UserType.class, id);
 		
 	}
+	
+	@Override 
+	public List<UserType> getUserTypes(){
+		
+		List<UserType> userTypeList = new ArrayList<>();
+		
+		userTypeList.add(em.find(UserType.class, 1));
+		userTypeList.add(em.find(UserType.class, 2));
+		userTypeList.add(em.find(UserType.class, 3));
+
+		
+		return userTypeList;
+	}
 
 }

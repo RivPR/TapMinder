@@ -120,6 +120,12 @@ public class TapMinderController {
 			
 			mv.setViewName("addBrewery.jsp");
 			break;
+		case "signUp":
+			// TODO: add real stuff
+			mv.addObject("User", new User());
+
+			mv.setViewName("signUp.jsp");
+			break;
 		case "logout":
 			System.out.println("logging out");
 			System.out.println(currentUser);
@@ -288,11 +294,22 @@ public class TapMinderController {
 		return mv;
 	}
 	
+	@RequestMapping("signUp.do")
+	private ModelAndView signUp(User user){
+		ModelAndView mv = new ModelAndView();
+
+		user.setUsertype(dao.getUserType(1));
+		dao.addUser(user);
+		mv.addObject("User",new User());
+		mv.setViewName("indexAlexTest.jsp");
+		return mv;
+	}
+	
 	@RequestMapping("modifyUserPage.do")
 	private ModelAndView modifiyUserPage(@RequestParam("userId") Integer userId){
 		ModelAndView mv = new ModelAndView();
 		mv.addObject("User", dao.getUser(userId));
-	
+		mv.addObject("userTypeList",dao.getUserTypes());
 		mv.setViewName("modifyUser.jsp");
 	return mv;
 	}

@@ -100,12 +100,14 @@
 					value="myAccount">View User Account</button>
 				<!-- moderators and up only -->
 				<button style="color: black;" type="submit" name="menuChoice"
-					value="modifyBreweries">edit brews</button>
+					value="modifyBreweries">edit breweries</button>
 				<!-- admin and up only -->
 				<button style="color: black;" type="submit" name="menuChoice"
-					value="modifyUsers">edit users</button>
+					value="modifyUsers">manager users</button>
 				<button style="color: black;" type="submit" name="menuChoice"
 					value="addBreweries">add brewrss</button>
+				<button style="color: black;" type="submit" name="menuChoice"
+					value="signUp">sign up</button>
 			</form>
 
 		</div>
