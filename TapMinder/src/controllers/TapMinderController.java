@@ -43,7 +43,7 @@ public class TapMinderController {
 	public ModelAndView initializeLogin() {
 		ModelAndView mv = new ModelAndView();
 		mv.addObject("user", new User());
-		mv.setViewName("index.jsp");
+		mv.setViewName("index1.jsp");
 		return mv;
 	}
 
@@ -63,7 +63,7 @@ public class TapMinderController {
 		} else {
 			mv.addObject("LoginError", result.getMessage());
 			mv.addObject("user", new User());
-			mv.setViewName("index.jsp");
+			mv.setViewName("index1.jsp");
 		}
 		return mv;
 	}
@@ -372,14 +372,23 @@ public class TapMinderController {
 			System.out.println("new current user: " + currentUser);
 			// TODO: better way to set session attributes?
 			mv.addObject("currentUser", result.getUser());
-			mv.setViewName("index.jsp");
+			mv.setViewName("index1.jsp");
 		} else {
 			mv.addObject("LoginError", result.getMessage());
 			mv.addObject("user", new User());
-			mv.setViewName("index.jsp");
+			mv.setViewName("index1.jsp");
 		}
 		return mv;
 
+	}	
+	@RequestMapping(path="rateABeer.do", params="beerId")
+	private ModelAndView rateAbeer(User user, @ModelAttribute("beerId") Integer beerId){
+		ModelAndView mv = new ModelAndView();
+		Beer result = dao.getBeer(beerId);
+		
+		
+		mv.setViewName("rateabeer.jsp");
+		return mv;
 	}
 
 }
