@@ -44,7 +44,7 @@ public class TapMinderController {
 		ModelAndView mv = new ModelAndView();
 		mv.addObject("currentUser", currentUser);
 		mv.addObject("user", new User());
-		mv.setViewName("index1.jsp");
+		mv.setViewName("index.jsp");
 		return mv;
 	}
 
@@ -384,7 +384,7 @@ public class TapMinderController {
 		} else {
 			mv.addObject("LoginError", result.getMessage());
 			mv.addObject("user", new User());
-			mv.setViewName("index1.jsp");
+			mv.setViewName("index.jsp");
 		}
 		return mv;
 
