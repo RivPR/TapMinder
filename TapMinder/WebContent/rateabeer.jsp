@@ -16,6 +16,9 @@
 
  <%@include file="/includes/header.jsp"%>
 
+	<h1>Rate this Beer</h1>
+	<h3>Your fellow TapMinders value your opinion</h3>
+
 	Name: ${beer.name} <br>
 	ABV: ${beer.abv} <br>
 	HopCount: ${beer.hopCount} <br>
@@ -39,18 +42,17 @@
 		<div>
 			<form action="saveRateABeer.do">
 			<textarea style="color:black" name="comments" placeholder="Comments:"></textarea><br/>
-				<span class="star-rating"> <input type="radio" name="rating"
-					value="1"><i></i> <input type="radio" name="rating"
-					value="2"><i></i> <input type="radio" name="rating"
-					value="3"><i></i> <input type="radio" name="rating"
-					value="4"><i></i> <input type="radio" name="rating"
-					value="5"><i></i>
-					<input type="hidden" name="beerId" value="${beer.id}" />
-				</span>Choose a rating <strong class="choice"></strong> 
+				<span class="star-rating"> 
+				<input type="radio" name="rating" value="1"><i></i> 
+				<input type="radio" name="rating" value="2"><i></i> 
+				<input type="radio" name="rating" value="3"><i></i> 
+				<input type="radio" name="rating" value="4"><i></i> 
+				<input type="radio" name="rating" value="5"><i></i>
+				<input type="hidden" name="beerId" value="${beer.id}"><i></i>
+				</span><strong class="choice"><p>Choose a rating</p></strong> 
 				<input type="submit" value="Submit">
 			</form>
 		</div>
-
 
 <%@include file="/includes/footer.jsp"%>
 

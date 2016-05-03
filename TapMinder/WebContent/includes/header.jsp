@@ -97,10 +97,8 @@
  <header>
       <div class="header-content">
             <div class="header-content-inner">
-                <h1>Pending...</h1> <br>
-                <hr>
-                <p>Pending...</p>
+                
                
             
             </div>
-
+           
