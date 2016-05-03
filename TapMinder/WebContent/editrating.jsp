@@ -9,26 +9,22 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Rated beers</title>
+<title>Edit your rating</title>
 </head>
 <body>
 
-Beers:<br/>
 
-
-
-<c:forEach items="${currentUser.ratings}" var="ratings">
 <div>
-Beer Name: ${ratings.beer.name}<br/>
-Rating: ${ratings.rating}<br/>
-Comments: ${ratings.comments}<br/>
-<form action="changeARating.do">
-		<input type="hidden" name="ratingID" value="${ratings.id}" />
-		<button type="submit">Edit</button>
-</form>
-</div><br/>
-</c:forEach>
+Beer Name: <h3>${br.beer.name}</h3><br/>
+Rating: <h3>${br.rating}</h3><br/>
+Comments: <textarea name="comments">${br.comments}</textarea><br/>
 
+
+<form action="changeARating.do">
+		<input type="hidden" name="ratingID" value="${br.id}" />
+		<button type="submit">Save Edit</button>
+</form>
+</div><br/><br/>
 
 
 </body>
