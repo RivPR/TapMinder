@@ -464,5 +464,13 @@ public class TapMinderController {
 		mv.setViewName("indexAlexTest.jsp");
 		return mv;
 	}
+	@RequestMapping("changeARating.do")
+	private ModelAndView changeTheRating(@ModelAttribute("currentUser") User currentUser, 
+										 @RequestParam("beerId") int ratingId ){
+		ModelAndView mv = new ModelAndView();
+		
+		mv.setViewName("editrating.jsp");
+		return mv;
+	}
 
 }
