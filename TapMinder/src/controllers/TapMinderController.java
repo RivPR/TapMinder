@@ -422,15 +422,15 @@ public class TapMinderController {
 	@RequestMapping(path="saveRateABeer.do")
 	private ModelAndView saveRatingOfBeer(@ModelAttribute("currentUser") User currentUser, 
 										  @RequestParam("rating") int rating, 
-										  @RequestParam("beerId") int beer){
+										  @RequestParam("beerId") int beer,
+										  @RequestParam("comments") String comments){
 		ModelAndView mv = new ModelAndView();
 		BeerRating br = new BeerRating();
-		System.out.println("this is the userID!*********************" + dao.getUser(currentUser.getId()));
 		Beer beerToBeRated = dao.getBeer(beer);
 		User userSelected = dao.getUser(currentUser.getId());
 		br.setUser(userSelected);
 		br.setBeer(beerToBeRated);
-		
+		br.setComments(comments);
 		br.setRating(rating);
 		dao.modifyRating(br);
 		mv.addObject("currentUser", currentUser);
