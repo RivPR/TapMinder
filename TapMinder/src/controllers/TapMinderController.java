@@ -99,32 +99,31 @@ public class TapMinderController {
 			break;
 		case "modifyBreweries":
 			// TODO: this will actually probably not be used
-			
+
 			mv.setViewName("index.jsp");
 			break;
 		case "modifyModerators":
-			
+
 			// TODO: add real stuff
 			mv.setViewName("index.jsp");
 			break;
 		case "modifyUsers":
-			if(currentUser.getUsertype().getAccessLevel() > 2){
-			mv.addObject("User",new User());
-			mv.setViewName("manageUsers.jsp");
-			}
-			else{
+			if (currentUser.getUsertype().getAccessLevel() > 2) {
+				mv.addObject("User", new User());
+				mv.setViewName("manageUsers.jsp");
+			} else {
 				mv.setViewName("indexAlexTest.jsp");
 			}
 			break;
 		case "addUser":
-			mv.addObject("User",new User());
+			mv.addObject("User", new User());
 			mv.setViewName("addUser.jsp");
 			break;
 		case "addBreweries":
 			// TODO: add real stuff
 			mv.addObject("Brewery", new Brewery());
 			mv.addObject("neighborhoodList", dao.getNeighborhoods());
-			
+
 			mv.setViewName("addBrewery.jsp");
 			break;
 		case "signUp":
@@ -151,6 +150,31 @@ public class TapMinderController {
 		return mv;
 
 	}// menu.do
+	
+	@RequestMapping("addBeerPage.do")
+	private ModelAndView addBeer(@RequestParam("breweryId") Integer breweryId){
+		
+		ModelAndView mv = new ModelAndView();
+		
+		
+		mv.addObject("Brewery", dao.getBrewery(breweryId));
+		mv.addObject("Beer",new Beer());
+		mv.setViewName("addBeer.jsp");
+		return mv;
+		
+	}
+
+	@RequestMapping("addBeer.do")
+	private ModelAndView addBeer(@RequestParam("beerToAdd") Beer beerToAdd) {
+		ModelAndView mv = new ModelAndView();
+
+		
+		
+		mv.addObject("Beer",new Beer());
+		mv.addObject("BeerParameters",new BeerParameters());
+		mv.setViewName("searchBeer.jsp");
+		return mv;
+	}
 
 	@RequestMapping("modifyBreweryPage.do")
 	private ModelAndView modifyBrewery(@RequestParam("breweryId") Integer breweryId) {
@@ -170,8 +194,8 @@ public class TapMinderController {
 	@RequestMapping("deleteBrewery.do")
 	private ModelAndView deleteBrewery(@RequestParam("breweryId") Integer breweryId) {
 		ModelAndView mv = new ModelAndView();
-		//TODO not passing object
-//		dao.deleteBrewery(dao.getBrewery(breweryId));
+		// TODO not passing object
+		// dao.deleteBrewery(dao.getBrewery(breweryId));
 		dao.deleteBrewery(breweryId);
 		System.out.println("should be deleted");
 		// mv.addObject("Brewery", brewery);
@@ -188,11 +212,11 @@ public class TapMinderController {
 		mv.setViewName("indexAlexTest.jsp");
 		return mv;
 	}
-	
+
 	@RequestMapping("addBrewery.do")
 	private ModelAndView addBrewery(Brewery brewery, @RequestParam("neighboorHoodId") Integer neighborHoodId) {
 		ModelAndView mv = new ModelAndView();
-		
+
 		dao.addBrewery(brewery, neighborHoodId);
 		mv.addObject("Brewery", brewery);
 		mv.setViewName("indexAlexTest.jsp");
@@ -251,7 +275,8 @@ public class TapMinderController {
 	}
 
 	@RequestMapping("searchBreweriesPage.do")
-	private ModelAndView searchBreweriesPage(@ModelAttribute("currentUser") User currentUser, @RequestParam("findBy") String choice) {
+	private ModelAndView searchBreweriesPage(@ModelAttribute("currentUser") User currentUser,
+			@RequestParam("findBy") String choice) {
 		ModelAndView mv = new ModelAndView();
 		System.out.println(choice);
 		mv.addObject("BreweryParameters", new BreweryParameters());
@@ -278,55 +303,55 @@ public class TapMinderController {
 	}
 
 	@RequestMapping("findUsers.do")
-	private ModelAndView findUsers(User user){
+	private ModelAndView findUsers(User user) {
 		ModelAndView mv = new ModelAndView();
-		
+
 		List<User> userList = dao.getUsers(user);
-		
+
 		for (User user2 : userList) {
 			System.out.println(user2);
 		}
 		mv.addObject("User", user);
-		mv.addObject("userList",userList);
+		mv.addObject("userList", userList);
 		mv.setViewName("manageUsers.jsp");
 		return mv;
 	}
-	
+
 	@RequestMapping("addUser.do")
-	private ModelAndView addUser(User user, Integer userTypeId){
+	private ModelAndView addUser(User user, Integer userTypeId) {
 		ModelAndView mv = new ModelAndView();
 		System.out.println("usertypeid " + userTypeId);
 		UserType ut = dao.getUserType(userTypeId);
 		System.out.println(ut.getTypeName());
 		user.setUsertype(dao.getUserType(userTypeId));
 		dao.addUser(user);
-		mv.addObject("User",new User());
+		mv.addObject("User", new User());
 		mv.setViewName("manageUsers.jsp");
 		return mv;
 	}
-	
+
 	@RequestMapping("signUp.do")
-	private ModelAndView signUp(User user){
+	private ModelAndView signUp(User user) {
 		ModelAndView mv = new ModelAndView();
-		
+
 		user.setUsertype(dao.getUserType(1));
 		dao.addUser(user);
-		mv.addObject("User",new User());
+		mv.addObject("User", new User());
 		mv.setViewName("index.jsp");
 		return mv;
 	}
-	
+
 	@RequestMapping("modifyUserPage.do")
-	private ModelAndView modifiyUserPage(@RequestParam("userId") Integer userId){
+	private ModelAndView modifiyUserPage(@RequestParam("userId") Integer userId) {
 		ModelAndView mv = new ModelAndView();
 		mv.addObject("User", dao.getUser(userId));
-		mv.addObject("userTypeList",dao.getUserTypes());
+		mv.addObject("userTypeList", dao.getUserTypes());
 		mv.setViewName("modifyUser.jsp");
-	return mv;
+		return mv;
 	}
-	
+
 	@RequestMapping("modifyUser.do")
-	private ModelAndView modifyUser(User user, Integer userTypeId){
+	private ModelAndView modifyUser(User user, Integer userTypeId) {
 		ModelAndView mv = new ModelAndView();
 		System.out.println(user);
 		user.setUsertype(dao.getUserType(userTypeId));
@@ -334,38 +359,36 @@ public class TapMinderController {
 		dao.modifyUser(user);
 		mv.addObject("User", new User());
 		mv.setViewName("manageUsers.jsp");
-	
-	return mv;
+
+		return mv;
 	}
-	
-	
+
 	@RequestMapping("deleteUser.do")
-	private ModelAndView deleteUser(@RequestParam("userId") Integer userId){
+	private ModelAndView deleteUser(@RequestParam("userId") Integer userId) {
 		ModelAndView mv = new ModelAndView();
 		dao.deleteUser(userId);
-		//TODO: FINISH
-		mv.addObject("User",new User());
+		// TODO: FINISH
+		mv.addObject("User", new User());
 		mv.setViewName("manageUsers.jsp");
 		return mv;
-		
+
 	}
-	
-	
+
 	@RequestMapping("deleteCurrentUser.do")
-	private ModelAndView deleteCurrentUser(@ModelAttribute("currentUser") User currentUser, @RequestParam("userId") Integer userId){
+	private ModelAndView deleteCurrentUser(@ModelAttribute("currentUser") User currentUser,
+			@RequestParam("userId") Integer userId) {
 		ModelAndView mv = new ModelAndView();
 		dao.deleteUser(userId);
-		//TODO: FINISH
+		// TODO: FINISH
 		currentUser = new User();
 		System.out.println("logged out: now: " + currentUser);
 		mv.addObject("currentUser", currentUser);
-		mv.addObject("User",new User());
+		mv.addObject("User", new User());
 		mv.setViewName("manageUsers.jsp");
 		return mv;
-		
+
 	}
-	
-	
+
 	@RequestMapping("login.do")
 	private ModelAndView login(User user, @ModelAttribute("currentUser") User currentUser) {
 		ModelAndView mv = new ModelAndView();
@@ -386,7 +409,7 @@ public class TapMinderController {
 
 	}
 
-	//TODO does this do anything?
+	// TODO does this do anything?
 	@RequestMapping("login1.do")
 	private ModelAndView login1(User user, @ModelAttribute("currentUser") User currentUser) {
 		ModelAndView mv = new ModelAndView();
@@ -407,9 +430,11 @@ public class TapMinderController {
 		}
 		return mv;
 
-	}	
-	@RequestMapping(path="rateABeer.do", params="beerId")
-	private ModelAndView rateAbeer(@ModelAttribute("currentUser") User currentUser, @RequestParam("beerId") Integer beer){
+	}
+
+	@RequestMapping(path = "rateABeer.do", params = "beerId")
+	private ModelAndView rateAbeer(@ModelAttribute("currentUser") User currentUser,
+			@RequestParam("beerId") Integer beer) {
 		ModelAndView mv = new ModelAndView();
 		Beer beerResult = dao.getBeer(beer);
 
@@ -418,8 +443,10 @@ public class TapMinderController {
 		mv.setViewName("rateabeer.jsp");
 		return mv;
 	}
-	@RequestMapping(path="saveRateABeer.do", params="rating")
-	private ModelAndView saveRatingOfBeer(@ModelAttribute("currentUser") User currentUser, @RequestParam("rating") int rating, @RequestParam("beerId") Beer beer){
+
+	@RequestMapping(path = "saveRateABeer.do", params = "rating")
+	private ModelAndView saveRatingOfBeer(@ModelAttribute("currentUser") User currentUser,
+			@RequestParam("rating") int rating, @RequestParam("beerId") Beer beer) {
 		ModelAndView mv = new ModelAndView();
 		Beer beerResult;
 		BeerRating br = new BeerRating();
@@ -432,6 +459,5 @@ public class TapMinderController {
 		mv.setViewName("index.jsp");
 		return mv;
 	}
-
 
 }
