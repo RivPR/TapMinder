@@ -9,14 +9,23 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
+<title>Rated beers</title>
 </head>
 <body>
-BEERS:
-<c:forEach var="beer" items="${userBeers}">
 
-	${beer.name} ${beer.abv} ${beer.hopCount} ${beer.beerStyle} ${beer.description} 
+Beers:<br/>
 
+
+
+<c:forEach items="${currentUser.ratings}" var="ratings">
+<div>
+Beer Name: ${ratings.beer.name}<br/>
+Rating: ${ratings.rating}<br/>
+Comments: ${ratings.comments}<br/>
+</div><br/>
 </c:forEach>
+
+
+
 </body>
 </html>
