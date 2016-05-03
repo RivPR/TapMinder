@@ -88,13 +88,21 @@ neigborhood
 	${b.zip} <br>
 	${b.neighborhood.name}"
 	<br>
-	<c:if test="${ currentUser.usertype.accessLevel > 1}">
-		
+	
+	<c:if test="${ currentUser.usertype.accessLevel > 0}">
+
 			<form action="addBeerPage.do">
 				<input type="hidden" name="breweryId" value="${b.id}" />
 
 				<button type="submit">Add Beer to this brewery</button>
 			</form>
+
+
+	</c:if>
+
+
+	<c:if test="${ currentUser.usertype.accessLevel > 1}">
+		
 		
 			<form action="modifyBreweryPage.do">
 				<input type="hidden" name="breweryId" value="${b.id}" />

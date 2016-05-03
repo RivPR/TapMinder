@@ -24,6 +24,8 @@ public interface TapMinderDAO {
 	
 	public void deleteBeer(Beer beer);
 
+	public void addBeer(Beer beer);
+	
 	//breweries
 	
 	public Brewery getBrewery(int breweryId);

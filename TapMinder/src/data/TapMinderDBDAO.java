@@ -192,7 +192,21 @@ public class TapMinderDBDAO implements TapMinderDAO {
 	}
 
 	@Override
+	public void addBeer(Beer beer){
+		
+		
+		em.persist(beer);
+	}
+	
+	@Override
 	public void modifyBeer(Beer beer) {
+		System.out.println("MODIFY BEER THIS DOESN'T WORK");
+		System.out.println("MODIFY BEER THIS DOESN'T WORK");
+		System.out.println("MODIFY BEER THIS DOESN'T WORK");
+		System.out.println("MODIFY BEER THIS DOESN'T WORK");
+		System.out.println("MODIFY BEER THIS DOESN'T WORK");
+		System.out.println("MODIFY BEER THIS DOESN'T WORK");
+		System.out.println("MODIFY BEER THIS DOESN'T WORK");
 		em.persist(beer);
 	}
 
