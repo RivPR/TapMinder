@@ -25,8 +25,9 @@
 					desc<form:input type="text"  path="description" />
 					im link<form:input type="text"  path="imageLink" />
 
+		<c:if test="${currentUser.usertype.accessLevel > 0}">
 				<button type="submit">Add Beer</button>
-
+		</c:if>
 			</form:form>
 
 

@@ -23,7 +23,7 @@ ${currentUser.ratings.size()}
 	<input type="hidden" name="userId" value="${currentUser.id}">
 	<button type="submit">DELETE</button>
 </form>
-add delete account
+
 
 
 </body>

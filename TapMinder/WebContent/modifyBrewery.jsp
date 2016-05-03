@@ -43,6 +43,8 @@
 	<%-- <form:input type="text" path="neighborhood" /> --%>
 		
 	<button type="submit">Change</button>
+	
+	
 </form:form>
 
 </body>

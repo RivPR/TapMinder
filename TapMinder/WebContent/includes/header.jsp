@@ -35,7 +35,8 @@
 
     <!-- Custom CSS -->
     <link rel="stylesheet" href="css/creative.css" type="text/css">
-
+	<!-- manual overrides -->
+    <link rel="stylesheet" href="css/stylesheet.css" type="text/css">
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -47,29 +48,8 @@
 
 <body id="page-top">
 
-
 <!-- THIS INIITAL FACEBOOK SCRIPT is the basic version of the SDK where the options are set to their most common defaults.  -->
-	<script>
-			window.fbAsyncInit = function() {
-				FB.init({
-					appId : '1259928390703236',
-					xfbml : true,
-					version : 'v2.6'
-				});
-			};
-
-			(function(d, s, id) {
-				var js, fjs = d.getElementsByTagName(s)[0];
-				if (d.getElementById(id)) {
-					return;
-				}
-				js = d.createElement(s);
-				js.id = id;
-				js.src = "//connect.facebook.net/en_US/sdk.js";
-				fjs.parentNode.insertBefore(js, fjs);
-			}(document, 'script', 'facebook-jssdk'));
-		</script>	
-
+	<script src="facebook-script.js"></script>
 
     <nav id="mainNav" class="navbar navbar-default navbar-fixed-top">
         <div class="container-fluid">
@@ -81,18 +61,23 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand page-scroll" href="#initPage.do">Home</a>
+                <a class="navbar-brand page-scroll" href="initPage.do">TapMinder</a>
             </div>
 
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav navbar-right">
-                    <li>
-                        <a class="page-scroll" href="#about">About</a>
-                    </li>
-                    <li>
-                        <a class="page-scroll" href="#services">Services</a>
-                    </li>
+					<form action="menu.do" method="POST">
+					<c:if test="${currentUser.id > 0 }">
+					<button type="submit" name="menuChoice" value="logout">logout</button>
+									<button style="color: black;" type="submit" name="menuChoice"
+					value="viewUserBeers">View User Beers</button>
+					<button style="color: black;" type="submit" name="menuChoice"
+					value="myAccount">Manage Account</button>
+										
+					</c:if>
+					</form>
+
                     <li>
                         <a class="page-scroll" href="#portfolio">Portfolio</a>
                     </li>
@@ -105,7 +90,6 @@
         </div>
         <!-- /.container-fluid -->
     </nav>
-<header>
 
       <div class="header-content">
             <div class="header-content-inner">

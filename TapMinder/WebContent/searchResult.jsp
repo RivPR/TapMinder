@@ -25,7 +25,8 @@
 	<img src="${beer.imageLink}" />
 	<br>
 	
-			
+				<c:if test="${currentUser.usertype.accessLevel > 1}">
+	
 			<form action="modifyBeerPage.do">
 				<input type="hidden" name="beerId" value="${beer.id}" />
 
@@ -36,6 +37,8 @@
 
 				<button type="submit">Delete</button>
 			</form>
+			
+			</c:if>
 </c:forEach>
 
 

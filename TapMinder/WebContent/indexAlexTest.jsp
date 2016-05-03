@@ -312,6 +312,7 @@
 	
 	<%@ include file="includes/moderatorLowerMenu.jsp" %>
 	</c:if>
+	
 	<c:if test="${currentUser.usertype.accessLevel == 3}">
 	
 	<%@ include file="includes/adminLowerMenu.jsp" %>
