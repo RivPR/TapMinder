@@ -16,6 +16,7 @@ import entities.BeerRating;
 import entities.Brewery;
 import entities.Neighborhood;
 import entities.User;
+import entities.UserType;
 import entityData.State;
 
 @Transactional
@@ -411,13 +412,32 @@ public class TapMinderDBDAO implements TapMinderDAO {
 	}
 
 	@Override
-	public void modifyUser(User user) {
+	public void addUser(User user){
 		em.persist(user);
+	}
+	
+	@Override
+	public void modifyUser(User user) {
+		User userToMod = em.find(User.class,user.getId());
+		userToMod.setFirstname(user.getFirstname());
+		userToMod.setLastname(user.getLastname());
+		userToMod.setEmail(user.getEmail());
+		userToMod.setPassword(user.getPassword());
+		userToMod.setUsertype(user.getUsertype());
 	}
 
 	@Override
+	public void deleteUser(int userId){
+		em.remove(em.find(User.class, userId));
+	}
+	
+	@Override
 	public void deleteUser(User user) {
-		em.remove(user);
+		int userID = user.getId();
+		
+		User userToDelete = em.find(User.class, userID);
+		
+		em.remove(userToDelete);
 	}
 
 	@Override
@@ -478,6 +498,12 @@ public class TapMinderDBDAO implements TapMinderDAO {
 
 		return neighborhoods;
 
+	}
+	
+	@Override
+	public UserType getUserType(int id){
+		return em.find(UserType.class, id);
+		
 	}
 
 }

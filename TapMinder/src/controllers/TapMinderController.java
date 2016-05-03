@@ -21,6 +21,7 @@ import entities.BeerRating;
 import entities.Brewery;
 import entities.Neighborhood;
 import entities.User;
+import entities.UserType;
 
 /*
  * I just made this to test out the stuff we learned in class
@@ -107,6 +108,10 @@ public class TapMinderController {
 			// TODO: add real stuff
 			mv.addObject("User",new User());
 			mv.setViewName("manageUsers.jsp");
+			break;
+		case "addUser":
+			mv.addObject("User",new User());
+			mv.setViewName("addUser.jsp");
 			break;
 		case "addBreweries":
 			// TODO: add real stuff
@@ -264,19 +269,56 @@ public class TapMinderController {
 		for (User user2 : userList) {
 			System.out.println(user2);
 		}
+		mv.addObject("User", user);
 		mv.addObject("userList",userList);
 		mv.setViewName("manageUsers.jsp");
 		return mv;
 	}
 	
+	@RequestMapping("addUser.do")
+	private ModelAndView addUser(User user, Integer userTypeId){
+		ModelAndView mv = new ModelAndView();
+		System.out.println("usertypeid " + userTypeId);
+		UserType ut = dao.getUserType(userTypeId);
+		System.out.println(ut.getTypeName());
+		user.setUsertype(dao.getUserType(userTypeId));
+		dao.addUser(user);
+		mv.addObject("User",new User());
+		mv.setViewName("manageUsers.jsp");
+		return mv;
+	}
+	
+	@RequestMapping("modifyUserPage.do")
+	private ModelAndView modifiyUserPage(@RequestParam("userId") Integer userId){
+		ModelAndView mv = new ModelAndView();
+		mv.addObject("User", dao.getUser(userId));
+	
+		mv.setViewName("modifyUser.jsp");
+	return mv;
+	}
+	
 	@RequestMapping("modifyUser.do")
-	private ModelAndView modifiyUser(Integer userID){
-		
+	private ModelAndView modifyUser(User user, Integer userTypeId){
+		ModelAndView mv = new ModelAndView();
+		System.out.println(user);
+		user.setUsertype(dao.getUserType(userTypeId));
+		System.out.println(user);
+		dao.modifyUser(user);
+		mv.addObject("User", new User());
+		mv.setViewName("manageUsers.jsp");
+	
+	return mv;
 	}
 	
 	
 	@RequestMapping("deleteUser.do")
-	private ModelAndView deleteUser(Integer userID){
+	private ModelAndView deleteUser(@RequestParam("userId") Integer userId){
+		ModelAndView mv = new ModelAndView();
+		dao.deleteUser(userId);
+		//TODO: FINISH
+		mv.addObject("User",new User());
+		mv.setViewName("manageUsers.jsp");
+		return mv;
 		
 	}
 	

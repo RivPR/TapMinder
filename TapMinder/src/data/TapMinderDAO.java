@@ -7,6 +7,7 @@ import entities.BeerRating;
 import entities.Brewery;
 import entities.Neighborhood;
 import entities.User;
+import entities.UserType;
 
 public interface TapMinderDAO {
 
@@ -44,9 +45,13 @@ public interface TapMinderDAO {
 
 	public User getUser(int userId);
 	
+	public void addUser(User user);
+	
 	public void modifyUser(User user);
 	
 	public void deleteUser(User user);
+	
+	public void deleteUser(int userId);
 	
 	public LoginResult getUserByLoginCredentials(User user);
 	
@@ -74,7 +79,9 @@ public interface TapMinderDAO {
 	public Neighborhood getNeighborhood(int id);
 
 	
+	//userType
 	
+	public UserType getUserType(int id);
 	
 	
 	

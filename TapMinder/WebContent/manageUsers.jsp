@@ -28,20 +28,24 @@ search
 	<button type=submit>Search</button>
 </form:form>
 
+<form action="menu.do" name="menuChoice">
 
+	<button type="submit" name="menuChoice" value="addUser">New User</button>
+
+</form>
 display
 
 <c:if test="${!empty(userList)}">
 	<c:forEach var="user" items="${userList}">
 	${user.firstname}
 	${user.lastname}
-	<form action="modifyUser.do">
-				<input type="hidden" name="breweryId" value="${user.id}" />
+	<form action="modifyUserPage.do">
+				<input type="hidden" name="userId" value="${user.id}" />
 
 				<button type="submit">Modify</button>
 			</form>
 			<form action="deleteUser.do">
-				<input type="hidden" name="breweryId" value="${user.id}" />
+				<input type="hidden" name="userId" value="${user.id}" />
 
 				<button type="submit">Delete</button>
 			</form>
