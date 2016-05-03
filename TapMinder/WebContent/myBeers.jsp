@@ -17,13 +17,15 @@ Beers:<br/>
 
 
 
-<c:forEach items="${currentUser.ratings}" var="ratings">
+
+
+<c:forEach items="${currentUser.ratings}" var="r">
 <div>
-Beer Name: ${ratings.beer.name}<br/>
-Rating: ${ratings.rating}<br/>
-Comments: ${ratings.comments}<br/>
+Beer Name: ${r.beer.name}<br/>
+Rating: ${r.rating}<br/>
+Comments: ${r.comments}<br/>
 <form action="changeARating.do">
-		<input type="hidden" name="ratingID" value="${ratings.id}" />
+		<input type="hidden" name="ratingID" value="${r.id}" />
 		<button type="submit">Edit</button>
 </form>
 </div><br/>
