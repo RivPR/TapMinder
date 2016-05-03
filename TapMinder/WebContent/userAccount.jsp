@@ -19,7 +19,7 @@ ${currentUser.email}
 ${currentUser.password}
 ${currentUser.usertype.typeName}
 ${currentUser.ratings.size()}
-<form action="deleteUser.do">
+<form action="deleteCurrentUser.do">
 	<input type="hidden" name="userId" value="${currentUser.id}">
 	<button type="submit">DELETE</button>
 </form>

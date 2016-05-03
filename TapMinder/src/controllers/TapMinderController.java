@@ -108,9 +108,13 @@ public class TapMinderController {
 			mv.setViewName("index.jsp");
 			break;
 		case "modifyUsers":
-			// TODO: add real stuff
+			if(currentUser.getUsertype().getAccessLevel() > 2){
 			mv.addObject("User",new User());
 			mv.setViewName("manageUsers.jsp");
+			}
+			else{
+				mv.setViewName("indexAlexTest.jsp");
+			}
 			break;
 		case "addUser":
 			mv.addObject("User",new User());
@@ -304,11 +308,11 @@ public class TapMinderController {
 	@RequestMapping("signUp.do")
 	private ModelAndView signUp(User user){
 		ModelAndView mv = new ModelAndView();
-
+		
 		user.setUsertype(dao.getUserType(1));
 		dao.addUser(user);
 		mv.addObject("User",new User());
-		mv.setViewName("indexAlexTest.jsp");
+		mv.setViewName("index.jsp");
 		return mv;
 	}
 	
@@ -340,6 +344,21 @@ public class TapMinderController {
 		ModelAndView mv = new ModelAndView();
 		dao.deleteUser(userId);
 		//TODO: FINISH
+		mv.addObject("User",new User());
+		mv.setViewName("manageUsers.jsp");
+		return mv;
+		
+	}
+	
+	
+	@RequestMapping("deleteCurrentUser.do")
+	private ModelAndView deleteCurrentUser(@ModelAttribute("currentUser") User currentUser, @RequestParam("userId") Integer userId){
+		ModelAndView mv = new ModelAndView();
+		dao.deleteUser(userId);
+		//TODO: FINISH
+		currentUser = new User();
+		System.out.println("logged out: now: " + currentUser);
+		mv.addObject("currentUser", currentUser);
 		mv.addObject("User",new User());
 		mv.setViewName("manageUsers.jsp");
 		return mv;

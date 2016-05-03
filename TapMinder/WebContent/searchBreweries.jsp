@@ -19,7 +19,7 @@
 			<select name="findBy">
 				<option value="">SELECT ONE</option>
 				<option value="name">Name</option>
-				<option value="streetAddress">Street</option>
+				<option value="street">Street</option>
 				<option value="city">city</option>
 				<option value="state">Style</option>
 				<option value="zip">Rating</option>
