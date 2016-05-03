@@ -106,6 +106,7 @@
 				<!-- admin and up only -->
 				<button style="color:black;" type="submit" name="menuChoice" value="modifyUsers">edit
 					moderators</button>
+				<button style="color:black;" type="submit" name="menuChoice" value="addBreweries">add brewrss</button>
 			</form>
 
 		</div>
