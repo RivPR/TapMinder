@@ -200,7 +200,6 @@ public class TapMinderDBDAO implements TapMinderDAO {
 	
 	@Override
 	public void modifyBeer(Beer beer) {
-		System.out.println("BEER TO CHANGLKJFLDJSDF : " + beer.getId());
 		Beer beerToModify = em.find(Beer.class, beer.getId());
 		beerToModify.setName(beer.getName());
 		beerToModify.setAbv(beer.getAbv());
@@ -514,7 +513,7 @@ public class TapMinderDBDAO implements TapMinderDAO {
 	
 	@Override
 	public void modifyRating(BeerRating br){
-		BeerRating beerR = em.find(BeerRating.class, br.getId());
+		BeerRating beerR =  em.find(BeerRating.class, br.getId());
 		beerR.setRating(br.getRating());
 		beerR.setComments(br.getComments());
 		
@@ -543,11 +542,6 @@ public class TapMinderDBDAO implements TapMinderDAO {
 
 		return neighborhoods;
 
-	}
-	
-	@Override
-	public User refreshUser(User u){
-		return em.merge(u);
 	}
 	
 	@Override
