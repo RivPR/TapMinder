@@ -2,6 +2,7 @@ package entities;
 
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -41,7 +42,7 @@ public class Beer {
 	@Column(name="image_link")
 	private String imageLink;
 
-	@OneToMany(mappedBy="beer", fetch = FetchType.EAGER)
+	@OneToMany(mappedBy="beer", fetch = FetchType.EAGER, cascade={CascadeType.PERSIST, CascadeType.REMOVE})
 	private List<BeerRating> ratings;
 	
 	@ManyToOne()

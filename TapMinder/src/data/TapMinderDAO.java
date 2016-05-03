@@ -29,10 +29,11 @@ public interface TapMinderDAO {
 	
 	public List<Brewery> getBreweries(BreweryParameters breweryParameters);
 	
-	public void modifyBrewery(Brewery brewery, int neighborHoodId);
+	public void modifyBrewery(Brewery brewery, Integer neighborHoodId);
 	
 	public void deleteBrewery(Brewery brewery);
 	
+	public void deleteBrewery(Integer brewery);
 	//user
 	
 	

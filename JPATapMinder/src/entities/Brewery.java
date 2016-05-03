@@ -2,6 +2,7 @@ package entities;
 
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
@@ -48,7 +49,7 @@ public class Brewery {
 	@JoinColumn(name = "neighborhood_id")
 	private Neighborhood neighborhood;
 
-	@OneToMany(mappedBy="brewery")
+	@OneToMany(mappedBy="brewery", cascade={CascadeType.PERSIST, CascadeType.REMOVE})
 	List<Beer> beerList;
 
 	public int getId() {

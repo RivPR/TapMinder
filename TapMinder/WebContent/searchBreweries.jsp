@@ -94,6 +94,12 @@ neigborhood
 
 				<button type="submit">Modify</button>
 			</form>
+			<form action="deleteBrewery.do">
+				<input type="hidden" name="breweryId" value="${b.id}" />
+
+				<button type="submit">Delete</button>
+			</form>
+						
 			<br>
 
 			<br>

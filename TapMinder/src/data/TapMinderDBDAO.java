@@ -66,9 +66,9 @@ public class TapMinderDBDAO implements TapMinderDAO {
 		}
 
 		if (beerList != null && beerList.size() > 0) {
-			for (Beer beer : beerList) {
-				em.detach(beer);
-			}
+//			for (Beer beer : beerList) {
+//				em.detach(beer);
+//			}
 
 		}
 
@@ -223,10 +223,10 @@ public class TapMinderDBDAO implements TapMinderDAO {
 		} else if (breweryParameters.getNeighborhood() != null) {
 			breweryList = getBreweryListByNeighborhood(breweryParameters);
 		}
-		// TODO: put this in the other things
-		for (Brewery brewery : breweryList) {
-			em.detach(brewery);
-		}
+		// TODO: put this in the other things jk maybe useless
+//		for (Brewery brewery : breweryList) {
+//			em.detach(brewery);
+//		}
 		return breweryList;
 	}
 
@@ -286,7 +286,7 @@ public class TapMinderDBDAO implements TapMinderDAO {
 	}
 
 	@Override
-	public void modifyBrewery(Brewery brewery, int neighborHoodId) {
+	public void modifyBrewery(Brewery brewery, Integer neighborHoodId) {
 		int breweryId = brewery.getId();
 		Brewery breweryToChange = em.find(Brewery.class, breweryId);
 		breweryToChange.setStreetAddress(brewery.getStreetAddress());
@@ -301,9 +301,29 @@ public class TapMinderDBDAO implements TapMinderDAO {
 
 	@Override
 	public void deleteBrewery(Brewery brewery) {
-		//TODO make this delete the beers first
-		em.remove(brewery);
+		//FK fails
+		//TODO null pointer
+		System.out.println("DELETE THSI ONE : " + brewery.getId());
+		Brewery b = em.find(Brewery.class, brewery.getId());
+		System.out.println("BREW TO DELETE " + b.getId());
+//		List<Beer> beers = em.createQuery("SELECT b FROM Beer b WHERE b.brewery.id = :bid",Beer.class).setParameter("bid", brewery.getId()).getResultList();
+//		for (Beer beer : beers) {
+//			this.deleteBeer(beer);
+//		}
+//		
+		
+		em.remove(b);
 
+	}
+	
+	@Override
+	public void deleteBrewery(Integer breweryId) {
+
+		Brewery b = em.find(Brewery.class, breweryId);
+		System.out.println("BREW TO DELETE " + b.getId());
+		
+		em.remove(b);
+		
 	}
 
 	@Override

@@ -38,24 +38,22 @@ public class TapMinderController {
 	@Autowired
 	private TapMinderDAO dao;
 
-	@RequestMapping(path="initPage.do",method=RequestMethod.GET)
-	public ModelAndView initializeLogin(){
+	@RequestMapping(path = "initPage.do", method = RequestMethod.GET)
+	public ModelAndView initializeLogin() {
 		ModelAndView mv = new ModelAndView();
 		mv.addObject("user", new User());
 		mv.setViewName("index1.jsp");
 		return mv;
 	}
-	
-	
-	
-	@RequestMapping(path="initPage.do",method=RequestMethod.POST)
-	public ModelAndView initializeLoginAndIndex(User user, @ModelAttribute("currentUser") User currentUser){
+
+	@RequestMapping(path = "initPage.do", method = RequestMethod.POST)
+	public ModelAndView initializeLoginAndIndex(User user, @ModelAttribute("currentUser") User currentUser) {
 		ModelAndView mv = new ModelAndView();
 		System.out.println(user.getEmail());
 		System.out.println(user.getPassword());
 		LoginResult result = dao.getUserByLoginCredentials(user);
-		
-//		mv.setViewName("index1.jsp");
+
+		// mv.setViewName("index1.jsp");
 		if (result.getUser() != null) {
 			System.out.println("new current user: " + currentUser);
 			// TODO: better way to set session attributes?
@@ -68,8 +66,7 @@ public class TapMinderController {
 		}
 		return mv;
 	}
-	
-		
+
 	@RequestMapping("menu.do")
 	private ModelAndView menu(@RequestParam("menuChoice") String menuChoice,
 			@ModelAttribute("currentUser") User currentUser) {
@@ -81,7 +78,7 @@ public class TapMinderController {
 			mv.addObject("user", new User());
 			mv.setViewName("AlexTestJSPStuff/login.jsp");
 			break;
-			
+
 		case "findBeers":
 			mv.addObject("searchSetting", "");
 			mv.setViewName("searchBeer.jsp");
@@ -125,48 +122,55 @@ public class TapMinderController {
 		}
 
 		return mv;
-		
-		
 
 	}// menu.do
 
-	
 	@RequestMapping("modifyBreweryPage.do")
-	private ModelAndView modifyBrewery(@RequestParam("breweryId") Integer breweryId){
+	private ModelAndView modifyBrewery(@RequestParam("breweryId") Integer breweryId) {
 		ModelAndView mv = new ModelAndView();
-		
+
 		Brewery brewery = dao.getBrewery(breweryId);
 		mv.addObject("Brewery", brewery);
-		mv.addObject("neighborhoodList",dao.getNeighborhoods());
+		mv.addObject("neighborhoodList", dao.getNeighborhoods());
 		for (Neighborhood n : dao.getNeighborhoods()) {
 			System.out.println(n.getName());
 		}
 		mv.setViewName("modifyBrewery.jsp");
 		return mv;
 	}
-	
-	@RequestMapping("modifyBrewery.do")
-	private ModelAndView changeBrewery(Brewery brewery, @RequestParam("neighboorHoodId") int neighborHoodId){
+
+	@RequestMapping("deleteBrewery.do")
+	private ModelAndView deleteBrewery(@RequestParam("breweryId") Integer breweryId) {
 		ModelAndView mv = new ModelAndView();
-		
-		dao.modifyBrewery(brewery, neighborHoodId);
-		mv.addObject("Brewery",brewery);
+		//TODO not passing object
+//		dao.deleteBrewery(dao.getBrewery(breweryId));
+		dao.deleteBrewery(breweryId);
+		System.out.println("should be deleted");
+		// mv.addObject("Brewery", brewery);
 		mv.setViewName("indexAlexTest.jsp");
 		return mv;
 	}
-	
-	
-	
-	@RequestMapping("viewUserAccount.do")
-	private ModelAndView viewUserAccount(@ModelAttribute("currentUser") User currentUser){
+
+	@RequestMapping("modifyBrewery.do")
+	private ModelAndView changeBrewery(Brewery brewery, @RequestParam("neighboorHoodId") Integer neighborHoodId) {
 		ModelAndView mv = new ModelAndView();
-		
-		mv.addObject("currentUser",currentUser);
-		mv.setViewName("userAccount.jsp");
-		
+
+		dao.modifyBrewery(brewery, neighborHoodId);
+		mv.addObject("Brewery", brewery);
+		mv.setViewName("indexAlexTest.jsp");
 		return mv;
 	}
-	
+
+	@RequestMapping("viewUserAccount.do")
+	private ModelAndView viewUserAccount(@ModelAttribute("currentUser") User currentUser) {
+		ModelAndView mv = new ModelAndView();
+
+		mv.addObject("currentUser", currentUser);
+		mv.setViewName("userAccount.jsp");
+
+		return mv;
+	}
+
 	@RequestMapping("findUserBeerList.do")
 	private ModelAndView printUserBeers(@ModelAttribute("currentUser") User currentUser) {
 		ModelAndView mv = new ModelAndView();
@@ -211,7 +215,7 @@ public class TapMinderController {
 		ModelAndView mv = new ModelAndView();
 		System.out.println(choice);
 		mv.addObject("BreweryParameters", new BreweryParameters());
-		
+
 		mv.addObject("neighborhoodList", dao.getNeighborhoods());
 		mv.addObject("searchSetting", choice);
 		mv.setViewName("searchBreweries.jsp");
@@ -221,10 +225,12 @@ public class TapMinderController {
 	}
 
 	@RequestMapping("searchBreweries.do")
-	private ModelAndView searchBreweries(BreweryParameters breweryParameters, int neighboorHoodId) {
+	private ModelAndView searchBreweries(BreweryParameters breweryParameters, Integer neighboorHoodId) {
 		ModelAndView mv = new ModelAndView();
-		//TODO meh..
-		breweryParameters.setNeighborhood(dao.getNeighborhood(neighboorHoodId));
+		// TODO meh..
+		if (neighboorHoodId != null) {
+			breweryParameters.setNeighborhood(dao.getNeighborhood(neighboorHoodId));
+		}
 		List<Brewery> breweryList = dao.getBreweries(breweryParameters);
 		mv.addObject("breweryList", breweryList);
 		mv.setViewName("searchBreweries.jsp");
@@ -257,8 +263,8 @@ public class TapMinderController {
 		System.out.println(user.getEmail());
 		System.out.println(user.getPassword());
 		LoginResult result = dao.getUserByLoginCredentials(user);
-//		mv.setViewName("index1.jsp");
-		
+		// mv.setViewName("index1.jsp");
+
 		if (result.getUser() != null) {
 			System.out.println("new current user: " + currentUser);
 			// TODO: better way to set session attributes?
@@ -272,6 +278,5 @@ public class TapMinderController {
 		return mv;
 
 	}
-	
-	
+
 }
