@@ -283,7 +283,7 @@ public class TapMinderController {
 				beers.add(beerRating.getBeer());
 			}
 		}
-		
+		currentUser = dao.refreshUser(currentUser);
 		mv.addObject("ratings", userRatings);
 		mv.addObject("userBeers", beers);
 		mv.addObject("currentUser", currentUser);

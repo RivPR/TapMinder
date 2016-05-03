@@ -544,6 +544,12 @@ public class TapMinderDBDAO implements TapMinderDAO {
 
 	}
 	
+	
+	@Override
+	 	public User refreshUser(User u){
+	 		return em.merge(u);
+	 	}
+	 
 	@Override
 	public UserType getUserType(int id){
 		return em.find(UserType.class, id);
