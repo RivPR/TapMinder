@@ -499,7 +499,7 @@ public class TapMinderController {
 		br.setBeer(beerToBeRated);
 		br.setComments(comments);
 		br.setRating(rating);
-		dao.modifyRating(br);
+		dao.addRating(br);
 		mv.addObject("currentUser", currentUser);
 		mv.addObject("br", new BeerRating());
 		mv.setViewName("indexAlexTest.jsp");
@@ -513,6 +513,22 @@ public class TapMinderController {
 		mv.addObject("rating", ratingId);
 		mv.addObject("br", br);
 		mv.setViewName("editrating.jsp");
+		return mv;
+	}
+	
+	@RequestMapping("saveARating.do")
+	private ModelAndView saveTheRating(@RequestParam("rating") int rating, 
+									   @RequestParam("comments") String comment,
+									   @RequestParam("ratingID") int id){
+		ModelAndView mv = new ModelAndView();
+		BeerRating br = dao.getRatingByID(id);
+	
+		br.setRating(rating);
+		br.setComments(comment);
+		
+		dao.modifyRating(br);
+		
+		mv.setViewName("findUserBeerList.do");
 		return mv;
 	}
 
