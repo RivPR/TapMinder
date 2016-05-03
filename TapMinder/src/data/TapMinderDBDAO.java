@@ -486,7 +486,20 @@ public class TapMinderDBDAO implements TapMinderDAO {
 
 	@Override
 	public void modifyRating(BeerRating beerRating) {
+		List<BeerRating> BeerRating = em.createQuery("Select br from BeerRating br", BeerRating.class).getResultList();
+		int counter = 0;
+		for (BeerRating br : BeerRating) {
+			if(br.getUser().getId()==beerRating.getUser().getId() && br.getBeer().getId()==beerRating.getBeer().getId()){
+				counter++;
+			}
+			else{
+				continue;
+			}
+		}
+		System.out.println(counter);
+		if(counter==0){
 		em.persist(beerRating);
+		}
 	}
 
 	@Override

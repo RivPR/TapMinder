@@ -24,7 +24,7 @@
 	<input type="hidden" name="beerId" value="${beer.id}" />
 	<div>
 	<form action="saveRateABeer.do">
-	<textarea name="comments">Comments:</textarea><br/>
+	<textarea name="comments" placeholder="Comments:"></textarea><br/>
 	<button type="submit" value="1" name="rating" >1</button>
 	<button type="submit" value="2" name="rating" >2</button>
 	<button type="submit" value="3" name="rating" >3</button>
