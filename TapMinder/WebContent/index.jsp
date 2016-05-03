@@ -124,6 +124,10 @@
 				<button class="btn btn-primary btn-xl page-scroll" type="submit">Login</button>
 			</form:form>
 			</c:if>
+			<form action="menu.do" method="POST">
+			<button style="color: black;" type="submit" name="menuChoice"
+					value="signUp">sign up</button>
+					</form>
 			<c:if test="${!empty(LoginError)}">
 				ERROR: ${LoginError}
 			</c:if>

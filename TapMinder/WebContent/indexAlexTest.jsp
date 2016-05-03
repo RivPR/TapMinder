@@ -62,19 +62,22 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand page-scroll" href="#initPage.do">TapMinder</a>
+                <a class="navbar-brand page-scroll" href="initPage.do">TapMinder</a>
             </div>
 
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav navbar-right">
 					<form action="menu.do" method="POST">
-					
+					<c:if test="${currentUser.id > 0 }">
 					<button type="submit" name="menuChoice" value="logout">logout</button>
+									<button style="color: black;" type="submit" name="menuChoice"
+					value="viewUserBeers">View User Beers</button>
 					<button style="color: black;" type="submit" name="menuChoice"
 					value="myAccount">Manage Account</button>
+										
+					</c:if>
 					</form>
-
 
                     <li>
                         <a class="page-scroll" href="#portfolio">Portfolio</a>
