@@ -31,6 +31,27 @@ search
 
 display
 
+<c:if test="${!empty(userList)}">
+	<c:forEach var="user" items="${userList}">
+	${user.firstname}
+	${user.lastname}
+	<form action="modifyUser.do">
+				<input type="hidden" name="breweryId" value="${user.id}" />
+
+				<button type="submit">Modify</button>
+			</form>
+			<form action="deleteUser.do">
+				<input type="hidden" name="breweryId" value="${user.id}" />
+
+				<button type="submit">Delete</button>
+			</form>
+	
+	
+	
+	</c:forEach>
+
+</c:if>
+
 
 edit
 

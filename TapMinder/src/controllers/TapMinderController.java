@@ -264,10 +264,22 @@ public class TapMinderController {
 		for (User user2 : userList) {
 			System.out.println(user2);
 		}
-		
-		mv.setViewName("index.jsp");
+		mv.addObject("userList",userList);
+		mv.setViewName("manageUsers.jsp");
 		return mv;
 	}
+	
+	@RequestMapping("modifyUser.do")
+	private ModelAndView modifiyUser(Integer userID){
+		
+	}
+	
+	
+	@RequestMapping("deleteUser.do")
+	private ModelAndView deleteUser(Integer userID){
+		
+	}
+	
 	
 	@RequestMapping("login.do")
 	private ModelAndView login(User user, @ModelAttribute("currentUser") User currentUser) {
