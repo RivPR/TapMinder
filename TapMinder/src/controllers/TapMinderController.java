@@ -44,7 +44,7 @@ public class TapMinderController {
 		ModelAndView mv = new ModelAndView();
 		mv.addObject("currentUser", currentUser);
 		mv.addObject("user", new User());
-		mv.setViewName("index.jsp");
+		mv.setViewName("index1.jsp");
 		return mv;
 	}
 
@@ -64,7 +64,7 @@ public class TapMinderController {
 		} else {
 			mv.addObject("LoginError", result.getMessage());
 			mv.addObject("user", new User());
-			mv.setViewName("index.jsp");
+			mv.setViewName("index1.jsp");
 		}
 		return mv;
 	}
@@ -217,6 +217,7 @@ public class TapMinderController {
 			}
 		}
 		mv.addObject("userBeers", beers);
+		mv.addObject("currentUser", currentUser);
 		mv.setViewName("myBeers.jsp");
 
 		return mv;
@@ -235,10 +236,11 @@ public class TapMinderController {
 	}
 
 	@RequestMapping("searchBeers.do")
-	private ModelAndView searchBeers(BeerParameters beerParameters) {
+	private ModelAndView searchBeers(@ModelAttribute("currentUser") User currentUser, BeerParameters beerParameters) {
 		ModelAndView mv = new ModelAndView();
 		List<Beer> beerList = dao.getBeers(beerParameters);
 		mv.addObject("beerList", beerList);
+		mv.addObject("currentUser", currentUser);
 		mv.setViewName("searchResult.jsp");
 
 		return mv;
@@ -378,14 +380,39 @@ public class TapMinderController {
 			System.out.println("new current user: " + currentUser);
 			// TODO: better way to set session attributes?
 			mv.addObject("currentUser", result.getUser());
-			mv.setViewName("index.jsp");
+			mv.setViewName("index1.jsp");
 		} else {
 			mv.addObject("LoginError", result.getMessage());
 			mv.addObject("user", new User());
-			mv.setViewName("index.jsp");
+			mv.setViewName("index1.jsp");
 		}
 		return mv;
 
+	}	
+	@RequestMapping(path="rateABeer.do", params="beerId")
+	private ModelAndView rateAbeer(@ModelAttribute("currentUser") User currentUser, @RequestParam("beerId") Integer beer){
+		ModelAndView mv = new ModelAndView();
+		Beer beerResult = dao.getBeer(beer);
+
+		mv.addObject("currentUser", currentUser);
+		mv.addObject("beer", beerResult);
+		mv.setViewName("rateabeer.jsp");
+		return mv;
 	}
+	@RequestMapping(path="saveRateABeer.do", params="rating")
+	private ModelAndView saveRatingOfBeer(@ModelAttribute("currentUser") User currentUser, @RequestParam("rating") int rating, @RequestParam("beerId") Beer beer){
+		ModelAndView mv = new ModelAndView();
+		Beer beerResult;
+		BeerRating br = new BeerRating();
+
+		br.setBeer(beer);
+		br.setRating(rating);
+		dao.modifyRating(br);
+		mv.addObject("currentUser", currentUser);
+		mv.addObject("br", br);
+		mv.setViewName("index.jsp");
+		return mv;
+	}
+
 
 }

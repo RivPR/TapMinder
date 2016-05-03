@@ -5,5 +5,12 @@ In order to access header.jsp and footer.jsp from drama.jsp which exists at the 
  <%@include file="/includes/header.jsp"%>
 
 <p>Johhny Drama</p>
+<h3>
+ID: ${br.id}
+User: ${br.user}
+Beer: ${br.beer}
+Rating: ${br.rating}
+</h3>
+
 
 <%@include file="/includes/footer.jsp"%>
