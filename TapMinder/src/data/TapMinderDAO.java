@@ -23,6 +23,7 @@ public interface TapMinderDAO {
 	public void modifyBeer(Beer beer);
 	
 	public void deleteBeer(Beer beer);
+	public void deleteBeer(Integer beerId);
 
 	public void addBeer(Beer beer);
 	

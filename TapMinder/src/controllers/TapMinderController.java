@@ -176,6 +176,26 @@ public class TapMinderController {
 		return mv;
 	}
 
+	@RequestMapping("modifyBeer.do")
+	private ModelAndView modifyBeer(Beer beer, @RequestParam("beerId") Integer beerId){
+		ModelAndView mv = new ModelAndView();
+		
+		dao.modifyBeer(beer);
+		mv.setViewName("indexAlexTest.jsp");
+		return mv;
+	}
+	
+	@RequestMapping("deleteBeer.do")
+		private ModelAndView deleteBeer(@RequestParam("beerId") Integer beerId){
+		ModelAndView mv = new ModelAndView();
+		
+		dao.deleteBeer(beerId);
+		mv.setViewName("indexAlexTest.jsp");
+		return mv;
+		
+	}
+	
+	
 	@RequestMapping("modifyBreweryPage.do")
 	private ModelAndView modifyBrewery(@RequestParam("breweryId") Integer breweryId) {
 		ModelAndView mv = new ModelAndView();

@@ -214,6 +214,15 @@ public class TapMinderDBDAO implements TapMinderDAO {
 	public void deleteBeer(Beer beer) {
 		em.remove(beer);
 	}
+	
+	
+	@Override
+	public void deleteBeer(Integer id) {
+		
+		em.remove(em.find(Beer.class, id));
+	}
+	
+	
 
 	@Override
 	public Brewery getBrewery(int breweryId){

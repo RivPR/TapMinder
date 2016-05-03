@@ -24,7 +24,17 @@
 	</form>
 	<img src="${beer.imageLink}" />
 	<br>
-	
+			
+			<form action="modifyBeer.do">
+				<input type="hidden" name="beerId" value="${beer.id}" />
+
+				<button type="submit">Modify</button>
+			</form>
+			<form action="deleteBeer.do">
+				<input type="hidden" name="beerId" value="${beer.id}" />
+
+				<button type="submit">Delete</button>
+			</form>
 </c:forEach>
 
 
