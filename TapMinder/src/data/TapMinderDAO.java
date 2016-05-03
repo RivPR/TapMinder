@@ -42,7 +42,7 @@ public interface TapMinderDAO {
 	public void deleteBrewery(Integer brewery);
 	//user
 	
-	
+	public User refreshUser(User u);
 	
 	public List<User> getUserList();
 
