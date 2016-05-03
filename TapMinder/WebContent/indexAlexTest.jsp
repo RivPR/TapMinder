@@ -274,12 +274,12 @@
 
 		<!-- 		if logged in, show loggout instead (destory session or something) -->
 		<button type="submit" name="menuChoice" value="login">Login</button>
-		<button type="submit" name="menuChoice" value="findBeers">Find
+<!-- 		<button type="submit" name="menuChoice" value="findBeers">Find
 			Beers</button>
 		<button type="submit" name="menuChoice" value="findBreweries">Find
 			Breweries</button>
 		<button type="submit" name="menuChoice" value="viewUserBeers">View
-			User Beers</button>
+			User Beers</button> -->
 		<button type="submit" name="menuChoice" value="myAccount">View
 			User Account</button>
 		<!-- moderators and up only -->
@@ -302,7 +302,24 @@
 	${currentUser.password}
 	${currentUser.firstname}
 	${currentUser.firstname}
+	${currentUser.usertype.accessLevel}
 </c:if>
+
+
+
+
+	<c:if test="${currentUser.usertype.accessLevel == 2}">
+	
+	<%@ include file="includes/moderatorLowerMenu.jsp" %>
+	</c:if>
+	<c:if test="${currentUser.usertype.accessLevel == 3}">
+	
+	<%@ include file="includes/adminLowerMenu.jsp" %>
+	</c:if>
+<%-- 	<c:when test="${currentUser.usertype.accessLevel > 2  }">
+<%@ include file="includes/adminLowerMenu.jsp" %>
+	</c:when> --%>
+
 
 </body>
 </html>

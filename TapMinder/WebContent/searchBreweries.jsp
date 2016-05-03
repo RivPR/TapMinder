@@ -89,6 +89,7 @@ neigborhood
 	${b.neighborhood.name}"
 	<br>
 
+		
 			<form action="modifyBreweryPage.do">
 				<input type="hidden" name="breweryId" value="${b.id}" />
 

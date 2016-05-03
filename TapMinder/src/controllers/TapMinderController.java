@@ -99,9 +99,11 @@ public class TapMinderController {
 			break;
 		case "modifyBreweries":
 			// TODO: this will actually probably not be used
+			
 			mv.setViewName("index.jsp");
 			break;
 		case "modifyModerators":
+			
 			// TODO: add real stuff
 			mv.setViewName("index.jsp");
 			break;
@@ -151,6 +153,7 @@ public class TapMinderController {
 		ModelAndView mv = new ModelAndView();
 
 		Brewery brewery = dao.getBrewery(breweryId);
+		System.out.println("brewery name to mod: " + brewery.getName());
 		mv.addObject("Brewery", brewery);
 		mv.addObject("neighborhoodList", dao.getNeighborhoods());
 		for (Neighborhood n : dao.getNeighborhoods()) {

@@ -203,7 +203,7 @@ public class TapMinderDBDAO implements TapMinderDAO {
 
 	@Override
 	public Brewery getBrewery(int breweryId){
-		Brewery b = em.find(Brewery.class, 1);
+		Brewery b = em.find(Brewery.class, breweryId);
 		
 		return b;
 	}

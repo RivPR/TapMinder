@@ -124,6 +124,9 @@
 				<button class="btn btn-primary btn-xl page-scroll" type="submit">Login</button>
 			</form:form>
 			</c:if>
+			<c:if test="${currentUser.id > 0 }">
+				<a href="indexAlexTest.jsp">GO!</a>
+			</c:if>
 			<form action="menu.do" method="POST">
 			<button style="color: black;" type="submit" name="menuChoice"
 					value="signUp">sign up</button>
