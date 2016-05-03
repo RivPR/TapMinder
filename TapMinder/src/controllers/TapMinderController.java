@@ -176,11 +176,27 @@ public class TapMinderController {
 		return mv;
 	}
 
+	@RequestMapping("modifyBeerPage.do")
+	private ModelAndView modifyBeerPage(@RequestParam("beerId") Integer beerId){
+	
+		
+		
+		ModelAndView mv = new ModelAndView();
+		
+		mv.addObject("Beer",dao.getBeer(beerId));
+		
+		mv.setViewName("modifyBeer.jsp");
+		return mv;
+		
+		
+		
+	}	
 	@RequestMapping("modifyBeer.do")
-	private ModelAndView modifyBeer(Beer beer, @RequestParam("beerId") Integer beerId){
+	private ModelAndView modifyBeer(Beer beer){
 		ModelAndView mv = new ModelAndView();
 		
 		dao.modifyBeer(beer);
+		
 		mv.setViewName("indexAlexTest.jsp");
 		return mv;
 	}
@@ -189,7 +205,9 @@ public class TapMinderController {
 		private ModelAndView deleteBeer(@RequestParam("beerId") Integer beerId){
 		ModelAndView mv = new ModelAndView();
 		
+		
 		dao.deleteBeer(beerId);
+		
 		mv.setViewName("indexAlexTest.jsp");
 		return mv;
 		

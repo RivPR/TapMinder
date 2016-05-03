@@ -200,14 +200,14 @@ public class TapMinderDBDAO implements TapMinderDAO {
 	
 	@Override
 	public void modifyBeer(Beer beer) {
-		System.out.println("MODIFY BEER THIS DOESN'T WORK");
-		System.out.println("MODIFY BEER THIS DOESN'T WORK");
-		System.out.println("MODIFY BEER THIS DOESN'T WORK");
-		System.out.println("MODIFY BEER THIS DOESN'T WORK");
-		System.out.println("MODIFY BEER THIS DOESN'T WORK");
-		System.out.println("MODIFY BEER THIS DOESN'T WORK");
-		System.out.println("MODIFY BEER THIS DOESN'T WORK");
-		em.persist(beer);
+		Beer beerToModify = em.find(Beer.class, beer.getId());
+		beerToModify.setName(beer.getName());
+		beerToModify.setAbv(beer.getAbv());
+		beerToModify.setHopCount(beer.getHopCount());
+		beerToModify.setBeerStyle(beer.getBeerStyle());
+		beerToModify.setDescription(beer.getDescription());
+		beerToModify.setImageLink(beer.getImageLink());
+		
 	}
 
 	@Override
