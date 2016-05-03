@@ -20,6 +20,10 @@
 	Rating: ${beer.averageRating}<br/>
 	<img src="${beer.imageLink}" />
 	<br>
+	<form action="rateABeer.do">
+		<button type="submit">Rate This Beer</button>
+	</form>
+	
 </c:forEach>
 
 
