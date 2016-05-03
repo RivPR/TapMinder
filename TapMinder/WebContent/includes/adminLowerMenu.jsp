@@ -10,6 +10,7 @@
 hi admin
 		<!-- admin and up only -->
 		<button type="submit" name="menuChoice" value="modifyUsers">Manager Users</button>
-
+<button style="color: black;" type="submit" name="menuChoice"
+					value="addBreweries">add brewrss</button>
 </form>
 </div>

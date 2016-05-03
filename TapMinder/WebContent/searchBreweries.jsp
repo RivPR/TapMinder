@@ -88,7 +88,7 @@ neigborhood
 	${b.zip} <br>
 	${b.neighborhood.name}"
 	<br>
-
+	<c:if test="currentUser.usertype.accessLevel == 3">
 		
 			<form action="modifyBreweryPage.do">
 				<input type="hidden" name="breweryId" value="${b.id}" />
@@ -100,6 +100,7 @@ neigborhood
 
 				<button type="submit">Delete</button>
 			</form>
+	</c:if>
 						
 			<br>
 

@@ -8,6 +8,8 @@
 
 <form action="menu.do">
 		HI MODERATOR
+		<button style="color: black;" type="submit" name="menuChoice"
+					value="addBreweries">add brewrss</button>
 
 </form>
 </div>
