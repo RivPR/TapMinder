@@ -150,28 +150,25 @@ public class TapMinderController {
 		return mv;
 
 	}// menu.do
-	
+
 	@RequestMapping("addBeerPage.do")
-	private ModelAndView addBeer(@RequestParam("breweryId") Integer breweryId){
-		
+	private ModelAndView addBeer(@RequestParam("breweryId") Integer breweryId) {
+
 		ModelAndView mv = new ModelAndView();
-		
-		
+
 		mv.addObject("Brewery", dao.getBrewery(breweryId));
-		mv.addObject("Beer",new Beer());
+		mv.addObject("Beer", new Beer());
 		mv.setViewName("addBeer.jsp");
 		return mv;
-		
+
 	}
 
 	@RequestMapping("addBeer.do")
 	private ModelAndView addBeer(@RequestParam("beerToAdd") Beer beerToAdd) {
 		ModelAndView mv = new ModelAndView();
 
-		
-		
-		mv.addObject("Beer",new Beer());
-		mv.addObject("BeerParameters",new BeerParameters());
+		mv.addObject("Beer", new Beer());
+		mv.addObject("BeerParameters", new BeerParameters());
 		mv.setViewName("searchBeer.jsp");
 		return mv;
 	}
@@ -433,11 +430,11 @@ public class TapMinderController {
 		}
 		return mv;
 
+	}
 
-	}	
-	@RequestMapping(path="rateABeer.do", params="beerId")
-	private ModelAndView rateAbeer(@ModelAttribute("currentUser") User currentUser, 
-								   @RequestParam("beerId") Integer beer){
+	@RequestMapping(path = "rateABeer.do", params = "beerId")
+	private ModelAndView rateAbeer(@ModelAttribute("currentUser") User currentUser,
+			@RequestParam("beerId") Integer beer) {
 
 		ModelAndView mv = new ModelAndView();
 		Beer beerResult = dao.getBeer(beer);
@@ -448,11 +445,10 @@ public class TapMinderController {
 		return mv;
 	}
 
-	@RequestMapping(path="saveRateABeer.do")
-	private ModelAndView saveRatingOfBeer(@ModelAttribute("currentUser") User currentUser, 
-										  @RequestParam("rating") int rating, 
-										  @RequestParam("beerId") int beer,
-										  @RequestParam("comments") String comments){
+	@RequestMapping(path = "saveRateABeer.do")
+	private ModelAndView saveRatingOfBeer(@ModelAttribute("currentUser") User currentUser,
+			@RequestParam("rating") int rating, @RequestParam("beerId") int beer,
+			@RequestParam("comments") String comments) {
 
 		ModelAndView mv = new ModelAndView();
 		BeerRating br = new BeerRating();
