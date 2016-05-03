@@ -86,8 +86,8 @@
 
 			<form action="menu.do" method="POST">
 				<!-- 		if logged in, show loggout instead (destroy session or something) -->
-				<button style="color: black;" type="submit" name="menuChoice"
-					value="login">Login</button>
+<!-- 				<button style="color: black;" type="submit" name="menuChoice"
+					value="login">Login</button> -->
 				<button style="color: black;" type="submit" name="menuChoice"
 					value="findBeers">Find Beers</button>
 				<button style="color: black;" type="submit" name="menuChoice"
