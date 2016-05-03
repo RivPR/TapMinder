@@ -78,22 +78,20 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand page-scroll" href="#initPage.do">Home</a>
+                <a class="navbar-brand page-scroll" href="#initPage.do">TapMinder</a>
             </div>
 
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav navbar-right">
-					<from action="menu.do" method="POST">
+					<form action="menu.do" method="POST">
 					
 					<button type="submit" name="menuChoice" value="logout">logout</button>
 					<button style="color: black;" type="submit" name="menuChoice"
 					value="myAccount">Manage Account</button>
-					</from>
+					</form>
 
-                    <li>
-                        <a class="page-scroll" href="#services">Services</a>
-                    </li>
+
                     <li>
                         <a class="page-scroll" href="#portfolio">Portfolio</a>
                     </li>
@@ -119,13 +117,13 @@
                
                
 			
-		
-	 		<form:form action="initPage.do" modelAttribute="user">
+			<c:if test="${currentUser.id < 1 }">
+	 		<form:form action="login.do" modelAttribute="user">
 				Username: <form:input type="text" name="email" placeholder="email@example.com" path="email" /><br><br>
 				Password: <form:input type="password" name="password" path="password" /><br><br>
 				<button class="btn btn-primary btn-xl page-scroll" type="submit">Login</button>
 			</form:form>
-			
+			</c:if>
 			<c:if test="${!empty(LoginError)}">
 				ERROR: ${LoginError}
 			</c:if>
