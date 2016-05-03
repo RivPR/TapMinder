@@ -44,5 +44,23 @@
     <artifactId>org.eclipse.persistence.jpa</artifactId>
     <version>2.6.2-RC1</version>
   </dependency>
+  
+  
+   <!--NEW DEPENDENCY FOR SPRING FRAMEWORK dependency-->
+   
+   <dependency>
+      <groupId>org.springframework</groupId>
+      <artifactId>spring-webmvc</artifactId>
+      <version>3.0.1.RELEASE</version>
+  </dependency>
+  <dependency>
+      <groupId>jstl</groupId>
+      <artifactId>jstl</artifactId>
+      <version>1.2</version>
+  </dependency>
+  
+  
+  
+  
 </dependencies>
 </project>

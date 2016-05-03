@@ -17,6 +17,6 @@
      <servlet-mapping>
            <servlet-name>tapminder</servlet-name>
            <url-pattern>*.do</url-pattern>
-     </servlet-mapping>     
+     </servlet-mapping>          
 </web-app> 
 
