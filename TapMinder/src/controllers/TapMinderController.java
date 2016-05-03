@@ -40,8 +40,9 @@ public class TapMinderController {
 	private TapMinderDAO dao;
 
 	@RequestMapping(path = "initPage.do", method = RequestMethod.GET)
-	public ModelAndView initializeLogin() {
+	public ModelAndView initializeLogin(@ModelAttribute("currentUser") User currentUser) {
 		ModelAndView mv = new ModelAndView();
+		mv.addObject("currentUser", currentUser);
 		mv.addObject("user", new User());
 		mv.setViewName("index1.jsp");
 		return mv;
@@ -132,7 +133,8 @@ public class TapMinderController {
 			currentUser = new User();
 			System.out.println(currentUser);
 			mv.addObject("currentUser", currentUser);
-			mv.setViewName("indexAlexTest.jsp");
+			mv.addObject("user", new User());
+			mv.setViewName("index.jsp");
 			break;
 		default:
 			mv.setViewName("index.jsp");
@@ -354,12 +356,13 @@ public class TapMinderController {
 		} else {
 			mv.addObject("LoginError", result.getMessage());
 			mv.addObject("user", new User());
-			mv.setViewName("AlexTestJSPStuff/login.jsp");
+			mv.setViewName("index.jsp");
 		}
 		return mv;
 
 	}
 
+	//TODO does this do anything?
 	@RequestMapping("login1.do")
 	private ModelAndView login1(User user, @ModelAttribute("currentUser") User currentUser) {
 		ModelAndView mv = new ModelAndView();
