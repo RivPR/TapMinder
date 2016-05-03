@@ -14,7 +14,7 @@
 <body>
 			<form:form action="modifyBeer.do" modelAttribute="Beer">
 			
-					<input type="hidden" name="breweryId" value="${Brewery.id}" />
+					<form:input type="hidden" path="id" />
 					Name<form:input type="text" path="name" />
 					ABV<form:input type="text"  path="abv" />
 					Hop Count<form:input type="text"  path="hopCount" />

@@ -25,7 +25,7 @@
 	<img src="${beer.imageLink}" />
 	<br>
 			
-			<form action="modifyBeer.do">
+			<form action="modifyBeerPage.do">
 				<input type="hidden" name="beerId" value="${beer.id}" />
 
 				<button type="submit">Modify</button>
