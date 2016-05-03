@@ -200,7 +200,7 @@ public class TapMinderController {
 		mv.setViewName("indexAlexTest.jsp");
 		return mv;
 	}
-	
+	//works
 	@RequestMapping("deleteBeer.do")
 		private ModelAndView deleteBeer(@RequestParam("beerId") Integer beerId){
 		ModelAndView mv = new ModelAndView();
