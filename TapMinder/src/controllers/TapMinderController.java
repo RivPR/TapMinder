@@ -464,7 +464,7 @@ public class TapMinderController {
 		br.setRating(rating);
 		dao.modifyRating(br);
 		mv.addObject("currentUser", currentUser);
-		mv.addObject("br", br);
+		mv.addObject("br", new BeerRating());
 		mv.setViewName("indexAlexTest.jsp");
 		return mv;
 	}
