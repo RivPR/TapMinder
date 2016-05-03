@@ -9,18 +9,33 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>USR Account</title>
+<title>Insert title here</title>
 </head>
 <body>
 
-${currentUser.firstname}
-${currentUser.lastname}
-${currentUser.email}
-${currentUser.password}
-${currentUser.usertype.typeName}
-${currentUser.ratings.size()}
+manage users jsp
 
-add delete account
+search
+
+<form:form action="findUsers.do" modelAttribute="User">
+	First <form:input type="text" path="firstname" />
+	Last <form:input type="text" path="lastname" />
+	Email <form:input type="text" path="email" />
+	<%-- First <form:input type="text" path="firstname" />
+	First <form:input type="text" path="firstname" />
+	First <form:input type="text" path="firstname" />
+	First <form:input type="text" path="firstname" /> --%>
+	<button type=submit>Search</button>
+</form:form>
+
+
+display
+
+
+edit
+
+
+
 
 
 </body>

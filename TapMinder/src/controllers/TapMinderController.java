@@ -105,7 +105,8 @@ public class TapMinderController {
 			break;
 		case "modifyUsers":
 			// TODO: add real stuff
-			mv.setViewName("index.jsp");
+			mv.addObject("User",new User());
+			mv.setViewName("manageUsers.jsp");
 			break;
 		case "addBreweries":
 			// TODO: add real stuff
@@ -254,6 +255,20 @@ public class TapMinderController {
 		return mv;
 	}
 
+	@RequestMapping("findUsers.do")
+	private ModelAndView findUsers(User user){
+		ModelAndView mv = new ModelAndView();
+		
+		List<User> userList = dao.getUsers(user);
+		
+		for (User user2 : userList) {
+			System.out.println(user2);
+		}
+		
+		mv.setViewName("index.jsp");
+		return mv;
+	}
+	
 	@RequestMapping("login.do")
 	private ModelAndView login(User user, @ModelAttribute("currentUser") User currentUser) {
 		ModelAndView mv = new ModelAndView();

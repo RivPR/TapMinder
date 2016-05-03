@@ -103,7 +103,7 @@
 					value="modifyBreweries">edit brews</button>
 				<!-- admin and up only -->
 				<button style="color: black;" type="submit" name="menuChoice"
-					value="modifyUsers">edit moderators</button>
+					value="modifyUsers">edit users</button>
 				<button style="color: black;" type="submit" name="menuChoice"
 					value="addBreweries">add brewrss</button>
 			</form>

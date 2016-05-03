@@ -50,6 +50,9 @@ public interface TapMinderDAO {
 	
 	public LoginResult getUserByLoginCredentials(User user);
 	
+	public List<User> getUsers(User user);
+	
+	//TODO replace w ^
 	public List<User> getUserByFirstName(String nameInput);
 	
 	//ratings

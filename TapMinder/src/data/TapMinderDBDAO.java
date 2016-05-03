@@ -347,6 +347,44 @@ public class TapMinderDBDAO implements TapMinderDAO {
 	}
 
 	@Override
+	public List<User> getUsers(User user){
+		//search by first, last, email
+		if(user.getFirstname() == null || user.getFirstname().length() < 1){
+			user.setFirstname("");
+		}
+		
+		if(user.getLastname() == null || user.getLastname().length() < 1){
+			user.setLastname("");
+		}
+		
+		if(user.getEmail() == null || user.getEmail().length() < 1){
+			user.setEmail("");
+		}
+		String fname = "%" +  user.getFirstname() + "%";
+		String lname = "%" +  user.getLastname() + "%";
+		String email = "%" +  user.getEmail() + "%";
+		
+		String query = "SELECT u FROM User u WHERE"
+				+ " u.firstname LIKE LOWER(:fname)"
+				+ " AND u.lastname LIKE LOWER(:lname)"
+				+ " AND u.email LIKE LOWER(:email)";
+		List<User> users = em.createQuery(query,User.class)
+				.setParameter("fname", fname.toLowerCase().trim())
+				.setParameter("lname", lname.toLowerCase().trim())
+				.setParameter("email", email.toLowerCase().trim())
+				.getResultList();
+//		
+//		List<User> users = em.createQuery("SELECT u FROM User u",User.class).getResultList();
+		System.out.println("IN GET USERS DAO METHOD");
+		for (User user2 : users) {
+			System.out.println(user2.getFirstname());
+		}
+		
+		return users;
+		
+	}
+	
+	@Override
 	public List<User> getUserByFirstName(String nameInput) {
 		String name = nameInput.toLowerCase().trim();
 		name = "%" + name + "%";
