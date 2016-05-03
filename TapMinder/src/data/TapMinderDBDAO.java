@@ -200,6 +200,7 @@ public class TapMinderDBDAO implements TapMinderDAO {
 	
 	@Override
 	public void modifyBeer(Beer beer) {
+		System.out.println("BEER TO CHANGLKJFLDJSDF : " + beer.getId());
 		Beer beerToModify = em.find(Beer.class, beer.getId());
 		beerToModify.setName(beer.getName());
 		beerToModify.setAbv(beer.getAbv());
