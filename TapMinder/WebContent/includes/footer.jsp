@@ -16,5 +16,9 @@
     <!-- Custom Theme JavaScript -->
     <script src="js/creative.js"></script>
 
+
+<!-- </div> -->
+ </header>
+
 </body>
 </html>
