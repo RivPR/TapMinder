@@ -547,7 +547,9 @@ public class TapMinderDBDAO implements TapMinderDAO {
 	
 	@Override
 	public User refreshUser(User u){
-		return em.merge(u);
+		u =  em.merge(u);
+		em.refresh(u);
+		return u;
 	}
 	
 	@Override
