@@ -37,6 +37,9 @@
     <link rel="stylesheet" href="css/creative.css" type="text/css">
 	<!-- manual overrides -->
     <link rel="stylesheet" href="css/stylesheet.css" type="text/css">
+    
+    <link rel="stylesheet" href="less/creative.less" type="text/css">
+    <link rel="stylesheet" href="js/creative.js" type="text/css">
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -91,12 +94,13 @@
         <!-- /.container-fluid -->
     </nav>
 
+ <header>
       <div class="header-content">
             <div class="header-content-inner">
-                <h1>TapMinder2</h1> <br>
+                <h1>Pending...</h1> <br>
                 <hr>
-                <p>Finding craft beer in the Denver area has never been easier!</p>
-               <!--  <a href="indexAlexTest.jsp" class="btn btn-primary btn-xl page-scroll">Find Out More</a> -->
+                <p>Pending...</p>
+               
             
             </div>
 

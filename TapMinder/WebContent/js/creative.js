@@ -4,15 +4,17 @@
  * For details, see http://www.apache.org/licenses/LICENSE-2.0.
  */
 
+$(':radio').change(  function(){    $('.choice').text( this.value + ' stars' );  } )
+
 (function($) {
     "use strict"; // Start of use strict
 
-    //TO DO STAR BUTTONS
-    $(':radio').change(
-    		  function(){
-    		    $('.choice').text( this.value + ' stars' );
-    		  } 
-    		)
+//    //TO DO STAR BUTTONS
+//    $(':radio').change(
+//    		  function(){
+//    		    $('.choice').text( this.value + ' stars' );
+//    		  } 
+//    		)
     		
     
     

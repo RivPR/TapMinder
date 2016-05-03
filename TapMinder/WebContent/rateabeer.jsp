@@ -1,4 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
+<%-- <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
@@ -12,7 +12,9 @@
 <title>Rate the beer!</title>
 </head>
 <body>
-<div>
+<div> --%>
+
+ <%@include file="/includes/header.jsp"%>
 
 	Name: ${beer.name} <br>
 	ABV: ${beer.abv} <br>
@@ -36,7 +38,7 @@
 
 		<div>
 			<form action="saveRateABeer.do">
-			<textarea name="comments" placeholder="Comments:"></textarea><br/>
+			<textarea style="color:black" name="comments" placeholder="Comments:"></textarea><br/>
 				<span class="star-rating"> <input type="radio" name="rating"
 					value="1"><i></i> <input type="radio" name="rating"
 					value="2"><i></i> <input type="radio" name="rating"
@@ -44,17 +46,18 @@
 					value="4"><i></i> <input type="radio" name="rating"
 					value="5"><i></i>
 					<input type="hidden" name="beerId" value="${beer.id}" />
-				</span> <strong class="choice">Choose a rating</strong> 
+				</span>Choose a rating <strong class="choice"></strong> 
 				<input type="submit" value="Submit">
 			</form>
 		</div>
 
 
+<%@include file="/includes/footer.jsp"%>
 
 
 
-
+<!-- 
 
 	</div>
 </body>
-</html>
+</html> -->
