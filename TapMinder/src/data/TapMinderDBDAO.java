@@ -286,6 +286,12 @@ public class TapMinderDBDAO implements TapMinderDAO {
 	}
 
 	@Override
+	public void addBrewery(Brewery brewery, Integer neighborHoodId){
+		brewery.setNeighborhood(em.find(Neighborhood.class, neighborHoodId));
+		em.persist(brewery);
+	}
+	
+	@Override
 	public void modifyBrewery(Brewery brewery, Integer neighborHoodId) {
 		int breweryId = brewery.getId();
 		Brewery breweryToChange = em.find(Brewery.class, breweryId);

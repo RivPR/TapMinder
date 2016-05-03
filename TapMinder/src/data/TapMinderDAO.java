@@ -31,6 +31,8 @@ public interface TapMinderDAO {
 	
 	public void modifyBrewery(Brewery brewery, Integer neighborHoodId);
 	
+	public void addBrewery(Brewery brewery, Integer neighborHoodId);
+	
 	public void deleteBrewery(Brewery brewery);
 	
 	public void deleteBrewery(Integer brewery);

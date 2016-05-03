@@ -107,6 +107,13 @@ public class TapMinderController {
 			// TODO: add real stuff
 			mv.setViewName("index.jsp");
 			break;
+		case "addBreweries":
+			// TODO: add real stuff
+			mv.addObject("Brewery", new Brewery());
+			mv.addObject("neighborhoodList", dao.getNeighborhoods());
+			
+			mv.setViewName("addBrewery.jsp");
+			break;
 		case "logout":
 			System.out.println("logging out");
 			System.out.println(currentUser);
@@ -156,6 +163,16 @@ public class TapMinderController {
 		ModelAndView mv = new ModelAndView();
 
 		dao.modifyBrewery(brewery, neighborHoodId);
+		mv.addObject("Brewery", brewery);
+		mv.setViewName("indexAlexTest.jsp");
+		return mv;
+	}
+	
+	@RequestMapping("addBrewery.do")
+	private ModelAndView addBrewery(Brewery brewery, @RequestParam("neighboorHoodId") Integer neighborHoodId) {
+		ModelAndView mv = new ModelAndView();
+		
+		dao.addBrewery(brewery, neighborHoodId);
 		mv.addObject("Brewery", brewery);
 		mv.setViewName("indexAlexTest.jsp");
 		return mv;
