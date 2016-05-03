@@ -527,8 +527,9 @@ public class TapMinderController {
 		br.setComments(comment);
 		
 		dao.modifyRating(br);
-		
+
 		mv.setViewName("findUserBeerList.do");
+		
 		return mv;
 	}
 
