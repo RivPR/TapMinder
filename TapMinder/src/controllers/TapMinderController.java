@@ -397,11 +397,17 @@ public class TapMinderController {
 		return mv;
 	}
 	@RequestMapping(path="saveRateABeer.do", params="rating")
-	private ModelAndView saveRatingOfBeer(@ModelAttribute("currentUser") User currentUser, @RequestParam("rating") int rating){
+	private ModelAndView saveRatingOfBeer(@ModelAttribute("currentUser") User currentUser, @RequestParam("rating") int rating, @RequestParam("beerId") Beer beer){
 		ModelAndView mv = new ModelAndView();
-		
-		mv.addObject(attributeValue);
-		mv.setViewName("drama.jsp");
+		Beer beerResult;
+		BeerRating br = new BeerRating();
+
+		br.setBeer(beer);
+		br.setRating(rating);
+		dao.modifyRating(br);
+		mv.addObject("currentUser", currentUser);
+		mv.addObject("br", br);
+		mv.setViewName("index.jsp");
 		return mv;
 	}
 
