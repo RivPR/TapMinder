@@ -512,6 +512,8 @@ public class TapMinderController {
 		mv.setViewName("findUserBeerList.do");
 		return mv;
 	}
+	
+	//
 	@RequestMapping("changeARating.do")
 	private ModelAndView changeTheRating(@ModelAttribute("currentUser") User currentUser, 
 										 @RequestParam("ratingID") int ratingId ){
