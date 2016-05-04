@@ -319,6 +319,8 @@ public class TapMinderDBDAO implements TapMinderDAO {
 	public void modifyBrewery(Brewery brewery, Integer neighborHoodId) {
 		int breweryId = brewery.getId();
 		Brewery breweryToChange = em.find(Brewery.class, breweryId);
+		System.out.println("modding brwery: " + breweryToChange);
+		breweryToChange.setName(brewery.getName());
 		breweryToChange.setStreetAddress(brewery.getStreetAddress());
 		breweryToChange.setCity(brewery.getCity());
 		breweryToChange.setState(brewery.getState());
@@ -326,7 +328,7 @@ public class TapMinderDBDAO implements TapMinderDAO {
 		breweryToChange.setImageLink(brewery.getImageLink());
 		breweryToChange.setBreweryLink(brewery.getBreweryLink());
 		breweryToChange.setNeighborhood(em.find(Neighborhood.class, neighborHoodId));
-		
+		System.out.println("modded brw: " + breweryToChange);
 	}
 
 	@Override

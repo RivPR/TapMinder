@@ -131,6 +131,13 @@ public class Brewery {
 	public void setBeerList(List<Beer> beerList) {
 		this.beerList = beerList;
 	}
+
+	@Override
+	public String toString() {
+		return "Brewery [id=" + id + ", name=" + name + ", streetAddress=" + streetAddress + ", city=" + city
+				+ ", state=" + state + ", zip=" + zip + ", imageLink=" + imageLink + ", breweryLink=" + breweryLink
+				+ ", neighborhood=" + neighborhood +  "]";
+	}
 	
 	
 	
