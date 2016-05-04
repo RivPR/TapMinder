@@ -90,7 +90,7 @@ public class TapMinderController {
 			mv.setViewName("searchBreweries.jsp");
 			break;
 		case "viewUserBeers":
-
+			currentUser = dao.refreshUser(currentUser);  //TODO doesn't work?
 			mv.setViewName("findUserBeerList.do");
 			break;
 		case "myAccount":
@@ -490,7 +490,11 @@ public class TapMinderController {
 	private ModelAndView saveRatingOfBeer(@ModelAttribute("currentUser") User currentUser,
 			@RequestParam("rating") int rating, @RequestParam("beerId") int beer,
 			@RequestParam("comments") String comments) {
-
+//
+		int currentUserId = currentUser.getId();
+		currentUser = new User();
+		currentUser = dao.getUser(currentUserId);
+		//
 		ModelAndView mv = new ModelAndView();
 		BeerRating br = new BeerRating();
 		Beer beerToBeRated = dao.getBeer(beer);
@@ -502,9 +506,11 @@ public class TapMinderController {
 		dao.addRating(br);
 		mv.addObject("currentUser", currentUser);
 		mv.addObject("br", new BeerRating());
-		mv.setViewName("indexAlexTest.jsp");
+		mv.setViewName("findUserBeerList.do");
 		return mv;
 	}
+	
+	//
 	@RequestMapping("changeARating.do")
 	private ModelAndView changeTheRating(@ModelAttribute("currentUser") User currentUser, 
 										 @RequestParam("ratingID") int ratingId ){
