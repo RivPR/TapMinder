@@ -1,10 +1,18 @@
 <%@include file="/includes/header.jsp"%>
 
 
-<div>
+<div class="container">
+<div class="row">
+<div class="col-sm-4 col-lg-8">
 Beer Name: <h3>${br.beer.name}</h3><br/>
 Rating: <h3>${br.rating}</h3><br/>
-<form action="saveARating.do">
+<img src="${br.beer.imageLink}" />
+</div>
+</div>
+	<div class="row">
+	<div class="col-sm-4 col-lg-8">
+	<h3>Rate the beer:</h3>
+	<form action="saveARating.do">
 		<textarea style="color: black" name="comments" placeholder="Comments:"></textarea>
 		<br />
 		<fieldset class="rating">
@@ -21,7 +29,9 @@ Rating: <h3>${br.rating}</h3><br/>
 		</fieldset>
 		<input type="hidden" name="beerId" value="${beer.id}"><i></i>
 		<input type="submit" value="Submit">
-</form>
+	</form>
+		</div>
+		</div>
 </div>
 
 <%@include file="/includes/footer.jsp"%>
