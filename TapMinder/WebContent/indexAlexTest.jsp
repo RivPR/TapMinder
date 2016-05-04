@@ -47,6 +47,7 @@
 
 <!-- Custom CSS -->
 <link rel="stylesheet" href="css/creative.css" type="text/css">
+<link rel="icon" href="http://a2.mzstatic.com/us/r30/Purple4/v4/78/82/dd/7882ddd0-c8ca-a024-4670-61e4ca8b41d6/icon256.png">
 
 <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
 <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -78,21 +79,25 @@
                 <ul class="nav navbar-nav navbar-right">
 					<form action="menu.do" method="POST">
 					<c:if test="${currentUser.id > 0 }">
-					<button type="submit" name="menuChoice" value="logout">logout</button>
-									<button style="color: black;" type="submit" name="menuChoice"
-					value="viewUserBeers">View User Beers</button>
-					<button style="color: black;" type="submit" name="menuChoice"
-					value="myAccount">Manage Account</button>
+					
+					<button class="btn btn-primary btn page-scroll" style="background-color: #2A9D8F" type="submit" name="menuChoice" value="logout">Logout</button>	
+					<button class="btn btn-primary btn page-scroll" style="background-color: #2A9D8F" type="submit" name="menuChoice" value="viewUserBeers">View User Beers</button>	
+					<button class="btn btn-primary btn page-scroll" style="background-color: #2A9D8F" type="submit" name="menuChoice" value="myAccount">Manage Account</button>	
+							
+					
+					<!-- <button type="submit" name="menuChoice" value="logout">logout</button> -->
+					<!-- <button style="color: black;" type="submit" name="menuChoice" value="viewUserBeers">View User Beers</button> -->
+					<!-- <button style="color: black;" type="submit" name="menuChoice" value="myAccount">Manage Account</button> -->
 										
 					</c:if>
 					</form>
 
-                    <li>
+                <!--     <li>
                         <a class="page-scroll" href="#portfolio">Portfolio</a>
                     </li>
                     <li>
                         <a class="page-scroll" href="#contact">Contact</a>
-                    </li>
+                    </li> -->
                 </ul>
             </div>
             <!-- /.navbar-collapse -->
@@ -117,6 +122,8 @@
 
 				<button style="color: black;" type="submit" name="menuChoice"
 					value="viewUserBeers">View User Beers</button> -->
+
+				
 
 				<button style="color: black;" type="submit" name="menuChoice"
 					value="myAccount">View User Account</button>
