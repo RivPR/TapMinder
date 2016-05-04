@@ -230,9 +230,11 @@ public class TapMinderController {
 	}
 
 	@RequestMapping("modifyBreweryPage.do")
-	private ModelAndView modifyBrewery(@RequestParam("breweryId") Integer breweryId) {
+	private ModelAndView modifyBrewery(@ModelAttribute("currentUser") User currentUser, @RequestParam("breweryId") Integer breweryId) {
 		ModelAndView mv = new ModelAndView();
 
+	
+		if(currentUser.getUsertype().getAccessLevel() > 1){
 		Brewery brewery = dao.getBrewery(breweryId);
 		System.out.println("brewery name to mod: " + brewery.getName());
 		mv.addObject("Brewery", brewery);
@@ -241,6 +243,22 @@ public class TapMinderController {
 			System.out.println(n.getName());
 		}
 		mv.setViewName("modifyBrewery.jsp");
+		
+		}else{
+			mv.setViewName("indexAlexTest.jsp");
+		}
+		return mv;
+	}
+	
+	@RequestMapping("modifyBrewery.do")
+	private ModelAndView changeBrewery(Brewery brewery, @RequestParam("neighboorHoodId") Integer neighborHoodId) {
+		ModelAndView mv = new ModelAndView();
+		System.out.println("BREWERY TO MODIFY " + dao.getBrewery(brewery.getId()));
+		dao.modifyBrewery(brewery, neighborHoodId);
+		System.out.println("BREWERY after MODIFY " + dao.getBrewery(brewery.getId()));
+		mv.addObject("Brewery", brewery);
+		mv.addObject("searchSetting", "");
+		mv.setViewName("searchBreweries.jsp");
 		return mv;
 	}
 
@@ -256,16 +274,6 @@ public class TapMinderController {
 		return mv;
 	}
 
-	@RequestMapping("modifyBrewery.do")
-	private ModelAndView changeBrewery(Brewery brewery, @RequestParam("neighboorHoodId") Integer neighborHoodId) {
-		ModelAndView mv = new ModelAndView();
-		System.out.println("BREWERY TO MODIFY " + dao.getBrewery(brewery.getId()));
-		dao.modifyBrewery(brewery, neighborHoodId);
-		System.out.println("BREWERY after MODIFY " + dao.getBrewery(brewery.getId()));
-		mv.addObject("Brewery", brewery);
-		mv.setViewName("indexAlexTest.jsp" );
-		return mv;
-	}
 
 	@RequestMapping("addBrewery.do")
 	private ModelAndView addBrewery(Brewery brewery, @RequestParam("neighboorHoodId") Integer neighborHoodId) {
@@ -273,7 +281,8 @@ public class TapMinderController {
 
 		dao.addBrewery(brewery, neighborHoodId);
 		mv.addObject("Brewery", brewery);
-		mv.setViewName("indexAlexTest.jsp");
+		mv.addObject("searchSetting", "");
+		mv.setViewName("searchBreweries.jsp");
 		return mv;
 	}
 
@@ -327,7 +336,6 @@ public class TapMinderController {
 		mv.addObject("beerList", beerList);
 		mv.addObject("currentUser", currentUser);
 		mv.setViewName("searchResult.jsp");
-
 		return mv;
 	}
 
@@ -360,17 +368,21 @@ public class TapMinderController {
 	}
 
 	@RequestMapping("findUsers.do")
-	private ModelAndView findUsers(User user) {
+	private ModelAndView findUsers(@ModelAttribute("currentUser") User currentUser,User user) {
 		ModelAndView mv = new ModelAndView();
-
-		List<User> userList = dao.getUsers(user);
-
-		for (User user2 : userList) {
-			System.out.println(user2);
+		if(currentUser.getUsertype().getAccessLevel() > 2){
+			List<User> userList = dao.getUsers(user);
+			
+			for (User user2 : userList) {
+				System.out.println(user2);
+			}
+			mv.addObject("User", user);
+			mv.addObject("userList", userList);
+			mv.setViewName("manageUsers.jsp");
+			
+		}else{
+			mv.setViewName("indexAlexTest.jsp");
 		}
-		mv.addObject("User", user);
-		mv.addObject("userList", userList);
-		mv.setViewName("manageUsers.jsp");
 		return mv;
 	}
 
@@ -390,7 +402,7 @@ public class TapMinderController {
 	@RequestMapping("signUp.do")
 	private ModelAndView signUp(User user) {
 		ModelAndView mv = new ModelAndView();
-
+		//if a user signs up, they can only be a standard user unless edited by the admin
 		user.setUsertype(dao.getUserType(1));
 		dao.addUser(user);
 		mv.addObject("User", new User());
@@ -421,12 +433,17 @@ public class TapMinderController {
 	}
 
 	@RequestMapping("deleteUser.do")
-	private ModelAndView deleteUser(@RequestParam("userId") Integer userId) {
+	private ModelAndView deleteUser(@ModelAttribute("currentUser") User currentUser, @RequestParam("userId") Integer userId) {
 		ModelAndView mv = new ModelAndView();
-		dao.deleteUser(userId);
-		// TODO: FINISH
-		mv.addObject("User", new User());
-		mv.setViewName("manageUsers.jsp");
+		if(currentUser.getUsertype().getAccessLevel() > 2){
+			dao.deleteUser(userId);
+			// TODO: FINISH
+			mv.addObject("User", new User());
+			mv.setViewName("manageUsers.jsp");
+			
+		}else{
+			mv.setViewName("indexAlexTest.jsp");
+		}
 		return mv;
 
 	}
@@ -435,13 +452,18 @@ public class TapMinderController {
 	private ModelAndView deleteCurrentUser(@ModelAttribute("currentUser") User currentUser,
 			@RequestParam("userId") Integer userId) {
 		ModelAndView mv = new ModelAndView();
-		dao.deleteUser(userId);
-		// TODO: FINISH
-		currentUser = new User();
-		System.out.println("logged out: now: " + currentUser);
-		mv.addObject("currentUser", currentUser);
-		mv.addObject("User", new User());
-		mv.setViewName("manageUsers.jsp");
+		if(currentUser.getUsertype().getAccessLevel() > 0){
+			dao.deleteUser(userId);
+			// TODO: FINISH
+			currentUser = new User();
+			System.out.println("logged out: now: " + currentUser);
+			mv.addObject("currentUser", currentUser);
+			mv.addObject("User", new User());
+			mv.setViewName("manageUsers.jsp");
+			
+		}else{
+			mv.setViewName("indexAlexTest.jsp");
+		}
 		return mv;
 
 	}
@@ -476,6 +498,8 @@ public class TapMinderController {
 		mv.addObject("currentUser", currentUser);
 		mv.addObject("beer", beerResult);
 		mv.setViewName("rateabeer.jsp");
+		
+		
 		return mv;
 	}
 
@@ -484,6 +508,10 @@ public class TapMinderController {
 			@RequestParam("rating") int rating, @RequestParam("beerId") int beer,
 			@RequestParam("comments") String comments) {
 		//
+		/*
+		 The list of beers for a user will not update unless a user logs out and
+		 back in, so I made that happen silently here:
+		 */
 		int currentUserId = currentUser.getId();
 		currentUser = new User();
 		currentUser = dao.getUser(currentUserId);

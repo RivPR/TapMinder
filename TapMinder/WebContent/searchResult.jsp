@@ -18,10 +18,12 @@
 	Style: ${beer.beerStyle} <br>
 	Brewery: ${beer.brewery.name} <br>
 	Rating: ${beer.averageRating}<br/>
+				<c:if test="${currentUser.usertype.accessLevel > 0}">
 	<form action="rateABeer.do">
 		<input type="hidden" name="beerId" value="${beer.id}" />
 		<button type="submit">Rate This Beer</button>
 	</form>
+	</c:if>
 	<img src="${beer.imageLink}" />
 	<br>
 	
