@@ -3,8 +3,11 @@ package controllers;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -175,10 +178,27 @@ public class TapMinderController {
 
 	}
 
+//	@RequestMapping("addBeer.do")
+//	private ModelAndView addBeer(@ModelAttribute("currentUser") User currentUser,Beer beer,@RequestParam("breweryId") Integer breweryId) {
+//		ModelAndView mv = new ModelAndView();
+//
+//			
+//			if (currentUser.getUsertype().getAccessLevel() > 0) {
+//				beer.setBrewery(dao.getBrewery(breweryId));
+//				dao.addBeer(beer);
+//			}
+//			mv.addObject("Beer", new Beer());
+//			mv.setViewName("indexAlexTest.jsp");			
+//
+//		return mv;
+//	}
+	
+	//TODO ************ FOR VALIDATION TESTING, not working yet, will fix tomorrow
 	@RequestMapping("addBeer.do")
-	private ModelAndView addBeer(@ModelAttribute("currentUser") User currentUser,Beer beer,@RequestParam("breweryId") Integer breweryId) {
+	//TODO trying validation
+	private ModelAndView addBeer(@ModelAttribute("currentUser") User currentUser,@Valid Beer beer, Errors errors,@RequestParam("breweryId") Integer breweryId) {
 		ModelAndView mv = new ModelAndView();
-
+		if(errors.getErrorCount() == 0){
 			
 			if (currentUser.getUsertype().getAccessLevel() > 0) {
 				beer.setBrewery(dao.getBrewery(breweryId));
@@ -186,38 +206,21 @@ public class TapMinderController {
 			}
 			mv.addObject("Beer", new Beer());
 			mv.setViewName("indexAlexTest.jsp");			
-
+		}else{
+			if (currentUser.getUsertype().getAccessLevel() > 0) {
+				mv.addObject("Brewery", dao.getBrewery(breweryId));
+				mv.addObject("Beer", new Beer());
+				mv.addObject("errorMessage","There was a syntax error in your parameters, try again.");
+				mv.setViewName("addBeer.jsp");
+			} else {
+				mv.setViewName("indexAlexTest.jsp");
+			}
+			
+			
+		}
 		return mv;
 	}
 	
-	//TODO ************ FOR VALIDATION TESTING, not working yet, will fix tomorrow
-//	@RequestMapping("addBeer.do")
-//	//TODO trying validation
-//	private ModelAndView addBeer(@ModelAttribute("currentUser") User currentUser,@Valid Beer beer, Errors errors,@RequestParam("breweryId") Integer breweryId) {
-//		ModelAndView mv = new ModelAndView();
-//		if(errors.getErrorCount() != 0){
-//			
-//			if (currentUser.getUsertype().getAccessLevel() > 0) {
-//				beer.setBrewery(dao.getBrewery(breweryId));
-//				dao.addBeer(beer);
-//			}
-//			mv.addObject("Beer", new Beer());
-//			mv.setViewName("searchBreweriesPage.do");			
-//		}else{
-//			if (currentUser.getUsertype().getAccessLevel() > 0) {
-//				mv.addObject("Brewery", dao.getBrewery(breweryId));
-//				mv.addObject("Beer", new Beer());
-//				mv.addObject("errorMessage","There was a syntax error in your parameters, try again.");
-//				mv.setViewName("addBeer.jsp");
-//			} else {
-//				mv.setViewName("indexAlexTest.jsp");
-//			}
-//			
-//			
-//		}
-//		return mv;
-//	}
-//	
 	
 
 	//TODO set model attribute so that entire controller can see it?

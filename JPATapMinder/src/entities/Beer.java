@@ -13,7 +13,9 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
-import javax.validation.constraints.Size;
+import javax.validation.constraints.DecimalMax;
+import javax.validation.constraints.DecimalMin;
+import javax.validation.constraints.Pattern;
 
 @Entity
 @Table(name="beers")
@@ -26,13 +28,14 @@ public class Beer {
 	@Column(name="name")
 	private String name;
 	
-	@Column(name="abv")
-//	@Size(max=99999)
-	
+	@Column(name="abv")	
+	@DecimalMin(value="0")
+	@DecimalMax(value="100")
 	private Double abv;
 	
 	@Column(name="hop_count")
-//	@Size(max=99999)
+	@DecimalMin(value="0")
+	@DecimalMax(value="20000000")
 	private Double hopCount;
 	
 	@Column(name="style")
