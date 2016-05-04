@@ -1,4 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
+<%-- <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
@@ -12,7 +12,10 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Search brews</title>
 </head>
-<body>
+<body> --%>
+
+<%@include file="/includes/header.jsp"%>
+
 	Search brews Settings: ${searchSetting}
 	<c:if test="${searchSetting == ''}">
 		<form name="searchBy" action="searchBreweriesPage.do" method="GET">
@@ -37,36 +40,27 @@
 		<c:choose>
 
 			<c:when test="${searchSetting == 'name' }">
-			Brewery name <form:input type="text" path="name"
-					placeholder="Beer name" />
+				Brewery name <form:input style="color:black" type="text" path="name" placeholder="Type name here" />
 			</c:when>
 			<c:when test="${searchSetting == 'street' }">
-sa <form:input type="text" path="streetAddress" />
+				Street Address <form:input style="color:black" type="text" path="streetAddress" />
 			</c:when>
 			<c:when test="${searchSetting == 'city' }">
-city<form:input type="text" path="city" />
+				City<form:input style="color:black" type="text" path="city" />
 			</c:when>
 			<c:when test="${searchSetting == 'state' }">
-state <form:input type="text" path="state" placeholder="style" />
-
+				State <form:input style="color:black" type="text" path="state" placeholder="style" />
 			</c:when>
 			<c:when test="${searchSetting ==  'zipcode'}">
-zip <form:input type="text" path="zipcode" placeholder="Number 1-5" />
+				Zip <form:input style="color:black" type="text" path="zipcode" placeholder="Number 1-5" />
 			</c:when>
 			<c:when test="${searchSetting ==  'neighborhood'}">
-neigborhood 
-
-				<select name="neighboorHoodId">
-
-					<option value="">pick one</option>
+				Neigborhood<select name="neighboorHoodId"><option value="">Pick one</option>
 					<c:forEach var="hood" items="${neighborhoodList}">
 						<option value="${hood.id}"
 							<c:if test="${Brewery.neighborhood.id == hood.id}">
-		selected
-		</c:if>>${hood.name}</option>
-
-
-
+								Selected
+							</c:if>>${hood.name}</option>
 					</c:forEach>
 					</select>
 			</c:when>
@@ -81,49 +75,41 @@ neigborhood
 	<c:if test="${!empty(breweryList)}">
 		<c:forEach var="b" items="${breweryList}">
 	
-	Name: ${b.name} <br>
-	Addr: ${b.streetAddress} <br>
-	${b.city} <br>
-	${b.state} <br>
-	${b.zip} <br>
-	${b.neighborhood.name}"
-	<br>
+			Name: ${b.name} <br>
+			Address: ${b.streetAddress} <br>
+			${b.city} <br>
+			${b.state} <br>
+			${b.zip} <br>
+			${b.neighborhood.name}" <br>
 	
 	<c:if test="${ currentUser.usertype.accessLevel > 0}">
 
 			<form action="addBeerPage.do">
 				<input type="hidden" name="breweryId" value="${b.id}" />
-
 				<button type="submit">Add Beer to this brewery</button>
 			</form>
-
-
 	</c:if>
 
-
 	<c:if test="${ currentUser.usertype.accessLevel > 1}">
-		
-		
+
 			<form action="modifyBreweryPage.do">
 				<input type="hidden" name="breweryId" value="${b.id}" />
-
 				<button type="submit">Modify</button>
 			</form>
 			<form action="deleteBrewery.do">
 				<input type="hidden" name="breweryId" value="${b.id}" />
-
 				<button type="submit">Delete</button>
 			</form>
-	</c:if>
-						
+	</c:if>						
 			<br>
-
 			<br>
 
 		</c:forEach>
 	</c:if>
 
+<%@include file="/includes/footer.jsp"%>
 
-
+<!-- 
 </body>
-</html>
+</html> 
+-->

@@ -34,27 +34,26 @@
 
 		<form:form action="searchBeers.do" modelAttribute="BeerParameters">
 	<c:choose>
-		
 		<c:when test="${searchSetting == 'name' }">
 			BEER NAME <form:input style="color:black" type="text" path="name" placeholder="Beer name"/>
 		</c:when>
 		<c:when test="${searchSetting == 'abv' }">
-ABV from <form:input style="color:black" type="text" path="abvLow" /> to <form:input type="text" path="abvHigh" />
+			ABV Low <form:input style="color:black" type="text" path="abvLow" /> 
+			ABV High <form:input style="color:black" type="text" path="abvHigh" />
 		</c:when>
 		<c:when test="${searchSetting == 'hop' }">
-Hop count from <form:input style="color:black" type="text" path="hopCountLow" /> to <form:input type="text" path="hopCountHigh" />
+			Hop Count Low  <form:input style="color:black" type="text" path="hopCountLow" /> 
+			Hope Count High <form:input style="color:black" type="text" path="hopCountHigh" />
 		</c:when>
 		<c:when test="${searchSetting == 'style' }">
-Style <form:input style="color:black" type="text" path="style" placeholder="style"/>
-
+			Style <form:input style="color:black" type="text" path="style" placeholder="style"/>
 		</c:when>
 		<c:when test="${searchSetting ==  'rating'}">
 			Rating Low<form:input style="color:black" type="text" path="ratingLow" placeholder="Number 1-5" />
 			Rating High <form:input style="color:black" type="text" path="ratingHigh" placeholder="Number 1-5" />
 		</c:when>
-		
-
 	</c:choose>
+	
 	<c:choose>
 		<c:when test="${searchSetting ==  'brewery'}">
 		<select name="breweryId">
