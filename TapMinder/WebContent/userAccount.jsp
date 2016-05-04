@@ -1,30 +1,49 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-    <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
-<%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
- 
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html>
-<head>
+<%@include file="/includes/header.jsp"%>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>USR Account</title>
+<title>Profile Page</title>
 </head>
+
+
 <body>
-USER INFO (WHEN SIGNED IN)
-${currentUser.firstname}
-${currentUser.lastname}
-${currentUser.email}
-${currentUser.password}
-${currentUser.usertype.typeName}
-${currentUser.ratings.size()}
+
+<div class="container">
+<div>
+<h2>USER INFO</h2>
+<table class="table table-inverse">
+<thead>
+	<tr>
+		<th>First Name</th>
+		<th>Last Name</th>
+		<th>Email</th>
+		<th>Account Type</th>
+		<th># of Beers Rated</th>
+	</tr>
+</thead>
+<tbody>
+ 	<tr>
+ 		<th>${currentUser.firstname}</th>
+ 		<th>${currentUser.lastname}</th>
+		<th>${currentUser.email}</th>
+    	<th>${currentUser.usertype.typeName}</th>
+		<th>${currentUser.ratings.size()}</th>
+	</tr>
+</table>
+	
 <form action="deleteCurrentUser.do">
 	<input type="hidden" name="userId" value="${currentUser.id}">
-	<button type="submit">DELETE</button>
+	<button class="btn btn-delete btn-xl page-scroll" 
+			type="submit" 
+			onclick="if (confirm('Are you sure you want to delete your account?')) commentDelete(1); return false">DELETE ACCOUNT</button>
 </form>
 
 
+</div> <!-- PROFILE CARD -->
+
+</div> <!-- /CONTAINER -->
+
 
 </body>
+
+
+
 </html>

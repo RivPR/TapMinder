@@ -549,18 +549,16 @@ public class TapMinderController {
 	private ModelAndView deleteCurrentUser(@ModelAttribute("currentUser") User currentUser,
 			@RequestParam("userId") Integer userId) {
 		ModelAndView mv = new ModelAndView();
-		if(currentUser.getUsertype().getAccessLevel() > 0){
+	
 			dao.deleteUser(userId);
-			// TODO: FINISH
+			
 			currentUser = new User();
 			System.out.println("logged out: now: " + currentUser);
 			mv.addObject("currentUser", currentUser);
 			mv.addObject("User", new User());
-			mv.setViewName("manageUsers.jsp");
-			
-		}else{
-			mv.setViewName("indexAlexTest.jsp");
-		}
+			mv.addObject("user", new User());
+			mv.setViewName("index.jsp");
+
 		return mv;
 
 	}

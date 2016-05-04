@@ -39,6 +39,7 @@
     <link rel="stylesheet" href="js/creative.js" type="text/css">
 	<!-- manual overrides -->
     <link rel="stylesheet" href="css/stylesheet.css" type="text/css">
+    <link rel="icon" href="http://a2.mzstatic.com/us/r30/Purple4/v4/78/82/dd/7882ddd0-c8ca-a024-4670-61e4ca8b41d6/icon256.png">
     
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -64,29 +65,27 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand page-scroll" href="initPage.do">TapMinder</a>
+                
+                <c:if test="${currentUser.id > 0}"> 
+                	<a class="navbar-brand page-scroll" href="indexAlexTest.jsp">TapMinder</a>
+            	</c:if>
+            	<c:if test="${currentUser.id < 1}">
+            		<a class="navbar-brand page-scroll" href="initPage.do">TapMinder</a>
+            	</c:if>
             </div>
 
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav navbar-right">
-					<form action="menu.do" method="POST">
-					<c:if test="${currentUser.id > 0 }">
-					<button type="submit" name="menuChoice" value="logout">logout</button>
-									<button style="color: black;" type="submit" name="menuChoice"
-					value="viewUserBeers">View User Beers</button>
-					<button style="color: black;" type="submit" name="menuChoice"
-					value="myAccount">Manage Account</button>
-										
+					<form  action="menu.do" method="POST">
+						<c:if test="${currentUser.id > 0 }">
+							<button class="btn btn-primary btn page-scroll" style="background-color: #2A9D8F" type="submit" name="menuChoice" value="logout">Logout</button>	
+							<button class="btn btn-primary btn page-scroll" style="background-color: #2A9D8F" type="submit" name="menuChoice" value="myAccount">Manage Account</button>
+							<button class="btn btn-primary btn page-scroll" style="background-color: #2A9D8F" type="submit" name="menuChoice" value="viewUserBeers">View User Beers</button>					
 					</c:if>
 					</form>
 
-                    <li>
-                        <a class="page-scroll" href="#portfolio">Portfolio</a>
-                    </li>
-                    <li>
-                        <a class="page-scroll" href="#contact">Contact</a>
-                    </li>
+        <!--            <li><a class="page-scroll" href="#contact">Contact</a></li>-->
                 </ul>
             </div>
             <!-- /.navbar-collapse -->

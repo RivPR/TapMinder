@@ -40,11 +40,3 @@ Brewery: ${beer.brewery.name}
 </div>
 
 <%@include file="/includes/footer.jsp"%>
-
-
-
-<!-- 
-
-	</div>
-</body>
-</html> -->
