@@ -427,15 +427,26 @@ public class TapMinderController {
 	}
 
 	@RequestMapping("searchBreweries.do")
-	private ModelAndView searchBreweries(BreweryParameters breweryParameters, Integer neighboorHoodId) {
+	private ModelAndView searchBreweries(@ModelAttribute("currentUser") User currentUser
+			, @ModelAttribute("BreweryParameters") @Valid BreweryParameters breweryParameters, Errors errors, Integer neighboorHoodId) {
 		ModelAndView mv = new ModelAndView();
 		// TODO meh..
-		if (neighboorHoodId != null) {
-			breweryParameters.setNeighborhood(dao.getNeighborhood(neighboorHoodId));
+		if(errors.getErrorCount() == 0){
+			if (neighboorHoodId != null) {
+				breweryParameters.setNeighborhood(dao.getNeighborhood(neighboorHoodId));
+			}
+			List<Brewery> breweryList = dao.getBreweries(breweryParameters);
+			mv.addObject("breweryList", breweryList);
+			mv.setViewName("searchBreweries.jsp");
+			
+		}else{
+			mv.addObject("errorMessage","Please enter valid search parameters.");
+			mv.addObject("BreweryParameters", new BreweryParameters());
+			mv.addObject("currentUser", currentUser);
+			mv.addObject("neighborhoodList", dao.getNeighborhoods());
+			mv.addObject("searchSetting", "");
+			mv.setViewName("searchBreweries.jsp");
 		}
-		List<Brewery> breweryList = dao.getBreweries(breweryParameters);
-		mv.addObject("breweryList", breweryList);
-		mv.setViewName("searchBreweries.jsp");
 		return mv;
 	}
 

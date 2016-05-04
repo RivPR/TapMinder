@@ -25,7 +25,7 @@
 				<option value="street">Street</option>
 				<option value="city">city</option>
 				<option value="state">Style</option>
-				<option value="zip">Rating</option>
+				<option value="zip">Zip</option>
 				<option value="neighborhood">Neighborhood</option>
 			</select>
 
@@ -40,19 +40,19 @@
 		<c:choose>
 
 			<c:when test="${searchSetting == 'name' }">
-				Brewery name <form:input style="color:black" type="text" path="name" placeholder="Type name here" />
+				Brewery name <form:input style="color:black" type="text" path="name" placeholder="Type name here" /><form:errors path="name" /> 
 			</c:when>
 			<c:when test="${searchSetting == 'street' }">
-				Street Address <form:input style="color:black" type="text" path="streetAddress" />
+				Street Address <form:input style="color:black" type="text" path="streetAddress" /><form:errors path="streetAddress" /> 
 			</c:when>
 			<c:when test="${searchSetting == 'city' }">
-				City<form:input style="color:black" type="text" path="city" />
+				City<form:input style="color:black" type="text" path="city" /><form:errors path="city" /> 
 			</c:when>
 			<c:when test="${searchSetting == 'state' }">
-				State <form:input style="color:black" type="text" path="state" placeholder="style" />
+				State <form:input style="color:black" type="text" path="state" placeholder="style" /><form:errors path="state" /> 
 			</c:when>
 			<c:when test="${searchSetting ==  'zipcode'}">
-				Zip <form:input style="color:black" type="text" path="zipcode" placeholder="Number 1-5" />
+				Zip <form:input style="color:black" type="text" path="zipcode" placeholder="Number 1-5" /><form:errors path="zipcode" /> 
 			</c:when>
 			<c:when test="${searchSetting ==  'neighborhood'}">
 				Neigborhood<select name="neighboorHoodId"><option value="">Pick one</option>
@@ -67,6 +67,11 @@
 
 
 		</c:choose>
+		
+		<c:if test="${!empty(errorMessage)}">
+		${errorMessage}
+		</c:if>
+		
 		<c:if test="${searchSetting != '' }">
 			<button style="background-color: #F99420" type="submit">search</button>
 		</c:if>
