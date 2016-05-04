@@ -448,15 +448,22 @@ public class TapMinderController {
 	}
 
 	@RequestMapping("addUser.do")
-	private ModelAndView addUser(User user, Integer userTypeId) {
+	private ModelAndView addUser(@ModelAttribute("User") @Valid User user, Errors errors, Integer userTypeId) {
 		ModelAndView mv = new ModelAndView();
-		System.out.println("usertypeid " + userTypeId);
-		UserType ut = dao.getUserType(userTypeId);
-		System.out.println(ut.getTypeName());
-		user.setUsertype(dao.getUserType(userTypeId));
-		dao.addUser(user);
-		mv.addObject("User", new User());
-		mv.setViewName("manageUsers.jsp");
+		if(errors.getErrorCount() == 0){
+			System.out.println("usertypeid " + userTypeId);
+			UserType ut = dao.getUserType(userTypeId);
+			System.out.println(ut.getTypeName());
+			user.setUsertype(dao.getUserType(userTypeId));
+			dao.addUser(user);
+			mv.addObject("User", user);
+			mv.setViewName("manageUsers.jsp");	
+		}else{
+			mv.addObject("User", user);
+			mv.setViewName("addUser.jsp");
+
+		}
+		
 		return mv;
 	}
 
