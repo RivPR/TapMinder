@@ -17,6 +17,10 @@
      <servlet-mapping>
            <servlet-name>tapminder</servlet-name>
            <url-pattern>*.do</url-pattern>
-     </servlet-mapping>          
+     </servlet-mapping>      
+     <error-page>
+		<error-code>400</error-code>
+		<location>/../error.jsp</location>
+	</error-page>    
 </web-app> 
 
