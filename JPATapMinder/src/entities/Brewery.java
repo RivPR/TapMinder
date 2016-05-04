@@ -27,34 +27,34 @@ public class Brewery {
 	private int id;
 	
 	@Column(name="name")
-	@Size(max=45)
+	@Size(min=1, max=45, message = "Name length is invalid")
 	private String name;
 	
 	@Column(name="street_address")
-	@Size(max=45)
+	@Size(max=45, message = "Address is too long")
 	private String streetAddress;
 	
 	@Column(name="city")
-	@Size(max=45)
+	@Size(max=45,message = "City is too long")
 	private String city;
 	
 	
 	@Column(name="state")
-	@Size(max=2)
+	@Size(max=2, message = "Please enter an abbreviation (ex. CO")
 	@Enumerated(EnumType.STRING)
 	private State state;
 	
 	@Column(name="zip")
-	@DecimalMin(value="0")
-	@DecimalMax(value="99999")
+	@DecimalMin(value="0",message = "Enter a valid 5 Digit Zip")
+	@DecimalMax(value="99999", message = "Zip is too long")
 	private int zip;
 	
 	@Column(name="image_link")
-	@Size(max=200)
+	@Size(max=200,message = "Link is too long")
 	private String imageLink;
 	
 	@Column(name="brewery_link")
-	@Size(max=200)
+	@Size(max=200,message = "Link is too long")
 	private String breweryLink;
 	
 	@ManyToOne()
