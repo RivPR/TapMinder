@@ -30,7 +30,7 @@
 </table>
 	
 <form action="deleteCurrentUser.do">
-	<input type="hidden" name="userId" value="${currentUser.id}">
+	<input type="text" name="userId" value="${currentUser.id}">
 	<button class="btn btn-delete btn-xl page-scroll" 
 			type="submit" 
 			onclick="if (confirm('Are you sure you want to delete your account?')) commentDelete(1); return false">DELETE ACCOUNT</button>

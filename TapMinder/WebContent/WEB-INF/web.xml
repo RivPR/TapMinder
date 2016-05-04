@@ -19,8 +19,8 @@
            <url-pattern>*.do</url-pattern>
      </servlet-mapping>      
      
-	<!-- <error-page>
+	<error-page>
   		<location>/error.jsp</location>
-	</error-page>   -->
+	</error-page> 
 </web-app> 
 
