@@ -450,28 +450,7 @@ public class TapMinderController {
 
 	}
 
-	// TODO does this do anything?
-	@RequestMapping("login1.do")
-	private ModelAndView login1(User user, @ModelAttribute("currentUser") User currentUser) {
-		ModelAndView mv = new ModelAndView();
-		System.out.println(user.getEmail());
-		System.out.println(user.getPassword());
-		LoginResult result = dao.getUserByLoginCredentials(user);
-		// mv.setViewName("index1.jsp");
 
-		if (result.getUser() != null) {
-			System.out.println("new current user: " + currentUser);
-			// TODO: better way to set session attributes?
-			mv.addObject("currentUser", result.getUser());
-			mv.setViewName("index1.jsp");
-		} else {
-			mv.addObject("LoginError", result.getMessage());
-			mv.addObject("user", new User());
-			mv.setViewName("index.jsp");
-		}
-		return mv;
-
-	}
 
 	@RequestMapping(path = "rateABeer.do", params = "beerId")
 	private ModelAndView rateAbeer(@ModelAttribute("currentUser") User currentUser,
