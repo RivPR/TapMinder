@@ -104,11 +104,11 @@ public class Brewery {
 		this.state = state;
 	}
 
-	public int getZip() {
+	public Integer getZip() {
 		return zip;
 	}
 
-	public void setZip(int zip) {
+	public void setZip(Integer zip) {
 		this.zip = zip;
 	}
 

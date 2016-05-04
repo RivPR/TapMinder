@@ -10,6 +10,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.validation.constraints.Size;
 
 @Entity
 @Table(name="users")
@@ -19,12 +20,16 @@ public class User {
 	private int id;
 	
 	@Column(name="firstname")
+	@Size(min=1, max=45, message="Please enter a valid first name")
 	private String firstname;
+	@Size(min=1, max=45, message="Please enter a valid last name")
 	@Column(name="lastname")
 	private String lastname;
 	@Column(name="email")
+	@Size(min=1, max=45, message="Please enter a valid email")
 	private String email;
 	@Column(name="password")
+	@Size(min=1, max=45, message="Please enter password between 1 and 45")
 	private String password;
 	
 	@ManyToOne()
