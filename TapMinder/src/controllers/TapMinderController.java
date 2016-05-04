@@ -49,6 +49,7 @@ public class TapMinderController {
 		mv.addObject("user", new User());
 		mv.setViewName("index.jsp");
 		return mv;
+		
 	}
 
 	@RequestMapping(path = "initPage.do", method = RequestMethod.POST)
