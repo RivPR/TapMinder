@@ -40,6 +40,7 @@ public class Brewery {
 	
 	
 	@Column(name="state")
+	@Size(max=2)
 	@Enumerated(EnumType.STRING)
 	private State state;
 	
@@ -49,9 +50,11 @@ public class Brewery {
 	private int zip;
 	
 	@Column(name="image_link")
+	@Size(max=200)
 	private String imageLink;
 	
 	@Column(name="brewery_link")
+	@Size(max=200)
 	private String breweryLink;
 	
 	@ManyToOne()

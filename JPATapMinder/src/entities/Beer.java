@@ -15,7 +15,7 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.DecimalMax;
 import javax.validation.constraints.DecimalMin;
-import javax.validation.constraints.Pattern;
+import javax.validation.constraints.Size;
 
 @Entity
 @Table(name="beers")
@@ -26,6 +26,9 @@ public class Beer {
 	private int id;
 	
 	@Column(name="name")
+	//TODO CHANGE THIS BACK
+	@Size(max=5, message="Name is wrong")
+//	@Size(max=45)
 	private String name;
 	
 	@Column(name="abv")	
@@ -38,14 +41,17 @@ public class Beer {
 	@DecimalMax(value="20000000")
 	private Double hopCount;
 	
+	@Size(max=45)
 	@Column(name="style")
 	private String beerStyle;
 	
 	//TODO: 5k varchar
 	@Column(name="description")
+	@Size(max=5000)
 	private String description;
 	
 	@Column(name="image_link")
+	@Size(max=200)
 	private String imageLink;
 
 	@OneToMany(mappedBy="beer", fetch = FetchType.EAGER, cascade={CascadeType.PERSIST, CascadeType.REMOVE})

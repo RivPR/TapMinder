@@ -196,12 +196,13 @@ public class TapMinderController {
 	//TODO ************ FOR VALIDATION TESTING, not working yet, will fix tomorrow
 	@RequestMapping("addBeer.do")
 	//TODO trying validation
-	private ModelAndView addBeer(@ModelAttribute("currentUser") User currentUser,@Valid Beer beer, Errors errors,@RequestParam("breweryId") Integer breweryId) {
+	private ModelAndView addBeer(@ModelAttribute("Beer") @Valid Beer beer, Errors errors,@RequestParam("breweryId") Integer breweryId,@ModelAttribute("currentUser") User currentUser) {
 		ModelAndView mv = new ModelAndView();
 		if(errors.getErrorCount() == 0){
 			
 			if (currentUser.getUsertype().getAccessLevel() > 0) {
 				beer.setBrewery(dao.getBrewery(breweryId));
+				
 				dao.addBeer(beer);
 			}
 			mv.addObject("Beer", new Beer());
@@ -209,8 +210,8 @@ public class TapMinderController {
 		}else{
 			if (currentUser.getUsertype().getAccessLevel() > 0) {
 				mv.addObject("Brewery", dao.getBrewery(breweryId));
-				mv.addObject("Beer", new Beer());
-				mv.addObject("errorMessage","There was a syntax error in your parameters, try again.");
+//				mv.addObject("Beer", beer);
+				mv.addObject("aerrorMessage","There was a syntax error in your parameters, try again.");
 				mv.setViewName("addBeer.jsp");
 			} else {
 				mv.setViewName("indexAlexTest.jsp");
