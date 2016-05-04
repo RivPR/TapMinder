@@ -382,21 +382,32 @@ public class TapMinderController {
 	}
 
 	@RequestMapping("searchBeers.do")
-	private ModelAndView searchBeers(@ModelAttribute("currentUser") User currentUser, BeerParameters beerParameters, @RequestParam("breweryId") Integer breweryId) {
-		System.out.println("BREWERY ID IN: " + breweryId);
+	private ModelAndView searchBeers(@ModelAttribute("currentUser") User currentUser, @ModelAttribute("BeerParameters") @Valid BeerParameters beerParameters, Errors errors, @RequestParam("breweryId") Integer breweryId) {
 		ModelAndView mv = new ModelAndView();
 		List<Beer> beerList;
-		if(breweryId != null && breweryId > 0){
-			//if it was selected by brewery, add it to the parameters like this
-			beerList = dao.getBrewery(breweryId).getBeerList();
+	
+		if(errors.getErrorCount() == 0){
+			System.out.println("BREWERY ID IN: " + breweryId);
+			if(breweryId != null && breweryId > 0){
+				//if it was selected by brewery, add it to the parameters like this
+				beerList = dao.getBrewery(breweryId).getBeerList();
+			}else{
+				System.out.println("BREW>...." + beerParameters.getName());
+				beerList = dao.getBeers(beerParameters);
+				
+			}
+			mv.addObject("beerList", beerList);
+			mv.addObject("currentUser", currentUser);
+			mv.setViewName("searchResult.jsp");	
 		}else{
-			System.out.println("BREW>...." + beerParameters.getName());
-			beerList = dao.getBeers(beerParameters);
+			mv.addObject("errorMessage","Please enter valid search critera.");
+			String searchSetting = "";
+			mv.addObject("searchSetting", "");
+			mv.addObject("Breweries",dao.getAllBreweries());
+			mv.addObject("BeerParameters", new BeerParameters());
+			mv.setViewName("searchBeer.jsp");
 			
 		}
-		mv.addObject("beerList", beerList);
-		mv.addObject("currentUser", currentUser);
-		mv.setViewName("searchResult.jsp");
 		return mv;
 	}
 
