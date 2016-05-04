@@ -1,5 +1,6 @@
 package data;
 
+import entities.Brewery;
 import entities.Neighborhood;
 import entityData.State;
 
@@ -12,7 +13,7 @@ public class BreweryParameters {
 	private State state;
 	private Integer zipcode;
 	private Neighborhood neighborhood;
-	
+	private Brewery brewery;
 	
 	
 	public BreweryParameters() {
@@ -89,6 +90,18 @@ public class BreweryParameters {
 
 	public void setNeighborhood(Neighborhood neighborhood) {
 		this.neighborhood = neighborhood;
+	}
+
+
+
+	public Brewery getBrewery() {
+		return brewery;
+	}
+
+
+
+	public void setBrewery(Brewery brewery) {
+		this.brewery = brewery;
 	}
 	
 	

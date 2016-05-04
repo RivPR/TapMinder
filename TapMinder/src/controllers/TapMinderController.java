@@ -3,11 +3,8 @@ package controllers;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.validation.Valid;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -358,6 +355,7 @@ public class TapMinderController {
 		ModelAndView mv = new ModelAndView();
 		String searchSetting = choice;
 		mv.addObject("searchSetting", choice);
+		mv.addObject("Breweries",dao.getAllBreweries());
 		mv.addObject("BeerParameters", new BeerParameters());
 		mv.setViewName("searchBeer.jsp");
 
@@ -365,9 +363,18 @@ public class TapMinderController {
 	}
 
 	@RequestMapping("searchBeers.do")
-	private ModelAndView searchBeers(@ModelAttribute("currentUser") User currentUser, BeerParameters beerParameters) {
+	private ModelAndView searchBeers(@ModelAttribute("currentUser") User currentUser, BeerParameters beerParameters, @RequestParam("breweryId") Integer breweryId) {
+		System.out.println("BREWERY ID IN: " + breweryId);
 		ModelAndView mv = new ModelAndView();
-		List<Beer> beerList = dao.getBeers(beerParameters);
+		List<Beer> beerList;
+		if(breweryId != null && breweryId > 0){
+			//if it was selected by brewery, add it to the parameters like this
+			beerList = dao.getBrewery(breweryId).getBeerList();
+		}else{
+			System.out.println("BREW>...." + beerParameters.getName());
+			beerList = dao.getBeers(beerParameters);
+			
+		}
 		mv.addObject("beerList", beerList);
 		mv.addObject("currentUser", currentUser);
 		mv.setViewName("searchResult.jsp");

@@ -7,6 +7,7 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
+import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
@@ -49,7 +50,7 @@ public class Brewery {
 	@JoinColumn(name = "neighborhood_id")
 	private Neighborhood neighborhood;
 
-	@OneToMany(mappedBy="brewery", cascade={CascadeType.PERSIST, CascadeType.REMOVE})
+	@OneToMany(mappedBy="brewery", cascade={CascadeType.PERSIST, CascadeType.REMOVE},  fetch = FetchType.EAGER)
 	List<Beer> beerList;
 
 	public int getId() {

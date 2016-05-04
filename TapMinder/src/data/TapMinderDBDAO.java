@@ -232,6 +232,11 @@ public class TapMinderDBDAO implements TapMinderDAO {
 	}
 	
 	@Override
+	public List<Brewery> getAllBreweries(){
+		return em.createQuery("SELECT b FROM Brewery b",Brewery.class).getResultList();
+	}
+	
+	@Override
 	public List<Brewery> getBreweries(BreweryParameters breweryParameters) {
 		List<Brewery> breweryList = null;
 		if (breweryParameters.getName() != null) {

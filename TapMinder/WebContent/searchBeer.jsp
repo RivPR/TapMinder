@@ -21,6 +21,7 @@
 					<option value="hop">Hop Count</option>
 					<option value="style">Style</option>
 					<option value="rating">Rating</option>
+					<option value="brewery">brewery</option>
 				</select>
 
 				<button type="submit">GO SEARCH</button>
@@ -48,8 +49,24 @@ Style <form:input type="text" path="style" placeholder="style"/>
 Rating High <form:input type="text" path="ratingHigh" placeholder="Number 1-5" />
 Rating Low<form:input type="text" path="ratingLow" placeholder="Number 1-5" />
 		</c:when>
+		
 
-
+	</c:choose>
+	<c:choose>
+		<c:when test="${searchSetting ==  'brewery'}">
+		<select name="breweryId">
+			<c:forEach var="b" items="${Breweries}">
+				<option value="${b.id}">${b.name}</option>
+			</c:forEach>
+		</select>
+		</c:when>
+		<c:otherwise>
+			<!-- set to zero as a deafult -->
+			<input type="hidden" name="breweryId" value="0" />
+		</c:otherwise>
+		
+	
+	
 	</c:choose>
 	<c:if test="${searchSetting != '' }">
 	<button type="submit">search</button>	
