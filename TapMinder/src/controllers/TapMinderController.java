@@ -313,13 +313,17 @@ public class TapMinderController {
 
 
 	@RequestMapping("addBrewery.do")
-	private ModelAndView addBrewery(Brewery brewery, @RequestParam("neighboorHoodId") Integer neighborHoodId) {
+	private ModelAndView addBrewery(@ModelAttribute("Brewery") Brewery brewery, Errors errors, @RequestParam("neighboorHoodId") Integer neighborHoodId) {
 		ModelAndView mv = new ModelAndView();
-
-		dao.addBrewery(brewery, neighborHoodId);
-		mv.addObject("Brewery", brewery);
-		mv.addObject("searchSetting", "");
-		mv.setViewName("searchBreweries.jsp");
+		if(errors.getErrorCount() == 0){
+			dao.addBrewery(brewery, neighborHoodId);
+			mv.addObject("Brewery", brewery);
+			mv.addObject("searchSetting", "");
+			mv.setViewName("searchBreweries.jsp");
+			
+		}else{
+			mv.setViewName("indexAlexTest.jsp");
+		}
 		return mv;
 	}
 

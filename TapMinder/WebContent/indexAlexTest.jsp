@@ -155,8 +155,8 @@
 								<!--  <div class="project-category text-faded">
                                     Category
                                 </div> -->
-								<!-- <div align="center" class="btn btn-primary btn-xl page-scroll">Find Brews</div> -->
-								<div align="center"><input class="btn btn-primary btn-xl page-scroll" type="submit" name="menuChoice" value="findBeers"></div>
+					
+								<button class="btn btn-primary btn-xl page-scroll" name="menuChoice" value="findBeers" type="submit">Find Brews</button>
 							</div>
 						</div>
 					</a>
@@ -178,8 +178,7 @@
                                     Category
                                 </div> -->
                                 
-								<div align="center"><input class="btn btn-primary btn-xl page-scroll" type="submit" name="menuChoice" value="findBreweries"></div>
-
+								<button class="btn btn-primary btn-xl page-scroll" name="menuChoice" value="findBreweries" type="submit">Find Breweries</button>
 								</div>
 						</div>
 					</a>
@@ -200,9 +199,8 @@
 								<!--  <div class="project-category text-faded">
                                     Category
                                 </div> -->
-								<!-- <div align="center" class="btn btn-primary btn-xl page-scroll">View Your Brews</div> -->
-								<div align="center"><input class="btn btn-primary btn-xl page-scroll" type="submit" name="menuChoice" value="viewUserBeers"></div>
 							
+								<button class="btn btn-primary btn-xl page-scroll" name="menuChoice" value="viewUserBeers" type="submit">View you Brews</button>
 								
 							</div>
 						</div>

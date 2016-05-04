@@ -27,31 +27,31 @@ public class Beer {
 	
 	@Column(name="name")
 	//TODO CHANGE THIS BACK
-	@Size(max=5, message="Name is wrong")
+	@Size(min=1,max=45, message="Name length is invalid")
 //	@Size(max=45)
 	private String name;
 	
 	@Column(name="abv")	
-	@DecimalMin(value="0")
-	@DecimalMax(value="100")
+	@DecimalMin(value="0", message = "Enter a valid number between 1 and 100")
+	@DecimalMax(value="100", message = "Enter a valid number between 1 and 100")
 	private Double abv;
 	
 	@Column(name="hop_count")
-	@DecimalMin(value="0")
-	@DecimalMax(value="20000000")
+	@DecimalMin(value="0", message = "Enter a valid number")
+	@DecimalMax(value="20000000", message = "Enter a valid number")
 	private Double hopCount;
 	
-	@Size(max=45)
 	@Column(name="style")
+	@Size(max=45, message = "Beer style is too long")
 	private String beerStyle;
 	
 	//TODO: 5k varchar
 	@Column(name="description")
-	@Size(max=5000)
+	@Size(max=5000, message = "Link is too long")
 	private String description;
 	
 	@Column(name="image_link")
-	@Size(max=200)
+	@Size(max=200,  message = "Link is too long")
 	private String imageLink;
 
 	@OneToMany(mappedBy="beer", fetch = FetchType.EAGER, cascade={CascadeType.PERSIST, CascadeType.REMOVE})
