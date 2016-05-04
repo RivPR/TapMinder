@@ -275,9 +275,9 @@ public class TapMinderController {
 		System.out.println("brewery name to mod: " + brewery.getName());
 		mv.addObject("Brewery", brewery);
 		mv.addObject("neighborhoodList", dao.getNeighborhoods());
-		for (Neighborhood n : dao.getNeighborhoods()) {
-			System.out.println(n.getName());
-		}
+//		for (Neighborhood n : dao.getNeighborhoods()) {
+//			System.out.println(n.getName());
+//		}
 		mv.setViewName("modifyBrewery.jsp");
 		
 		}else{
@@ -287,14 +287,22 @@ public class TapMinderController {
 	}
 	
 	@RequestMapping("modifyBrewery.do")
-	private ModelAndView changeBrewery(Brewery brewery, @RequestParam("neighboorHoodId") Integer neighborHoodId) {
+	private ModelAndView changeBrewery(@ModelAttribute("Brewery") @Valid Brewery brewery, Errors errors, @RequestParam("neighboorHoodId") Integer neighborHoodId) {
 		ModelAndView mv = new ModelAndView();
-		System.out.println("BREWERY TO MODIFY " + dao.getBrewery(brewery.getId()));
-		dao.modifyBrewery(brewery, neighborHoodId);
-		System.out.println("BREWERY after MODIFY " + dao.getBrewery(brewery.getId()));
-		mv.addObject("Brewery", brewery);
-		mv.addObject("searchSetting", "");
-		mv.setViewName("searchBreweries.jsp");
+		if(errors.getErrorCount() == 0){
+			System.out.println("BREWERY TO MODIFY " + dao.getBrewery(brewery.getId()));
+			dao.modifyBrewery(brewery, neighborHoodId);
+			System.out.println("BREWERY after MODIFY " + dao.getBrewery(brewery.getId()));
+			mv.addObject("Brewery", brewery);
+			mv.addObject("searchSetting", "");
+			mv.setViewName("searchBreweries.jsp");		
+		}else{
+			mv.addObject("Brewery", brewery);
+			mv.addObject("neighborhoodList", dao.getNeighborhoods());
+			mv.setViewName("modifyBrewery.jsp");
+	
+		}
+		
 		return mv;
 	}
 
@@ -312,7 +320,7 @@ public class TapMinderController {
 
 
 	@RequestMapping("addBrewery.do")
-	private ModelAndView addBrewery(@ModelAttribute("Brewery") Brewery brewery, Errors errors, @RequestParam("neighboorHoodId") Integer neighborHoodId) {
+	private ModelAndView addBrewery(@ModelAttribute("Brewery") @Valid Brewery brewery, Errors errors, @RequestParam("neighboorHoodId") Integer neighborHoodId) {
 		ModelAndView mv = new ModelAndView();
 		if(errors.getErrorCount() == 0){
 			dao.addBrewery(brewery, neighborHoodId);
@@ -321,7 +329,9 @@ public class TapMinderController {
 			mv.setViewName("searchBreweries.jsp");
 			
 		}else{
-			mv.setViewName("indexAlexTest.jsp");
+//			mv.addObject("Brewery", brewery);
+			mv.addObject("neighborhoodList", dao.getNeighborhoods());
+			mv.setViewName("addBrewery.jsp");
 		}
 		return mv;
 	}

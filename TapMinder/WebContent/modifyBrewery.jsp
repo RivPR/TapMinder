@@ -15,16 +15,15 @@
 
 <form:form action="modifyBrewery.do" modelAttribute="Brewery">
 	<form:input type="hidden" path="id"/>
-	<form:input type="text" path="name" />
-	<form:input type="text" path="streetAddress" />
-	<form:input type="text" path="city" />
-	<form:input type="text" path="state" />
-	<form:input type="text" path="zip" />
-	<form:input type="text" path="imageLink" />
-	<form:input type="text" path="breweryLink" />
+	<form:input type="text" path="name" /><form:errors path="name" /><br>
+	<form:input type="text" path="streetAddress" /><form:errors path="streetAddress" /><br>
+	<form:input type="text" path="city" /><form:errors path="city" /><br>
+	<form:input type="text" path="state" /><form:errors path="state" /><br>
+	<form:input type="text" path="zip" /><form:errors path="zip" /><br>
+	<form:input type="text" path="imageLink" /><form:errors path="imageLink" /><br>
+	<form:input type="text" path="breweryLink" /><form:errors path="breweryLink" /><br>
 	<select name="neighboorHoodId">
 	
-		<option value="">pick one</option>
 		<c:forEach var="hood" items="${neighborhoodList}">
 				<option value="${hood.id}"
 				

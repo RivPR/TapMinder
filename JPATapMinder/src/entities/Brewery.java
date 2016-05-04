@@ -40,14 +40,14 @@ public class Brewery {
 	
 	
 	@Column(name="state")
-	@Size(max=2, message = "Please enter an abbreviation (ex. CO")
+//	@Size(max=2, message = "Please enter an abbreviation (ex. CO")
 	@Enumerated(EnumType.STRING)
 	private State state;
 	
 	@Column(name="zip")
 	@DecimalMin(value="0",message = "Enter a valid 5 Digit Zip")
 	@DecimalMax(value="99999", message = "Zip is too long")
-	private int zip;
+	private Integer zip;
 	
 	@Column(name="image_link")
 	@Size(max=200,message = "Link is too long")
