@@ -87,18 +87,21 @@
                 <ul class="nav navbar-nav navbar-right">
 					<form action="menu.do" method="POST">
 					
-					<button type="submit" name="menuChoice" value="logout">logout</button>
-					<button style="color: black;" type="submit" name="menuChoice"
+					<button class="btn btn-primary btn page-scroll" style="background-color: #2A9D8F" type="submit" name="menuChoice" value="logout">logout</button>
+					<button class="btn btn-primary btn page-scroll" style="background-color: #2A9D8F"  type="submit" name="menuChoice"
 					value="myAccount">Manage Account</button>
+					
+					
+					
 					</form>
 
 
-                    <li>
+                  <!--   <li>
                         <a class="page-scroll" href="#portfolio">Portfolio</a>
                     </li>
                     <li>
                         <a class="page-scroll" href="#contact">Contact</a>
-                    </li>
+                    </li> -->
                 </ul>
             </div>
             <!-- /.navbar-collapse -->
@@ -112,12 +115,17 @@
                 <h1>TapMinder2</h1> <br>
                 <hr>
                 <p>Finding craft beer in the Denver area has never been easier!</p>
-               <!--  <a href="indexAlexTest.jsp" class="btn btn-primary btn-xl page-scroll">Find Out More</a> -->
+               
+                
+
             
             </div>
-               
-               
-			
+            <!--  <div class="col-xs-5">
+             	<img src="http://www.ginoseast.com/wp-content/uploads/2015/09/beer-pairing.jpg" width="400"/>
+             </div> -->
+            
+            <!-- <div class="col-xs-5">
+               <br> -->
 			<c:if test="${currentUser.id < 1 }">
 	 		<form:form action="login.do" modelAttribute="user">
 				Username: <form:input type="text" name="email" style="color:black" placeholder="email@example.com" path="email" /><br><br>
@@ -196,7 +204,7 @@
 
 <div id="status">
 </div>
-
+<!-- </div> --><!--  LATEST DIV TO MATCH THE COLUMN -->
 
 
 <div id="fb-root"></div>
@@ -210,6 +218,7 @@
 </div>
 
  </header>
+ 
  
  <section id="contact">
 	<div class="container">

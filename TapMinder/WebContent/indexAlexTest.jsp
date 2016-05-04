@@ -124,19 +124,19 @@
 					value="viewUserBeers">View User Beers</button> -->
 
 				
-
+<!-- 
 				<button style="color: black;" type="submit" name="menuChoice"
 					value="myAccount">View User Account</button>
-				<!-- moderators and up only -->
+				moderators and up only
 				<button style="color: black;" type="submit" name="menuChoice"
 					value="modifyBreweries">edit breweries</button>
-				<!-- admin and up only -->
+				admin and up only
 				<button style="color: black;" type="submit" name="menuChoice"
 					value="modifyUsers">manager users</button>
 				<button style="color: black;" type="submit" name="menuChoice"
 					value="addBreweries">add brewrss</button>
 				<button style="color: black;" type="submit" name="menuChoice"
-					value="signUp">sign up</button>
+					value="signUp">sign up</button> -->
 			</form>
 
 		<br>
@@ -271,7 +271,7 @@
 	<div class="container text-center">
 		<div class="call-to-action">
 			<h2>Connect with us on Facebook!</h2>
-			<a href="#" class="btn btn-default btn-xl wow tada">Yes!</a>
+			<a href="https://www.facebook.com/TapMinder" class="btn btn-default btn-xl wow tada">Yes!</a>
 		</div>
 	</div>
 	</aside>
@@ -299,17 +299,18 @@
 	</section>
 <body>
 
-	<form action="menu.do" method="POST">
+<%-- 	<form action="menu.do" method="POST"> --%>
 
 		<!-- 		if logged in, show loggout instead (destory session or something) -->
-		<button type="submit" name="menuChoice" value="login">Login</button>
+	<!-- 	<button type="submit" name="menuChoice" value="login">Login</button> -->
 <!-- 		<button type="submit" name="menuChoice" value="findBeers">Find
 			Beers</button>
 		<button type="submit" name="menuChoice" value="findBreweries">Find
 			Breweries</button>
 		<button type="submit" name="menuChoice" value="viewUserBeers">View
 			User Beers</button> -->
-		<button type="submit" name="menuChoice" value="myAccount">View
+		
+<%-- 		<button type="submit" name="menuChoice" value="myAccount">View
 			User Account</button>
 		<!-- moderators and up only -->
 		<button type="submit" name="menuChoice" value="modifyBreweries">edit
@@ -333,7 +334,7 @@
 	${currentUser.firstname}
 	${currentUser.usertype.accessLevel}
 </c:if>
-
+ --%>
 
 
 

@@ -1,14 +1,15 @@
 <%@include file="/includes/header.jsp"%>
-<link rel="stylesheet" href="css/stylesheet.css" type="text/css">
+<link rel="stylesheet" href="/css/stylesheet.css" type="text/css">
 
 <title>Search results!</title>
 </head>
 <body>
 	
-	<div class="container-fluid">
+	<div class="container-fluid wrapperPage">
+	
 	<c:forEach var="beer" items="${beerList}">
 
-			<!-- <div class="row"> -->
+			<!-- <div class="row">  -->
 				
 				<%--  <% for(int i=0; i < 3; i+=1) { %>  --%>
 
@@ -41,7 +42,7 @@
 					</c:if>
 				</div></div>
 			<%-- 	<% } %>  --%>
-			 <!-- </div> -->
+			<!--  </div>  -->
 	</c:forEach>
 	
 		</div>

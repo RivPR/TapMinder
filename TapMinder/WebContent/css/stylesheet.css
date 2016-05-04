@@ -18,7 +18,16 @@ input[type=submit] {
     border-radius: 5px; 
 } */
 
-body    { background:url(../img/header.jpg') top right no-repeat; background-attachment:fixed; }
+/* body    { background:url(../img/header.jpg') top right no-repeat; background-attachment:fixed; } */
+
+body {
+    background-size: cover;
+    background-image: url(../img/header.jpg);
+}
+
+.wrapperPage{
+	margin-top: 290%;
+}
 
 .btn-primary { 
 	border-color: #f05f40;
