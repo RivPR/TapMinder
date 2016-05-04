@@ -595,8 +595,9 @@ public class TapMinderController {
 	}
 
 	@RequestMapping("saveARating.do")
-	private ModelAndView saveTheRating(@RequestParam("rating") int rating, @RequestParam("comments") String comment,
-			@RequestParam("ratingID") int id) {
+	private ModelAndView saveTheRating(@RequestParam("rating") int rating, 
+									   @RequestParam("comments") String comment,
+									   @RequestParam("beerId") int id) {
 		ModelAndView mv = new ModelAndView();
 		BeerRating br = dao.getRatingByID(id);
 

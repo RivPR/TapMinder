@@ -125,7 +125,9 @@
 			</form:form>
 			</c:if>
 			<c:if test="${currentUser.id > 0 }">
-				<a href="indexAlexTest.jsp">GO!</a>
+				<a class="btn btn-primary btn-xl page-scroll" href="indexAlexTest.jsp">GO!</a>
+				<br>
+				<br>
 			</c:if>
 			<form action="menu.do" method="POST">
 			<button style="color: black;" type="submit" name="menuChoice"
