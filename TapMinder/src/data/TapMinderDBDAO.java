@@ -218,8 +218,20 @@ public class TapMinderDBDAO implements TapMinderDAO {
 	
 	@Override
 	public void deleteBeer(Integer id) {
+		Beer beerToDelete = em.find(Beer.class, id);
 		
-		em.remove(em.find(Beer.class, id));
+		List<BeerRating> ratings = beerToDelete.getRatings();
+		
+		for (BeerRating beerRating : ratings) {
+			System.out.println(em.contains(beerRating));
+			em.remove(beerRating);	
+		}
+		
+		
+		em.remove(beerToDelete);
+		System.out.println("DELETED");
+	
+		
 	}
 	
 	
@@ -338,28 +350,35 @@ public class TapMinderDBDAO implements TapMinderDAO {
 
 	@Override
 	public void deleteBrewery(Brewery brewery) {
-		//FK fails
-		//TODO null pointer
-		System.out.println("DELETE THSI ONE : " + brewery.getId());
-		Brewery b = em.find(Brewery.class, brewery.getId());
-		System.out.println("BREW TO DELETE " + b.getId());
-//		List<Beer> beers = em.createQuery("SELECT b FROM Beer b WHERE b.brewery.id = :bid",Beer.class).setParameter("bid", brewery.getId()).getResultList();
-//		for (Beer beer : beers) {
-//			this.deleteBeer(beer);
-//		}
-//		
+		Brewery breweryToDelete = em.find(Brewery.class, brewery.getId());
 		
-		em.remove(b);
+		List<Beer> ratings = breweryToDelete.getBeerList();
+		
+		for (Beer beer : ratings) {
+			System.out.println(em.contains(beer));
+			deleteBeer(beer.getId());	
+		}
+		
+		
+		em.remove(breweryToDelete);
+		System.out.println("DELETED");
 
 	}
 	
 	@Override
 	public void deleteBrewery(Integer breweryId) {
-
-		Brewery b = em.find(Brewery.class, breweryId);
-		System.out.println("BREW TO DELETE " + b.getId());
+		Brewery breweryToDelete = em.find(Brewery.class, breweryId);
 		
-		em.remove(b);
+		List<Beer> ratings = breweryToDelete.getBeerList();
+		
+		for (Beer beer : ratings) {
+			System.out.println(em.contains(beer));
+			deleteBeer(beer.getId());	
+		}
+		
+		
+		em.remove(breweryToDelete);
+		System.out.println("DELETED");
 		
 	}
 
@@ -477,9 +496,9 @@ public class TapMinderDBDAO implements TapMinderDAO {
 		
 		for (BeerRating beerRating : ratings) {
 			System.out.println(em.contains(beerRating));
-			em.remove(beerRating);
-			
+			em.remove(beerRating);	
 		}
+		
 		
 		
 		em.remove(userToDelete);
