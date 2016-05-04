@@ -221,16 +221,16 @@
 <body>
 
 
-
+<!-- 
 
 				<div class="col-lg-4 col-sm-6">
 					<a href="#" class="portfolio-box"> <img
 						src="img/portfolio/4.jpg" class="img-responsive" alt="">
 						<div class="portfolio-box-caption">
 							<div class="portfolio-box-caption-content">
-								<!--  <div class="project-category text-faded">
+								 <div class="project-category text-faded">
                                     Category
-                                </div> -->
+                                </div>
 								<div class="project-name">View Your Account</div>
 							</div>
 						</div>
@@ -241,9 +241,9 @@
 						src="img/portfolio/5.jpg" class="img-responsive" alt="">
 						<div class="portfolio-box-caption">
 							<div class="portfolio-box-caption-content">
-								<!-- <div class="project-category text-faded">
+								<div class="project-category text-faded">
                                     Category
-                                </div> -->
+                                </div>
 								<div class="project-name">Edit Beer</div>
 							</div>
 						</div>
@@ -254,9 +254,9 @@
 						src="img/portfolio/6.jpg" class="img-responsive" alt="">
 						<div class="portfolio-box-caption">
 							<div class="portfolio-box-caption-content">
-								<!-- <div class="project-category text-faded">
+								<div class="project-category text-faded">
                                     Category
-                                </div> -->
+                                </div>
 								<div class="project-name">Edit Moderators</div>
 							</div>
 						</div>
@@ -264,7 +264,7 @@
 				</div>
 			</div>
 		</div>
-		</section>
+		</section> -->
 	
 
 	<aside class="bg-dark">
@@ -276,24 +276,22 @@
 	</div>
 	</aside>
 
-	<section id="contact">
+<section id="contact">
 	<div class="container">
 		<div class="row">
 			<div class="col-lg-8 col-lg-offset-2 text-center">
-				<h2 class="section-heading">Let's Get In Touch!</h2>
+				<h2 class="section-heading">Get In Touch!</h2>
 				<hr class="primary">
-				<p>Ready to start your next project with us? That's great! Give
-					us a call or send us an email and we will get back to you as soon
-					as possible!</p>
+				<p>Let us help you find craft beer today</p>
 			</div>
 			<div class="col-lg-4 col-lg-offset-2 text-center">
 				<i class="fa fa-phone fa-3x wow bounceIn"></i>
-				<p>123-456-6789</p>
+				<p>702-867-5309</p>
 			</div>
 			<div class="col-lg-4 text-center">
 				<i class="fa fa-envelope-o fa-3x wow bounceIn" data-wow-delay=".1s"></i>
 				<p>
-					<a href="mailto:your-email@your-domain.com">feedback@TapMinder.com</a>
+					<a href="mailto:support@TapMinder.com">support@TapMinder.com</a>
 				</p>
 			</div>
 		</div>
