@@ -46,6 +46,8 @@ public interface TapMinderDAO {
 	
 	public List<User> getUserList();
 
+	public boolean emailExists(String email);
+	
 	public User getUser(int userId);
 	
 	public void addUser(User user);

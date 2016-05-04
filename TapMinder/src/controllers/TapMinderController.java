@@ -403,10 +403,15 @@ public class TapMinderController {
 	private ModelAndView signUp(User user) {
 		ModelAndView mv = new ModelAndView();
 		//if a user signs up, they can only be a standard user unless edited by the admin
-		user.setUsertype(dao.getUserType(1));
-		dao.addUser(user);
 		mv.addObject("User", new User());
-		mv.setViewName("index.jsp");
+		if(!dao.emailExists(user.getEmail())){
+			user.setUsertype(dao.getUserType(1));
+			dao.addUser(user);
+			mv.setViewName("index.jsp");			
+		}else{
+			mv.addObject("errorMessage","That email is already in use.");
+			mv.setViewName("signUp.jsp");
+		}
 		return mv;
 	}
 

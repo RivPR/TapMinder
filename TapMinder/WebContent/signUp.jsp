@@ -19,6 +19,9 @@
 	Email <form:input type="text" path="email" />
 	Password <form:input type="text" path="password" />
 
+	<c:if test="${!empty(errorMessage)}">
+		${errorMessage}
+	</c:if>
 	<button type=submit>Add</button>
 </form:form>
 </body>

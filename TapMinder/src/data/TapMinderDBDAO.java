@@ -437,6 +437,19 @@ public class TapMinderDBDAO implements TapMinderDAO {
 	}
 
 	@Override
+	public boolean emailExists(String email){
+		try {
+			String query = "SELECT u FROM User u WHERE u.email = :email";
+			em.createQuery(query, User.class).setParameter("email", email).getSingleResult();
+			return true;
+		} catch (NoResultException e) {
+			return false;
+		}
+		
+		
+	}
+	
+	@Override
 	public void addUser(User user){
 		em.persist(user);
 	}
