@@ -54,7 +54,7 @@ public class Beer {
 	@Size(max=200,  message = "Link is too long")
 	private String imageLink;
 
-	@OneToMany(mappedBy="beer", fetch = FetchType.EAGER, cascade={CascadeType.PERSIST, CascadeType.REMOVE})
+	@OneToMany(mappedBy="beer", fetch = FetchType.EAGER)//, cascade={CascadeType.PERSIST, CascadeType.REMOVE})
 	private List<BeerRating> ratings;
 	
 	@ManyToOne()

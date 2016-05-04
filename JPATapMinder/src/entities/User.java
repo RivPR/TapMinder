@@ -2,6 +2,7 @@ package entities;
 
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -36,7 +37,7 @@ public class User {
 	@JoinColumn(name="usertype_id")
 	private UserType usertype;
 	
-	@OneToMany(mappedBy="user", fetch = FetchType.EAGER)
+	@OneToMany(mappedBy="user", fetch = FetchType.EAGER)//, cascade={CascadeType.PERSIST, CascadeType.REMOVE})
 	List<BeerRating> ratings;
 	
 	public User(){

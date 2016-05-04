@@ -471,7 +471,21 @@ public class TapMinderDBDAO implements TapMinderDAO {
 
 	@Override
 	public void deleteUser(int userId){
-		em.remove(em.find(User.class, userId));
+		User userToDelete = em.find(User.class, userId);
+		
+		List<BeerRating> ratings = userToDelete.getRatings();
+		
+		for (BeerRating beerRating : ratings) {
+			System.out.println(em.contains(beerRating));
+			em.remove(beerRating);
+			
+		}
+		
+		
+		em.remove(userToDelete);
+		System.out.println("DELETED");
+	
+		
 	}
 	
 	@Override
