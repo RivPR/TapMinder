@@ -13,7 +13,7 @@
 					<option value="brewery">brewery</option>
 				</select>
 
-				<button type="submit">GO SEARCH</button>
+				<button class="btn btn-primary btn page-scroll" type="submit">Search</button>
 
 			</form>
 		</c:if>
@@ -49,7 +49,7 @@
 		</select>
 		</c:when>
 		<c:otherwise>
-			<!-- set to zero as a deafult -->
+			<!-- set to zero as a default -->
 			<input type="hidden" name="breweryId" value="0" />
 		</c:otherwise>
 		
@@ -61,7 +61,7 @@
 		</c:if>
 		
 	<c:if test="${searchSetting != '' }">
-	<button type="submit">search</button>	
+	<button class="btn btn-primary btn page-scroll" type="submit">Search</button>
 	</c:if>	
 		</form:form>
 
