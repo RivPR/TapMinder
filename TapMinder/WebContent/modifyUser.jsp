@@ -16,10 +16,10 @@
 
 	<form:form action="modifyUser.do" modelAttribute="User">
 		<form:input type="hidden" path="id" />
-	First <form:input type="text" path="firstname" />
-	Last <form:input type="text" path="lastname" />
-	Email <form:input type="text" path="email" />
-	Password <form:input type="text" path="password" />
+	First <form:input type="text" path="firstname" /><form:errors path="firstname" />
+	Last <form:input type="text" path="lastname" /><form:errors path="lastname" />
+	Email <form:input type="text" path="email" /><form:errors path="email" />
+	Password <form:input type="text" path="password" /><form:errors path="password" />
 		<select name="userTypeId">
 
 			<option value="">pick one</option>
@@ -47,7 +47,10 @@
 
 		<button type=submit>Submit Changes</button>
 	</form:form>
-
+	
+	<c:if test="${!empty(errorMessage) }">
+		${errorMessage}
+	</c:if>
 
 </body>
 </html>
