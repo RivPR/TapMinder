@@ -29,7 +29,7 @@
 				<option value="neighborhood">Neighborhood</option>
 			</select>
 
-			<button type="submit">GO SEARCH</button>
+			<button style="background-color: #F99420" type="submit">GO SEARCH</button>
 
 		</form>
 	</c:if>
@@ -68,7 +68,7 @@
 
 		</c:choose>
 		<c:if test="${searchSetting != '' }">
-			<button type="submit">search</button>
+			<button style="background-color: #F99420" type="submit">search</button>
 		</c:if>
 	</form:form>
 
@@ -86,7 +86,7 @@
 
 			<form action="addBeerPage.do">
 				<input type="hidden" name="breweryId" value="${b.id}" />
-				<button type="submit">Add Beer to this brewery</button>
+				<button style="background-color: #F99420" type="submit">Add Beer to this brewery</button>
 			</form>
 	</c:if>
 
@@ -94,11 +94,11 @@
 
 			<form action="modifyBreweryPage.do">
 				<input type="hidden" name="breweryId" value="${b.id}" />
-				<button type="submit">Modify</button>
+				<button style="background-color: #F99420" type="submit">Modify</button>
 			</form>
 			<form action="deleteBrewery.do">
 				<input type="hidden" name="breweryId" value="${b.id}" />
-				<button type="submit">Delete</button>
+				<button style="background-color: #F99420" type="submit">Delete</button>
 			</form>
 	</c:if>						
 			<br>
