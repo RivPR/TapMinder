@@ -448,30 +448,50 @@ public class TapMinderController {
 	}
 
 	@RequestMapping("addUser.do")
-	private ModelAndView addUser(User user, Integer userTypeId) {
+	private ModelAndView addUser(@ModelAttribute("User") @Valid User user, Errors errors, Integer userTypeId) {
 		ModelAndView mv = new ModelAndView();
-		System.out.println("usertypeid " + userTypeId);
-		UserType ut = dao.getUserType(userTypeId);
-		System.out.println(ut.getTypeName());
-		user.setUsertype(dao.getUserType(userTypeId));
-		dao.addUser(user);
-		mv.addObject("User", new User());
-		mv.setViewName("manageUsers.jsp");
+		if(errors.getErrorCount() == 0){
+			System.out.println("usertypeid " + userTypeId);
+			UserType ut = dao.getUserType(userTypeId);
+			System.out.println(ut.getTypeName());
+			user.setUsertype(dao.getUserType(userTypeId));
+			dao.addUser(user);
+			mv.addObject("User", user);
+			mv.setViewName("manageUsers.jsp");	
+		}else{
+			mv.addObject("User", user);
+			mv.setViewName("addUser.jsp");
+
+		}
+		
 		return mv;
 	}
 
 	@RequestMapping("signUp.do")
-	private ModelAndView signUp(User user) {
+	private ModelAndView signUp(@ModelAttribute("User") @Valid User user, Errors errors ) {
 		ModelAndView mv = new ModelAndView();
 		//if a user signs up, they can only be a standard user unless edited by the admin
-		mv.addObject("User", new User());
-		if(!dao.emailExists(user.getEmail())){
-			user.setUsertype(dao.getUserType(1));
-			dao.addUser(user);
-			mv.setViewName("index.jsp");			
+		if(errors.getErrorCount() == 0){
+			if(!dao.emailExists(user.getEmail())){
+				user.setUsertype(dao.getUserType(1));
+				dao.addUser(user);
+				mv.addObject("User", user);
+				mv.addObject("user", user);
+				mv.setViewName("index.jsp");			
+			}else{
+				mv.addObject("User", user);
+				mv.addObject("errorMessage","That email is already in use.");
+				mv.setViewName("signUp.jsp");
+			}
+			
 		}else{
-			mv.addObject("errorMessage","That email is already in use.");
+			//TODO specific erro not showing up in the thing
+			
+			mv.addObject("errorMessage","There was a syntax error in the form.");
+			mv.addObject("User",user);
+			System.out.println("ERROR");
 			mv.setViewName("signUp.jsp");
+			
 		}
 		return mv;
 	}
