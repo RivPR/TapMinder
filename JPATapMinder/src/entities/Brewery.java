@@ -61,7 +61,7 @@ public class Brewery {
 	@JoinColumn(name = "neighborhood_id")
 	private Neighborhood neighborhood;
 
-	@OneToMany(mappedBy="brewery", cascade={CascadeType.PERSIST, CascadeType.REMOVE},  fetch = FetchType.EAGER)
+	@OneToMany(mappedBy="brewery",  fetch = FetchType.EAGER)//, cascade={CascadeType.PERSIST, CascadeType.REMOVE})
 	List<Beer> beerList;
 
 	public int getId() {
