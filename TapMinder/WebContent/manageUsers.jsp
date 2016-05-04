@@ -33,7 +33,9 @@ search
 	<button type="submit" name="menuChoice" value="addUser">New User</button>
 
 </form>
-display
+	<c:if test="${!empty(errorMessage) }">
+		${errorMessage}
+	</c:if>
 
 <c:if test="${!empty(userList)}">
 	<c:forEach var="user" items="${userList}">

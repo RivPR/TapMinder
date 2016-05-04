@@ -22,8 +22,8 @@ public class User {
 	@Column(name="firstname")
 	@Size(min=1, max=45, message="Please enter a valid first name")
 	private String firstname;
-	@Size(min=1, max=45, message="Please enter a valid last name")
 	@Column(name="lastname")
+	@Size(min=1, max=45, message="Please enter a valid last name")
 	private String lastname;
 	@Column(name="email")
 	@Size(min=1, max=45, message="Please enter a valid email")
