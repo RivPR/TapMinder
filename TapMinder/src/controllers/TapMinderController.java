@@ -560,8 +560,9 @@ public class TapMinderController {
 
 	@RequestMapping(path = "saveRateABeer.do")
 	private ModelAndView saveRatingOfBeer(@ModelAttribute("currentUser") User currentUser,
-			@RequestParam("rating") int rating, @RequestParam("beerId") int beer,
-			@RequestParam("comments") String comments) {
+										  @RequestParam("rating") int rating, 
+										  @RequestParam("beerId") int beer,
+										  @RequestParam("comments") String comments) {
 		//
 		/*
 		 The list of beers for a user will not update unless a user logs out and
@@ -589,7 +590,7 @@ public class TapMinderController {
 	//
 	@RequestMapping("changeARating.do")
 	private ModelAndView changeTheRating(@ModelAttribute("currentUser") User currentUser,
-			@RequestParam("ratingID") int ratingId) {
+										 @RequestParam("ratingID") int ratingId) {
 		ModelAndView mv = new ModelAndView();
 		BeerRating br = dao.getRatingByID(ratingId);
 		mv.addObject("rating", ratingId);
