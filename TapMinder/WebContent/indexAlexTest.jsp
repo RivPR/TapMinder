@@ -8,6 +8,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+
+
+
 <html lang="en">
 
 <head>
@@ -19,7 +22,12 @@
 <meta name="description" content="">
 <meta name="author" content="">
 
+
+
 <title>TapMinder</title>
+
+<!-- Custom TapMinder CSS -->
+<!-- <link rel="stylesheet" href="css/stylesheet.css" type="text/css"> -->
 
 <!-- Bootstrap Core CSS -->
 <link rel="stylesheet" href="css/bootstrap.min.css" type="text/css">
@@ -101,13 +109,14 @@
 				<!-- 		if logged in, show loggout instead (destroy session or something) -->
 <!-- 				<button style="color: black;" type="submit" name="menuChoice"
 					value="login">Login</button> -->
-				<button style="color: black;" type="submit" name="menuChoice"
+				
+			<!-- 	<button style="color: black;" type="submit" name="menuChoice"
 					value="findBeers">Find Beers</button>
 				<button style="color: black;" type="submit" name="menuChoice"
 					value="findBreweries">Find Breweries</button>
 
 				<button style="color: black;" type="submit" name="menuChoice"
-					value="viewUserBeers">View User Beers</button>
+					value="viewUserBeers">View User Beers</button> -->
 
 				<button style="color: black;" type="submit" name="menuChoice"
 					value="myAccount">View User Account</button>
@@ -123,12 +132,11 @@
 					value="signUp">sign up</button>
 			</form>
 
+		<br>
+		<br>
 		</div>
-	</div>
-	</header>
-<body>
-
-	<form action="menu.do" method="POST">
+		
+		<form action="menu.do" method="POST">
 
 		<section class="no-padding" id="portfolio">
 		<div class="container-fluid">
@@ -143,11 +151,12 @@
 						<!--                         <input class="portfolio-box" type="image" name="menuChoice" src="img/portfolio/1.jpg" class="img-responsive" alt="" border="0" value="findBeers" alt="Submit" />
  -->
 						<div class="portfolio-box-caption">
-							<div class="portfolio-box-caption-content">
+							<div class="portfolio-box-caption-content"><br>
 								<!--  <div class="project-category text-faded">
                                     Category
                                 </div> -->
-								<div align="center" class="project-name">Find Brews</div>
+								<!-- <div align="center" class="btn btn-primary btn-xl page-scroll">Find Brews</div> -->
+								<div align="center"><input class="btn btn-primary btn-xl page-scroll" type="submit" name="menuChoice" value="findBeers"></div>
 							</div>
 						</div>
 					</a>
@@ -156,18 +165,22 @@
 				<div class="col-lg-4 col-sm-6">
 					<!--  <a href="#" class="portfolio-box"> -->
 					<!--    <a href="#" class="portfolio-box" name="menuChoice" onclick="$(findBeers).closest('menu.do').submit()">Submit</a> -->
-					<a href="#" class="porfolio-box"> <input type="image"
-						name="menuChoice" value="findBreweries" class="img-responsive"
-						src="img/portfolio/2.jpg" alt="" /> <!--  <img src="img/portfolio/1.jpg" class="img-responsive" alt="">  -->
-						<!--                         <input class="portfolio-box" type="image" name="menuChoice" src="img/portfolio/1.jpg" class="img-responsive" alt="" border="0" value="findBeers" alt="Submit" />
+					<a href="#" class="porfolio-box"> 
+					<input type="image" name="menuChoice" value="findBreweries" class="img-responsive"
+						src="img/portfolio/2.jpg" alt="" /> 
+					
+					<!--  <img src="img/portfolio/1.jpg" class="img-responsive" alt="">  -->
+					<!--  <input class="portfolio-box" type="image" name="menuChoice" src="img/portfolio/1.jpg" class="img-responsive" alt="" border="0" value="findBeers" alt="Submit" />
  -->
 						<div class="portfolio-box-caption">
-							<div class="portfolio-box-caption-content">
+							<div class="portfolio-box-caption-content"><br>
 								<!--  <div class="project-category text-faded">
                                     Category
                                 </div> -->
-								<div align="center" class="project-name">Find Breweries</div>
-							</div>
+                                
+								<div align="center"><input class="btn btn-primary btn-xl page-scroll" type="submit" name="menuChoice" value="findBreweries"></div>
+
+								</div>
 						</div>
 					</a>
 				</div>
@@ -175,21 +188,34 @@
 				<div class="col-lg-4 col-sm-6">
 					<!--  <a href="#" class="portfolio-box"> -->
 					<!--    <a href="#" class="portfolio-box" name="menuChoice" onclick="$(findBeers).closest('menu.do').submit()">Submit</a> -->
-					<a href="#" class="porfolio-box"> <input type="image"
-						name="menuChoice" value="viewUserBeers" class="img-responsive"
-						src="img/portfolio/3.jpg" alt="" /> <!--  <img src="img/portfolio/1.jpg" class="img-responsive" alt="">  -->
+					<a href="#" class="porfolio-box"> 
+					<input type="image" name="menuChoice" value="viewUserBeers" class="img-responsive"
+						src="img/portfolio/3.jpg" alt="" /> 
+						
+						<!--  <img src="img/portfolio/1.jpg" class="img-responsive" alt="">  -->
 						<!--                         <input class="portfolio-box" type="image" name="menuChoice" src="img/portfolio/1.jpg" class="img-responsive" alt="" border="0" value="findBeers" alt="Submit" />
  -->
 						<div class="portfolio-box-caption">
-							<div class="portfolio-box-caption-content">
+							<div class="portfolio-box-caption-content"><br>
 								<!--  <div class="project-category text-faded">
                                     Category
                                 </div> -->
-								<div align="center" class="project-name">View Your Brews</div>
+								<!-- <div align="center" class="btn btn-primary btn-xl page-scroll">View Your Brews</div> -->
+								<div align="center"><input class="btn btn-primary btn-xl page-scroll" type="submit" name="menuChoice" value="viewUserBeers"></div>
+							
+								
 							</div>
 						</div>
 					</a>
-				</div>
+				
+			</form>
+
+		</div>
+	</div>
+	</header>
+<body>
+
+
 
 
 				<div class="col-lg-4 col-sm-6">
@@ -234,7 +260,7 @@
 			</div>
 		</div>
 		</section>
-	</form>
+	
 
 	<aside class="bg-dark">
 	<div class="container text-center">
