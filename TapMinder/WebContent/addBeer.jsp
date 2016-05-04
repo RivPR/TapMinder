@@ -29,6 +29,11 @@
 				<button type="submit">Add Beer</button>
 		</c:if>
 			</form:form>
+			
+			<c:if test="${!empty(errorMessage) }">
+			
+			${errorMessage}
+			</c:if>
 
 
 

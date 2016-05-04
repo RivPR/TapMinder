@@ -29,13 +29,13 @@ public class Beer {
 	private String name;
 	
 	@Column(name="abv")	
-//	@Pattern(regexp="\\d{0,4}")
 	@DecimalMin(value="0")
-	@DecimalMax(value="4")
+	@DecimalMax(value="100")
 	private Double abv;
 	
 	@Column(name="hop_count")
-//	@Pattern(regexp="\\d{0,4}")
+	@DecimalMin(value="0")
+	@DecimalMax(value="20000000")
 	private Double hopCount;
 	
 	@Column(name="style")

@@ -13,6 +13,9 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.validation.constraints.DecimalMax;
+import javax.validation.constraints.DecimalMin;
+import javax.validation.constraints.Size;
 
 import entityData.State;
 
@@ -24,12 +27,15 @@ public class Brewery {
 	private int id;
 	
 	@Column(name="name")
+	@Size(max=45)
 	private String name;
 	
 	@Column(name="street_address")
+	@Size(max=45)
 	private String streetAddress;
 	
 	@Column(name="city")
+	@Size(max=45)
 	private String city;
 	
 	
@@ -38,6 +44,8 @@ public class Brewery {
 	private State state;
 	
 	@Column(name="zip")
+	@DecimalMin(value="0")
+	@DecimalMax(value="99999")
 	private int zip;
 	
 	@Column(name="image_link")
