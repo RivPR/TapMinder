@@ -13,12 +13,12 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
-import javax.persistence.Transient;
+import javax.validation.constraints.Size;
 
 @Entity
 @Table(name="beers")
 public class Beer {
-
+	//TODO attempting to add validation to this as a test
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int id;
@@ -27,9 +27,12 @@ public class Beer {
 	private String name;
 	
 	@Column(name="abv")
+//	@Size(max=99999)
+	
 	private Double abv;
 	
 	@Column(name="hop_count")
+//	@Size(max=99999)
 	private Double hopCount;
 	
 	@Column(name="style")
