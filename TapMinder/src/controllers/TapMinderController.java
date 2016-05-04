@@ -416,6 +416,7 @@ public class TapMinderController {
 			@RequestParam("findBy") String choice) {
 		ModelAndView mv = new ModelAndView();
 		System.out.println(choice);
+		mv.addObject("stateEnumList",dao.getStates());
 		mv.addObject("BreweryParameters", new BreweryParameters());
 		mv.addObject("currentUser", currentUser);
 		mv.addObject("neighborhoodList", dao.getNeighborhoods());

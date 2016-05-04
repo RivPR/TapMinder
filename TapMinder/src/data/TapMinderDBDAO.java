@@ -366,6 +366,19 @@ public class TapMinderDBDAO implements TapMinderDAO {
 	}
 	
 	@Override
+	public List<String> getStates(){
+		List<String> stateList = new ArrayList<>();
+		
+		for (State s : State.values()) {
+			stateList.add(s.toString());
+		}
+		
+		
+		return stateList;
+		
+	}
+	
+	@Override
 	public void deleteBrewery(Integer breweryId) {
 		Brewery breweryToDelete = em.find(Brewery.class, breweryId);
 		

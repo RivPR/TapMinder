@@ -24,7 +24,7 @@
 				<option value="name">Name</option>
 				<option value="street">Street</option>
 				<option value="city">city</option>
-				<option value="state">Style</option>
+				<option value="state">state</option>
 				<option value="zip">Zip</option>
 				<option value="neighborhood">Neighborhood</option>
 			</select>
@@ -49,7 +49,13 @@
 				City<form:input style="color:black" type="text" path="city" /><form:errors path="city" /> 
 			</c:when>
 			<c:when test="${searchSetting == 'state' }">
-				State <form:input style="color:black" type="text" path="state" placeholder="style" /><form:errors path="state" /> 
+				<form:select path="state">
+					<c:forEach var="s" items="${stateEnumList }">
+						<option value="${s}">${s}</option>
+					</c:forEach>
+				
+				</form:select>
+				
 			</c:when>
 			<c:when test="${searchSetting ==  'zipcode'}">
 				Zip <form:input style="color:black" type="text" path="zipcode" placeholder="Number 1-5" /><form:errors path="zipcode" /> 
