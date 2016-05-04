@@ -17,3 +17,18 @@ input[type=submit] {
     -webkit-border-radius: 5px;
     border-radius: 5px; 
 } */
+
+.btn-primary { 
+	border-color: #f05f40;
+    color: #fff;
+    background-color: #f05f40;
+    -webkit-transition: all .35s;
+    -moz-transition: all .35s;
+    transition: all .35s;
+	
+}
+
+.btn-delete{
+	background-color: #e90000; 
+	
+}
