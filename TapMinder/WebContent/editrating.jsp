@@ -1,5 +1,7 @@
 <%@include file="/includes/header.jsp"%>
-
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Edit Rating Page</title>
+</head>
 
 <div class="container">
 <div class="row">
