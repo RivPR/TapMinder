@@ -27,7 +27,7 @@ Rating: <h3>${br.rating}</h3><br/>
 			<input type="radio" id="star1" name="rating" value="1" /><label
 				class="full" for="star1" title="Sucks big time - 1 star"></label> 
 		</fieldset>
-		<input type="text" name="beerId" value="${br.id}"><i></i>
+		<input type="hidden" name="beerId" value="${br.id}"><i></i>
 		<input type="submit" value="Submit">
 	</form>
 		</div>
