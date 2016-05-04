@@ -275,6 +275,7 @@ public class TapMinderController {
 		Brewery brewery = dao.getBrewery(breweryId);
 		System.out.println("brewery name to mod: " + brewery.getName());
 		mv.addObject("Brewery", brewery);
+		mv.addObject("stateEnumList",dao.getStates());
 		mv.addObject("neighborhoodList", dao.getNeighborhoods());
 //		for (Neighborhood n : dao.getNeighborhoods()) {
 //			System.out.println(n.getName());
