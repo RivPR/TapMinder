@@ -468,17 +468,30 @@ public class TapMinderController {
 	}
 
 	@RequestMapping("signUp.do")
-	private ModelAndView signUp(User user) {
+	private ModelAndView signUp(@ModelAttribute("User") @Valid User user, Errors errors ) {
 		ModelAndView mv = new ModelAndView();
 		//if a user signs up, they can only be a standard user unless edited by the admin
-		mv.addObject("User", new User());
-		if(!dao.emailExists(user.getEmail())){
-			user.setUsertype(dao.getUserType(1));
-			dao.addUser(user);
-			mv.setViewName("index.jsp");			
+		if(errors.getErrorCount() == 0){
+			if(!dao.emailExists(user.getEmail())){
+				user.setUsertype(dao.getUserType(1));
+				dao.addUser(user);
+				mv.addObject("User", user);
+				mv.addObject("user", user);
+				mv.setViewName("index.jsp");			
+			}else{
+				mv.addObject("User", user);
+				mv.addObject("errorMessage","That email is already in use.");
+				mv.setViewName("signUp.jsp");
+			}
+			
 		}else{
-			mv.addObject("errorMessage","That email is already in use.");
+			//TODO specific erro not showing up in the thing
+			
+			mv.addObject("errorMessage","There was a syntax error in the form.");
+			mv.addObject("User",user);
+			System.out.println("ERROR");
 			mv.setViewName("signUp.jsp");
+			
 		}
 		return mv;
 	}

@@ -15,10 +15,10 @@
 
 
 <form:form action="addUser.do" modelAttribute="User">
-	First <form:input type="text" path="firstname"  required="required"/><form:errors path="firstname" />
-	Last <form:input type="text" path="lastname"  required="required"/><form:errors path="lastname" />
-	Email <form:input type="text" path="email"  required="required"/><form:errors path="email" />
-	Password <form:input type="text" path="password"  required="required"/><form:errors path="password" />
+	First <form:input type="text" path="firstname"  required="required"/><form:errors path="firstname" /><br>
+	Last <form:input type="text" path="lastname"  required="required"/><form:errors path="lastname" /><br>
+	Email <form:input type="text" path="email"  required="required"/><form:errors path="email" /><br>
+	Password <form:input type="text" path="password"  required="required"/><form:errors path="password" /><br>
 		<select name="userTypeId" required="required">
 	
 		<option value="">pick one</option>
