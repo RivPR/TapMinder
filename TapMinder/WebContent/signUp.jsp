@@ -1,28 +1,41 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-    <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
-<%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
- 
- 
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html>
-<head>
+<%@include file="/includes/header.jsp"%>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
+<title>Sign up for TapMinder!</title>
 </head>
 <body>
+<div class="container">
+<h1>Welcome to TapMinder!</h1>
+<h4>Please sign up.</h4>
+
+
+
+
+<div class="filler col-xs-12 col-med-4 col-lg-4">
+
+</div>
+
+<div class="signupcard col-xs-12 col-med-4 col-lg-4">
 <form:form action="signUp.do" modelAttribute="User">
-	First <form:input type="text" path="firstname" />
-	Last <form:input type="text" path="lastname" />
-	Email <form:input type="text" path="email" />
-	Password <form:input type="text" path="password" />
+	First <form:input type="text" path="firstname" /><br/>
+	Last <form:input type="text" path="lastname" /><br/>
+	Email <form:input type="text" path="email" /><br/>
+	Password <form:input type="text" path="password" /><br/>
 
 	<c:if test="${!empty(errorMessage)}">
 		${errorMessage}
 	</c:if>
-	<button type=submit>Add</button>
+	<button type=submit class="addbutton1">Add</button>
 </form:form>
+</div> <!-- SIGNUPCARD -->
+
+<div class="filler col-xs-12 col-med-4 col-lg-4">
+
+
+</div>
+
+
+
+</div> <!-- CONTAINER -->
+
 </body>
 </html>
