@@ -119,8 +119,8 @@
 			
 			<c:if test="${currentUser.id < 1 }">
 	 		<form:form action="login.do" modelAttribute="user">
-				Username: <form:input type="text" name="email" placeholder="email@example.com" path="email" /><br><br>
-				Password: <form:input type="password" name="password" path="password" /><br><br>
+				Username: <form:input type="text" name="email" style="color:black" placeholder="email@example.com" path="email" /><br><br>
+				Password: <form:input type="password" style="color:black" name="password" path="password" /><br><br>
 				<button class="btn btn-primary btn-xl page-scroll" type="submit">Login</button>
 			</form:form>
 			</c:if>
@@ -129,9 +129,8 @@
 				<br>
 				<br>
 			</c:if>
-			<form action="menu.do" method="POST">
-			<button style="color: black;" type="submit" name="menuChoice"
-					value="signUp">sign up</button>
+			<form action="menu.do" method="POST"><br>
+			<button class="btn btn-primary btn-xl page-scroll" style="background-color: #2A9D8F" type="submit" name="menuChoice" value="signUp">sign up</button>
 					</form>
 			<c:if test="${!empty(LoginError)}">
 				ERROR: ${LoginError}
