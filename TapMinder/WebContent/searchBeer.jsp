@@ -21,22 +21,22 @@
 		<form:form action="searchBeers.do" modelAttribute="BeerParameters">
 	<c:choose>
 		<c:when test="${searchSetting == 'name' }">
-			BEER NAME <form:input style="color:black" type="text" path="name" placeholder="Beer name"/>
+			BEER NAME <form:input style="color:black" type="text" path="name" placeholder="Beer name"/><form:errors path="name" />
 		</c:when>
 		<c:when test="${searchSetting == 'abv' }">
-			ABV Low <form:input style="color:black" type="text" path="abvLow" /> 
-			ABV High <form:input style="color:black" type="text" path="abvHigh" />
+			ABV Low <form:input style="color:black" type="text" path="abvLow" /> <form:errors path="abvLow" />
+			ABV High <form:input style="color:black" type="text" path="abvHigh" /><form:errors path="abvHigh" />
 		</c:when>
 		<c:when test="${searchSetting == 'hop' }">
-			Hop Count Low  <form:input style="color:black" type="text" path="hopCountLow" /> 
-			Hope Count High <form:input style="color:black" type="text" path="hopCountHigh" />
+			Hop Count Low  <form:input style="color:black" type="text" path="hopCountLow" /> <form:errors path="hopCountLow" />
+			Hope Count High <form:input style="color:black" type="text" path="hopCountHigh" /><form:errors path="hopCountHigh" />
 		</c:when>
 		<c:when test="${searchSetting == 'style' }">
-			Style <form:input style="color:black" type="text" path="style" placeholder="style"/>
+			Style <form:input style="color:black" type="text" path="style" placeholder="style"/><form:errors path="style" />
 		</c:when>
 		<c:when test="${searchSetting ==  'rating'}">
-			Rating Low<form:input style="color:black" type="text" path="ratingLow" placeholder="Number 1-5" />
-			Rating High <form:input style="color:black" type="text" path="ratingHigh" placeholder="Number 1-5" />
+			Rating Low<form:input style="color:black" type="text" path="ratingLow" placeholder="Number 1-5" /><form:errors path="ratingLow" />
+			Rating High <form:input style="color:black" type="text" path="ratingHigh" placeholder="Number 1-5" /><form:errors path="ratingHigh" />
 		</c:when>
 	</c:choose>
 	
@@ -56,6 +56,10 @@
 	
 	
 	</c:choose>
+		<c:if test="${!empty(errorMessage)}">
+			${errorMessage}
+		</c:if>
+		
 	<c:if test="${searchSetting != '' }">
 	<button type="submit">search</button>	
 	</c:if>	
