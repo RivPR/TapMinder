@@ -82,10 +82,10 @@ public class BeerDataTest {
 		assertEquals(State.CO,beer.getBrewery().getState());
 	}
 	
-	@Test
-	public void beerZip() {
-		assertEquals(80204,beer.getBrewery().getZip());
-	}
+//	@Test
+//	public void beerZip() {
+//		assertEquals(80204,beer.getBrewery().getZip());
+//	}
 
 
 	@Test
