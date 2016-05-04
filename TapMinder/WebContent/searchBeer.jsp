@@ -1,4 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
+<%-- <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
@@ -12,6 +12,9 @@
 <title>Insert title here</title>
 </head>
 <body>
+ --%>
+ <%@include file="/includes/header.jsp"%>
+ 
 		<c:if test="${searchSetting == ''}">
 			<form name="searchBy" action="findBeersPage.do" method="GET">
 				<select name="findBy">
@@ -33,21 +36,21 @@
 	<c:choose>
 		
 		<c:when test="${searchSetting == 'name' }">
-			BEER NAME <form:input type="text" path="name" placeholder="Beer name"/>
+			BEER NAME <form:input style="color:black" type="text" path="name" placeholder="Beer name"/>
 		</c:when>
 		<c:when test="${searchSetting == 'abv' }">
-ABV from <form:input type="text" path="abvLow" /> to <form:input type="text" path="abvHigh" />
+ABV from <form:input style="color:black" type="text" path="abvLow" /> to <form:input type="text" path="abvHigh" />
 		</c:when>
 		<c:when test="${searchSetting == 'hop' }">
-Hop count from <form:input type="text" path="hopCountLow" /> to <form:input type="text" path="hopCountHigh" />
+Hop count from <form:input style="color:black" type="text" path="hopCountLow" /> to <form:input type="text" path="hopCountHigh" />
 		</c:when>
 		<c:when test="${searchSetting == 'style' }">
-Style <form:input type="text" path="style" placeholder="style"/>
+Style <form:input style="color:black" type="text" path="style" placeholder="style"/>
 
 		</c:when>
 		<c:when test="${searchSetting ==  'rating'}">
-Rating High <form:input type="text" path="ratingHigh" placeholder="Number 1-5" />
-Rating Low<form:input type="text" path="ratingLow" placeholder="Number 1-5" />
+			Rating Low<form:input style="color:black" type="text" path="ratingLow" placeholder="Number 1-5" />
+			Rating High <form:input style="color:black" type="text" path="ratingHigh" placeholder="Number 1-5" />
 		</c:when>
 		
 
@@ -72,6 +75,9 @@ Rating Low<form:input type="text" path="ratingLow" placeholder="Number 1-5" />
 	<button type="submit">search</button>	
 	</c:if>	
 		</form:form>
-		
+
+<%@include file="/includes/footer.jsp"%>
+
+<!-- 		
 </body>
-</html>
+</html> -->
