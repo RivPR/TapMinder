@@ -11,7 +11,7 @@
 	addr<form:input type="text" path="streetAddress" /><form:errors path="streetAddress" /><br>
 	city<form:input type="text" path="city" /><form:errors path="city" /><br>
 <%-- state<form:input type="text" path="state" /><form:errors path="state" /><br> --%>
-	<form:input type="text" path="state" value="CO"/><form:errors path="state" /><br>
+	<form:input type="hidden" path="state" value="CO"/><form:errors path="state" /><br>
 	zip<form:input type="text" path="zip" /><form:errors path="zip" /><br>
 	im link<form:input type="text" path="imageLink" /><form:errors path="imageLink" /><br>
 	b link<form:input type="text" path="breweryLink" /><form:errors path="breweryLink" /><br>
