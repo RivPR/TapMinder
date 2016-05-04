@@ -27,8 +27,22 @@ input[type=submit] {
     transition: all .35s;
 	
 }
-
-.btn-delete{
+.btn-delete{ /*Delete Button */
 	background-color: #e90000; 
+	
+}
+
+.signupcard {
+	background-color: #3f383f;
+}
+.addbutton1{
+	border-color: #f05f40;
+    color: #fff;
+    background-color: #f05f40;
+    border-radius: 15px;
+    -webkit-transition: all .35s;
+    -moz-transition: all .35s;
+    transition: all .35s;
+	
 	
 }

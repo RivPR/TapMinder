@@ -3,26 +3,19 @@
 <h1>Rate this Beer</h1>
 <h3>Your fellow TapMinders value your opinion</h3>
 
-Name: ${beer.name}
-<br>
-ABV: ${beer.abv}
-<br>
-HopCount: ${beer.hopCount}
-<br>
-Style: ${beer.beerStyle}
-<br>
-Brewery: ${beer.brewery.name}
-<br>
-<img src="${beer.imageLink}" />
-<br>
+Name: ${beer.name} <br>
+ABV: ${beer.abv} <br>
+HopCount: ${beer.hopCount} <br>
+Style: ${beer.beerStyle} <br>
+Brewery: ${beer.brewery.name} <br>
+<img src="${beer.imageLink}" /> <br>
 <input type="hidden" name="beerId" value="${beer.id}" />
 
-
-<div>
+<br>
+<center><div>
 	<form action="saveRateABeer.do">
-		<textarea style="color: black" name="comments" placeholder="Comments:"></textarea>
-		<br />
-		<fieldset class="rating">
+		<textarea style="color: black" name="comments" placeholder="Comments:"></textarea><br/>
+		<fieldset  class="rating">
 			<input type="radio" id="star5" name="rating" value="5" /><label
 				class="full" for="star5" title="Awesome - 5 stars"></label>
 			<input type="radio" id="star4" name="rating" value="4" /><label
@@ -35,8 +28,9 @@ Brewery: ${beer.brewery.name}
 				class="full" for="star1" title="Sucks big time - 1 star"></label> 
 		</fieldset>
 		<input type="hidden" name="beerId" value="${beer.id}"><i></i>
-		<input type="submit" value="Submit">
+		<!-- <input type="submit" value="Submit"> -->
+		<button class="btn btn-primary btn page-scroll" value="Submit" type="submit">Submit</button>
 	</form>
-</div>
+</div></center>
 
 <%@include file="/includes/footer.jsp"%>
