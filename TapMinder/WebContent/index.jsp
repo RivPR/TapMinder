@@ -25,7 +25,9 @@
 				</form:form>
 			</c:if>
 			<c:if test="${currentUser.id > 0 }">
-				<button class="btn btn-success" href="indexAlexTest.jsp">GO!</button>
+			<form action="indexAlexTest.jsp">
+				<button class="btn btn-success" type="submit">GO!</button>
+			</form>
 				<br>
 				<br>
 			</c:if>

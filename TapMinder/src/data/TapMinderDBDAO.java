@@ -219,7 +219,7 @@ public class TapMinderDBDAO implements TapMinderDAO {
 	@Override
 	public void deleteBeer(Integer id) {
 		Beer beerToDelete = em.find(Beer.class, id);
-		
+		//TODO i think it doesn't work with blank breweries
 		List<BeerRating> ratings = beerToDelete.getRatings();
 		
 		for (BeerRating beerRating : ratings) {
