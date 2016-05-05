@@ -36,23 +36,23 @@
 					<c:choose>
 
 						<c:when test="${searchSetting == 'name' }">
-				Brewery name <form:input style="color:black" type="text" path="name"
+				Brewery name <form:input type="text" path="name"
 								placeholder="Type name here" />
 							<form:errors path="name" />
 						</c:when>
 						<c:when test="${searchSetting == 'street' }">
-				Street Address <form:input style="color:black" type="text"
+				Street Address <form:input type="text"
 								path="streetAddress" />
 							<form:errors path="streetAddress" />
 						</c:when>
 						<c:when test="${searchSetting == 'city' }">
-				City<form:input style="color:black" type="text" path="city" />
+				City<form:input  type="text" path="city" />
 							<form:errors path="city" />
 						</c:when>
 
 
 						<c:when test="${searchSetting ==  'zipcode'}">
-				Zip <form:input style="color:black" type="text" path="zipcode"
+				Zip <form:input type="number" path="zipcode"
 								placeholder="Number 1-5" />
 							<form:errors path="zipcode" />
 						</c:when>

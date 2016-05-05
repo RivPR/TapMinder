@@ -34,7 +34,7 @@
 
 		<tr>
 			<td>Zipcode</td>
-			<td><form:input type="text" path="zip" /></td>
+			<td><form:input type="number" path="zip" /></td>
 			<td><form:errors path="zip" /></td>
 		</tr>
 

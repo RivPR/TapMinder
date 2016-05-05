@@ -130,7 +130,7 @@ public class TapMinderController {
 			}
 			break;
 		case "addBreweries":
-			if (currentUser.getUsertype().getAccessLevel() > 2) {
+			if (currentUser.getUsertype().getAccessLevel() > 1) {
 				mv.addObject("Brewery", new Brewery());
 				mv.addObject("neighborhoodList", dao.getNeighborhoods());
 

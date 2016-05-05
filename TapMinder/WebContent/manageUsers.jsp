@@ -23,7 +23,7 @@
 
 							<tr>
 								<td>Email</td>
-								<td><form:input type="text" path="email" /></td>
+								<td><form:input type="email" path="email" /></td>
 							</tr>
 							<tr>
 								<br>

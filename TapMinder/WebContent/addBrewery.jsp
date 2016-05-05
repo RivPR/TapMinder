@@ -33,7 +33,7 @@
 					</tr>
 					<tr>
 						<td>Zip Code</td>
-						<td><form:input type="text" path="zip" /></td>
+						<td><form:input type="number" path="zip" /></td>
 						<td><form:errors path="zip" /></td>
 					</tr>
 					<tr>

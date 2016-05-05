@@ -17,12 +17,12 @@
 		</tr>
 		<tr>
 			<td>ABV</td>
-			<td><form:input type="text" path="abv" /></td>
+			<td><form:input type="number" path="abv" /></td>
 			<td><form:errors path="abv" /></td>
 		</tr>
 		<tr>
 			<td>Hop Count</td>
-			<td><form:input type="text" path="hopCount" /></td>
+			<td><form:input type="number" path="hopCount" /></td>
 			<td></td>
 		</tr>
 		<tr>

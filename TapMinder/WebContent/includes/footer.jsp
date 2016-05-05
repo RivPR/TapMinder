@@ -9,7 +9,7 @@
 
 <footer class="fixed-bottom-footer">
 
-WELCOME TO TAPMINDER
+WELCOME TO TAPMINDER | You are logged in as ${currentUser.firstname} ${currentUser.lastname} 
 
 
 <c:if test="${currentUser.usertype.accessLevel == 2}">

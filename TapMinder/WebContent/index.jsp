@@ -11,7 +11,7 @@
 
 			<c:if test="${currentUser.id < 1 }">
 				<form:form action="login.do" modelAttribute="user">
-				Username: <form:input type="text" name="email"
+				Username: <form:input type="email" name="email"
 						placeholder="email@example.com" path="email" />
 					<br>
 					<br>

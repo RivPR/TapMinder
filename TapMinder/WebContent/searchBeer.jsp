@@ -44,16 +44,16 @@
 			<form:errors path="name" />
 		</c:when>
 		<c:when test="${searchSetting == 'abv' }">
-			ABV Low <form:input type="text" path="abvLow" />
+			ABV Low <form:input type="number" path="abvLow" />
 			<form:errors path="abvLow" />
-			ABV High <form:input  type="text" path="abvHigh" />
+			ABV High <form:input  type="number" path="abvHigh" />
 			<form:errors path="abvHigh" />
 		</c:when>
 		<c:when test="${searchSetting == 'hop' }">
-			Hop Count Low  <form:input type="text"
+			Hop Count Low  <form:input type="number"
 				path="hopCountLow" />
 			<form:errors path="hopCountLow" />
-			Hope Count High <form:input  type="text"
+			Hope Count High <form:input  type="number"
 				path="hopCountHigh" />
 			<form:errors path="hopCountHigh" />
 		</c:when>
@@ -63,10 +63,10 @@
 			<form:errors path="style" />
 		</c:when>
 		<c:when test="${searchSetting ==  'rating'}">
-			Rating Low<form:input  type="text"
+			Rating Low<form:input  type="number"
 				path="ratingLow" placeholder="Number 1-5" />
 			<form:errors path="ratingLow" />
-			Rating High <form:input type="text"
+			Rating High <form:input type="number"
 				path="ratingHigh" placeholder="Number 1-5" />
 			<form:errors path="ratingHigh" />
 		</c:when>
