@@ -143,25 +143,18 @@
 		<br>
 		</div>
 		
-		<form action="menu.do" method="POST">
 
 		<section class="no-padding" id="portfolio">
 		<div class="container-fluid">
 			<div class="row no-gutter">
-
+<!-- pics -->
+		<form action="menu.do" method="POST">
 				<div class="col-lg-4 col-sm-6">
-					<!--  <a href="#" class="portfolio-box"> -->
-					<!--    <a href="#" class="portfolio-box" name="menuChoice" onclick="$(findBeers).closest('menu.do').submit()">Submit</a> -->
 					<a href="#" class="porfolio-box"> <input type="image"
 						name="menuChoice" value="findBeers" class="img-responsive"
-						src="img/portfolio/1.jpg" alt="" /> <!--  <img src="img/portfolio/1.jpg" class="img-responsive" alt="">  -->
-						<!--                         <input class="portfolio-box" type="image" name="menuChoice" src="img/portfolio/1.jpg" class="img-responsive" alt="" border="0" value="findBeers" alt="Submit" />
- -->
+						src="img/portfolio/1.jpg" alt="" /> 
 						<div class="portfolio-box-caption">
 							<div class="portfolio-box-caption-content"><br>
-								<!--  <div class="project-category text-faded">
-                                    Category
-                                </div> -->
 					
 								<button class="btn btn-primary btn-xl page-scroll" name="menuChoice" value="findBeers" type="submit">Find Brews</button>
 							</div>
@@ -170,20 +163,13 @@
 				</div>
 
 				<div class="col-lg-4 col-sm-6">
-					<!--  <a href="#" class="portfolio-box"> -->
-					<!--    <a href="#" class="portfolio-box" name="menuChoice" onclick="$(findBeers).closest('menu.do').submit()">Submit</a> -->
 					<a href="#" class="porfolio-box"> 
 					<input type="image" name="menuChoice" value="findBreweries" class="img-responsive"
 						src="img/portfolio/2.jpg" alt="" /> 
 					
-					<!--  <img src="img/portfolio/1.jpg" class="img-responsive" alt="">  -->
-					<!--  <input class="portfolio-box" type="image" name="menuChoice" src="img/portfolio/1.jpg" class="img-responsive" alt="" border="0" value="findBeers" alt="Submit" />
  -->
 						<div class="portfolio-box-caption">
 							<div class="portfolio-box-caption-content"><br>
-								<!--  <div class="project-category text-faded">
-                                    Category
-                                </div> -->
                                 
 								<button class="btn btn-primary btn-xl page-scroll" name="menuChoice" value="findBreweries" type="submit">Find Breweries</button>
 								</div>
@@ -192,26 +178,21 @@
 				</div>
 
 				<div class="col-lg-4 col-sm-6">
-					<!--  <a href="#" class="portfolio-box"> -->
-					<!--    <a href="#" class="portfolio-box" name="menuChoice" onclick="$(findBeers).closest('menu.do').submit()">Submit</a> -->
 					<a href="#" class="porfolio-box"> 
 					<input type="image" name="menuChoice" value="viewUserBeers" class="img-responsive"
 						src="img/portfolio/3.jpg" alt="" /> 
 						
-						<!--  <img src="img/portfolio/1.jpg" class="img-responsive" alt="">  -->
-						<!--                         <input class="portfolio-box" type="image" name="menuChoice" src="img/portfolio/1.jpg" class="img-responsive" alt="" border="0" value="findBeers" alt="Submit" />
  -->
 						<div class="portfolio-box-caption">
 							<div class="portfolio-box-caption-content"><br>
-								<!--  <div class="project-category text-faded">
-                                    Category
-                                </div> -->
 							
 								<button class="btn btn-primary btn-xl page-scroll" name="menuChoice" value="viewUserBeers" type="submit">View you Brews</button>
 								
 							</div>
 						</div>
 					</a>
+					
+					</div>
 				
 			</form>
 
