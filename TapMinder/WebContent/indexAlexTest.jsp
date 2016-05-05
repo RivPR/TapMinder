@@ -186,7 +186,7 @@
 						<div class="portfolio-box-caption">
 							<div class="portfolio-box-caption-content"><br>
 							
-								<button class="btn btn-primary btn-xl page-scroll" name="menuChoice" value="viewUserBeers" type="submit">View you Brews</button>
+								<button class="btn btn-primary btn-xl page-scroll" name="menuChoice" value="viewUserBeers" type="submit">View your Brews</button>
 								
 							</div>
 						</div>
