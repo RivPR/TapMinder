@@ -115,6 +115,8 @@ public class TapMinderController {
 		case "modifyUsers":
 			if (currentUser.getUsertype().getAccessLevel() > 2) {
 				mv.addObject("User", new User());
+				//for header
+				mv.addObject("currentUser",currentUser);
 				mv.setViewName("manageUsers.jsp");
 			} else {
 				mv.setViewName("indexAlexTest.jsp");
@@ -455,6 +457,8 @@ public class TapMinderController {
 	@RequestMapping("findUsers.do")
 	private ModelAndView findUsers(@ModelAttribute("currentUser") User currentUser,User user) {
 		ModelAndView mv = new ModelAndView();
+		//user keeps logging in as thing that they searched for
+		System.out.println("current user = " + currentUser.getEmail());
 		if(currentUser.getUsertype().getAccessLevel() > 2){
 			List<User> userList = dao.getUsers(user);
 			
@@ -468,6 +472,13 @@ public class TapMinderController {
 		}else{
 			mv.setViewName("indexAlexTest.jsp");
 		}
+			
+		System.out.println("current user = " + currentUser.getEmail());
+		Integer currentUserId = currentUser.getId();
+		currentUser = null;
+		currentUser = dao.getUser(currentUserId);
+		mv.addObject("currentUser",currentUser);
+		System.out.println("current user = " + currentUser.getEmail());
 		return mv;
 	}
 

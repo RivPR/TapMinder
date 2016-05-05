@@ -3,7 +3,8 @@
 
 <c:if test="${empty(userList)}">
 	<header>
-
+	
+		<input type="hidden" value="${currentUser.id }" />
 		<div class="header-content">
 			<div class="header-content-inner">
 

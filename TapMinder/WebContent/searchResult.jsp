@@ -1,6 +1,6 @@
 <%@include file="/includes/header.jsp"%>
 
-
+		
 
 		<div class="container beer-list">
 			<c:forEach var="beer" items="${beerList}">
