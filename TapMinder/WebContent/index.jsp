@@ -46,7 +46,7 @@
 <body id="page-top">
 
 
-<!-- THIS INIITAL FACEBOOK SCRIPT is the basic version of the SDK where the options are set to their most common defaults.  -->
+<!-- THIS INITAL FACEBOOK SCRIPT is the basic version of the SDK where the options are set to their most common defaults.  -->
 	<script>
 			window.fbAsyncInit = function() {
 				FB.init({
