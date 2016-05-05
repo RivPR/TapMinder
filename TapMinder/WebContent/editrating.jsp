@@ -17,15 +17,15 @@ Rating: <h3>${br.rating}</h3><br/>
 
 		<div class="rating5star row col-xs-7 col-med-4 col-lg-5">
 		<fieldset class="rating">
-			<input type="radio" id="star5" name="rating" value="5" /><label
+			<input type="radio" id="star5" name="rating" value="5" <c:if test="${br.rating==5}">checked="checked"</c:if>/><label
 				class="full" for="star5" title="Awesome - 5 stars"></label>
-			<input type="radio" id="star4" name="rating" value="4" /><label
+			<input type="radio" id="star4" name="rating" value="4" <c:if test="${br.rating==4}">checked="checked"</c:if>/><label
 				class="full" for="star4" title="Pretty good - 4 stars"></label>
-			<input type="radio" id="star3" name="rating" value="3" /><label
+			<input type="radio" id="star3" name="rating" value="3" <c:if test="${br.rating==3}">checked="checked"</c:if>/><label
 				class="full" for="star3" title="Meh - 3 stars"></label> 
-			<input type="radio" id="star2" name="rating" value="2" /><label
+			<input type="radio" id="star2" name="rating" value="2" <c:if test="${br.rating==2}">checked="checked"</c:if>/><label
 				class="full" for="star2" title="Kinda bad - 2 stars"></label> 
-			<input type="radio" id="star1" name="rating" value="1" /><label
+			<input type="radio" id="star1" name="rating" value="1" <c:if test="${br.rating==1}">checked="checked"</c:if>/><label
 				class="full" for="star1" title="Sucks big time - 1 star"></label> 
 			<input type="hidden" name="beerId" value="${br.id}"><i></i>
 		</fieldset>

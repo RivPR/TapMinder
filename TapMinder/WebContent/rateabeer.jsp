@@ -15,7 +15,7 @@ Brewery: ${beer.brewery.name} <br>
 <center><div>
 	<form action="saveRateABeer.do">
 		<textarea style="color: black" name="comments" placeholder="Comments:"></textarea><br/>
-		<fieldset  class="rating">
+		<fieldset  class="rating" required>
 			<input type="radio" id="star5" name="rating" value="5" /><label
 				class="full" for="star5" title="Awesome - 5 stars"></label>
 			<input type="radio" id="star4" name="rating" value="4" /><label
