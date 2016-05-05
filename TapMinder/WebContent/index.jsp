@@ -25,14 +25,17 @@
 				</form:form>
 			</c:if>
 			<c:if test="${currentUser.id > 0 }">
-				<a href="indexAlexTest.jsp">GO!</a>
+				<button class="btn btn-success" href="indexAlexTest.jsp">GO!</button>
 				<br>
 				<br>
 			</c:if>
 			<form action="menu.do" method="POST">
 				<br>
+
+			<c:if test="${currentUser.id < 1 }">
 				<button class="btn btn-warning" type="submit" name="menuChoice"
 					value="signUp">sign up</button>
+			</c:if>
 			</form>
 			<c:if test="${!empty(LoginError)}">
 				ERROR: ${LoginError}
