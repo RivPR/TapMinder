@@ -25,7 +25,7 @@
 					Not yet functional <%@include	file="/includes/facebook-login-button-with-script.html"%></div> --%>
 			</c:if>
 			<c:if test="${currentUser.id > 0 }">
-				<form action="indexAlexTest.jsp">
+				<form action="mainPage.jsp">
 					<button class="btn btn-success" type="submit">GO!</button>
 				</form>
 				<br>
