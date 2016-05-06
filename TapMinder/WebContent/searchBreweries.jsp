@@ -29,7 +29,6 @@
 							<option value="name">Name</option>
 							<option value="street">Street</option>
 							<option value="city">city</option>
-							<!-- <option value="state">state</option> -->
 							<option value="zip">Zip</option>
 							<option value="neighborhood">Neighborhood</option>
 						</select> <br>

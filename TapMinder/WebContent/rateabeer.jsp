@@ -13,7 +13,7 @@ Style: ${beer.beerStyle} <br>
 Brewery: ${beer.brewery.name} <br>
 <img  class="med-beer" src="${beer.imageLink}" /> <br>
 
-	<form action="saveRateABeer.do" required>
+	<form action="saveRateABeer.do" required="required">
 		<textarea class="comment-box" name="comments" placeholder="Comments:"></textarea><br/>
 		
 		<div class="row">
@@ -39,7 +39,6 @@ Brewery: ${beer.brewery.name} <br>
 		
 		<input type="hidden" name="beerId" value="${beer.id}"><i></i>
 		<input type="hidden" name="userId" value="${currentUser.id}"><i></i>
-		<!-- <input type="submit" value="Submit"> -->
 		<button class="btn btn-warning" value="Submit" type="submit">Submit</button>
 	</form>
 

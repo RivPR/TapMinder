@@ -29,7 +29,7 @@
 					<c:if test="${currentUser.usertype.accessLevel > 0}">
 						<form action="rateABeer.do">
 							<input type="hidden" name="beerId" value="${beer.id}" />
-							<!-- 	<button type="submit">Rate This Beer</button> -->
+							<%-- 	<button type="submit">Rate This Beer</button> --%>
 							<br><button class="btn btn-success" type="submit">Rate this beer</button><br><br>
 						</form>
 					</c:if>

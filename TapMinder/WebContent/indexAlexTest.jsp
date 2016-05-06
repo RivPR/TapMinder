@@ -60,16 +60,7 @@
 
 
 
-<!-- old buttons -->
-<!-- 			<form action="menu.do" method="POST">
-				<button  class="btn btn-warning" type="submit" name="menuChoice" value="findBeers">Find
-					Beers</button>
-				<button  class="btn btn-warning" type="submit" name="menuChoice" value="findBreweries">Find
-					Breweries</button>
-				<button  class="btn btn-warning" type="submit" name="menuChoice" value="viewUserBeers">My
-					Beers</button> 
 
-			</form>-->
 </div>
 		</div>
 </header>

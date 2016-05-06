@@ -80,7 +80,7 @@
 			</select>
 		</c:when>
 		<c:otherwise>
-			<!-- set to zero as a default -->
+			<%-- set to zero as a default --%>
 			<input type="hidden" name="breweryId" value="0" />
 		</c:otherwise>
 
