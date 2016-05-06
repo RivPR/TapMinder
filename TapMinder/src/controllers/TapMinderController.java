@@ -61,7 +61,7 @@ public class TapMinderController {
 		// if the result returns a user, log them in and go to the main page
 		if (result.getUser() != null) {
 			mv.addObject("currentUser", result.getUser());
-			mv.setViewName("indexAlexTest.jsp");
+			mv.setViewName("mainPage.jsp");
 		}
 		// if the result returns an error message, pass that to the jsp instead
 		// and return to the index page
@@ -112,7 +112,7 @@ public class TapMinderController {
 			}
 			// if not access level 3 somehow, go back to the main page
 			else {
-				mv.setViewName("indexAlexTest.jsp");
+				mv.setViewName("mainPage.jsp");
 			}
 			break;
 		// add a new user (not sign up, add another person, admin only)
@@ -125,7 +125,7 @@ public class TapMinderController {
 			}
 			// if not admin, go back to main page
 			else {
-				mv.setViewName("indexAlextest.jsp");
+				mv.setViewName("mainPage.jsp");
 			}
 			break;
 		// add a brewery (moderator and admin only)
@@ -140,7 +140,7 @@ public class TapMinderController {
 			}
 			// if not admin, go back to main page
 			else {
-				mv.setViewName("indexAlexTest.jsp");
+				mv.setViewName("mainPage.jsp");
 			}
 			break;
 		// sign up( self sign up)
@@ -231,7 +231,7 @@ public class TapMinderController {
 			}
 			// go back to the main page
 			mv.addObject("Beer", new Beer());
-			mv.setViewName("indexAlexTest.jsp");
+			mv.setViewName("mainPage.jsp");
 		} else {
 			// if logged in...
 			if (currentUser.getUsertype().getAccessLevel() > 0) {
@@ -260,7 +260,7 @@ public class TapMinderController {
 			dao.modifyBeer(beer);
 		}
 
-		mv.setViewName("indexAlexTest.jsp");
+		mv.setViewName("mainPage.jsp");
 		return mv;
 	}
 
@@ -275,7 +275,7 @@ public class TapMinderController {
 			dao.deleteBeer(beerId);
 		}
 
-		mv.setViewName("indexAlexTest.jsp");
+		mv.setViewName("mainPage.jsp");
 		return mv;
 
 	}
@@ -340,7 +340,7 @@ public class TapMinderController {
 		// pass brewery id to delete brewery method in the dao, then return to
 		// the main page
 		dao.deleteBrewery(breweryId);
-		mv.setViewName("indexAlexTest.jsp");
+		mv.setViewName("mainPage.jsp");
 		return mv;
 	}
 
@@ -539,7 +539,7 @@ public class TapMinderController {
 		}
 		// go back to the main page if not admin
 		else {
-			mv.setViewName("indexAlexTest.jsp");
+			mv.setViewName("mainPage.jsp");
 		}
 		// reset the current user. this was a remedy for an odd problem -
 		// the user logged in would become the user that was searched for...
@@ -661,7 +661,7 @@ public class TapMinderController {
 
 		} else {
 			// if not admin, back to home page
-			mv.setViewName("indexAlexTest.jsp");
+			mv.setViewName("mainPage.jsp");
 		}
 		return mv;
 
@@ -698,7 +698,7 @@ public class TapMinderController {
 		if (result.getUser() != null) {
 			//get the user form the result and go to the main page
 			mv.addObject("currentUser", result.getUser());
-			mv.setViewName("indexAlexTest.jsp");
+			mv.setViewName("mainPage.jsp");
 		} else {
 			//display a loggin error on the main page
 			mv.addObject("LoginError", result.getMessage());
@@ -798,7 +798,7 @@ public class TapMinderController {
 		dao.deleteRating(currentUser.getId(), br.getId());
 
 		// back to main page
-		mv.setViewName("indexAlexTest.jsp");
+		mv.setViewName("mainPage.jsp");
 
 		return mv;
 	}

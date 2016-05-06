@@ -70,7 +70,7 @@
 					class="icon-bar"></span>
 			</button>
 			<c:if test="${currentUser.id > 0}">
-				<a class="navbar-brand page-scroll" href="indexAlexTest.jsp">TapMinder | Welcome, ${currentUser.firstname}! </a>
+				<a class="navbar-brand page-scroll" href="mainPage.jsp">TapMinder | Welcome, ${currentUser.firstname}! </a>
 			</c:if>
 			<c:if test="${currentUser.id < 1}">
 				<a class="navbar-brand page-scroll" href="initPage.do">TapMinder</a>
