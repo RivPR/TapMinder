@@ -40,7 +40,7 @@
 			</c:if>
 			</form>
 			<c:if test="${!empty(LoginError)}">
-				ERROR: ${LoginError}
+				<span class="alert-text">ERROR: ${LoginError}</span>
 			</c:if>
 			<br>
 

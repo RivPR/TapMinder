@@ -94,7 +94,8 @@ public class TapMinderController {
 			mv.setViewName("searchBreweries.jsp");
 			break;
 		case "viewUserBeers":
-			currentUser = dao.refreshUser(currentUser); // TODO doesn't work?
+			//threw entity not found exception..... when clicking on view my beers after a delete currentUser = dao.refreshUser(currentUser); // TODO doesn't work?
+			
 			mv.setViewName("findUserBeerList.do");
 			break;
 		case "myAccount":
@@ -353,7 +354,21 @@ public class TapMinderController {
 	@RequestMapping("findUserBeerList.do")
 	private ModelAndView printUserBeers(@ModelAttribute("currentUser") User currentUser) {
 		ModelAndView mv = new ModelAndView();
-		User userLogged = dao.getUser(currentUser.getId());
+		User userLogged = null;
+		userLogged = dao.getUser(currentUser.getId());
+
+		//reattach current user
+		if(currentUser.getId() > 0){
+			int userId = currentUser.getId();
+			currentUser = null;
+			currentUser = dao.getUser(userId);
+			
+		}
+		
+		userLogged = dao.getUser(currentUser.getId());
+		
+		
+		
 		List<BeerRating> userRatings = userLogged.getRatings();
 		List<Beer> beers = new ArrayList<>();
 		if (userRatings != null && userRatings.size() > 0) {
@@ -362,7 +377,10 @@ public class TapMinderController {
 				beers.add(beerRating.getBeer());
 			}
 		}
-		currentUser = dao.refreshUser(currentUser);
+		//TODO: i did this for the beers...
+		//currentUser = dao.refreshUser(currentUser);
+		
+		
 		mv.addObject("ratings", userRatings);
 		mv.addObject("userBeers", beers);
 		mv.addObject("currentUser", currentUser);
@@ -419,6 +437,7 @@ public class TapMinderController {
 			@RequestParam("findBy") String choice) {
 		ModelAndView mv = new ModelAndView();
 		System.out.println(choice);
+	
 		mv.addObject("stateEnumList",dao.getStates());
 		mv.addObject("BreweryParameters", new BreweryParameters());
 		mv.addObject("currentUser", currentUser);
@@ -441,6 +460,7 @@ public class TapMinderController {
 			}
 			List<Brewery> breweryList = dao.getBreweries(breweryParameters);
 			mv.addObject("breweryList", breweryList);
+			mv.addObject("searchSubmitted",true);
 			mv.setViewName("searchBreweries.jsp");
 			
 		}else{
@@ -686,4 +706,18 @@ public class TapMinderController {
 		return mv;
 	}
 
+	@RequestMapping("deleteRating.do")
+	private ModelAndView deleteRating(@RequestParam("ratingId") Integer ratingId, @ModelAttribute("currentUser") User currentUser){
+		ModelAndView mv = new ModelAndView();
+		BeerRating br = dao.getRatingByID(ratingId);
+		System.out.println("DELETING: " + br.getId());
+		dao.deleteRating(currentUser.getId(), br.getId());
+		//current
+		
+//		dao.refreshRatingList(br.getUser().getId());
+		mv.setViewName("indexAlexTest.jsp");
+
+		return mv;
+	}
+	
 }

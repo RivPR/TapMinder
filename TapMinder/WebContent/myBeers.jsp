@@ -24,6 +24,10 @@
 			<input type="hidden" name="ratingID" value="${r.id}" />
 			<button class="btn btn-warning" type="submit">Edit</button>
 		</form>
+		<form action="deleteRating.do">
+			<input type="hidden" name="ratingId" value="${r.id}" />
+			<button class="btn btn-warning" type="submit">Delete</button>
+		</form>
 	</div>
 	</div>
 	

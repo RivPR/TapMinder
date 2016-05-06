@@ -37,7 +37,7 @@ public class User {
 	@JoinColumn(name="usertype_id")
 	private UserType usertype;
 	
-	@OneToMany(mappedBy="user", fetch = FetchType.EAGER)//, cascade={CascadeType.PERSIST, CascadeType.REMOVE})
+	@OneToMany(mappedBy="user", fetch = FetchType.EAGER, cascade= CascadeType.REMOVE)//added type all for list updating// , cascade={CascadeType.PERSIST, CascadeType.REMOVE})
 	List<BeerRating> ratings;
 	
 	public User(){

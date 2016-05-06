@@ -97,6 +97,10 @@ public interface TapMinderDAO {
 	void addRating(BeerRating beerRating);
 
 	public List<String> getStates();
+
+	void deleteRating(Integer userId, Integer beerRatingId);
+
+	public void refreshRatingList(Integer id);
 	
 	
 	

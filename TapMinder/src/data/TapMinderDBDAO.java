@@ -592,6 +592,30 @@ public class TapMinderDBDAO implements TapMinderDAO {
 
 	
 	@Override
+	public void deleteRating(Integer userId, Integer ratingId) {
+		
+		User user = em.find(User.class, userId);
+		
+		List<BeerRating> ratings = user.getRatings();
+	
+		
+		//would not delete//TODO
+		BeerRating br = em.find(BeerRating.class, ratingId);
+		System.out.println("POOPS:" + em.contains(br));
+		em.merge(br);
+		em.remove(br);
+		//For some reason, the user rating list still had the rating in it after deletion, and it would throw an error when i went to the mybeers page
+		//remove from rating list
+		ratings.remove(em.find(BeerRating.class, ratingId));
+		user.setRatings(ratings);
+//		user = refreshUser(user);
+		//do also for beer
+		
+		
+	}
+	
+	
+	@Override
 	public Neighborhood getNeighborhood(int id){
 		return em.find(Neighborhood.class, id);
 	}
@@ -618,7 +642,12 @@ public class TapMinderDBDAO implements TapMinderDAO {
 		return u;
 	}
 
-	 
+	 @Override
+	 public void refreshRatingList(Integer id){
+			User u =  em.merge(em.find(User.class, id));
+			em.refresh(u);
+			
+	 }
 	@Override
 	public UserType getUserType(int id){
 		return em.find(UserType.class, id);

@@ -26,8 +26,8 @@
 		<property name="javax.persistence.jdbc.password" value="tapminder" /> -->
 		
 		<property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver" />
-		<property name="hibernate.show_sql" value="true" />
-		<property name="hibernate.format_sql" value="true" />
+		<property name="hibernate.show_sql" value="false" />
+		<property name="hibernate.format_sql" value="false" />
 		
 		<!-- test validation stuff -->
 <property name="javax.persistence.validation.mode" value="AUTO" />

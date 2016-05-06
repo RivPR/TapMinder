@@ -10,14 +10,14 @@
 		<div class="header-content">
 			<div class="header-content-inner">
 
-				<c:if test="${ empty(searchSetting) && (breweryList.size() < 1 || empty(breweryList))}">
+				<c:if test="${ !empty(searchSubmitted) && searchSubmitted == true}">
 					<div
 						class="col-xs-offset-2 col-md-offset-4 col-md-4 col-xs-10 center-text">
 						<br> <br> <br> <br> <br>Your search
 						returned no results.
 						<form action="menu.do">
 							<button class="btn btn-link return-link" name="menuChoice"
-								value="findBeers">Return to search.</button>
+								value="findBreweries">Return to search.</button>
 						</form>
 					</div>
 				</c:if>
@@ -91,6 +91,7 @@
 	</header>
 </c:if>
 <div class="container brewery-list text-center">
+
 
 	<c:if test="${!empty(breweryList)}">
 		<h2>BREWERIES</h2>
