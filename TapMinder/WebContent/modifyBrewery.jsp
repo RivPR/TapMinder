@@ -6,8 +6,7 @@
 		<div class="header-content-inner">
 		
 		<div class="container">
-		<div class="col-xs-0 col-md-3"></div>
-		<div class="col-xs-12 col-md-3">
+		<div class="col-md-offset-3 col-xs-12 col-md-3">
 
 	<form:form action="modifyBrewery.do" modelAttribute="Brewery">
 	<form:input type="hidden" path="id" />

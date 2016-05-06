@@ -8,8 +8,7 @@
 		<div class="header-content">
 			<div class="header-content-inner">
 
-				<div class="col-xs-1 col-md-5"></div>
-				<div class="col-xs-11 col-md-5">
+				<div class="col-xs-offset-1 col-md-offset-5 col-xs-11 col-md-5">
 					<form:form action="findUsers.do" modelAttribute="User">
 						<table>
 							<tr>
@@ -38,11 +37,6 @@
 
 					</form:form>
 
-					<form action="menu.do" name="menuChoice">
-						<button class="btn btn-warning" type="submit" name="menuChoice"
-							value="addUser">New User</button>
-					</form>
-
 
 
 
@@ -53,6 +47,13 @@
 
 
 				</div>
+<div class="col-xs-offset-2 col-md-offset-6 col-xs-1 col-md-1">
+					<form action="menu.do" name="menuChoice">
+						<button class="btn btn-warning" type="submit" name="menuChoice"
+							value="addUser">New User</button>
+					</form>
+					
+					</div>
 			</div>
 		</div>
 	</header>

@@ -6,8 +6,7 @@
 		<div class="header-content-inner">
 	<div class="container">
 		<div class="row-centered">
-			<div class="col-xs-1 col-md-3"> </div>
-			<div class="col-xs-11 col-md-2">
+			<div class="col-xs-offset-1 col-md-offset-3 col-xs-11 col-md-2">
 			<form:form action="addBrewery.do" modelAttribute="Brewery">
 
 				<form:input type="hidden" path="id" />

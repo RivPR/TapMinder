@@ -5,12 +5,22 @@
 
 <c:if test="${empty(breweryList)}">
 
-			
+
 	<header>
 		<div class="header-content">
 			<div class="header-content-inner">
 
-
+				<c:if test="${ empty(searchSetting) && (breweryList.size() < 1 || empty(breweryList))}">
+					<div
+						class="col-xs-offset-2 col-md-offset-4 col-md-4 col-xs-10 center-text">
+						<br> <br> <br> <br> <br>Your search
+						returned no results.
+						<form action="menu.do">
+							<button class="btn btn-link return-link" name="menuChoice"
+								value="findBeers">Return to search.</button>
+						</form>
+					</div>
+				</c:if>
 				<c:if test="${searchSetting == ''}">
 					<span class="search-title">Find a Brewery:</span>
 					<form name="searchBy" action="searchBreweriesPage.do" method="GET">
@@ -22,10 +32,8 @@
 							<!-- <option value="state">state</option> -->
 							<option value="zip">Zip</option>
 							<option value="neighborhood">Neighborhood</option>
-						</select>
-<br>
-						<button class="btn btn-warning" type="submit">GO
-							SEARCH</button>
+						</select> <br>
+						<button class="btn btn-warning" type="submit">GO SEARCH</button>
 
 					</form>
 				</c:if>
@@ -41,12 +49,11 @@
 							<form:errors path="name" />
 						</c:when>
 						<c:when test="${searchSetting == 'street' }">
-				Street Address <form:input type="text"
-								path="streetAddress" />
+				Street Address <form:input type="text" path="streetAddress" />
 							<form:errors path="streetAddress" />
 						</c:when>
 						<c:when test="${searchSetting == 'city' }">
-				City<form:input  type="text" path="city" />
+				City<form:input type="text" path="city" />
 							<form:errors path="city" />
 						</c:when>
 
@@ -71,8 +78,8 @@
 
 					</c:choose>
 					<c:if test="${!empty(searchSetting)}">
-<button class="btn btn-warning" type="submit">search</button>
-</c:if>
+						<button class="btn btn-warning" type="submit">search</button>
+					</c:if>
 					<c:if test="${!empty(errorMessage)}">
 		${errorMessage}
 		</c:if>
@@ -88,37 +95,33 @@
 	<c:if test="${!empty(breweryList)}">
 		<h2>BREWERIES</h2>
 		<c:forEach var="b" items="${breweryList}">
-		<div class="col-xs-12 col-md-4 brewery">
-			Name: ${b.name} <br>
-			Address: ${b.streetAddress} <br>
-			${b.city} <br>
-			${b.state} <br>
-			${b.zip} <br>
-			${b.neighborhood.name}" <br>
+			<div class="col-xs-12 col-md-4 brewery">
+				Name: ${b.name} <br> Address: ${b.streetAddress} <br>
+				${b.city} <br> ${b.state} <br> ${b.zip} <br>
+				${b.neighborhood.name}" <br>
 
-			<c:if test="${ currentUser.usertype.accessLevel > 0}">
+				<c:if test="${ currentUser.usertype.accessLevel > 0}">
 
-				<form action="addBeerPage.do">
-					<input type="hidden" name="breweryId" value="${b.id}" />
-					<button class="btn btn-add" type="submit">Add
-						Beer to this brewery</button>
-				</form>
-			</c:if>
+					<form action="addBeerPage.do">
+						<input type="hidden" name="breweryId" value="${b.id}" />
+						<button class="btn btn-add" type="submit">Add Beer to
+							this brewery</button>
+					</form>
+				</c:if>
 
-			<c:if test="${ currentUser.usertype.accessLevel > 1}">
+				<c:if test="${ currentUser.usertype.accessLevel > 1}">
 
-				<form action="modifyBreweryPage.do">
-					<input type="hidden" name="breweryId" value="${b.id}" />
-					<button class="btn btn-warning" type="submit">Modify</button>
-				</form>
-				<form action="deleteBrewery.do">
-					<input type="hidden" name="breweryId" value="${b.id}" />
-					<button class="btn btn-warning"  type="submit">Delete</button>
-				</form>
-			</c:if>
-			<br>
-			<br>
-</div>
+					<form action="modifyBreweryPage.do">
+						<input type="hidden" name="breweryId" value="${b.id}" />
+						<button class="btn btn-warning" type="submit">Modify</button>
+					</form>
+					<form action="deleteBrewery.do">
+						<input type="hidden" name="breweryId" value="${b.id}" />
+						<button class="btn btn-warning" type="submit">Delete</button>
+					</form>
+				</c:if>
+				<br> <br>
+			</div>
 		</c:forEach>
 	</c:if>
 </div>

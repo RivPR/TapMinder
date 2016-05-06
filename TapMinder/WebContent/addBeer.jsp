@@ -4,8 +4,7 @@
 <header>
 	<div class="header-content">
 		<div class="header-content-inner">
-	<div class="col-xs-1 col-md-4"> </div>
-	<div class="col-xs-11 col-md-6">
+	<div class="col-xs-offset-1 col-md-offset-4 col-xs-11 col-md-6">
 	<form:form action="addBeer.do" modelAttribute="Beer">
 	
 		<input type="hidden" name="breweryId" value="${Brewery.id}" />

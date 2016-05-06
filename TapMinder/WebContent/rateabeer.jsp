@@ -2,8 +2,7 @@
 
 <div class="container individual-rating">
 
-<div class="col-xs-0 col-md-2"></div>
-<div class="col-xs-12 col-md-8">
+<div class="col-md-offset-2 col-xs-12 col-md-8">
 <h1>Rate this Beer</h1>
 <h3>Your fellow TapMinders value your opinion</h3>
 

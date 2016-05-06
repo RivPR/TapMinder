@@ -4,7 +4,7 @@ body{
 
 
 .fixed-bottom-footer{
-	height:6%;
+	height:10%;
 	width:100%;
 	text-align:center;
 	background-color:rgb(50,50,50);
@@ -229,4 +229,10 @@ body{
 
 .stretch-img{
 	width:100%;
+}
+
+.return-link{
+	text-decoration:none;
+	color:#c11e00;
+	text-shadow: 1px 1px 5px black;
 }

@@ -3,6 +3,20 @@
 		
 
 		<div class="container beer-list">
+			<c:if test="${beerList.size() < 1 || empty(beerList)}">
+		<div
+			class="col-xs-offset-2 col-md-offset-4 col-md-4 col-xs-10 center-text">
+			<br>
+			<br>
+			<br>
+			<br>
+			<br>Your search returned no results.
+			<form action="menu.do">
+				<button class="btn btn-link return-link" name="menuChoice"
+					value="findBeers">Return to search.</button>
+			</form>
+		</div>
+	</c:if>
 			<c:forEach var="beer" items="${beerList}">
 			
 				<div class="col-xs-12, col-md-4">

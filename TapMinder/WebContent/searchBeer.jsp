@@ -12,10 +12,9 @@
 
 <c:if test="${searchSetting == ''}">
 <div class="row">
-<div class="col-xs-0 col-md-3"> </div>
-<div class="col-xs-12 col-md-3">
+<div class="col-md-offset-3 col-xs-12 col-md-4">
 	<form name="searchBy" action="findBeersPage.do" method="GET">
-<span class="search-title">Find Beer:</span>
+<span class="search-title">Find Beer:</span><br/>
 		<select name="findBy">
 			<option value="">SELECT ONE</option>
 			<option value="name">Name</option>

@@ -8,11 +8,34 @@
 
 	<form:form action="modifyUser.do" modelAttribute="User">
 		<form:input type="hidden" path="id" />
-	First <form:input type="text" path="firstname" /><form:errors path="firstname" />
-	Last <form:input type="text" path="lastname" /><form:errors path="lastname" />
-	Email <form:input type="text" path="email" /><form:errors path="email" />
-	Password <form:input type="text" path="password" /><form:errors path="password" />
-		<select name="userTypeId">
+		<table>
+			<tr>
+				<td>First</td>
+				<td><form:input type="text" path="firstname" /></td>
+				<td><form:errors path="firstname" /></td>
+				
+			</tr>
+			<tr>
+				<td>Last</td>
+				<td><form:input type="text" path="lastname" /></td>
+				<td><form:errors path="lastname" /></td>
+				
+			</tr>
+			<tr>
+				<td>Email</td>
+				<td><form:input type="text" path="email" /></td>
+				<td><form:errors path="email" /></td>
+				
+			</tr>
+			<tr>
+				<td>Password</td>
+				<td><form:input type="text" path="password" /></td>
+				<td><form:errors path="password" /></td>
+				
+			</tr>
+			<tr>
+				<td>User Type</td>
+				<td colspan="2"><select name="userTypeId">
 
 			<option value="">pick one</option>
 			<option value="1"
@@ -35,9 +58,21 @@
 			
 			>Admin</option>
 
-		</select>
+		</select></td>
+				
+			</tr>
+			<tr>
+				<td colspan="2"><button class="btn btn-warning" type=submit>Submit Changes</button></td>
+				<td></td>
+				<td></td>
+				
+			</tr>
+		
+		</table>
+		
 
-		<button class="btn btn-warning" type=submit>Submit Changes</button>
+
+		
 	</form:form>
 	
 	<c:if test="${!empty(errorMessage) }">
