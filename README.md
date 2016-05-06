@@ -1,9 +1,9 @@
 # TapMinder
  * Group- WebApp using Java, SpringMVC, MySQL, HTML/CSS
 
-##What is it/ Backstory
+##What is it/ Back story
 
-With the dozens(over 60!) of Microbreweries in the Denver area alone, many of those Microbreweries have a rotating selection of beers, with many of them seasonal beers that are only available for a limited time. There are many Apps that track beers and your ratings, but many of them rely on the barcode(or UPC) of the beer, but in the Microbrewery game most beers are never available in other form other than from the tap. Thanks to TapMinder you can have a reminder(Get it?) of that amazing beer you had that fuzzy night with that cute individual you can hardly remember as well. Who knows? Maybe you will see them at that same bar again! 
+With the dozens(over 60!) of Microbreweries in the Denver area alone, many of those Microbreweries have a rotating selection of beers, with many of them seasonal beers that are only available for a limited time. There are many Apps that track beers and your ratings, but many of them rely on the barcode (or UPC) of the beer, but in the Microbrewery game most beers are never available in other form other than from the tap. Thanks to TapMinder you can have a reminder (Get it?) of that amazing beer you had that fuzzy night with that cute individual you can hardly remember as well. Who knows? Maybe you will see them at that same bar again! 
 
 ###Purpose
 
@@ -17,12 +17,16 @@ The purpose of TapMinder2 is to allow users to remember which beers they liked, 
 
 
 ##Application 
-  Easily and intuitive keep track of the beers you enjoyed(or hated!) so you can look forward to the next time you can drink that brew(or never again)!
+  Easily and intuitive keep track of the beers you enjoyed(or hated!) so you can look forward to the next time you can drink that brew (or never again)!
   
 
 ##Technologies used
   * Java
   * Spring MVC
-  * MySQL
+  * MySQL (port 3306)
   * HTML/CSS
-  * Running on TomCat8 port 8080*
+  * Running on Tomcat8 (port 8080)
+
+## Final Presentation
+  * [Link to presentation] (https://github.com/RivPR/TapMinder/blob/master/TapMinder2.pptx)
+  
