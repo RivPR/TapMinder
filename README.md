@@ -25,4 +25,4 @@ The purpose of TapMinder2 is to allow users to remember which beers they liked, 
   * Spring MVC
   * MySQL
   * HTML/CSS
-  ** Running on TomCat8 port 8080**
+  * Running on TomCat8 port 8080*
