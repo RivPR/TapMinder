@@ -3,7 +3,7 @@
 
 ##What is it/ Back story
 
-With the dozens(over 60!) of Microbreweries in the Denver area alone, many of those Microbreweries have a rotating selection of beers, with many of them seasonal beers that are only available for a limited time. There are many Apps that track beers and your ratings, but many of them rely on the barcode (or UPC) of the beer, but in the Microbrewery game most beers are never available in other form other than from the tap. Thanks to TapMinder you can have a reminder (Get it?) of that amazing beer you had that fuzzy night with that cute individual you can hardly remember as well. Who knows? Maybe you will see them at that same bar again! 
+With the dozens(over 60!) of Microbreweries in the Denver area alone, many of those Microbreweries have a rotating selection of beers, with a lot of them seasonal beers that are only available for a limited time. There are some Apps that track beers and your ratings, but most of them rely on the barcode (or UPC) of the beer, but in the Microbrewery game beers are almost never available in other forms other than from the tap. Thanks to TapMinder you can have a reminder (Get it?) of that amazing beer you had that fuzzy night with that cute individual you can hardly remember as well. Who knows? Maybe you will see them at that same bar again! 
 
 ###Purpose
 
