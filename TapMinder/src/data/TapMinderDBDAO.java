@@ -1,9 +1,7 @@
 package data;
 
 import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 
 import javax.persistence.EntityManager;
 import javax.persistence.NoResultException;
@@ -25,64 +23,90 @@ public class TapMinderDBDAO implements TapMinderDAO {
 	@PersistenceContext
 	private EntityManager em;
 
-	public Beer getBeer(int beerId){
+	// get beer by id
+	public Beer getBeer(int beerId) {
 		Beer b = em.find(Beer.class, beerId);
 		return b;
 	}
-	
+
+	// get beer by beerParameters
 	public List<Beer> getBeers(BeerParameters beerParameters) {
 
 		List<Beer> beerList = null;
-
+		// get by name
 		if (beerParameters.getName() != null) {
 			beerList = getBeerListByName(beerParameters);
-		} else if (beerParameters.getAbvHigh() != null && beerParameters.getAbvLow() != null) {
+		}
+		// get by abv range
+		else if (beerParameters.getAbvHigh() != null && beerParameters.getAbvLow() != null) {
 			beerList = getBeerListByABVRange(beerParameters);
-		} else if (beerParameters.getAbvLow() != null && beerParameters.getAbvHigh() == null) {
+		}
+		// get by abv above
+		else if (beerParameters.getAbvLow() != null && beerParameters.getAbvHigh() == null) {
 			// search for higher abv than ^
 			beerList = getBeerListByABVAbove(beerParameters);
-		} else if (beerParameters.getAbvHigh() != null && beerParameters.getAbvLow() == null) {
+		}
+		// get by abv below
+		else if (beerParameters.getAbvHigh() != null && beerParameters.getAbvLow() == null) {
 			// search for lower abv than ^
 			beerList = getBeerListByABVBelow(beerParameters);
-		} else if (beerParameters.getStyle() != null) {
+		}
+		// get by style
+		else if (beerParameters.getStyle() != null) {
 			beerList = getBeerListByStyle(beerParameters);
-		} else if (beerParameters.getRatingLow() != null && beerParameters.getRatingHigh() != null) {
+		}
+		// get by rating range
+		else if (beerParameters.getRatingLow() != null && beerParameters.getRatingHigh() != null) {
 			beerList = getBeerListByRatingRange(beerParameters);
 
-		} else if (beerParameters.getRatingLow() != null && beerParameters.getRatingHigh() == null) {
+		}
+		// get by ratings above..
+		else if (beerParameters.getRatingLow() != null && beerParameters.getRatingHigh() == null) {
 			beerList = getBeerListByRatingAbove(beerParameters);
 
-		} else if (beerParameters.getRatingLow() == null && beerParameters.getRatingHigh() != null) {
+		}
+		// get by ratings below
+		else if (beerParameters.getRatingLow() == null && beerParameters.getRatingHigh() != null) {
 			beerList = getBeerListByRatingBelow(beerParameters);
 
-		} else if (beerParameters.getHopCountLow() != null && beerParameters.getHopCountHigh() != null) {
-			// range
-			beerList = getBeerListByHopCountRange(beerParameters);
-		} else if (beerParameters.getHopCountLow() == null && beerParameters.getHopCountHigh() != null) {
-			// above ^
-			beerList = getBeerlistByHopCountLow(beerParameters);
-		} else if (beerParameters.getHopCountLow() != null && beerParameters.getHopCountHigh() == null) {
-			// below ^
-			beerList = getBeerlistByHopCountHigh(beerParameters);
 		}
-
-		if (beerList != null && beerList.size() > 0) {
-//			for (Beer beer : beerList) {
-//				em.detach(beer);
-//			}
-
+		// get by hopcount range
+		else if (beerParameters.getHopCountLow() != null && beerParameters.getHopCountHigh() != null) {
+			beerList = getBeerListByHopCountRange(beerParameters);
+		}
+		// get by hopcount above
+		else if (beerParameters.getHopCountLow() == null && beerParameters.getHopCountHigh() != null) {
+			beerList = getBeerlistByHopCountLow(beerParameters);
+		}
+		// get by hopcount below
+		else if (beerParameters.getHopCountLow() != null && beerParameters.getHopCountHigh() == null) {
+			beerList = getBeerlistByHopCountHigh(beerParameters);
 		}
 
 		return beerList;
 
 	}
+	/*
+	 * ******************************************************** The following
+	 * methods get a list of beers in a similary way.
+	 * 
+	 * The methods with strings append % to both sides of the string and perform
+	 * a query with "LIKE" and LOWER on a search parameter string changed to
+	 * lowercase. This allows queries on partial strings and mixed cases.
+	 * 
+	 * The numeric queries use boolean (greater than, less than, equal to)
+	 * operators *******************************************************
+	 */
+
+	/*
+	 * START GET BEER METHODS
+	 */
 
 	private List<Beer> getBeerListByName(BeerParameters beerParameters) {
 
 		String name = beerParameters.getName().trim();
 
 		name = "%" + name + "%";
-
 		List<Beer> beerList = em.createQuery("SELECT b FROM Beer b WHERE b.name LIKE LOWER(:name) ", Beer.class)
 				.setParameter("name", name.toLowerCase()).getResultList();
 
@@ -191,63 +215,68 @@ public class TapMinderDBDAO implements TapMinderDAO {
 		return beerList;
 	}
 
+	/*
+	 * END GET BEER METHODS
+	 */
+
+	// add beer
 	@Override
-	public void addBeer(Beer beer){
-		
-		
+	public void addBeer(Beer beer) {
+
 		em.persist(beer);
 	}
-	
+
+	// modify beer
 	@Override
 	public void modifyBeer(Beer beer) {
+		// get a beer entity and call setters on it to modify its values
 		Beer beerToModify = em.find(Beer.class, beer.getId());
+
 		beerToModify.setName(beer.getName());
 		beerToModify.setAbv(beer.getAbv());
 		beerToModify.setHopCount(beer.getHopCount());
 		beerToModify.setBeerStyle(beer.getBeerStyle());
 		beerToModify.setDescription(beer.getDescription());
 		beerToModify.setImageLink(beer.getImageLink());
-		
+
 	}
 
+	// remove beer by ojbect
 	@Override
 	public void deleteBeer(Beer beer) {
 		em.remove(beer);
 	}
-	
-	
+
+	// remove beer by id
 	@Override
 	public void deleteBeer(Integer id) {
 		Beer beerToDelete = em.find(Beer.class, id);
-		//TODO i think it doesn't work with blank breweries
+		// TODO i think it doesn't work with blank breweries
 		List<BeerRating> ratings = beerToDelete.getRatings();
-		
+		// remove ratings associated with beer
 		for (BeerRating beerRating : ratings) {
-			System.out.println(em.contains(beerRating));
-			em.remove(beerRating);	
+			em.remove(beerRating);
 		}
-		
-		
+		// remove from database
 		em.remove(beerToDelete);
-		System.out.println("DELETED");
-	
-		
-	}
-	
-	
 
+	}
+
+	// get brewery by id
 	@Override
-	public Brewery getBrewery(int breweryId){
+	public Brewery getBrewery(int breweryId) {
 		Brewery b = em.find(Brewery.class, breweryId);
-		
+
 		return b;
 	}
-	
+
+	// get a list of all breweries
 	@Override
-	public List<Brewery> getAllBreweries(){
-		return em.createQuery("SELECT b FROM Brewery b",Brewery.class).getResultList();
+	public List<Brewery> getAllBreweries() {
+		return em.createQuery("SELECT b FROM Brewery b", Brewery.class).getResultList();
 	}
-	
+
+	// get a list of brewery by parameters
 	@Override
 	public List<Brewery> getBreweries(BreweryParameters breweryParameters) {
 		List<Brewery> breweryList = null;
@@ -264,12 +293,17 @@ public class TapMinderDBDAO implements TapMinderDAO {
 		} else if (breweryParameters.getNeighborhood() != null) {
 			breweryList = getBreweryListByNeighborhood(breweryParameters);
 		}
-		// TODO: put this in the other things jk maybe useless
-//		for (Brewery brewery : breweryList) {
-//			em.detach(brewery);
-//		}
+
 		return breweryList;
 	}
+
+	/*
+	 * THESE METHODS ARE SIMILAR TO TEH GET BEER METHODS EARLIER IN THIS DAO
+	 * FILE
+	 * 
+	 * 
+	 * START GET BREWERY
+	 */
 
 	private List<Brewery> getBreweryListByName(BreweryParameters breweryParameters) {
 		String name = "%" + breweryParameters.getName() + "%";
@@ -326,14 +360,22 @@ public class TapMinderDBDAO implements TapMinderDAO {
 		return breweryList;
 	}
 
+	/*
+	 * END GET BREWWERY
+	 */
+
+	// add a brewery
 	@Override
-	public void addBrewery(Brewery brewery, Integer neighborHoodId){
+	public void addBrewery(Brewery brewery, Integer neighborHoodId) {
+		// set neighborhood and add
 		brewery.setNeighborhood(em.find(Neighborhood.class, neighborHoodId));
 		em.persist(brewery);
 	}
-	
+
+	// modify brewery
 	@Override
 	public void modifyBrewery(Brewery brewery, Integer neighborHoodId) {
+		// get a brewery object, and use setters to update
 		int breweryId = brewery.getId();
 		Brewery breweryToChange = em.find(Brewery.class, breweryId);
 		System.out.println("modding brwery: " + breweryToChange);
@@ -344,63 +386,69 @@ public class TapMinderDBDAO implements TapMinderDAO {
 		breweryToChange.setZip(brewery.getZip());
 		breweryToChange.setImageLink(brewery.getImageLink());
 		breweryToChange.setBreweryLink(brewery.getBreweryLink());
+		// find neighborhood based on id and set new neighborhood
 		breweryToChange.setNeighborhood(em.find(Neighborhood.class, neighborHoodId));
 		System.out.println("modded brw: " + breweryToChange);
 	}
 
+	// remove brewery
 	@Override
 	public void deleteBrewery(Brewery brewery) {
+		// get a brewery entity
 		Brewery breweryToDelete = em.find(Brewery.class, brewery.getId());
-		
+
 		List<Beer> ratings = breweryToDelete.getBeerList();
-		
+		//remove all beers associated with the brewery
 		for (Beer beer : ratings) {
 			System.out.println(em.contains(beer));
-			deleteBeer(beer.getId());	
+			deleteBeer(beer.getId());
 		}
-		
-		
+		//delete brewery
 		em.remove(breweryToDelete);
 		System.out.println("DELETED");
 
 	}
-	
+
+	//get a list of states by iterating over the enum values
 	@Override
-	public List<String> getStates(){
+	public List<String> getStates() {
 		List<String> stateList = new ArrayList<>();
-		
+
 		for (State s : State.values()) {
 			stateList.add(s.toString());
 		}
-		
-		
+
 		return stateList;
-		
-	}
-	
-	@Override
-	public void deleteBrewery(Integer breweryId) {
-		Brewery breweryToDelete = em.find(Brewery.class, breweryId);
-		
-		List<Beer> ratings = breweryToDelete.getBeerList();
-		
-		for (Beer beer : ratings) {
-			System.out.println(em.contains(beer));
-			deleteBeer(beer.getId());	
-		}
-		
-		
-		em.remove(breweryToDelete);
-		System.out.println("DELETED");
-		
+
 	}
 
+	@Override
+	//delete a brewery by id
+	public void deleteBrewery(Integer breweryId) {
+		//get a brewery
+		Brewery breweryToDelete = em.find(Brewery.class, breweryId);
+		//get a list of beers from teh brewery
+		List<Beer> beers = breweryToDelete.getBeerList();
+		//delete each beer for the brewery to avoid
+		//foreign key errors
+		for (Beer beer : beers) {
+			System.out.println(em.contains(beer));
+			deleteBeer(beer.getId());
+		}
+		//remove the brewery
+		em.remove(breweryToDelete);
+		System.out.println("DELETED");
+
+	}
+
+	//get a list of users
 	@Override
 	public List<User> getUserList() {
 		List<User> userList = em.createQuery("SELECT u FROM User u", User.class).getResultList();
 		return userList;
 	}
 
+	//get a single user by id
 	@Override
 	public User getUser(int userId) {
 
@@ -409,44 +457,44 @@ public class TapMinderDBDAO implements TapMinderDAO {
 		return userList;
 	}
 
+	//get users by parameters
 	@Override
-	public List<User> getUsers(User user){
-		//search by first, last, email
-		if(user.getFirstname() == null || user.getFirstname().length() < 1){
+	public List<User> getUsers(User user) {
+		// search by first, last, email, if not set, set to blank, or "")
+		if (user.getFirstname() == null || user.getFirstname().length() < 1) {
 			user.setFirstname("");
 		}
-		
-		if(user.getLastname() == null || user.getLastname().length() < 1){
+
+		if (user.getLastname() == null || user.getLastname().length() < 1) {
 			user.setLastname("");
 		}
-		
-		if(user.getEmail() == null || user.getEmail().length() < 1){
+
+		if (user.getEmail() == null || user.getEmail().length() < 1) {
 			user.setEmail("");
 		}
-		String fname = "%" +  user.getFirstname() + "%";
-		String lname = "%" +  user.getLastname() + "%";
-		String email = "%" +  user.getEmail() + "%";
 		
-		String query = "SELECT u FROM User u WHERE"
-				+ " u.firstname LIKE LOWER(:fname)"
-				+ " AND u.lastname LIKE LOWER(:lname)"
-				+ " AND u.email LIKE LOWER(:email)";
-		List<User> users = em.createQuery(query,User.class)
-				.setParameter("fname", fname.toLowerCase().trim())
-				.setParameter("lname", lname.toLowerCase().trim())
-				.setParameter("email", email.toLowerCase().trim())
+//		create a query
+		String fname = "%" + user.getFirstname() + "%";
+		String lname = "%" + user.getLastname() + "%";
+		String email = "%" + user.getEmail() + "%";
+
+		String query = "SELECT u FROM User u WHERE" + " u.firstname LIKE LOWER(:fname)"
+				+ " AND u.lastname LIKE LOWER(:lname)" + " AND u.email LIKE LOWER(:email)";
+		List<User> users = em.createQuery(query, User.class).setParameter("fname", fname.toLowerCase().trim())
+				.setParameter("lname", lname.toLowerCase().trim()).setParameter("email", email.toLowerCase().trim())
 				.getResultList();
-//		
-//		List<User> users = em.createQuery("SELECT u FROM User u",User.class).getResultList();
+		//
+		// List<User> users = em.createQuery("SELECT u FROM User
+		// u",User.class).getResultList();
 		System.out.println("IN GET USERS DAO METHOD");
 		for (User user2 : users) {
 			System.out.println(user2.getFirstname());
 		}
-		
+
 		return users;
-		
+
 	}
-	
+
 	@Override
 	public List<User> getUserByFirstName(String nameInput) {
 		String name = nameInput.toLowerCase().trim();
@@ -456,25 +504,31 @@ public class TapMinderDBDAO implements TapMinderDAO {
 		return userList;
 	}
 
+	
+	//get a login result (user / error message)
 	@Override
 	public LoginResult getUserByLoginCredentials(User userToLogin) {
 		LoginResult lr = null;
 		try {
-			String query = "SELECT u FROM User u WHERE u.email = :email AND u.password = :password";
-			User user = em.createQuery(query, User.class).setParameter("email", userToLogin.getEmail())
+			//select the email and password form the user passed in, and query users that match
+			//password is case sensitive
+			String query = "SELECT u FROM User u WHERE LOWER(u.email) = :email AND u.password = :password";
+			User user = em.createQuery(query, User.class).setParameter("email", userToLogin.getEmail().toLowerCase().trim())
 					.setParameter("password", userToLogin.getPassword()).getSingleResult();
-			// TODO
-			System.out.println("LOGGED IN USER " + user);
+			// TODO changed lower thing
+			//if there is a result, add user and blank error message
 			lr = new LoginResult(user, "");
 		} catch (NoResultException e) {
+			//if there is no result, add an error message
 			lr = new LoginResult(null, "Incorrect Username Or Password");
 		}
 
 		return lr;
 	}
 
+//	check if email exists in database
 	@Override
-	public boolean emailExists(String email){
+	public boolean emailExists(String email) {
 		try {
 			String query = "SELECT u FROM User u WHERE u.email = :email";
 			em.createQuery(query, User.class).setParameter("email", email).getSingleResult();
@@ -482,18 +536,23 @@ public class TapMinderDBDAO implements TapMinderDAO {
 		} catch (NoResultException e) {
 			return false;
 		}
-		
-		
+
 	}
+
 	
+	//add a user by user object
 	@Override
-	public void addUser(User user){
+	public void addUser(User user) {
 		em.persist(user);
 	}
+
 	
+	//modify user
 	@Override
 	public void modifyUser(User user) {
-		User userToMod = em.find(User.class,user.getId());
+		//get user to modify
+		User userToMod = em.find(User.class, user.getId());
+		//call setters to update user in database (auto commits)
 		userToMod.setFirstname(user.getFirstname());
 		userToMod.setLastname(user.getLastname());
 		userToMod.setEmail(user.getEmail());
@@ -501,34 +560,37 @@ public class TapMinderDBDAO implements TapMinderDAO {
 		userToMod.setUsertype(user.getUsertype());
 	}
 
+	
+	//delete user
 	@Override
-	public void deleteUser(int userId){
+	public void deleteUser(int userId) {
 		User userToDelete = em.find(User.class, userId);
-		
+
+		//get all beer ratings associated with the user
 		List<BeerRating> ratings = userToDelete.getRatings();
-		
+		//delete the beer ratings (avoids foreign key errors)
 		for (BeerRating beerRating : ratings) {
 			System.out.println(em.contains(beerRating));
-			em.remove(beerRating);	
+			em.remove(beerRating);
 		}
-		
-		
-		
+		//remove user
 		em.remove(userToDelete);
 		System.out.println("DELETED");
-	
-		
+
 	}
-	
+
+	//delete user by user object (delete by userId method works better)
 	@Override
 	public void deleteUser(User user) {
 		int userID = user.getId();
-		
+
 		User userToDelete = em.find(User.class, userID);
-		
+
 		em.remove(userToDelete);
 	}
 
+//	get beer ratings by user
+	
 	@Override
 	public List<BeerRating> getRatingsByUser(User user) {
 
@@ -537,6 +599,8 @@ public class TapMinderDBDAO implements TapMinderDAO {
 		return ratingList;
 	}
 
+	//get beer ratings by beer
+	
 	@Override
 	public List<BeerRating> getRatingsByBeer(Beer beer) {
 		// TODO untested
@@ -546,6 +610,8 @@ public class TapMinderDBDAO implements TapMinderDAO {
 		return ratingList;
 	}
 
+	//get beer ratings by brewery
+	
 	@Override
 	public List<BeerRating> getRatingsByBrewery(Brewery brewery) {
 		List<Beer> beerList = brewery.getBeerList();
@@ -559,73 +625,82 @@ public class TapMinderDBDAO implements TapMinderDAO {
 		return ratingList;
 	}
 
+	//add a beer rating
+	
 	@Override
 	public void addRating(BeerRating beerRating) {
 		List<BeerRating> BeerRating = em.createQuery("Select br from BeerRating br", BeerRating.class).getResultList();
 		int counter = 0;
 		for (BeerRating br : BeerRating) {
-			if(br.getUser().getId()==beerRating.getUser().getId() && br.getBeer().getId()==beerRating.getBeer().getId()){
+			if (br.getUser().getId() == beerRating.getUser().getId()
+					&& br.getBeer().getId() == beerRating.getBeer().getId()) {
 				counter++;
-			}
-			else{
+			} else {
 				continue;
 			}
 		}
-		System.out.println(counter);
-		if(counter==0){
-		em.persist(beerRating);
+		if (counter == 0) {
+			em.persist(beerRating);
 		}
 	}
+
 	
+	//modify a beer rating
 	@Override
-	public void modifyRating(BeerRating br){
-		BeerRating beerR =  em.find(BeerRating.class, br.getId());
+	public void modifyRating(BeerRating br) {
+		//select rating by id
+		BeerRating beerR = em.find(BeerRating.class, br.getId());
+		//update rating and comments for beer ratings
 		beerR.setRating(br.getRating());
 		beerR.setComments(br.getComments());
-		
+
 	}
 
+	//delete rating by object (by ids works better)
 	@Override
 	public void deleteRating(BeerRating beerRating) {
 		em.remove(beerRating);
 	}
 
 	
+	//delete ratings
 	@Override
 	public void deleteRating(Integer userId, Integer ratingId) {
-		
+		//get user that is deleting ratings
 		User user = em.find(User.class, userId);
-		
+		//get ratings for user
 		List<BeerRating> ratings = user.getRatings();
-	
-		
-		//would not delete//TODO
+
+		// get the rating to delete
 		BeerRating br = em.find(BeerRating.class, ratingId);
-		System.out.println("POOPS:" + em.contains(br));
 		em.merge(br);
 		em.remove(br);
-		//For some reason, the user rating list still had the rating in it after deletion, and it would throw an error when i went to the mybeers page
-		//remove from rating list
+		
+		// remove from rating user list
 		ratings.remove(em.find(BeerRating.class, ratingId));
+		//reset user rating list
 		user.setRatings(ratings);
-//		user = refreshUser(user);
-		//do also for beer
-		
-		
+		/*
+		 * SOME OF THIS MAY SEEM UNECESSARY, BUT THE USER'S RATING LIST
+		 * WOULD NOT UPDATE UNTIL LOGGED OUT SO I HAD TO TAKE
+		 * EXTRA MEASURES TO ENSURE THAT THE USER'S RATINGS WERE
+		 * UPDATED
+		 */
 	}
+
 	
-	
+	//get neighborhood by id
 	@Override
-	public Neighborhood getNeighborhood(int id){
+	public Neighborhood getNeighborhood(int id) {
 		return em.find(Neighborhood.class, id);
 	}
-	
+
+	//get all neighborhoods in a list
 	@Override
 	public List<Neighborhood> getNeighborhoods() {
 
 		List<Neighborhood> neighborhoods = em.createQuery("Select n from Neighborhood n", Neighborhood.class)
 				.getResultList();
-		System.out.println("THE STUPID NEIGHBORHOOD LIST IS " + neighborhoods.size() +" THINGIES LONG");
 		for (Neighborhood neighborhood : neighborhoods) {
 			em.detach(neighborhood);
 		}
@@ -633,46 +708,48 @@ public class TapMinderDBDAO implements TapMinderDAO {
 		return neighborhoods;
 
 	}
-	
 
 	@Override
-	public User refreshUser(User u){
-		u =  em.merge(u);
+	public User refreshUser(User u) {
+		u = em.merge(u);
 		em.refresh(u);
 		return u;
 	}
 
-	 @Override
-	 public void refreshRatingList(Integer id){
-			User u =  em.merge(em.find(User.class, id));
-			em.refresh(u);
-			
-	 }
 	@Override
-	public UserType getUserType(int id){
-		return em.find(UserType.class, id);
-		
+	public void refreshRatingList(Integer id) {
+		User u = em.merge(em.find(User.class, id));
+		em.refresh(u);
+
 	}
-	
-	@Override 
-	public List<UserType> getUserTypes(){
-		
+
+	//get user type (admin, moderator, or standard)
+	@Override
+	public UserType getUserType(int id) {
+		return em.find(UserType.class, id);
+
+	}
+
+	//get all possible user types
+	@Override
+	public List<UserType> getUserTypes() {
+
 		List<UserType> userTypeList = new ArrayList<>();
-		
+
 		userTypeList.add(em.find(UserType.class, 1));
 		userTypeList.add(em.find(UserType.class, 2));
 		userTypeList.add(em.find(UserType.class, 3));
 
-		
 		return userTypeList;
 	}
+
+	//get a beer rating by its id
 	
 	@Override
-	public BeerRating getRatingByID(int id){
+	public BeerRating getRatingByID(int id) {
 		BeerRating br = new BeerRating();
-		br= em.find(BeerRating.class, id);
+		br = em.find(BeerRating.class, id);
 		return br;
 	}
-
 
 }
