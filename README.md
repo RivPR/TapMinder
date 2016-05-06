@@ -10,10 +10,10 @@ With the dozens(over 60!) of Microbreweries in the Denver area alone, many of th
 The purpose of TapMinder2 is to allow users to remember which beers they liked, and where they had them.  It also enables them to view ratings of various beers, on a scale from 1 to 5.  There is also functionality to search for breweries by different parameters, such as zip code, neighborhood, or city.
 
 ###Team
- * GitHub Repo [a url] (https://github.com/user/repo/blob/branch/other_file.md)
- * Angel Moreira [website](http://www.armoreira.com/) [project](http://www.armoreira.com:8080/TapMinder/) 
- * Chad Arroyo [website] (http://www.chadarroyo.com/) [project](http://www.chadarroyo.com:8080/TapMinder/)
- * Alex Peterson [website] (http://www.alexmpeterson.com/) [project](http://www.alexmpeterson.com:8080/TapMinder/)
+ * GitHub Repo [GitHub link] (https://github.com/user/repo/blob/branch/other_file.md)
+ * Angel Moreira [Personal website](http://www.armoreira.com/) [project link](http://www.armoreira.com:8080/TapMinder/) 
+ * Chad Arroyo [Personal website] (http://www.chadarroyo.com/) [project link](http://www.chadarroyo.com:8080/TapMinder/)
+ * Alex Peterson [Personal website] (http://www.alexmpeterson.com/) [project link](http://www.alexmpeterson.com:8080/TapMinder/)
 
 
 ##Application 
