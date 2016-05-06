@@ -28,7 +28,7 @@
 							<option value="">SELECT ONE</option>
 							<option value="name">Name</option>
 							<option value="street">Street</option>
-							<option value="city">city</option>
+							<option value="city">City</option>
 							<option value="zip">Zip</option>
 							<option value="neighborhood">Neighborhood</option>
 						</select> <br>

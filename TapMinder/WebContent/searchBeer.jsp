@@ -22,7 +22,7 @@
 			<option value="hop">Hop Count</option>
 			<option value="style">Style</option>
 			<option value="rating">Rating</option>
-			<option value="brewery">brewery</option>
+			<option value="brewery">Brewery</option>
 		</select>
 	<br>
 		<button class="btn btn-warning" type="submit">Search</button>
