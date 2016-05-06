@@ -20,24 +20,24 @@
 					<br>
 					<br>
 					<button class="btn btn-warning" type="submit">Login</button>
-					<div class="facebook-login-button-container"><%@include
-							file="/includes/facebook-login-button-with-script.html"%></div>
 				</form:form>
+				<%-- <div class="facebook-login-button-container">
+					Not yet functional <%@include	file="/includes/facebook-login-button-with-script.html"%></div> --%>
 			</c:if>
 			<c:if test="${currentUser.id > 0 }">
-			<form action="indexAlexTest.jsp">
-				<button class="btn btn-success" type="submit">GO!</button>
-			</form>
+				<form action="indexAlexTest.jsp">
+					<button class="btn btn-success" type="submit">GO!</button>
+				</form>
 				<br>
 				<br>
 			</c:if>
 			<form action="menu.do" method="POST">
 				<br>
 
-			<c:if test="${currentUser.id < 1 }">
-				<button class="btn btn-warning" type="submit" name="menuChoice"
-					value="signUp">sign up</button>
-			</c:if>
+				<c:if test="${currentUser.id < 1 }">
+					<button class="btn btn-success" type="submit" name="menuChoice"
+						value="signUp">sign up</button>
+				</c:if>
 			</form>
 			<c:if test="${!empty(LoginError)}">
 				<span class="alert-text">ERROR: ${LoginError}</span>

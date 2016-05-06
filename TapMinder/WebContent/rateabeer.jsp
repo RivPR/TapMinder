@@ -12,7 +12,6 @@ HopCount: ${beer.hopCount} <br>
 Style: ${beer.beerStyle} <br>
 Brewery: ${beer.brewery.name} <br>
 <img  class="med-beer" src="${beer.imageLink}" /> <br>
-<input type="hidden" name="beerId" value="${beer.id}" />
 
 	<form action="saveRateABeer.do" required>
 		<textarea class="comment-box" name="comments" placeholder="Comments:"></textarea><br/>
@@ -39,6 +38,7 @@ Brewery: ${beer.brewery.name} <br>
 		
 		
 		<input type="hidden" name="beerId" value="${beer.id}"><i></i>
+		<input type="hidden" name="userId" value="${currentUser.id}"><i></i>
 		<!-- <input type="submit" value="Submit"> -->
 		<button class="btn btn-warning" value="Submit" type="submit">Submit</button>
 	</form>

@@ -42,6 +42,7 @@ public class TapMinderController {
 	@Autowired
 	private TapMinderDAO dao;
 
+	//initilizes the page when the user goes to tapminder
 	@RequestMapping(path = "initPage.do", method = RequestMethod.GET)
 	public ModelAndView initializeLogin(@ModelAttribute("currentUser") User currentUser) {
 		ModelAndView mv = new ModelAndView();
@@ -52,18 +53,16 @@ public class TapMinderController {
 		
 	}
 
+	//this runs after login
 	@RequestMapping(path = "initPage.do", method = RequestMethod.POST)
 	public ModelAndView initializeLoginAndIndex(User user, @ModelAttribute("currentUser") User currentUser) {
 		ModelAndView mv = new ModelAndView();
-		System.out.println(user.getEmail());
-		System.out.println(user.getPassword());
+		//Login result returns a user or an error message
 		LoginResult result = dao.getUserByLoginCredentials(user);
 
-		// mv.setViewName("index1.jsp");
+		// if the result returns a user, log them in
 		if (result.getUser() != null) {
-			System.out.println("new current user: " + currentUser);
-			// TODO: better way to set session attributes?
-			mv.addObject("currentUser", result.getUser());
+S			mv.addObject("currentUser", result.getUser());
 			mv.setViewName("indexAlexTest.jsp");
 		} else {
 			mv.addObject("LoginError", result.getMessage());

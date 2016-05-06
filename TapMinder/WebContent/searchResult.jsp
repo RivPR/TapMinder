@@ -33,7 +33,7 @@
 							<br><button class="btn btn-success" type="submit">Rate this beer</button><br><br>
 						</form>
 					</c:if>
-					<img class="med-beer" src="${beer.imageLink}" /> <br>
+					<img class="med-beer beer-result" src="${beer.imageLink}" /> <br>
 
 					<c:if test="${currentUser.usertype.accessLevel > 1}">
 						<form action="modifyBeerPage.do">
