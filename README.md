@@ -12,7 +12,7 @@ TapMinder2 allows it's users to remember which beers they liked, and where they 
  * GitHub Repo [GitHub link] (https://github.com/user/repo/blob/branch/other_file.md)
  * Angel Moreira [Personal website](http://www.armoreira.com/) & [project link](http://www.armoreira.com:8080/TapMinder/) 
  * Chad Arroyo [Personal website] (http://www.chadarroyo.com/) & [project link](http://www.chadarroyo.com:8080/TapMinder/)
- * Alex Peterson [Personal website] (http://www.alexmpeterson.com/) & [project link](http://www.alexmpeterson.com:8080/TapMinder/)
+ * Alex Peterson [Personal website] (http://www.alexmpeterson.com/) & [project link](http://52.38.169.195:8080/TapMinder/)
 
 
 ##Application 
