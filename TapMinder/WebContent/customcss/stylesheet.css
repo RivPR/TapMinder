@@ -17,6 +17,12 @@ body{
 	
 }
 
+@media (max-width: 500px){
+	.fixed-bottom-footer {
+		height: 12%;
+		}
+} 
+
 
 /*alert text*/
 .alert-text{
