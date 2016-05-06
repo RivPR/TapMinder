@@ -1,7 +1,10 @@
+
+/* set default background color */
 body{
 	background-color:rgb(110,110,110);
 }
 
+/* footer fixed to bottom of page */
 
 .fixed-bottom-footer{
 	height:10%;
@@ -14,12 +17,15 @@ body{
 	
 }
 
+
+/*alert text*/
 .alert-text{
 	color:rgb(200,0,0);
 	margin-top:5px;
 	text-shadow:1px 1px 5px black;
 }
 
+/*buttons on footer, and hover*/
 .footer-buttons{
 	background-color:#cc3300;
 	border-color: #cc3300;
@@ -30,6 +36,8 @@ body{
 }
 
 
+
+/*orange buttons used in most pages (bootstrap override) and hover*/
 .btn-warning{
 	background-color:#cc3300;
 	border-color: #cc3300;
@@ -43,6 +51,8 @@ body{
 }
 
 
+
+/* add button and hover */
 .btn-add{
 	background-color:#288f09;
 	border-color: #3bbe0e;
@@ -56,6 +66,9 @@ body{
 	
 }
 
+
+
+/*primary button and hover (bootstrap override)  */
 .btn-primary{
 		background-color:#cc3300;
 	border-color: #cc3300;
@@ -67,28 +80,28 @@ body{
 	
 }
 
+
+/*brewery result box*/
 .brewery{
 	border: 2px solid rgb(70,70,70);
 	color:rgb(20,20,20);
 }
+/*margin on brewery result buttons*/
 .brewery .btn{
 	margin-bottom:2px;
 }
 
+/*beer pictures*/
 .med-beer{
 	max-width:50%;
 }
 
 
-.comment-box{
-	width:100%;
-	height:15%;
-	
-}
 
+/*header*/
 header{
 	margin-botton:10%;
-	background-image:none;
+	background-image:url(../img/header.jpg);
 }
 
 
@@ -96,11 +109,12 @@ input, textarea{
 	color:rgb(30,30,30);
 }
 
-
+/*beer list padding*/
 .beer-list{
 	padding-top : 10%;
 }
 
+/*individual beer result box*/
 .beer{
 	margin-bottom:5%;
 	padding:10%;
@@ -109,24 +123,26 @@ input, textarea{
 	height:60%;
 }
 
-
+/* body  */
 body{
 	margin-bottom:10%;
 	background-size: cover;
 	background-image: url(../img/header.jpg);
 }
 
+/*trying to fix nav links*/
 .nav-links{
 	text-decoration:none;
 	color:rgb(200,200,200);
 }
 
+/*nav bar color*/
 #mainNav{
 	background-color:rgb(50,50,50);
 }
 
 
-
+/* contact text color and hover */
 #contact{
 	color:rgb(220,220,220);
 }
@@ -134,95 +150,99 @@ body{
 	color:#ff9900;
 }
 
-
+/* brewery list top margin */
 .brewery-list{
 	margin-top:8%;
 }
-
+/*  brewwery list header */
 .brewery-list h2{
 	font-size:3em;
 	font-weight:bold;
 	margin-bottom:2%;
 }
-
+/*  user list margin */
 .userList{
 	margin-top:7%;
 }
-
+/*  user list box */
 .user{
 	text-align:center;
 	padding:1%;
 	border:2px solid white;
 }
 
-/* .user .btn{
-	margin-bottom:2px;
-} */
+/*  button margin */
 .btn{
 	margin-top:2px;
 }
 
+/*user info  */
 .user-information{
 	text-align:left;
 }
 
+/* rating box */
 .individual-rating{
 	text-align:center;
 	margin:auto;
 	margin-top:10%;
 	margin-bottom:10%;
 }
-
+/*  comment box size*/
 .comment-box{
 	height:20%;
 	width:100%;
 }
 
-
+/*  user beer's margins / alignment*/
 .user-beer-list{
 	margin-top:6%;
 	margin-bottom:10%;
 	text-align:center;
 	}
-	
+	/*  user rating padding*/
 	.user-rating{
 	padding:1%;
 	
 	
 	}
 	
-	
+	/*  make space at the bottom of the page so the footer wont cover stuff up*/
 	
 .bottom-page-spacer{
 	height:10%;
 }
-
+/*  center stuff in a column */
 .col-centered{
    float: none;
    margin-right: auto;
    margin-left: auto;
 }
-
+/*  facebook button (not used)*/
 
 .facebook-login-button-container{
 	margin-top:5px;
 	margin-bottom:3px;
 }
 
+/*  button margin */
+
 .btn btn-primary btn-xl page-scroll{
 	margin-top: 5px;
 	margin-bottom: 5px;
 }
 
-
+/*  bootstrap button override*/
 .btn btn-default btn-xl{
 	background-color:#334c8b;
 	
 }
-
+/* search title */
 .search-title{
 	font-size:3em;
 }
+
+/*  main menu margins */
 
 .main-menu-choice{
 	padding:0;
@@ -230,10 +250,13 @@ body{
 	margin-bottom:5%;
 }
 
+/*  make images fill container on main menu*/
 .stretch-img{
 	width:100%;
+
 }
 
+/* no results found link */
 .return-link{
 	text-decoration:none;
 	color:#c11e00;
