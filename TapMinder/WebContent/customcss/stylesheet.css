@@ -262,3 +262,24 @@ body{
 	color:#c11e00;
 	text-shadow: 1px 1px 5px black;
 }
+
+.top-spacer{
+	margin-top:0;
+}
+
+/* add a spacer to top of mobile screens */
+@media (max-width: 500px){
+	.top-spacer{
+		margin-top: 27%;
+	}
+}
+
+select{
+	background-color:#b7b7b7;
+	color:#212121;
+	
+}
+
+
+
+
