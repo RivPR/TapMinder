@@ -26,7 +26,7 @@
 		</form>
 		<form action="deleteRating.do">
 			<input type="hidden" name="ratingId" value="${r.id}" />
-			<button class="btn btn-warning" type="submit">Delete</button>
+			<button class="btn btn-warning" type="submit" onclick="if (confirm('Are you sure you want to delete this rating?')) commentDelete(1); return false">Delete</button>
 		</form>
 	</div>
 	</div>
