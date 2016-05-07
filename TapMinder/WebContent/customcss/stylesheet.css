@@ -139,12 +139,19 @@ body{
 
 /*fixed nav links*/
 .nav-links{
-	text-decoration:none;
 	color:rgb(223,220,054);
 }
 
 .navbar-right{
 	margin-top: .75%;
+	color: pink;
+}
+.btn.btn-link.nav-links{
+	color: rgba(255,255,255,.7);
+}
+.btn.btn-link.nav-links:hover{
+	text-decoration:none;
+	color: #fff;
 }
 
 /*nav bar color*/
