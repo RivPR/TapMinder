@@ -90,7 +90,9 @@ body{
 /*brewery result box*/
 .brewery{
 	border: 2px solid rgb(70,70,70);
-	color:rgb(20,20,20);
+	color: #e6dfdf;
+
+	
 }
 /*margin on brewery result buttons*/
 .brewery .btn{
@@ -205,14 +207,17 @@ body{
 	margin-top:6%;
 	margin-bottom:10%;
 	text-align:center;
+	color: #e6dfdf;
 	}
 	/*  user rating padding*/
 	.user-rating{
 	padding:1%;
-	
-	
+	color: #e6dfdf;
+	border: 1px solid #e6dfdf;
+	height: 250px;
 	}
-	
+
+
 	/*  make space at the bottom of the page so the footer wont cover stuff up*/
 	
 .bottom-page-spacer{

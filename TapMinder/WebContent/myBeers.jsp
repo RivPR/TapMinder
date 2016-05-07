@@ -6,16 +6,16 @@
 
 <div class="row">
 <div class="col-xs-12">
-<h3>${currentUser.firstname}'s Beers:</h3>
+<h2>${currentUser.firstname}'s Beers:</h2>
 </div>
 </div>
 
 
 <c:forEach items="${currentUser.ratings}" var="r">
 	
+	<div class="row-fluid">
 	
 	<div class="col-xs-12 col-md-3 user-rating">
-	<div>
 		Beer Name: ${r.beer.name}<br/>
 		Rating: ${r.rating}<br/>
 		Comments: ${r.comments}<br/>
