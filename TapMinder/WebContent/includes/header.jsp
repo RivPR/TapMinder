@@ -84,6 +84,8 @@
 			<form action="menu.do" method="POST">
 				<ul class="nav navbar-nav navbar-right">
 						<li><button type="submit" class="btn btn-link nav-links"
+								name="linkout">Back to ARMoreira</button></li>
+						<li><button type="submit" class="btn btn-link nav-links"
 								name="menuChoice" value="myAccount">Manage Account</button></li>
 						<li><button type="submit" class="btn btn-link nav-links"
 								name="menuChoice" value="viewUserBeers">View Beers</button></li>

@@ -72,7 +72,12 @@ public class TapMinderController {
 		}
 		return mv;
 	}
-
+	/*method to send back to portfolio website */
+	@RequestMapping( path= "menu.do", params="linkout" )
+	private ModelAndView sendBackToPortfolio(){
+		return new ModelAndView("redirect:" + "http://www.armoreira.com");
+	}
+	
 	@RequestMapping("menu.do")
 	private ModelAndView menu(@RequestParam("menuChoice") String menuChoice,
 			@ModelAttribute("currentUser") User currentUser) {
