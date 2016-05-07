@@ -83,12 +83,13 @@
 			id="bs-example-navbar-collapse-1">
 			<form action="menu.do" method="POST">
 				<ul class="nav navbar-nav navbar-right">
-						<li><button type="submit" style="color:rgb(220,220,220)"class="btn btn-link nav-links"
+						<li><button type="submit" class="btn btn-link nav-links"
 								name="menuChoice" value="myAccount">Manage Account</button></li>
-						<li><button type="submit" style="color:rgb(220,220,220)"class="btn btn-link nav-links"
+						<li><button type="submit" class="btn btn-link nav-links"
 								name="menuChoice" value="viewUserBeers">View Beers</button></li>
-						<li><button type="submit" style="color:rgb(220,220,220)" class="btn btn-link nav-links"
+						<li><button type="submit" class="btn btn-link nav-links"
 								name="menuChoice" value="logout">Logout ${currentUser.firstname} ${currentUser.lastname }</button></li>
+					
 				</ul>
 			</form>
 		</div>

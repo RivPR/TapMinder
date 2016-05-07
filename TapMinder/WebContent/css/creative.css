@@ -103,6 +103,7 @@ aside {
     font-size: 13px;
     font-weight: 700;
     color: #222;
+
 }
 
 .navbar-default .nav > li>a:hover,
@@ -129,6 +130,7 @@ aside {
 
     .navbar-default .navbar-header .navbar-brand {
         color: rgba(255,255,255,.7);
+        
     }
 
     .navbar-default .navbar-header .navbar-brand:hover,
