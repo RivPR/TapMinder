@@ -102,11 +102,6 @@
 
 				<c:if test="${ currentUser.usertype.accessLevel > 0}">
 
-					<form action="addBeerPage.do">
-						<input type="hidden" name="breweryId" value="${b.id}" />
-						<button class="btn btn-add" type="submit">Add Beer to
-							this brewery</button>
-					</form>
 					<form action= "searchBeers.do">
 						<input type="hidden" name="breweryId" value="${b.id}" />
 						<button class="btn btn-add" type="submit">View beers</button>
@@ -115,6 +110,11 @@
 
 				<c:if test="${ currentUser.usertype.accessLevel > 1}">
 
+					<form action="addBeerPage.do">
+						<input type="hidden" name="breweryId" value="${b.id}" />
+						<button class="btn btn-add" type="submit">Add Beer to
+							this brewery</button>
+					</form>
 					<form action="modifyBreweryPage.do">
 						<input type="hidden" name="breweryId" value="${b.id}" />
 						<button class="btn btn-warning" type="submit">Modify</button>

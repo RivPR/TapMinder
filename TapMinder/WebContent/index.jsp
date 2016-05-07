@@ -8,14 +8,14 @@
 			<h1>TapMinder2</h1>
 			<p>Finding craft beer in the Denver area has never been easier!</p>
 
-
+			<h6>To browse the site as a guest just press "LOGIN"</h6>
 			<c:if test="${currentUser.id < 1 }">
 				<form:form action="login.do" modelAttribute="user">
 				Username: <form:input type="email" name="email"
-						placeholder="email@example.com" path="email" />
+						value="guest@example.com" path="email" />
 					<br>
 					<br>
-				Password: <form:input type="password" name="password"
+				Password: <form:input type="password" name="password" value="Guest"
 						path="password" />
 					<br>
 					<br>
