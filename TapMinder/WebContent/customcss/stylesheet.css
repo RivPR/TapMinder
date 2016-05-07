@@ -89,7 +89,7 @@ body{
 
 /*brewery result box*/
 .brewery{
-	border: 2px solid rgb(70,70,70);
+	
 	color: #e6dfdf;
 
 	
@@ -126,8 +126,6 @@ input, textarea{
 .beer{
 	margin-bottom:5%;
 	padding:10%;
-	border:2px solid white;
-	
 	height:60%;
 }
 
@@ -136,6 +134,7 @@ body{
 	margin-bottom:10%;
 	background-size: cover;
 	background-image: url(../img/header.jpg);
+	color: #e6dfdf;
 }
 
 /*trying to fix nav links*/
