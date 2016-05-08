@@ -8,7 +8,7 @@
 
 <div class="container">
 <h1>Welcome to TapMinder!</h1>
-<h4>Please sign up.</h4>
+<h3>Please sign up.</h3>
 
 
 <div class="signupcard col-xs-12 col-med-4 col-lg-4">
@@ -16,25 +16,29 @@
 <div class="col-md-6 col-center">
 
 	<form:form action="signUp.do" modelAttribute="User">
-
 	<table>
 		<tr>
-			<td>First</td>
+			<td>First* </td>
 			<td><form:input type="text" path="firstname" placeholder="First" required="required"/></td>
 		</tr>
 		<tr>
-			<td>Last</td>
+			<td>Last* </td>
 			<td><form:input type="text" path="lastname" placeholder="Last" required="required"/></td>
 		</tr>
 		<tr>
-			<td>Email</td>
+			<td>Email* </td>
 			<td><form:input type="email" path="email" placeholder="email@example.com" required="required"/></td>
 		</tr>
 		<tr>
-			<td>Password</td>
+			<td>Password* </td>
 			<td><form:input type="password" path="password" required="required"/></td>
 		</tr>
+		<tr>
+			<td>Picture URL&nbsp; </td>
+			<td><form:input type="text" path="picture" placeholder="www.imgur.com/..." /></td>
+		</tr>
 	</table>
+		<h6>*Required</h6>
 
 
 	<c:if test="${!empty(errorMessage)}">

@@ -39,7 +39,7 @@
 		
 		<c:when test="${searchSetting == 'name' }">
 			BEER NAME <form:input type="text" path="name"
-				placeholder="Beer name" />
+				placeholder="Leave blank to view all the beers" />
 			<form:errors path="name" />
 		</c:when>
 		<c:when test="${searchSetting == 'abv' }">

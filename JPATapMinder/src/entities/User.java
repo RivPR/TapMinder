@@ -31,11 +31,17 @@ public class User {
 	private String email;
 	@Column(name="password")
 	@Size(min=1, max=45, message="Please enter password between 1 and 45")
-	private String password;
-	
+	private String password;	
 	@ManyToOne()
 	@JoinColumn(name="usertype_id")
 	private UserType usertype;
+	
+	@Column
+	@Size(min=1, max=2500, message="Please use a shorter URL")
+	private String picture;
+	@Column
+	@Size(min=1, max=160, message="Status message has a max of 160 characters")
+	private String status;
 	
 	@OneToMany(mappedBy="user", fetch = FetchType.EAGER, cascade= CascadeType.REMOVE)//added type all for list updating// , cascade={CascadeType.PERSIST, CascadeType.REMOVE})
 	List<BeerRating> ratings;
@@ -98,6 +104,24 @@ public class User {
 
 	public void setRatings(List<BeerRating> ratings) {
 		this.ratings = ratings;
+	}
+	
+	
+
+	public String getPicture() {
+		return picture;
+	}
+
+	public void setPicture(String picture) {
+		this.picture = picture;
+	}
+
+	public String getStatus() {
+		return status;
+	}
+
+	public void setStatus(String status) {
+		this.status = status;
 	}
 
 	@Override

@@ -7,7 +7,11 @@
 
 				<span class="center-text"><h2>USER INFO</h2></span>
 			<div class="user-information">
-			<div class="col-sm-0 col-md-5"> </div>
+			<div class="col-sm-0 col-md-5"> 
+			<img class="med-beer beer-result" src="${currentUser.picture}" />
+			<h5>Status:</h5>
+			${currentUser.status}
+			</div>
 			<div class="col-sm-12 col-md-4">
 				<table>
 					<tr>
