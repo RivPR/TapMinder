@@ -104,6 +104,13 @@ body{
 	max-width:50%;
 }
 
+/*user picture*/
+.lg-pic{
+	max-width:75%;
+}
+.xs-pic{
+	max-width:55%;
+}
 
 
 /*header*/

@@ -807,5 +807,38 @@ public class TapMinderController {
 
 		return mv;
 	}
+	//redirect to update profile information page
+	@RequestMapping("takeToUpdateProfile.do")
+	private ModelAndView updateProfile(@ModelAttribute("currentUser") User currentUser){
+		ModelAndView mv = new ModelAndView();
+		mv.addObject("currentUser", currentUser);
+		mv.setViewName("editProfile.jsp");
+		return mv;
+	}
+	@RequestMapping("updateCurrentUser.do")
+	private ModelAndView updateCurrentUser(@ModelAttribute("currentUser") User currentUser,
+			@RequestParam("userId") Integer userId,
+			@RequestParam("firstname") String firstname,
+			@RequestParam("lastname")String lastname,
+			@RequestParam("picture") String picture) {
+		ModelAndView mv = new ModelAndView();
+		//pass user's new attribute to gets and sets
+		User u = dao.getUser(userId);
+		u.setFirstname(firstname);
+		u.setLastname(lastname);
+		u.setPicture(picture);
+		//logout current user by setting to a blank user object.
+		currentUser = new User();
+		//go back to the index / sign in page
+		mv.addObject("currentUser", currentUser);
+		mv.addObject("User", new User());
+		//index accidentally uses lowercase u, so i fixed it by 
+		//adding this in addition to the capital U object add:
+		mv.addObject("user", new User());
+		mv.setViewName("index.jsp");
 
+		return mv;
+
+	}
+	
 }

@@ -6,13 +6,29 @@
 		<div class="header-content-inner">
 
 				<span class="center-text"><h2>USER INFO</h2></span>
+			<div class="col-sm-0 col-md-2 col-lg-2 filler"></div>
 			<div class="user-information">
-			<div class="col-sm-0 col-md-5"> 
-			<img class="med-beer beer-result" src="${currentUser.picture}" />
-			<h5>Status:</h5>
-			${currentUser.status}
+			
+			<div class="row">
+			
+			<div class="col-sm-12 col-md-5 col-lg-6"> 
+			<img class="lg-pic" src="${currentUser.picture}" />
 			</div>
-			<div class="col-sm-12 col-md-4">
+			
+			</div> <!-- row -->
+			
+			<div class="row">
+			<div class="col-sm-12 col-lg-6 status">
+			<h5>Status:</h5>
+			<h3 class="status">${currentUser.status}</h3>
+			
+			<form action="updateStatus.do">
+			<button class="btn btn-add" type="submit">Update status</button>
+			</form>
+			</div>
+			
+
+			<div class="col-sm-12 col-md-4 col-lg-6">
 				<table>
 					<tr>
 						<td>Firstname:</td>
@@ -34,23 +50,26 @@
 						<td>Beers Rated:</td>
 						<td>${currentUser.ratings.size()}</td>
 					</tr>
+					
 					<tr>
-					<td colspan="2"><form action="deleteCurrentUser.do">
-					<input type="hidden" name="userId" value="${currentUser.id}">
-					<button class="btn btn-warning" type="submit"
-						onclick="if (confirm('Are you sure you want to delete your account?')) commentDelete(1); return false">DELETE
-						ACCOUNT</button>
-				</form></td>
+					<td colspan="2">
+					<form action="takeToUpdateProfile.do">
+					<button class="btn btn-add" type="submit">Edit Profile</button>
+					</form>
+					</td>
 					</tr>
 
+
 				</table>
-
-
-				
-
-</div>
+			</div>
+			</div> <!-- row -->
+			
+			
+			
+			
 			</div>
 		</div>
 	</div>
+	
 </header>
 <%@include file="/includes/footer.jsp"%>
