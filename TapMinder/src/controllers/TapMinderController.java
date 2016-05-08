@@ -827,15 +827,16 @@ public class TapMinderController {
 		u.setFirstname(firstname);
 		u.setLastname(lastname);
 		u.setPicture(picture);
+		dao.modifyUser(u);
 		//logout current user by setting to a blank user object.
-		currentUser = new User();
+//		currentUser = new User();
 		//go back to the index / sign in page
 		mv.addObject("currentUser", currentUser);
 		mv.addObject("User", new User());
 		//index accidentally uses lowercase u, so i fixed it by 
 		//adding this in addition to the capital U object add:
 		mv.addObject("user", new User());
-		mv.setViewName("index.jsp");
+		mv.setViewName("userAccount.jsp");
 
 		return mv;
 

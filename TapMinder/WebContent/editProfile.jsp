@@ -9,7 +9,7 @@
 			<div class="col-sm-0 col-md-5 col-lg-5">
 				<img class="xs-pic" src="${currentUser.picture}" />
 	<div class="col-sm-12 col-md-4 col-lg-8">
-	<form action="editProfile.do">
+			<form action="updateCurrentUser.do">
 	<table>
 		<tr>
 			<td>First* </td>
@@ -24,16 +24,15 @@
 			<td><input type="text" name="picture" value="${currentUser.picture}" /></td>
 		</tr>
 	</table>
-	</form>
+	
 	<table>
 		<tr>
 			<td colspan="1">
-			<form action="updateCurrentUser.do">
 			<input type="hidden" name="userId" value="${currentUser.id}">
 			<button class="btn btn-add" type="submit">
 			 UPDATE	ACCOUNT</button>
-			</form>
 			</td>
+	</form>
 			
 			<td colspan="1">
 			<form action="deleteCurrentUser.do">
