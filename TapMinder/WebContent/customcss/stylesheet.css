@@ -112,6 +112,24 @@ body{
 	max-width:55%;
 }
 
+/*for status update box */
+#statusBox{
+	
+	
+	top: 110px;
+
+	
+	padding: 10px;
+	
+	
+	display: none;	
+}
+
+.status{
+	font-weight: bold;
+	color: #1233d7;
+}
+
 
 /*header*/
 header{

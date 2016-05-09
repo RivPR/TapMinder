@@ -841,5 +841,44 @@ public class TapMinderController {
 		return mv;
 
 	}
+	@RequestMapping("updateStatus.do")
+	private ModelAndView updateStatus(@ModelAttribute("currentUser") User currentUser,
+			@RequestParam("statusBox") String status ){
+		ModelAndView mv = new ModelAndView();
+		User u = dao.getUser(currentUser.getId());
+		u.setStatus(status);
+		dao.modifyStatus(u);
+		
+		mv.addObject("currentUser", currentUser);
+		mv.addObject("User", new User());
+		mv.addObject("user", new User());
+		
+		User userLogged = new User();
+
+		// re attach current user....
+		if (currentUser.getId() > 0) {
+			int userId = currentUser.getId();
+			currentUser = null;
+			currentUser = dao.getUser(userId);
+
+		}
+
+		// get the current user
+		userLogged = dao.getUser(currentUser.getId());
+		userLogged.setStatus(status);
+		mv.addObject("currentUser", userLogged);
+		mv.setViewName("userAccount.jsp");
+		return mv;
+		
+	}
 	
+
 }
+
+
+
+
+
+
+
+

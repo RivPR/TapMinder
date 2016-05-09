@@ -1,5 +1,16 @@
 <%@include file="/includes/header.jsp"%>
 
+<script>
+function setVisibility(id) {
+	if(document.getElementById('bt1').value=='Hide Layer'){
+	document.getElementById('bt1').value = 'Update';
+	document.getElementById(id).style.display = 'none';
+	}else{
+	document.getElementById('bt1').value = 'Hide Update';
+	document.getElementById(id).style.display = 'inline';
+	}
+	}
+</script>
 
 <header>
 	<div class="header-content">
@@ -20,10 +31,17 @@
 			<div class="row">
 			<div class="col-sm-12 col-lg-6 status">
 			<h5>Status:</h5>
-			<h3 class="status">${currentUser.status}</h3>
 			
+			
+			<h3 class="status">${currentUser.status}</h3>
 			<form action="updateStatus.do">
+			<input type=button name=type id='bt1' value='Update' onclick="setVisibility('statusBox');";> 
+
+			<div id="statusBox">
+			<textarea name="statusBox" placeholder="${currentUser.status}"></textarea>
+			</div>
 			<button class="btn btn-add" type="submit">Update status</button>
+			
 			</form>
 			</div>
 			

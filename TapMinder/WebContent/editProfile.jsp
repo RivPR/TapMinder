@@ -32,7 +32,7 @@
 			<button class="btn btn-add" type="submit">
 			 UPDATE	ACCOUNT</button>
 			</td>
-	</form>
+		</form>
 			
 			<td colspan="1">
 			<form action="deleteCurrentUser.do">
