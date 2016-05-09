@@ -2,7 +2,7 @@
 
 <script>
 function setVisibility(id) {
-	if(document.getElementById('bt1').value=='Hide Layer'){
+	if(document.getElementById('bt1').value=='Hide Update'){
 	document.getElementById('bt1').value = 'Update';
 	document.getElementById(id).style.display = 'none';
 	}else{
@@ -35,7 +35,7 @@ function setVisibility(id) {
 			
 			<h3 class="status">${currentUser.status}</h3>
 			<form action="updateStatus.do">
-			<input type=button name=type id='bt1' value='Update' onclick="setVisibility('statusBox');";> 
+			<input  id='bt1' class="btn btn-add" type=button name=type value='Update' onclick="setVisibility('statusBox');";> 
 
 			<div id="statusBox">
 			<textarea name="statusBox" placeholder="${currentUser.status}"></textarea>

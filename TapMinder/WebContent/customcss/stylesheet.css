@@ -28,15 +28,16 @@ body{
 
 /*alert text*/
 .alert-text{
-	color:rgb(200,0,0);
+	color:#77b9af;
 	margin-top:5px;
 	text-shadow:1px 1px 5px black;
 }
 
 /*buttons on footer, and hover*/
 .footer-buttons{
-	background-color:#cc3300;
-	border-color: #cc3300;
+	background-color: #6b0d2a;
+	border-color: #be39bd;
+	border-radius: 17px;
 }
 .footer-buttons:hover{
 	background-color:#902000;
@@ -62,7 +63,7 @@ body{
 
 /* add button and hover */
 .btn-add{
-	background-color:#288f09;
+	background-color:#2a7f32;
 	border-color: #3bbe0e;
 	color:rgb(220,220,220);
 	
