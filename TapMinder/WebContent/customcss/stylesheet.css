@@ -7,7 +7,7 @@ body{
 /* footer fixed to bottom of page */
 
 .fixed-bottom-footer{
-	height:10%;
+	height:6%;
 	width:100%;
 	text-align:center;
 	background-color:rgb(50,50,50);
@@ -15,11 +15,13 @@ body{
 	position:fixed;
 	bottom:0;
 	
+	
 }
+
 
 @media (max-width: 500px){
 	.fixed-bottom-footer {
-		height: 12%;
+		display: none;
 		}
 } 
 
